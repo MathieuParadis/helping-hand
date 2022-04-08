@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ VARIABLES $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+// -------------------- SCREEN SIZE VARIABLES -------------------- //
+$small-phone-viewport: 576px;
+$phone-viewport: 768px;
+$tablet-viewport: 991px;
+
+
+// -------------------- FONTS VARIABLES -------------------- //
+$font-1: "Poppins", sans-serif;
+
+// -------------------- COLORS VARIABLES -------------------- //
+$basic-color-white:#ffffff;
+$basic-color-dark:#292929;
+$basic-color-grey-light: #e5e5e5;
+$basic-color-grey-dark: #adb2b8;
+$shadow-color1: rgba(0, 0, 0, 0.12);
+$shadow-color2: rgba(0, 0, 0, 0.24);
+
+$color-1: #0066cc;
+$color-1-lighter: #3385d6;
+$color-1-darker: #004d99;
+$color-2: #ffd700;
+$color-2-lighter: #ffdf33;
+$color-2-darker: #bfa100;
+$color-3: #341310;
+$color-3-lighter: #5d4240;
+$color-3-darker: #270e0c;
+$light: #b9b9b9;
+$light-bg: #f7f7f7;
+$success: #198754;
+$success-bg: #90EE90;
+$danger: #a73513;
+$danger-bg: #e46d69;
+$warning: #f0ad4e;
+$warning-bg: #FBC02D;
+
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+:root {
+  --basic-color-white:#{$basic-color-white};
+  --basic-color-dark:#{$basic-color-dark};
+  --basic-color-grey-light:#{$basic-color-grey-light};
+  --basic-color-grey-dark:#{$basic-color-grey-dark};
+  --shadow-color1:#{$shadow-color1};
+  --shadow-color2:#{$shadow-color2};
+
+  --prim-color:#{$color-1};
+  --lighter-prim-color:#{$color-1-lighter};
+  --darker-prim-color:#{$color-1-darker};
+  --sec-color:#{$color-2};
+  --lighter-sec-color:#{$color-2-lighter};
+  --darker-sec-color:#{$color-2-darker};
+  --third-color:#{$color-3};
+  --lighter-third-color:#{$color-3-lighter};
+  --darker-third-color:#{$color-3-darker};
+  --light-color:#{$light};
+  --light-bg-color:#{$light-bg};
+  --success-color:#{$success};
+  --success-bg-color:#{$success-bg};
+  --danger-color:#{$danger};
+  --danger-bg-color:#{$danger-bg};
+  --warning-color:#{$warning};
+  --warning-bg-color:#{$warning-bg};
+}
+
+@mixin small_mobile {
+  @media (max-width: $small-phone-viewport) { @content; }
+}
+
+@mixin mobile {
+  @media (max-width: $phone-viewport) { @content; }
+}
+
+@mixin tablet {
+  @media (min-width: $phone-viewport) and (max-width: $tablet-viewport) { @content; }
+}
+
+@mixin mobile_and_tablet {
+  @media (max-width: $tablet-viewport) { @content; }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  margin: 20px 70px;
+  font-family: $font-1;
+  background-color: var(--basic-color-white);
+  color: var(--basic-color-dark);
+
+  @include mobile_and_tablet {
+    margin: 20px 45px;
+  }
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--prim-color);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--darker-prim-color);
+  }
+}
