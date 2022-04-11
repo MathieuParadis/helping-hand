@@ -3,10 +3,14 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // PAGE IMPORTS
+import Chat from './pages/Chat';
 import ForgottenPassword from './pages/Auth/ForgottenPassword';
 import Home from './pages/Home';
+import Map from './pages/Map';
 import Profile from './pages/Profile';
+import Requests from './pages/Requests';
 import ResetPassword from './pages/Auth/ResetPassword';
+import Rules from './pages/Rules';
 import Signin from './pages/Auth/Signin';
 import Signup from './pages/Auth/Signup';
 
@@ -28,9 +32,13 @@ const App = () => {
         <Flash />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/my-chats" element={<Chat />} />
           <Route path="/forgotten-password" exact="true" element={<ForgottenPassword />} />
+          <Route path="/all-requests" element={<Map />} />
           <Route path="/my-profile" exact="true" element={<Profile />} />
+          <Route path="/my-requests" exact="true" element={<Requests />} />
           <Route path="/reset-password" exact="true" element={<ResetPassword />} />
+          <Route path="/how-it-works" exact="true" element={<Rules />} />
           <Route path="/signin" exact="true" element={<Signin />} />
           <Route path="/signup" exact="true" element={<Signup />} />
         </Routes>
