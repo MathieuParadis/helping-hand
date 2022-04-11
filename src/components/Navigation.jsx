@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // COMPONENTS IMPORTS
 
 // ASSETS IMPORTS
-// import logo from '../assets/logos/logo_name.svg';
+import logo from '../assets/logos/helping_hand_logo.svg';
 
 const Navigation = () => {
   const location = useLocation();

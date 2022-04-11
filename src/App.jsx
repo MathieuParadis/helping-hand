@@ -3,7 +3,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // PAGE IMPORTS
-// import Area from './pages/Area';
 import Home from './pages/Home';
 
 // COMPONENT IMPORTS

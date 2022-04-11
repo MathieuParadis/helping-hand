@@ -3,7 +3,13 @@
 @import './settings';
 
 // COMPONENTS STYLES IMPORTS
-// @import './components/banner';
+@import './components/flash';
+@import './components/footer';
+@import './components/navigation';
 
 // PAGES STYLES IMPORTS
-// @import './pages/area';
+@import './pages/forgotten_password';
+@import './pages/home';
+@import './pages/signin';
+@import './pages/signup';
+@import './pages/_reset_password';
