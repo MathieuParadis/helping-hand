@@ -24,6 +24,7 @@ const Navigation = () => {
 
   return (
     <div className="navigation">
+      navbar
     </div>    
   );
 };

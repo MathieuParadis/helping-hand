@@ -11,7 +11,6 @@ import Flash from './components/Flash';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 
-
 // REACT FONTAWESOME IMPORTS
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
