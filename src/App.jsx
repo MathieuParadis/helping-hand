@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // PAGE IMPORTS
 import ForgottenPassword from './pages/Auth/ForgottenPassword';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 import ResetPassword from './pages/Auth/ResetPassword';
 import Signin from './pages/Auth/Signin';
 import Signup from './pages/Auth/Signup';
@@ -28,6 +29,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/forgotten-password" exact="true" element={<ForgottenPassword />} />
+          <Route path="/my-profile" exact="true" element={<Profile />} />
           <Route path="/reset-password" exact="true" element={<ResetPassword />} />
           <Route path="/signin" exact="true" element={<Signin />} />
           <Route path="/signup" exact="true" element={<Signup />} />
