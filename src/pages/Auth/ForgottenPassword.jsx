@@ -7,7 +7,7 @@ import forgotten_password_illustration from '../../assets/images/forgotten_passw
 const ForgottenPassword = () => {
   return (
     <div className="forgotten-password">
-      
+      forgot password page
     </div>
   );
 };

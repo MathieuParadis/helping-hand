@@ -8,7 +8,7 @@ import login_logo from '../../assets/logos/login_logo.svg';
 const Signin = () => {
   return (
     <div className="signin">
-      
+      Signin page
     </div>
   );
 };

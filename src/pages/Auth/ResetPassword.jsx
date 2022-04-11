@@ -7,7 +7,7 @@ import reset_password_illustration from '../../assets/images/reset_password_illu
 const ResetPassword = () => {
   return (
     <div className="reset-password">
-      
+      reset password page
     </div>
   );
 };
