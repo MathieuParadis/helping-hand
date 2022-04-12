@@ -157,6 +157,6 @@ a {
 
   &:hover {
     background-color: var(--prim-color);
-    color: var(--basic-color-white);
+    color: var(--basic-color-white) !important;
   }
 }
