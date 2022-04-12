@@ -22,12 +22,12 @@ $shadow-color2: rgba(0, 0, 0, 0.24);
 $color-1: #358597;
 $color-1-lighter: #5D9DAC;
 $color-1-darker: #286471;
-$color-2: #F4A896;
-$color-2-lighter: #F6B9AB;
-$color-2-darker: #B77E71;
-$color-3: #262F53;
-$color-3-lighter: #515975;
-$color-3-darker: #1C233E;
+$color-2: #262F53;
+$color-2-lighter: #515975;
+$color-2-darker: #1C233E;
+$color-3: #F4A896;
+$color-3-lighter: #F6B9AB;
+$color-3-darker: #B77E71;
 $light: #b9b9b9;
 $light-bg: #f7f7f7;
 $success: #198754;
@@ -120,4 +120,8 @@ a {
   &:hover {
     color: var(--darker-prim-color);
   }
+}
+
+.pointer {
+  cursor: pointer;
 }

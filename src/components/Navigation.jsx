@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HamburgerMenu from './HamburgerMenu';
 
 // ASSETS IMPORTS
-import logo from '../assets/logos/helping_hand_logo.svg';
+import logo from '../assets/logos/helping_hand_logo_with_text.svg';
 
 const Navigation = () => {
   const location = useLocation();
@@ -27,7 +27,24 @@ const Navigation = () => {
     <>
       <HamburgerMenu />
       <div className="navigation">
-        navbar
+
+
+        <div className="d-flex justify-content-between align-items-center">
+          <div className="d-flex align-items-center">
+            <img src={logo} alt="Helping Hand logo" className="logo pointer me-4 me-xl-5" onClick={refreshPage} />
+            <div>
+              <NavLink exact="true" to="/" className="navlink h4 me-2 me-xl-4 mb-0">Home</NavLink>
+              <NavLink exact="true" to="/how-it-works" className="navlink h4 me-2 me-xl-4 mb-0">How it works</NavLink>
+            </div>
+          </div>
+          fdsgfd
+        </div>
+
+
+
+
+
+
       </div> 
     </>
   );

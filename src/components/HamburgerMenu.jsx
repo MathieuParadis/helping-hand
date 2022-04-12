@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const HamburgerMenu = () => {
 
-
   const handleMenu = () => {
     document.querySelector(".span1").classList.toggle("clicked");
     document.querySelector(".span2").classList.toggle("clicked");
