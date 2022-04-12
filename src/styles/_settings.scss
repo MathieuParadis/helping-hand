@@ -160,3 +160,23 @@ a {
     color: var(--basic-color-white) !important;
   }
 }
+
+.text-primary {
+  color: var(--prim-color);
+}
+
+.text-secondary {
+  color: var(--sec-color);
+}
+
+.text-ternary {
+  color: var(--third-color);
+}
+
+.text-dark {
+  color: var(--basic-color-dark);
+}
+
+.text-black {
+  color: #000000;
+}

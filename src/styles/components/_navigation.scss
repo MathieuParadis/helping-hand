@@ -35,6 +35,21 @@
       font-size: 1.2em;
     }   
   }
+
+  button.dropdown-toggle.btn.btn-primary {
+    background-color: var(--light-bg-color);
+    color: var(--prim-color);
+    border: none;
+    padding: 0;
+  }
+
+  .profile-logo {
+    width: 50px;
+  }
+
+  .logout-logo {
+    width: 20px;
+  }
 }
 
 

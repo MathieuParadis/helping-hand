@@ -13,6 +13,9 @@ import HamburgerMenu from './HamburgerMenu';
 
 // ASSETS IMPORTS
 import logo from '../assets/logos/helping_hand_logo_with_text.svg';
+import profile_logo from '../assets/logos/profile_logo.svg';
+import logout_logo from '../assets/logos/logout_logo.svg';
+
 
 const Navigation = () => {
   const location = useLocation();
@@ -31,10 +34,10 @@ const Navigation = () => {
   }
 
   const signOut = () => {
-    loggedIn = false;
+    alert("logging out");
   }
 
-  let loggedIn = true;
+  let loggedIn = false;
 
   return (
     <>
@@ -64,26 +67,27 @@ const Navigation = () => {
                 <div className="d-none d-lg-flex">
                   <NavLink exact="true" to="/" className="navlink h4 me-4 me-xl-4 mb-0">Home</NavLink>
                   <NavLink exact="true" to="/how-it-works" className="navlink h4 me-4 me-xl-4 mb-0">How it works</NavLink>
-                  <p className="navlink h4 mb-0" onClick={() =>openModalNewRequest}>New Request</p>
+                  <p className="navlink h4 mb-0" onClick={() =>openModalNewRequest()}>New Request</p>
                 </div>
               </div>           
-              <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+              <DropdownButton 
+                className="d-none d-lg-flex"
+                title={
+                  <img src={profile_logo} alt="logout logo" className="profile-logo pointer me-2" />
+                }>
                 <Dropdown.Item>
-                  <NavLink exact="true" to="/my-profile" className="">My profile</NavLink>
+                  <NavLink exact="true" to="/my-profile" className="text-black">My profile</NavLink>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <NavLink exact="true" to="/my-requests" className="">My requests</NavLink>
+                  <NavLink exact="true" to="/my-requests" className="text-black">My requests</NavLink>
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item>
-                  <div onClick={() => signOut()}>
-                  <i class="fa-solid fa-power-off"></i>
-
-
+                  <div className="d-flex" onClick={() => signOut()}>
+                    <img src={logout_logo} alt="logout logo" className="logout-logo pointer me-2" />
+                    <p className="mb-0">Log out</p>
                   </div>
                 </Dropdown.Item>
-                
-
               </DropdownButton>
             </div>
           )
