@@ -2,10 +2,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-// REACT FONTAWESOME IMPORTS
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 const HamburgerMenu = () => {
+  let loggedIn = true;
 
   const handleMenu = () => {
     document.querySelector(".span1").classList.toggle("clicked");
@@ -16,6 +14,16 @@ const HamburgerMenu = () => {
     document.querySelector("body").classList.toggle("clicked");
   };
 
+  const openModalNewRequest = () => {
+    handleMenu();
+    alert("new request");
+  }
+
+  const signOut = () => {
+    handleMenu();
+    alert("logging out");
+  }
+
   return (
     <div>
       <div className="hamburger-box" onClick={handleMenu}>
@@ -24,17 +32,31 @@ const HamburgerMenu = () => {
         <span className="span3"></span>
       </div>
       <div className="overlay"></div>
-      <div className="menu">
-        {/* <NavLink className="menu-link my-2" exact="true" to="/" onClick={handleMenu}>Home</NavLink>
-        <NavLink className="menu-link my-2" exact="true" to="/race" onClick={handleMenu}>Race</NavLink>
-        <NavLink className="menu-link my-2" exact="true" to="/area" onClick={handleMenu}>About the area</NavLink>
-        <NavLink className="menu-link my-2" exact="true" to="/photos" onClick={handleMenu}>Gallery</NavLink> 
-        <NavLink className="menu-link my-2" exact="true" to="/riders" onClick={handleMenu}>Riders</NavLink>
-        <NavLink className="menu-link my-2" exact="true" to="/riders-locations" onClick={handleMenu}>Locate Riders</NavLink> */}
+      {!loggedIn ? 
+        (
+          <div className="menu">
+            <NavLink className="menu-link my-2" exact="true" to="/" onClick={handleMenu}>Home</NavLink>
+            <NavLink className="menu-link my-2" exact="true" to="/how-it-works" onClick={handleMenu}>How it works</NavLink>
+            <NavLink exact="true" to="/signup" className="btn button-w200 button-primary h4 my-2" onClick={handleMenu}>Sign up</NavLink>
+            <NavLink exact="true" to="/signin" className="btn button-w200 button-outline-primary h4 my-2" onClick={handleMenu}>Sign in</NavLink>
+          </div>
+        ) :
+        (
+          <div className="menu">
+            <NavLink className="menu-link my-2" exact="true" to="/" onClick={handleMenu}>Home</NavLink>
+            <NavLink className="menu-link my-2" exact="true" to="/how-it-works" onClick={handleMenu}>How it works</NavLink>
+            <p className="menu-item my-2" onClick={() => openModalNewRequest()}>New request</p>
+            <NavLink className="menu-link my-2" exact="true" to="/my-profile" onClick={handleMenu}>My profile</NavLink>
+            <NavLink className="menu-link my-2" exact="true" to="/my-requests" onClick={handleMenu}>My requests</NavLink>
+            <p className="menu-item my-2" onClick={() => signOut()}>Log out</p>
 
-        hamburger menu
 
-      </div>
+
+
+
+          </div>
+        )
+      }
     </div>
   );
 };

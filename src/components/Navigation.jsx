@@ -5,9 +5,6 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 // REACT BOOTSTRAP IMPORTS
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 
-// REACT FONTAWESOME IMPORTS
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 // COMPONENTS IMPORTS
 import HamburgerMenu from './HamburgerMenu';
 
@@ -37,13 +34,12 @@ const Navigation = () => {
     alert("logging out");
   }
 
-  let loggedIn = false;
+  let loggedIn = true;
 
   return (
     <>
       <HamburgerMenu />
       <div className="navigation">
-
         {!loggedIn ? 
           (
             <div className="d-flex justify-content-between align-items-center">
@@ -67,7 +63,7 @@ const Navigation = () => {
                 <div className="d-none d-lg-flex">
                   <NavLink exact="true" to="/" className="navlink h4 me-4 me-xl-4 mb-0">Home</NavLink>
                   <NavLink exact="true" to="/how-it-works" className="navlink h4 me-4 me-xl-4 mb-0">How it works</NavLink>
-                  <p className="navlink h4 mb-0" onClick={() =>openModalNewRequest()}>New Request</p>
+                  <p className="navlink h4 mb-0" onClick={() => openModalNewRequest()}>New request</p>
                 </div>
               </div>           
               <DropdownButton 
