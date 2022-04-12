@@ -125,3 +125,38 @@ a {
 .pointer {
   cursor: pointer;
 }
+
+.button-w150 {
+  width: 150px;
+  padding: 10px;
+}
+
+.button-w200 {
+  width: 200px;
+  padding: 10px;
+}
+
+.button-primary {
+  background-color: var(--prim-color);
+  color: var(--basic-color-white);
+  border: 2px solid var(--prim-color);
+  border-radius: 50px;
+
+  &:hover {
+    background-color: var(--darker-prim-color);
+    color: var(--basic-color-white);
+    border: 2px solid var(--darker-prim-color);
+  }
+}
+
+.button-outline-primary {
+  background-color: var(--basic-color-white);
+  color: var(--prim-color);
+  border: 2px solid var(--prim-color);
+  border-radius: 50px;
+
+  &:hover {
+    background-color: var(--prim-color);
+    color: var(--basic-color-white);
+  }
+}

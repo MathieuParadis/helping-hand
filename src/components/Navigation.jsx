@@ -37,7 +37,10 @@ const Navigation = () => {
               <NavLink exact="true" to="/how-it-works" className="navlink h4 me-2 me-xl-4 mb-0">How it works</NavLink>
             </div>
           </div>
-          fdsgfd
+          <div className="connection-buttons">
+            <NavLink exact="true" to="/signup" className="btn button-w150 button-primary h4 me-2 me-xl-4 mb-0">Sign up</NavLink>
+            <NavLink exact="true" to="/signin" className="btn button-w150 button-outline-primary h4 me-2 me-xl-4 mb-0">Log in</NavLink>
+          </div>
         </div>
 
 
