@@ -1,0 +1,131 @@
+.hamburger-box {
+  position: absolute;
+  height: 32px;
+  width: 30px;
+  top: 30px;
+  right: 65px;
+  cursor: pointer;
+  z-index: 110;
+  display: none;
+
+  @include mobile_and_tablet {
+    display: block;
+  }
+
+  .span1, .span2, .span3 {
+    position: absolute;
+    height: 4px;
+    width: 50px;
+    border-radius: 50px;
+    background-color: var(--basic-color-dark);
+    transition: all .5s;
+  }
+
+  .span1 {
+    top: 0;
+    &.clicked{
+      transform: rotate(-45deg) translate(-9px, 7px);
+      background-color: var(--basic-color-white);
+    }
+  }
+  .span2 {
+    top: 14px;
+    &.clicked{
+      transform: rotate(720deg);
+      opacity: 0;
+    }
+  }
+
+  .span3 {
+    bottom: 0;
+      &.clicked{
+      transform: rotate(45deg) translate(-12px, -10px);
+      background-color: var(--basic-color-white);
+    }
+  }
+}
+
+.overlay {
+  display: none;
+
+  @include mobile_and_tablet {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    visibility: hidden;
+    background-color: var(--basic-color-dark);
+    opacity: 0;
+    z-index: 90;
+    transition: all .5s;
+
+    &.clicked {
+      visibility: visible;
+      opacity: 0.95;
+    }
+  }
+}
+
+.menu {
+  display:none;
+
+  @include mobile_and_tablet {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 100;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+
+    &.clicked {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .menu-link{
+      font-size: 2.5rem;
+      text-decoration: none;
+      color: var(--basic-color-white);
+
+      &:hover{
+        color: var(--prim-color);
+      }
+    }
+
+    .social-networks {
+      &:hover{
+        transform:scale(1.1);
+      }
+    }
+
+    .contest-button {
+      font-size: 2.5rem;
+      background-color: var(--prim-color);
+      border-radius: 10px;
+      width: 300px;
+  
+      &:hover {
+        background-color: var(--darker-prim-color);    
+      }
+  
+      .active {
+        background-color: var(--prim-color);    
+      }
+    }
+  }
+}
+
+body {
+  &.clicked {
+    overflow: hidden;
+  }
+}

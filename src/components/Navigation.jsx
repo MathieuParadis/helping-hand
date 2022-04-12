@@ -6,6 +6,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // COMPONENTS IMPORTS
+import HamburgerMenu from './HamburgerMenu';
 
 // ASSETS IMPORTS
 import logo from '../assets/logos/helping_hand_logo.svg';
@@ -23,9 +24,12 @@ const Navigation = () => {
   }
 
   return (
-    <div className="navigation">
-      navbar
-    </div>    
+    <>
+      <HamburgerMenu />
+      <div className="navigation">
+        navbar
+      </div> 
+    </>
   );
 };
 
