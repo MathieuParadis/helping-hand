@@ -49,11 +49,6 @@ const HamburgerMenu = () => {
             <NavLink className="menu-link my-2" exact="true" to="/my-profile" onClick={handleMenu}>My profile</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/my-requests" onClick={handleMenu}>My requests</NavLink>
             <p className="menu-item my-2" onClick={() => signOut()}>Log out</p>
-
-
-
-
-
           </div>
         )
       }
