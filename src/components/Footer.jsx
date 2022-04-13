@@ -28,7 +28,7 @@ const Footer = () => {
               <FontAwesomeIcon icon="fa-brands fa-twitter-square" size="3x" className="navlink"/>
             </a>
             <a href="https://facebook.com/" target="_blank">
-              <FontAwesomeIcon icon="fa-brands fa-facebook-square" size="3x" className="navlink mx-3"/>
+              <FontAwesomeIcon icon="fa-brands fa-facebook-square" size="3x" className="navlink mx-4"/>
             </a>
             <a href="https://instagram.com/" target="_blank">
               <FontAwesomeIcon icon="fa-brands fa-instagram" size="3x" className="navlink"/>
@@ -39,7 +39,7 @@ const Footer = () => {
               <FontAwesomeIcon icon="fa-brands fa-linkedin" size="3x" className="navlink"/>
             </a>
             <a href="https://facebook.com/" target="_blank">
-              <FontAwesomeIcon icon="fa-brands fa-pinterest" size="3x" className="navlink mx-3"/>
+              <FontAwesomeIcon icon="fa-brands fa-pinterest" size="3x" className="navlink mx-4"/>
             </a>
             <a href="https://instagram.com/" target="_blank">
               <FontAwesomeIcon icon="fa-brands fa-youtube-square" size="3x" className="navlink"/>

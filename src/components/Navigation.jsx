@@ -34,7 +34,7 @@ const Navigation = () => {
     alert("logging out");
   }
 
-  let loggedIn = true;
+  let loggedIn = false;
 
   return (
     <>

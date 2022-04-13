@@ -126,6 +126,7 @@ a {
   cursor: pointer;
 }
 
+// -------------------- BUTTON CLASSES -------------------- //
 .button-w150 {
   width: 150px;
   padding: 10px;
@@ -161,6 +162,8 @@ a {
   }
 }
 
+
+// -------------------- FONT COLOR CLASSES -------------------- //
 .text-primary {
   color: var(--prim-color);
 }
@@ -183,4 +186,23 @@ a {
 
 .text-justify {
   text-align: justify;
+}
+
+// -------------------- BOX SHADOW CLASSES -------------------- //
+.box-shadow {
+  box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+}
+
+// -------------------- BORDER CLASSES -------------------- //
+.border-radius-5 {
+  border-radius: 5px;
+}
+
+.border-radius-top-5 {
+  border-radius: 5px 5px 0 0 !important; 
+
+}
+
+.border-radius-bottom-5 {
+  border-radius: 0 0 5px 5px !important; 
 }

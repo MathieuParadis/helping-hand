@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const HamburgerMenu = () => {
-  let loggedIn = true;
+  let loggedIn = false;
 
   const handleMenu = () => {
     document.querySelector(".span1").classList.toggle("clicked");
