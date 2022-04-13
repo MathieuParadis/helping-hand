@@ -136,11 +136,6 @@ a {
   padding: 10px;
 }
 
-.button-w250 {
-  width: 250px;
-  padding: 10px;
-}
-
 .button-primary {
   background-color: var(--prim-color);
   color: var(--basic-color-white);
@@ -184,4 +179,8 @@ a {
 
 .text-black {
   color: #000000;
+}
+
+.text-justify {
+  text-align: justify;
 }
