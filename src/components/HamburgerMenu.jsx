@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const HamburgerMenu = () => {
-  let loggedIn = false;
+  let loggedIn = true;
 
   const handleMenu = () => {
     document.querySelector(".span1").classList.toggle("clicked");
@@ -37,8 +37,8 @@ const HamburgerMenu = () => {
           <div className="menu">
             <NavLink className="menu-link my-2" exact="true" to="/" onClick={handleMenu}>Home</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/how-it-works" onClick={handleMenu}>How it works</NavLink>
-            <NavLink exact="true" to="/signup" className="btn button-w200 button-primary h4 my-2" onClick={handleMenu}>Sign up</NavLink>
-            <NavLink exact="true" to="/signin" className="btn button-w200 button-outline-primary h4 my-2" onClick={handleMenu}>Sign in</NavLink>
+            <NavLink exact="true" to="/signup" className="btn button-w200 button-primary h4 my-2 py-2" onClick={handleMenu}>Sign up</NavLink>
+            <NavLink exact="true" to="/signin" className="btn button-w200 button-outline-primary h4 my-2 py-2" onClick={handleMenu}>Sign in</NavLink>
           </div>
         ) :
         (

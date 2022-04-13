@@ -7,7 +7,6 @@ $small-phone-viewport: 576px;
 $phone-viewport: 768px;
 $tablet-viewport: 991px;
 
-
 // -------------------- FONTS VARIABLES -------------------- //
 $font-1: "Poppins", sans-serif;
 
@@ -104,7 +103,7 @@ body {
   color: var(--basic-color-dark);
 
   @include mobile_and_tablet {
-    margin: 20px 45px;
+    margin: 20px 30px;
   }
 }
 
