@@ -1,5 +1,6 @@
 // CONFIG IMPORTS
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
 import forgotten_password_illustration from '../../assets/images/forgotten_password_illustration.svg';
@@ -17,22 +18,21 @@ const ForgottenPassword = () => {
           <div className="box-left align-items-center col-md-6 d-none d-md-flex flex-column justify-content-center pe-md-3">
             <img src={forgotten_password_illustration} alt="Forgotten password illustration" className="illustration" />
           </div>
-          <div className="box-right col-12 col-md-6 ps-md-3">
+          <div className="box-right d-flex flex-column col-12 col-md-6 ps-md-3">
             <h2 className="text-center pb-4 mb-5">Forgot your<br></br>password?</h2>
             <div className="form-container">
               <form onSubmit={postResetPasswordRequest}>
-                <div class="input mb-4">
+                <div class="input mb-3">
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
                 <button type="submit" className="btn button-primary w-100 text-white mt-3" id="reset-pw-btn">Send reset password instructions</button>
               </form>
             </div>
-
-
-
-
-
+            <div className=" d-flex flex-column justify-content-center align-items-center mt-4">
+              <NavLink exact="true" to="/signin" className="mb-2 text-ternary">Log in</NavLink>
+              <NavLink exact="true" to="/signup" className="text-ternary">Sign up</NavLink>
+            </div>
           </div>
         </div>
       </div>

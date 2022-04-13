@@ -184,14 +184,26 @@ a {
 // -------------------- FONT COLOR CLASSES -------------------- //
 .text-primary {
   color: var(--prim-color);
+
+  &:hover, &:focus {
+    color: var(--darker-prim-color);
+  }
 }
 
 .text-secondary {
   color: var(--sec-color);
+
+  &:hover, &:focus {
+    color: var(--darker-sec-color);
+  }
 }
 
 .text-ternary {
   color: var(--third-color);
+
+  &:hover, &:focus {
+    color: var(--darker-third-color);
+  }
 }
 
 .text-dark {
