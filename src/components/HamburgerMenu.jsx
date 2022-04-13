@@ -48,7 +48,7 @@ const HamburgerMenu = () => {
             <p className="menu-item my-2" onClick={() => openModalNewRequest()}>New request</p>
             <NavLink className="menu-link my-2" exact="true" to="/my-profile" onClick={handleMenu}>My profile</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/my-requests" onClick={handleMenu}>My requests</NavLink>
-            <p className="menu-item my-2" onClick={() => signOut()}>Log out</p>
+            <p className="btn button-w200 button-danger h4 my-2 py-2" onClick={() => signOut()}>Log out</p>
           </div>
         )
       }
