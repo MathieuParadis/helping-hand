@@ -13,10 +13,10 @@ const ForgottenPassword = () => {
     <div className="forgotten-password">
       <div class="container d-flex justify-content-center align-items-center">
         <div class="box box-shadow border-radius-5 p-3 d-flex">
-          <div className="box-left d-none d-md-block pe-md-3">
+          <div className="box-left col-md-6 d-none d-md-block pe-md-3">
             <img src={forgotten_password_illustration} alt="Forgotten password illustration" className="illustration" />
           </div>
-          <div className="box-right ps-md-3">
+          <div className="box-right col-12 col-md-6 ps-md-3">
             <h2 className="text-center pb-4">Forgot your<br></br>password?</h2>
 
           <div className="form-container">
