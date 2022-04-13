@@ -14,20 +14,18 @@ const ForgottenPassword = () => {
     <div className="forgotten-password">
       <div class="container d-flex justify-content-center align-items-center">
         <div class="box box-shadow border-radius-5 p-3 d-flex">
-          <div className="box-left col-md-6 d-none d-md-block pe-md-3">
+          <div className="box-left d-flex justify-content-center align-items-center col-md-6 d-none d-md-block pe-md-3">
             <img src={forgotten_password_illustration} alt="Forgotten password illustration" className="illustration" />
           </div>
           <div className="box-right col-12 col-md-6 ps-md-3">
             <h2 className="text-center pb-4 mb-5">Forgot your<br></br>password?</h2>
             <div className="form-container">
               <form onSubmit={postResetPasswordRequest}>
-                <div class="input mb-3">
+                <div class="input mb-4">
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
-                <div className="mt-4">
-                  <button type="submit" className="btn button-primary w-100 text-white mb-3" id="reset-pw-btn">Send reset password instructions</button>
-                </div>
+                <button type="submit" className="btn button-primary w-100 text-white mt-3" id="reset-pw-btn">Send reset password instructions</button>
               </form>
             </div>
 

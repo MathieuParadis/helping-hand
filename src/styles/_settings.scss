@@ -81,6 +81,14 @@ $warning-bg: #FBC02D;
   @media (max-width: $tablet-viewport) { @content; }
 }
 
+@mixin large_screen {
+  @media (min-width: $tablet-viewport) { @content; }
+}
+
+@mixin tablet_and_large_screen {
+  @media (min-width: $phone-viewport) { @content; }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
