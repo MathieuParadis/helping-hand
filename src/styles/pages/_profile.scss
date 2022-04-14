@@ -24,9 +24,24 @@
           width: 180px;
           height: 140px;
 
+          @include mobile_and_tablet {
+            width: 140px;
+            height: 110px;
+          }
+
           .id-card {
             width: 100%;
             object-fit: contain;
+          }
+        }
+
+        .profile-button {
+          width: 250px;
+          padding: 10px;
+
+          @include very_large_screen {
+            width: 220px;
+            padding: 10px;
           }
         }
       }
