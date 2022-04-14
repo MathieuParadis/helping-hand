@@ -27,7 +27,7 @@ const ResetPassword = () => {
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
-                <div class="input mb-3">
+                <div class="input mb-4">
                   <label htmlFor="password" className="mb-1">New password</label>
                   <input type="password" className="form-control" id="password" aria-describedby="email input field" placeholder="Your new password" required />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />

@@ -4,6 +4,7 @@
     width: 100%;
 
     .box {
+      background-color: var(--basic-color-white);
       overflow: hidden;
 
       @include mobile {
@@ -20,42 +21,63 @@
         height: 585px;
       }
 
-      .pattern {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+      .box-left {
+        .pattern {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
       }
 
-      .input {
-        position: relative;
-        display: block;
-        width: 100%;
-
-        input {
-          border: 1px solid var(--basic-color-grey-dark);
-          border-radius: 7px;
-          width: 100%;
-          height: 2.5em;
-          padding-top: 0.3em;
-          padding-bottom: 0.3em;
-          padding-left: 2.3em;
-          outline: none;
-        
-          &:focus {
-            border: none;
-            outline: none;
-            border-color: var(--prim-color);
-            box-shadow: 0 0 10px var(--prim-color);
-          }
+      .box-right {
+        .login-logo {
+          width: 65px;
         }
 
-        .mail-icon {
-          position: absolute;
-          left: 10px;
-          top: 10px;
-          width: 20px;
+        .input {
+          position: relative;
+          display: block;
+          width: 100%;
+  
+          input {
+            border: 1px solid var(--basic-color-grey-dark);
+            border-radius: 7px;
+            width: 100%;
+            height: 2.5em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+            padding-left: 2.3em;
+            outline: none;
+          
+            &:focus {
+              border: none;
+              outline: none;
+              border-color: var(--prim-color);
+              box-shadow: 0 0 10px var(--prim-color);
+            }
+          }
+  
+          .mail-icon, .lock-icon {
+            position: absolute;
+            left: 10px;
+            top: 38px;
+            width: 20px;
+          }
         }
       }
     }
+  }
+}
+
+.bg {
+  @include mobile {
+    background-image: url("../../assets/images/login_pattern.svg");
+    height: auto;
+    width: 100vw;
+    top: 0; 
+    left: 0; 
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
