@@ -14,7 +14,7 @@ const Signup = () => {
   }
 
   return (
-    <div className="signup bg">
+    <div className="signup signup-bg">
       <div class="container d-flex justify-content-center align-items-center">
         <div class="box box-shadow border-radius-5 d-flex">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-3 pe-md-3">
@@ -38,9 +38,12 @@ const Signup = () => {
                 <button type="submit" className="btn button-primary w-100 text-white mt-3" id="login-btn">Create account</button>
               </form>
             </div>
-            <div className=" d-flex justify-content-center align-items-center mt-4">
-              <p className="mb-0">Already Registered ? Click here to login:&nbsp;</p>
-              <NavLink exact="true" to="/signin" className=" text-ternary">Log in</NavLink>
+            <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">
+              <p className="mb-0">Already Registered ?</p>
+              <div className="d-flex">
+                <p className="mb-0">Click here to login:&nbsp;</p>
+                <NavLink exact="true" to="/signin" className=" text-ternary">Log in</NavLink>
+              </div>
             </div>
           </div>
         </div>

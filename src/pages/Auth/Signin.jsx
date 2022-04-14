@@ -14,7 +14,7 @@ const Signin = () => {
   }
 
   return (
-    <div className="signin bg">
+    <div className="signin signin-bg">
       <div class="container d-flex justify-content-center align-items-center">
         <div class="box box-shadow border-radius-5 d-flex flex-row-reverse">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 ps-md-3">
@@ -38,7 +38,7 @@ const Signin = () => {
                 <button type="submit" className="btn button-primary w-100 text-white mt-3" id="login-btn">Login</button>
               </form>
             </div>
-            <div className=" d-flex flex-column justify-content-center align-items-center mt-4">
+            <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">
               <div className="mb-2 d-flex">
                 <p className="mb-0">Don't have an account? -&nbsp;</p>
                 <NavLink exact="true" to="/signup" className=" text-ternary">Sign up</NavLink>

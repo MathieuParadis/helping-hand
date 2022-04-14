@@ -31,7 +31,7 @@ const ForgottenPassword = () => {
                 <button type="submit" className="btn button-primary w-100 text-white mt-3" id="reset-pw-btn">Send reset password instructions</button>
               </form>
             </div>
-            <div className=" d-flex flex-column justify-content-center align-items-center mt-4">
+            <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">
               <NavLink exact="true" to="/signin" className="mb-2 text-ternary">Log in</NavLink>
               <NavLink exact="true" to="/signup" className="text-ternary">Sign up</NavLink>
             </div>
