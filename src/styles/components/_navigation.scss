@@ -27,7 +27,7 @@
     }
   }
   
-  .active {
+  .active:not(.button-primary) {
     color: var(--prim-color);
   }
 

@@ -10,7 +10,7 @@ import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
   const LoginPostRequest = (e) => {
-    alert("reset password request");
+    alert("Signing in");
   }
 
   return (
