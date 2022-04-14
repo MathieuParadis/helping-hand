@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
 import profile_illustration from '../assets/images/my_profile_illustration.svg';
+import id_icon from '../assets/logos/id_logo.svg';
 
 const Profile = () => {
   const postResetPasswordRequest = (e) => {
@@ -25,8 +26,8 @@ const Profile = () => {
               <p><strong>Email</strong>: mathieu@gmail.com</p>
               <div className="d-flex">
                 <p><strong>ID</strong>:&nbsp;</p>
-                <div id="id-card">
-fg
+                <div className="id-card-box border-radius-5">
+                  <img className="id-card" src={id_icon} alt="ID card"/>
                 </div>
               </div>
 
