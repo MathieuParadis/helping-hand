@@ -15,7 +15,7 @@ const ResetPassword = () => {
   return (
     <div className="reset-password">
       <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 p-3 d-flex flex-row-reverse">
+        <div class="box box-shadow border-radius-5 p-3 d-flex flex-row-reverse m-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 ps-md-3">
             <img src={reset_password_illustration} alt="Reset password illustration" className="illustration" />
           </div>

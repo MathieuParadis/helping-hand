@@ -15,7 +15,7 @@ const ForgottenPassword = () => {
   return (
     <div className="forgotten-password">
       <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 p-3 d-flex">
+        <div class="box box-shadow border-radius-5 p-3 d-flex m-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 pe-md-3">
             <img src={forgotten_password_illustration} alt="Forgotten password illustration" className="illustration" />
           </div>

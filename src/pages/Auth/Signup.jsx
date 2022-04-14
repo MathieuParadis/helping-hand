@@ -17,7 +17,7 @@ const Signup = () => {
   return (
     <div className="signup signup-bg">
       <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 d-flex">
+        <div class="box box-shadow border-radius-5 d-flex m-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-3 pe-md-3">
             <img src={signup_pattern} alt="sign up pattern illustration" className="pattern" />
           </div>
