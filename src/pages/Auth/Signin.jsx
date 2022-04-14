@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
 import login_pattern from '../../assets/images/login_pattern.svg';
-import login_logo from '../../assets/logos/login_logo.svg';
+import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
@@ -21,7 +21,7 @@ const Signin = () => {
             <img src={login_pattern} alt="sign in pattern illustration" className="pattern" />
           </div>
           <div className="box-right d-flex flex-column justify-content-center col-12 col-md-6 p-3">
-            <img src={login_logo} alt="login logo" className="login-logo align-self-center mb-2" />
+            <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-4 mb-5">Welcome back!</h2>
             <div className="form-container">
               <form onSubmit={LoginPostRequest}>

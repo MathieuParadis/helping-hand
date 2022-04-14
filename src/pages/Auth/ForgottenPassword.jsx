@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
 import forgotten_password_illustration from '../../assets/images/forgotten_password_illustration.svg';
+import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 
 const ForgottenPassword = () => {
@@ -19,7 +20,8 @@ const ForgottenPassword = () => {
             <img src={forgotten_password_illustration} alt="Forgotten password illustration" className="illustration" />
           </div>
           <div className="box-right d-flex flex-column justify-content-center col-12 col-md-6 ps-md-3">
-            <h2 className="text-center pb-4 mb-5">Forgot your<br></br>password?</h2>
+            <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
+            <h2 className="text-center pb-4 mb-5">Forgot your<br></br>password?</h2>            
             <div className="form-container">
               <form onSubmit={postResetPasswordInstructionsRequest}>
                 <div class="input mb-3">

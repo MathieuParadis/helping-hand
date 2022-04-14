@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
 import reset_password_illustration from '../../assets/images/reset_password_illustration.svg';
+import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
@@ -19,6 +20,7 @@ const ResetPassword = () => {
             <img src={reset_password_illustration} alt="Reset password illustration" className="illustration" />
           </div>
           <div className="box-right d-flex flex-column justify-content-center col-12 col-md-6 pe-md-3">
+            <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-4 mb-5">Reset your<br></br>password</h2>
             <div className="form-container">
               <form onSubmit={postResetPasswordRequest}>
