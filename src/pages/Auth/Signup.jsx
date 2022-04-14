@@ -38,6 +38,10 @@ const Signup = () => {
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
                 </div>
+                <div class="file-input mb-3">
+                  <label htmlFor="ID" className="mb-1">ID</label>
+                  <input type="file" className="" id="file" aria-describedby="file input field" placeholder="" required />
+                </div>
                 <div class="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
