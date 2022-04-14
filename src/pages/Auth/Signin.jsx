@@ -16,11 +16,11 @@ const Signin = () => {
   return (
     <div className="signin">
       <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 d-flex">
-          <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 pe-md-3">
+        <div class="box box-shadow border-radius-5 d-flex flex-row-reverse">
+          <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 ps-md-3">
             <img src={login_pattern} alt="sign in pattern illustration" className="pattern" />
           </div>
-          <div className="box-right d-flex flex-column justify-content-center col-12 col-md-6 ps-md-3">
+          <div className="box-right d-flex flex-column justify-content-center col-12 col-md-6 p-md-3">
             <h2 className="text-center pb-4 mb-5">Forgot your<br></br>password?</h2>
             <div className="form-container">
               <form onSubmit={LoginPostRequest}>

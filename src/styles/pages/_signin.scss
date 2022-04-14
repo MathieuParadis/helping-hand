@@ -12,16 +12,18 @@
 
       @include tablet_and_large-screen {
         width: 90%;
-        min-height: 500px;
+        height: 500px;
       }
 
       @include very_large-screen {
         width: 90%;
-        min-height: 570px;
+        height: 585px;
       }
 
       .pattern {
-        max-height: 500px;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
       }
 
       .input {
