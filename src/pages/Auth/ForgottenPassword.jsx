@@ -23,12 +23,12 @@ const ForgottenPassword = () => {
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-md-4 mb-5">Forgot your<br></br>password?</h2>            
             <div className="form-container">
-              <form onSubmit={postResetPasswordInstructionsRequest}>
+              <form onSubmit={postResetPasswordInstructionsRequest} className="d-flex flex-column justify-content-center">
                 <div class="input mb-3">
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
-                <button type="submit" className="btn button-primary w-100 text-white mt-3" id="reset-pw-btn">Send reset password instructions</button>
+                <button type="submit" className="btn button-primary button-w290 text-white align-self-center mt-4" id="reset-pw-btn">Send reset password instructions</button>
               </form>
             </div>
             <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">

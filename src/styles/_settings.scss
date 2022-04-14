@@ -135,6 +135,10 @@ a {
   }
 }
 
+.container {
+  padding: 0;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -147,6 +151,11 @@ a {
 
 .button-w200 {
   width: 200px;
+  padding: 10px;
+}
+
+.button-w290 {
+  width: 290px;
   padding: 10px;
 }
 

@@ -25,7 +25,7 @@ const Signup = () => {
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-md-4 mb-5">Sign up</h2>
             <div className="form-container">
-              <form onSubmit={SignupPostRequest}>
+              <form onSubmit={SignupPostRequest} className="d-flex flex-column justify-content-center">
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                   <div class="input mb-3 mb-md-0 me-0 me-md-2">
                     <label htmlFor="first_name" className="mb-1">First name</label>
@@ -39,7 +39,7 @@ const Signup = () => {
                   </div>
                 </div>
                 <div class="file-input mb-3">
-                  <label htmlFor="ID" className="mb-1">ID</label>
+                  <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
                   <input type="file" className="" id="file" aria-describedby="file input field" placeholder="" required />
                 </div>
                 <div class="input mb-3">
@@ -59,7 +59,7 @@ const Signup = () => {
                     <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                   </div>
                 </div>
-                <button type="submit" className="btn button-primary w-100 text-white mt-3" id="login-btn">Create account</button>
+                <button type="submit" className="btn button-primary button-w200 text-white align-self-center mt-4" id="signup-btn">Create account</button>
               </form>
             </div>
             <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">

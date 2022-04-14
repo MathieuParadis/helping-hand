@@ -24,7 +24,7 @@ const Signin = () => {
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-md-4 mb-5">Welcome back!</h2>
             <div className="form-container">
-              <form onSubmit={LoginPostRequest}>
+              <form onSubmit={LoginPostRequest} className="d-flex flex-column justify-content-center">
                 <div class="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
@@ -35,7 +35,7 @@ const Signin = () => {
                   <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
-                <button type="submit" className="btn button-primary w-100 text-white mt-3" id="login-btn">Login</button>
+                <button type="submit" className="btn button-primary button-w200 text-white align-self-center mt-4" id="login-btn">Login</button>
               </form>
             </div>
             <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">

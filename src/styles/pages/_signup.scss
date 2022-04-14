@@ -76,6 +76,10 @@
           position: relative;
           display: block;
           width: 100%;
+
+          .caption {
+            font-size: 12px;
+          }
   
           input {
             border: 1px solid var(--basic-color-grey-dark);

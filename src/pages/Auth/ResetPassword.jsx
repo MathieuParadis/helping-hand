@@ -12,6 +12,7 @@ const ResetPassword = () => {
   const postResetPasswordRequest = (e) => {
     alert("reset password request");
   }
+  
   return (
     <div className="reset-password">
       <div class="container d-flex justify-content-center align-items-center">
@@ -23,7 +24,7 @@ const ResetPassword = () => {
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-md-4 mb-5">Reset your<br></br>password</h2>
             <div className="form-container">
-              <form onSubmit={postResetPasswordRequest}>
+              <form onSubmit={postResetPasswordRequest} className="d-flex flex-column justify-content-center">
                 <div class="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
@@ -34,7 +35,7 @@ const ResetPassword = () => {
                   <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Your new password" required />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
-                <button type="submit" className="btn button-primary w-100 text-white mt-3" id="reset-pw-btn">Reset password</button>
+                <button type="submit" className="btn button-primary button-w200 text-white align-self-center mt-4" id="reset-pw-btn">Reset password</button>
               </form>
             </div>
           </div>
