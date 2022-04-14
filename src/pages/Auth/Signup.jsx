@@ -26,14 +26,14 @@ const Signup = () => {
             <h2 className="text-center pb-md-4 mb-5">Sign up</h2>
             <div className="form-container">
               <form onSubmit={SignupPostRequest}>
-                <div className="d-flex mb-0 mb-md-3">
-                  <div class="input mb-3 mb-md-0">
+                <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
+                  <div class="input mb-3 mb-md-0 me-0 me-md-2">
                     <label htmlFor="first_name" className="mb-1">First name</label>
                     <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" required />
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
-                  <div class="input mb-3 mb-md-0">
-                    <label htmlFor="last_name" className="mb-1">Email</label>
+                  <div class="input mb-3 mb-md-0 ms-0 ms-md-2">
+                    <label htmlFor="last_name" className="mb-1">Last name</label>
                     <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" required />
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
@@ -43,10 +43,17 @@ const Signup = () => {
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
-                <div class="input mb-4">
-                  <label htmlFor="password" className="mb-1">Password</label>
-                  <input type="password" className="form-control" id="password" aria-describedby="email input field" placeholder="Password" required />
-                  <img src={lock_icon} alt="lock_icon" className="lock-icon" />
+                <div className="d-flex flex-column flex-md-row mb-0 mb-md-4">
+                  <div class="input mb-3 mb-md-0 me-0 me-md-2">
+                    <label htmlFor="password" className="mb-1">Password</label>
+                    <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
+                    <img src={lock_icon} alt="lock_icon" className="lock-icon" />
+                  </div>
+                  <div class="input mb-4 mb-md-0 ms-0 ms-md-2">
+                    <label htmlFor="password" className="mb-1">Password confirmation</label>
+                    <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
+                    <img src={lock_icon} alt="lock_icon" className="lock-icon" />
+                  </div>
                 </div>
                 <button type="submit" className="btn button-primary w-100 text-white mt-3" id="login-btn">Create account</button>
               </form>

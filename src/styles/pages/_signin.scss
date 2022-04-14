@@ -20,12 +20,12 @@
 
       @include tablet_and_large-screen {
         width: 90%;
-        height: 500px;
+        min-height: 500px;
       }
 
       @include very_large-screen {
         width: 90%;
-        height: 585px;
+        min-height: 585px;
       }
 
       .box-left {
