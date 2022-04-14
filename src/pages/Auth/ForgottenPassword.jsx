@@ -7,7 +7,7 @@ import forgotten_password_illustration from '../../assets/images/forgotten_passw
 import mail_icon from '../../assets/logos/mail_logo.svg';
 
 const ForgottenPassword = () => {
-  const postResetPasswordRequest = (e) => {
+  const postResetPasswordInstructionsRequest = (e) => {
     alert("reset password request");
   }
 
@@ -21,7 +21,7 @@ const ForgottenPassword = () => {
           <div className="box-right d-flex flex-column justify-content-center col-12 col-md-6 ps-md-3">
             <h2 className="text-center pb-4 mb-5">Forgot your<br></br>password?</h2>
             <div className="form-container">
-              <form onSubmit={postResetPasswordRequest}>
+              <form onSubmit={postResetPasswordInstructionsRequest}>
                 <div class="input mb-3">
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
