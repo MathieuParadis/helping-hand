@@ -143,6 +143,7 @@ a {
   cursor: pointer;
 }
 
+
 // -------------------- BUTTON CLASSES -------------------- //
 .button-w150 {
   width: 150px;
@@ -235,10 +236,12 @@ a {
   }
 }
 
+
 // -------------------- BOX SHADOW CLASSES -------------------- //
 .box-shadow {
   box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
 }
+
 
 // -------------------- BORDER CLASSES -------------------- //
 .border-radius-5 {
@@ -251,4 +254,40 @@ a {
 
 .border-radius-bottom-5 {
   border-radius: 0 0 5px 5px !important; 
+}
+
+
+// -------------------- BACKGROUND CLASSES -------------------- //
+.bg1 {
+  @include mobile {
+    background-image: url("../assets/images/pattern1.svg");
+    top: 0; 
+    left: 0; 
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.bg2 {
+  @include mobile {
+    background-image: url("../assets/images/pattern2.svg");
+    height: auto;
+    top: 0; 
+    left: 0; 
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+
+// -------------------- MARGIN CLASSES -------------------- //
+.margin-mobile {
+  @include mobile {
+    margin-left: -30px;
+    margin-right: -30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }

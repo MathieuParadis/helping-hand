@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
-import login_pattern from '../../assets/images/login_pattern.svg';
+import pattern1 from '../../assets/images/pattern1.svg';
 import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
@@ -14,11 +14,11 @@ const Signin = () => {
   }
 
   return (
-    <div className="signin signin-bg">
+    <div className="signin bg1 margin-mobile">
       <div class="container d-flex justify-content-center align-items-center">
         <div class="box box-shadow border-radius-5 d-flex flex-row-reverse my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 ps-md-3">
-            <img src={login_pattern} alt="sign in pattern illustration" className="pattern" />
+            <img src={pattern1} alt="sign in pattern illustration" className="pattern" />
           </div>
           <div className="box-right d-flex flex-column justify-content-center col-12 col-md-6 p-3">
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />

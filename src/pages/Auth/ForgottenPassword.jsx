@@ -13,7 +13,7 @@ const ForgottenPassword = () => {
   }
 
   return (
-    <div className="forgotten-password">
+    <div className="forgotten-password bg1 margin-mobile">
       <div class="container d-flex justify-content-center align-items-center">
         <div class="box box-shadow border-radius-5 p-3 d-flex my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 pe-md-3">
