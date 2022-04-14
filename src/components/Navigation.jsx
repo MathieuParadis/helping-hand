@@ -10,7 +10,7 @@ import HamburgerMenu from './HamburgerMenu';
 
 // ASSETS IMPORTS
 import logo from '../assets/logos/helping_hand_logo_with_text.svg';
-import profile_logo from '../assets/logos/profile_logo.svg';
+import profile_round_logo from '../assets/logos/profile_round_logo.svg';
 import logout_logo from '../assets/logos/logout_logo.svg';
 
 
@@ -34,7 +34,7 @@ const Navigation = () => {
     alert("logging out");
   }
 
-  let loggedIn = false;
+  let loggedIn = true;
 
   return (
     <>
@@ -69,7 +69,7 @@ const Navigation = () => {
               <DropdownButton 
                 className="d-none d-lg-flex"
                 title={
-                  <img src={profile_logo} alt="logout logo" className="profile-logo pointer me-2" />
+                  <img src={profile_round_logo} alt="logout logo" className="profile-logo pointer me-2" />
                 }>
                 <Dropdown.Item>
                   <NavLink exact="true" to="/my-profile" className="text-black">My profile</NavLink>

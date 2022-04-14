@@ -25,7 +25,7 @@ const Signin = () => {
             <h2 className="text-center pb-4 mb-5">Welcome back!</h2>
             <div className="form-container">
               <form onSubmit={LoginPostRequest}>
-              <div class="input mb-3">
+                <div class="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />

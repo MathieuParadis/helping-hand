@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 // ASSETS IMPORTS
 import signup_pattern from '../../assets/images/signup_pattern.svg';
 import auth_logo from '../../assets/logos/auth_logo.svg';
+import profile_icon from '../../assets/logos/profile_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
@@ -25,7 +26,19 @@ const Signup = () => {
             <h2 className="text-center pb-4 mb-5">Sign up</h2>
             <div className="form-container">
               <form onSubmit={SignupPostRequest}>
-              <div class="input mb-3">
+                <div className="d-flex mb-0 mb-md-3">
+                  <div class="input mb-3 mb-md-0">
+                    <label htmlFor="first_name" className="mb-1">First name</label>
+                    <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" required />
+                    <img src={profile_icon} alt="profile_icon" className="profile-icon" />
+                  </div>
+                  <div class="input mb-3 mb-md-0">
+                    <label htmlFor="last_name" className="mb-1">Email</label>
+                    <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" required />
+                    <img src={profile_icon} alt="profile_icon" className="profile-icon" />
+                  </div>
+                </div>
+                <div class="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
