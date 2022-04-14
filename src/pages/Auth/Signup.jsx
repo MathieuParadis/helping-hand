@@ -17,13 +17,13 @@ const Signup = () => {
   return (
     <div className="signup signup-bg">
       <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 d-flex m-3">
+        <div class="box box-shadow border-radius-5 d-flex my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-3 pe-md-3">
             <img src={signup_pattern} alt="sign up pattern illustration" className="pattern" />
           </div>
           <div className="box-right d-flex flex-column justify-content-center col-12 col-md-9 p-3">
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
-            <h2 className="text-center pb-4 mb-5">Sign up</h2>
+            <h2 className="text-center pb-md-4 mb-5">Sign up</h2>
             <div className="form-container">
               <form onSubmit={SignupPostRequest}>
                 <div className="d-flex mb-0 mb-md-3">

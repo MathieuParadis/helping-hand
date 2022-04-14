@@ -15,13 +15,13 @@ const ResetPassword = () => {
   return (
     <div className="reset-password">
       <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 p-3 d-flex flex-row-reverse m-3">
+        <div class="box box-shadow border-radius-5 p-3 d-flex flex-row-reverse my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 ps-md-3">
             <img src={reset_password_illustration} alt="Reset password illustration" className="illustration" />
           </div>
           <div className="box-right d-flex flex-column justify-content-center col-12 col-md-6 pe-md-3">
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
-            <h2 className="text-center pb-4 mb-5">Reset your<br></br>password</h2>
+            <h2 className="text-center pb-md-4 mb-5">Reset your<br></br>password</h2>
             <div className="form-container">
               <form onSubmit={postResetPasswordRequest}>
                 <div class="input mb-3">
