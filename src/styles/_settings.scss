@@ -6,6 +6,8 @@
 $small-phone-viewport: 576px;
 $phone-viewport: 768px;
 $tablet-viewport: 991px;
+$large-screen-viewport: 1199px;
+
 
 // -------------------- FONTS VARIABLES -------------------- //
 $font-1: "Poppins", sans-serif;
@@ -87,6 +89,10 @@ $warning-bg: #FBC02D;
 
 @mixin tablet_and_large_screen {
   @media (min-width: $phone-viewport) { @content; }
+}
+
+@mixin very_large_screen {
+  @media (min-width: $large-screen-viewport) { @content; }
 }
 
 * {

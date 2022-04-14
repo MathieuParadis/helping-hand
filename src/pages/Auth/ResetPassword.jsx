@@ -29,7 +29,7 @@ const ResetPassword = () => {
                 </div>
                 <div class="input mb-3">
                   <label htmlFor="password" className="mb-1">New password</label>
-                  <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your new password" required />
+                  <input type="password" className="form-control" id="password" aria-describedby="email input field" placeholder="Your new password" required />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
                 <button type="submit" className="btn button-primary w-100 text-white mt-3" id="reset-pw-btn">Reset password</button>
