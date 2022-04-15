@@ -20,6 +20,22 @@
         width: 90%;
         min-height: 585px;
       }
+
+      .caption {
+        span#material {
+          content: "";
+          height: 20px;
+          width: 20px;
+          background: var(--sec-color);
+        }
+        
+        span#service {
+          content: "";
+          height: 20px;
+          width: 20px;
+          background: var(--third-color);
+        }
+      }
     }
   }
 }
