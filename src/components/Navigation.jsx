@@ -68,15 +68,10 @@ const Navigation = () => {
               </div>           
               <DropdownButton 
                 className="d-none d-lg-flex"
-                title={
-                  <img src={profile_round_logo} alt="logout logo" className="profile-logo pointer me-2" />
-                }>
-                <Dropdown.Item>
-                  <NavLink exact="true" to="/my-profile" className="text-black">My profile</NavLink>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <NavLink exact="true" to="/my-requests" className="text-black">My requests</NavLink>
-                </Dropdown.Item>
+                title={<img src={profile_round_logo} alt="logout logo" className="profile-logo pointer me-2" />}
+              >
+                <Dropdown.Item href="/my-profile">My profile</Dropdown.Item>
+                <Dropdown.Item href="/my-requests">My requests</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item>
                   <div className="d-flex" onClick={() => signOut()}>
