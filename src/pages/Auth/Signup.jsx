@@ -59,7 +59,7 @@ const Signup = () => {
                     <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                   </div>
                 </div>
-                <button type="submit" className="btn button-primary button-w200 text-white align-self-center mt-4" id="signup-btn">Create account</button>
+                <button type="submit" className="btn button-primary button-w200 border-radius-50 text-white align-self-center mt-4" id="signup-btn">Create account</button>
               </form>
             </div>
             <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">

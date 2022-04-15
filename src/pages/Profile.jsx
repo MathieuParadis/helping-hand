@@ -34,8 +34,8 @@ const Profile = () => {
                 </div>
               </div>
               <div className="d-flex flex-column flex-xl-row justify-content-xl-between mt-5">
-                <button className="profile-button btn button-primary text-white mb-3 mb-xl-0" id="signup-btn" onClick={(e) => openEditProfileModal()}>Edit my profile</button>
-                <button className="profile-button btn button-outline-primary" id="signup-btn" onClick={(e) => openModifyCredentialsModal()}>Modify my credentials</button>
+                <button className="profile-button btn button-primary border-radius-50 text-white mb-3 mb-xl-0" id="signup-btn" onClick={(e) => openEditProfileModal()}>Edit my profile</button>
+                <button className="profile-button btn button-outline-primary border-radius-50" id="signup-btn" onClick={(e) => openModifyCredentialsModal()}>Modify my credentials</button>
               </div>
             </div>
           </div>

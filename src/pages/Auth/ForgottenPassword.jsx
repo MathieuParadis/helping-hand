@@ -28,7 +28,7 @@ const ForgottenPassword = () => {
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
-                <button type="submit" className="btn button-primary button-w290 text-white align-self-center mt-4" id="reset-pw-btn">Send reset password instructions</button>
+                <button type="submit" className="btn button-primary button-w290 border-radius-50 text-white align-self-center mt-4" id="reset-pw-btn">Send reset password instructions</button>
               </form>
             </div>
             <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">

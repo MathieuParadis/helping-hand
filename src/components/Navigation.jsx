@@ -51,8 +51,8 @@ const Navigation = () => {
                 </div>
               </div>
               <div className="connection-buttons d-none d-lg-flex">
-                <NavLink exact="true" to="/signup" className="btn button-w150 button-primary h4 me-3 mb-0">Sign up</NavLink>
-                <NavLink exact="true" to="/signin" className="btn button-w150 button-outline-primary h4 mb-0">Log in</NavLink>
+                <NavLink exact="true" to="/signup" className="btn button-w150 button-primary border-radius-50 h4 me-3 mb-0">Sign up</NavLink>
+                <NavLink exact="true" to="/signin" className="btn button-w150 button-outline-primary border-radius-50 h4 mb-0">Log in</NavLink>
               </div>
             </div>
           ) :

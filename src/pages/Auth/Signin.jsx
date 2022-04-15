@@ -35,7 +35,7 @@ const Signin = () => {
                   <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
-                <button type="submit" className="btn button-primary button-w200 text-white align-self-center mt-4" id="login-btn">Login</button>
+                <button type="submit" className="btn button-primary button-w200 border-radius-50 text-white align-self-center mt-4" id="login-btn">Login</button>
               </form>
             </div>
             <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">

@@ -34,7 +34,7 @@ const ResetPassword = () => {
                   <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Your new password" required />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
-                <button type="submit" className="btn button-primary button-w200 text-white align-self-center mt-4" id="reset-pw-btn">Reset password</button>
+                <button type="submit" className="btn button-primary button-w200 border-radius-50 text-white align-self-center mt-4" id="reset-pw-btn">Reset password</button>
               </form>
             </div>
           </div>

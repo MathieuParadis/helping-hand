@@ -37,8 +37,8 @@ const HamburgerMenu = () => {
           <div className="menu">
             <NavLink className="menu-link my-2" exact="true" to="/" onClick={handleMenu}>Home</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/how-it-works" onClick={handleMenu}>How it works</NavLink>
-            <NavLink exact="true" to="/signup" className="btn button-w200 button-primary h4 my-2 py-2" onClick={handleMenu}>Sign up</NavLink>
-            <NavLink exact="true" to="/signin" className="btn button-w200 button-outline-primary h4 my-2 py-2" onClick={handleMenu}>Sign in</NavLink>
+            <NavLink exact="true" to="/signup" className="btn button-w200 button-primary border-radius-50 h4 my-2 py-2" onClick={handleMenu}>Sign up</NavLink>
+            <NavLink exact="true" to="/signin" className="btn button-w200 button-outline-primary border-radius-50 h4 my-2 py-2" onClick={handleMenu}>Sign in</NavLink>
           </div>
         ) :
         (
@@ -48,7 +48,7 @@ const HamburgerMenu = () => {
             <p className="menu-item my-2" onClick={() => openModalNewRequest()}>New request</p>
             <NavLink className="menu-link my-2" exact="true" to="/my-profile" onClick={handleMenu}>My profile</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/my-requests" onClick={handleMenu}>My requests</NavLink>
-            <p className="btn button-w200 button-danger h4 my-2 py-2" onClick={() => signOut()}>Log out</p>
+            <p className="btn button-w200 button-danger border-radius-50 h4 my-2 py-2" onClick={() => signOut()}>Log out</p>
           </div>
         )
       }
