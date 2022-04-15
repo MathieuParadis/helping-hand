@@ -1,6 +1,5 @@
 // CONFIG IMPORTS
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
 import reset_password_illustration from '../../assets/images/reset_password_illustration.svg';

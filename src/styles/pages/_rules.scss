@@ -1,3 +1,25 @@
-// .rules {
+.rules {
+  .container {
+    min-height: 85vh;
+    width: 100%;
 
-// }
+    .box {
+      background-color: var(--basic-color-white);
+      overflow: hidden;
+      
+      @include mobile {
+        width: 100%;
+      }
+
+      @include tablet_and_large-screen {
+        width: 90%;
+        min-height: 500px;
+      }
+
+      @include very_large-screen {
+        width: 90%;
+        min-height: 585px;
+      }
+    }
+  }
+}
