@@ -13,7 +13,6 @@ import logo from '../assets/logos/helping_hand_logo_with_text.svg';
 import profile_round_logo from '../assets/logos/profile_round_logo.svg';
 import logout_logo from '../assets/logos/logout_logo.svg';
 
-
 const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate()

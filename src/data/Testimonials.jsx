@@ -17,6 +17,3 @@ const testimonials = [
 ];
 
 export default projects;
-
-
-
