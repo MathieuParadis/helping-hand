@@ -1,32 +1,22 @@
 // CONFIG IMPORTS
 import React from 'react';
 
-// DATA IMPORTS
-import testimonials from '../data/Testimonials';
-
 // ASSETS IMPORTS
-import bg from '../assets/images/pattern2.svg';
+import pattern2 from '../assets/images/pattern2.svg';
 
-const TestimonyCard = () => {
+const TestimonyCard = ({testimony}) => {
   return (
-    <div className="testimony-card col-12 col-md-6 col-lg-4 px-4 py-3">
+    <div className="testimony-card d-flex flex-column flex-md-row col-12 col-md-6 col-lg-4 px-0 px-md-4 py-3">
       <div className="card-content d-flex flex-column">
 
         <div className="card-top">
-          <img src={bg} id="test" />
-          <img src={testimonials[0].img_url} alt={testimonials[0].name + " photo"} className="pic" />
+          <img src={pattern2} className="card-pattern" alt="card decoration pattern" />
+          <img src={testimony.img_url} alt={testimony.name + " photo"} className="picture" />
         </div>
 
-        <div className="card-bottom col-8">
-          <p>Content bootom</p>
-          <p>Content bootom</p>
-          <p>Content bootom</p>
-          <p>Content bootom</p>
-          <p>Content bootom</p>
-          <p>Content bootom</p>
-          <p>Content bootom</p>
-
-
+        <div className="card-bottom d-flex flex-column justify-content-center align-items-center">
+          <h4 className="fw-bold text-center mb-3">{testimony.name}</h4>
+          <p className="mx-3 mb-0 text-justify">{testimony.testimony}</p>
         </div>
       </div>
     </div>

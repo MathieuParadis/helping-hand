@@ -4,6 +4,9 @@ import React, {useEffect} from 'react';
 // COMPONENTS IMPORTS
 import TestimonyCard from '../components/TestimonyCard';
 
+// DATA IMPORTS
+import testimonials from '../data/Testimonials';
+
 // ASSETS IMPORTS
 
 const Home = () => {
@@ -24,13 +27,15 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="testimonials-section d-flex flex-column flex-md-row justify-content-center align-items-center py-4">
-        <TestimonyCard />
-        <TestimonyCard />
-        <TestimonyCard />
-
+      <div className="testimonials-section d-flex flex-wrap justify-content-center align-items-center py-4">
+        { 
+          testimonials.map((testimony) => {
+            return (
+              <TestimonyCard testimony={testimony} />
+            )
+          })
+        }
       </div>
-
     </div>
   );
 };
