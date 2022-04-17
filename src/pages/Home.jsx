@@ -24,8 +24,11 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="testimonials-section">
+      <div className="testimonials-section d-flex flex-column flex-md-row justify-content-center align-items-center py-4">
         <TestimonyCard />
+        <TestimonyCard />
+        <TestimonyCard />
+
       </div>
 
     </div>
