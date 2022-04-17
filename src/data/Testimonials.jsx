@@ -16,4 +16,4 @@ const testimonials = [
   },
 ];
 
-export default projects;
+export default testimonials;

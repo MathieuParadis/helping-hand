@@ -1,8 +1,8 @@
 // CONFIG IMPORTS
 import React, {useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
 
 // COMPONENTS IMPORTS
+import TestimonyCard from '../components/TestimonyCard';
 
 // ASSETS IMPORTS
 
@@ -25,6 +25,7 @@ const Home = () => {
       </div>
 
       <div className="testimonials-section">
+        <TestimonyCard />
       </div>
 
     </div>

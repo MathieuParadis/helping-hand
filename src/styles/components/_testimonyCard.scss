@@ -1,0 +1,20 @@
+.testimony-card {
+  cursor: pointer;
+
+  .card-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--sec-color);
+    border-radius: 5px;
+    overflow: hidden;
+
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+
+  }
+}
