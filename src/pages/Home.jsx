@@ -3,9 +3,11 @@ import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 
 // COMPONENTS IMPORTS
+import RuleCard from '../components/RuleCard';
 import TestimonyCard from '../components/TestimonyCard';
 
 // DATA IMPORTS
+import rules from '../data/Rules';
 import testimonials from '../data/Testimonials';
 
 // ASSETS IMPORTS
@@ -29,11 +31,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="rules-section">
+      <div className="rules-section row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-4">
         <div className="colored-bg">
-
-        
-
         </div>
       </div>
 
