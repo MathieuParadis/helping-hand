@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Chat from './pages/Chat';
 import ForgottenPassword from './pages/Auth/ForgottenPassword';
 import Home from './pages/Home';
-import Map from './pages/Map';
+import MapRequests from './pages/MapRequests';
 import Profile from './pages/Profile';
 import Requests from './pages/Requests';
 import ResetPassword from './pages/Auth/ResetPassword';
@@ -34,7 +34,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/my-chats" element={<Chat />} />
           <Route path="/forgotten-password" exact="true" element={<ForgottenPassword />} />
-          <Route path="/all-requests" element={<Map />} />
+          <Route path="/all-requests" element={<MapRequests />} />
           <Route path="/my-profile" exact="true" element={<Profile />} />
           <Route path="/my-requests" exact="true" element={<Requests />} />
           <Route path="/reset-password" exact="true" element={<ResetPassword />} />

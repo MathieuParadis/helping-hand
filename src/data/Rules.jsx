@@ -24,7 +24,7 @@ const rules = [
   },
   {
     title: "Define your need",
-    description: "While asking for help, well defined your need in advance. Anyone volunteering to help you has to understand exactly what the request is about.",    img: "",
+    description: "While asking for help, well defined your need in advance. Anyone volunteering to help you has to understand exactly what the request is about.",
     img: define_need_illustration,
   },
   {
