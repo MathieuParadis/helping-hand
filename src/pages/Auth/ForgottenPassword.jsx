@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
@@ -11,6 +11,10 @@ const ForgottenPassword = () => {
   const postResetPasswordInstructionsRequest = (e) => {
     alert("reset password request");
   }
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="forgotten-password bg1 margin-mobile">

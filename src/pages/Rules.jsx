@@ -1,7 +1,11 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const Rules = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="rules bg2 margin-mobile">
       <div class="container d-flex justify-content-center align-items-center">

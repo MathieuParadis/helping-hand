@@ -32,9 +32,9 @@ const Home = () => {
       </div>
 
       <div className="rules-section">
-        <div className="colored-bg m-0 py-4">    
+        <div className="colored-bg d-flex flex-column justify-content-center align-items-center m-0 py-4">    
           <h1 className="text-white text-center fw-bold">How it works</h1>
-          <div className="rule-cards row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <div className="rule-cards row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4">
           { 
             rules.map((rule) => {
               return (
@@ -42,7 +42,8 @@ const Home = () => {
               )
             })
           }
-          </div>    
+          </div>  
+          <NavLink exact="true" to="/how-it-works" className="btn button-w200 button-ternary ms-md-3">Learn more</NavLink>
         </div>
       </div>
 

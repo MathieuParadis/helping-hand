@@ -1,8 +1,10 @@
-// .rule-card {
-//   .card-content {
+.rule-card {
+  .card-content {
 
-//     .illustration {
-
-//     }
-//   }
-// }
+    .illustration {
+      width: 50%;
+      border: 3px solid var(--third-color);
+      border-radius: 50%;
+    }
+  }
+}

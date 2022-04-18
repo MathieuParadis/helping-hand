@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
@@ -12,6 +12,10 @@ const Signin = () => {
   const LoginPostRequest = (e) => {
     alert("Signing in");
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="signin bg1 margin-mobile">

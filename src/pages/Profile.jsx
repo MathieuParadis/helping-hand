@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useEffect} from 'react';
 
 // ASSETS IMPORTS
 import profile_illustration from '../assets/images/my_profile_illustration.svg';
@@ -13,6 +13,10 @@ const Profile = () => {
   const openModifyCredentialsModal = (e) => {
     alert("opening modifiy credentials modal");
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   return (
     <div className="profile bg2 margin-mobile">
@@ -42,9 +46,6 @@ const Profile = () => {
         </div>
       </div>
     </div>
-
-
-
   );
 };
 

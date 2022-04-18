@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useEffect} from 'react';
 
 // ASSETS IMPORTS
 import reset_password_illustration from '../../assets/images/reset_password_illustration.svg';
@@ -11,6 +11,10 @@ const ResetPassword = () => {
   const postResetPasswordRequest = (e) => {
     alert("reset password request");
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   return (
     <div className="reset-password bg1 margin-mobile">

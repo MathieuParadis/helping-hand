@@ -1,10 +1,14 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const Requests = () => {
   const openNewRequestModal = (e) => {
     alert("opening new request modal");
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="requests bg2 margin-mobile">
