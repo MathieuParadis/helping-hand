@@ -39,7 +39,7 @@ const MapRequests = () => {
 
 
 
-          <div className="map d-flex justify-content-center align-items-center my-4">
+          <div className="map d-flex justify-content-center align-items-center mb-4">
             { requests && requests.length > 0 ? 
               (
                 <Map provider={maptilerProvider} dprs={[1, 2]} center={center} defaultZoom={12} zoom={zoom}>
