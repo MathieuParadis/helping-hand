@@ -1,18 +1,32 @@
 const rules = [
   {
-    name: "Matt Wilson",
-    img_url: "https://images.generated.photos/sVhp9cxhbe1ZXrYhhzNxLze-8R3n-rDFXfQBdypNBFA/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODEzNDYyLmpwZw.jpg",
-    testimony: "I have been using the Helping Hand app for more than a year, and I love how it brings the local community closer.",
+    title: "Free service",
+    description: "Subscribing to the Helping Hand app, as well as using our service is completely free. Volunteers cannot ask for money or donations.",
+    img_url: "",
   },
   {
-    name: "Fanny Curtis",
-    img_url: "https://images.generated.photos/57ETRszSGS8JNiBQG5FC8yQegKpzGe0TBw2u2VPP--w/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjE2OTYxLmpwZw.jpg",
-    testimony: "I have used Helping Hand only a few times and I am always delighted to see how people are fast to volunteer and helpful.",
+    title: "Donation",
+    description: "If you want to give back to the community but are unable to do so, we encourage you to donate to your local associations or charitities such as the Red Cross.",
+    img_url: "",
   },
   {
-    name: "Martin Mayers",
-    img_url: "https://images.generated.photos/Kp5JaEP0IxFWYXLqlBGUgOcuS7x3FqjPCcQI8cGhPC0/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTU5MDAyLmpwZw.jpg",
-    testimony: "Using technology to improve society is a very innovative thing. Volunteering is very rewarding en I highly recommend trying it.",
+    title: "Identity check",
+    description: "To ensure the safety of all our users, we verify the identity of all our applicants.",
+    img_url: "",
+  },
+  {
+    title: "Define your need",
+    description: "While asking for help, well defined your need in advance. Anyone volunteering to help you has to understand exactly what the request is about.",    img_url: "",
+  },
+  {
+    title: "Be proactive and participate",
+    description: "Receiving help is an active job. Be proactive, participate and help the volunteer(s) in every way possible",
+    img_url: "",
+  },
+  {
+    title: "Report abuse",
+    description: "To keep our platform and users safe, we have set up a strong policy against misbehaviour and abuses. Spammers will be reported and banned",
+    img_url: "",
   },
 ];
 
