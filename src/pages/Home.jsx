@@ -37,7 +37,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="testimonials-section row row-cols-1 row-cols-md-3 g-4 py-4">
+      <div className="testimonials-section row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-4">
         { 
           testimonials.map((testimony) => {
             return (

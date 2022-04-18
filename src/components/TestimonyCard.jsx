@@ -6,7 +6,7 @@ import pattern2 from '../assets/images/pattern2.svg';
 
 const TestimonyCard = ({testimony}) => {
   return (
-    <div className="testimony-card d-flex flex-column flex-md-row col-12 col-md-6 col-lg-4 px-0 px-md-4 py-3">
+    <div className="testimony-card py-3">
       <div className="card-content d-flex flex-column">
 
         <div className="card-top">
