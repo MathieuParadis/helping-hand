@@ -93,11 +93,18 @@
       min-height: 80vh;
       width: 100%;
       background-color: var(--lighter-prim-color);
+
+      .rule-cards {
+        margin: 0 70px 0 70px;
+    
+        @include mobile_and_tablet {
+          margin: 0 30px 0 30px;
+        }
+      }
     }
   }
 
   .testimonials-section {
     position: relative;
-    // min-height: 65vh;
   }
 }

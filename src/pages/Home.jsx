@@ -31,8 +31,18 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="rules-section row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <div className="colored-bg m-0">
+      <div className="rules-section">
+        <div className="colored-bg m-0 py-4">    
+          <h1 className="text-white text-center fw-bold">How it works</h1>
+          <div className="rule-cards row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          { 
+            rules.map((rule) => {
+              return (
+                <RuleCard rule={rule} />
+              )
+            })
+          }
+          </div>    
         </div>
       </div>
 
