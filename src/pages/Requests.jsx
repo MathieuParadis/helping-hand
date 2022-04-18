@@ -12,7 +12,7 @@ const Requests = () => {
 
   return (
     <div className="requests bg2 margin-mobile">
-      <div class="container d-flex justify-content-center align-items-center">
+      <div class="container d-flex justify-content-center">
         <div class="box border-radius-5 d-flex flex-column align-items-center p-3 my-3">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My Requests</h1>
           <button className="profile-button btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewRequestModal()}>Request help</button>
