@@ -1,3 +1,46 @@
-// .map-requests {
+.map-requests {
+  .map {
+    height: 80vh;
+    width: 100%;
+    border: 2px solid var(--sec-color);
+    border-radius: 10px;
+    overflow: hidden;
 
-// }
+    .bubble-rider {
+      visibility: hidden;
+      transform: translate(70px, -120px);
+
+      @include mobile_and_tablet {
+        transform: translate(-100px, 10px);
+      }
+
+      .rider-logo {
+        width: 70px;
+      }
+
+      .pointer {
+        position: absolute;
+        top: 65px;
+        left: -10px;
+        height: 40px;
+        width: 40px;
+        background: white;
+        transform: rotate(45deg);
+
+        @include mobile_and_tablet {
+          top: -10px;
+          left: 80px;
+        }
+      }
+
+      .bubble {
+        position: absolute;
+        height: 220px;
+        width: 210px;
+        background: white;
+        border-radius: 10px;
+        text-align: center;
+      }
+    }
+  }
+}

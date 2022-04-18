@@ -10,8 +10,6 @@ import TestimonyCard from '../components/TestimonyCard';
 import rules from '../data/Rules';
 import testimonials from '../data/Testimonials';
 
-// ASSETS IMPORTS
-
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
