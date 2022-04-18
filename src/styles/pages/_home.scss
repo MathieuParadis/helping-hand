@@ -34,16 +34,16 @@
       padding: 0 70px 0 70px;
       width: 100%;
       z-index: 20;
+      padding-top: 8em;
     
       @include mobile {
-        padding: 0 45px 0 45px;
+        padding: 0 30px 40px 30px;
         text-align: center;
       }
 
-      .hero-section-title, .hero-section-hashtag {
+      .hero-title {
         font-size: 4.5em;
-        color: white;
-        font-weight: bold;
+        line-height: 1.4em;
 
         @include tablet {
           font-size: 3em;
@@ -54,22 +54,26 @@
         }
       }
 
-      .hero-section-hashtag {
-        color: var(--sec-color);
-        padding-top: 0;
+      .hero-sub-title {
+        font-size: 4em;
+
+        @include tablet {
+          font-size: 2.5em;
+        }
+
+        @include mobile {
+          font-size: 2em;
+        }
       }
 
       .hero-button {
-        background-color: var(--prim-color);
-        border-radius: 10px;
-        width: 200px;
-    
-        &:hover {
-          background-color: var(--darker-prim-color);    
-        }
-    
-        .active {
-          background-color: var(--prim-color);    
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 2em;
+
+        @include mobile {
+          width: 200px;
+          font-size: 1.5em;
         }
       }
     }

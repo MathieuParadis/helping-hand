@@ -194,6 +194,18 @@ a {
   }
 }
 
+.button-secondary {
+  background-color: var(--sec-color);
+  color: var(--basic-color-white);
+  border: 2px solid var(--sec-color);
+
+  &:hover, &:focus {
+    background-color: var(--darker-sec-color);
+    color: var(--basic-color-white);
+    border: 2px solid var(--darker-sec-color);
+  }
+}
+
 
 // -------------------- FONT COLOR CLASSES -------------------- //
 .text-primary {
