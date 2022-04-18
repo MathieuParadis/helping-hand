@@ -20,11 +20,10 @@ const MapRequests = () => {
   const [coordinatesBlueMarker, setCoordinatesBlueMarker] = useState([0, 0]);
   const [widthBlueMarker, setWidthBlueMarker] = useState(0);
 
-
   const colorMaterial = "#F4A896";
   const colorService = "#262F53"
 
-  const colorChoice = (request) => {
+  const MarkerColorChoice = (request) => {
     return request.request.type === "material" ? colorMaterial : colorService;
   }
 
@@ -47,7 +46,7 @@ const MapRequests = () => {
                   {
                     requests.map((request) => {
                       return (
-                        <Marker width={100} anchor={[request.request.position.lat, request.request.position.lgn]} color={colorChoice(request)} key={request.requester.first_name + request.requester.last_name} />
+                        <Marker width={100} anchor={[request.request.position.lat, request.request.position.lgn]} color={MarkerColorChoice(request)} key={request.requester.first_name + request.requester.last_name} />
                       )
                     })
                   }
