@@ -31,8 +31,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="rules-section row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-4">
-        <div className="colored-bg">
+      <div className="rules-section row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div className="colored-bg m-0">
         </div>
       </div>
 
