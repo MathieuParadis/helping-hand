@@ -17,6 +17,3 @@ const testimonials = [
 ];
 
 export default testimonials;
-
-
-// testimony: "I have been using the Helping Hand app for more than a year, and I am very happy about it. I sometimes request help, and sometimes I am the one volunteering. I love how it brings the local community closer and teach the youngest important values such as generosity and sharing.",

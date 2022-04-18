@@ -24,10 +24,13 @@ const Home = () => {
 
       <div className="rules-section">
         <div className="colored-bg">
+
+        
+
         </div>
       </div>
 
-      <div className="testimonials-section d-flex flex-wrap justify-content-center align-items-center py-4">
+      <div className="testimonials-section row row-cols-1 row-cols-md-3 g-4 py-4">
         { 
           testimonials.map((testimony) => {
             return (
