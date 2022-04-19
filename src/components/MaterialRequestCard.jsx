@@ -6,8 +6,21 @@ import requests from '../data/Requests';
 const MaterialRequestCard = ({request}) => {
   return (
     <div className="request-card">
-      <div className="card-content material-request-card d-flex flex-column p-3">
-        material
+      <div className="card-content material-request-card d-flex flex-column justify-content-between p-3">
+        <div>
+          <h3 className="text-center mb-3">{requests[0].request.title}</h3>
+          <p><strong>Type:</strong> {requests[0].request.type}</p>
+          <p><strong>Published on:</strong> 2022-04-07</p>
+          <p><strong>Status:</strong> {requests[0].request.status}</p>
+        </div>
+        <div className="row row-cols-2 g-2">
+          <div>
+            <button className="btn button-primary w-100 h-100 p-1" id="signup-btn">See details</button>
+          </div>
+          <div>
+            <button className="btn button-outline-primary w-100 h-100 p-1" id="signup-btn">More options</button>
+          </div>
+        </div>
       </div>
     </div>
   );
