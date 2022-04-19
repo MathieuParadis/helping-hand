@@ -2,15 +2,15 @@ import React from 'react';
 
 import requests from '../data/Requests';
 
-const ServiceRequestCard = () => {
+const ServiceRequestCard = ({request}) => {
   return (
     <div className="request-card">
       <div className="card-content service-request-card d-flex flex-column justify-content-between p-3">
         <div>
-          <h3 className="text-center mb-3">{requests[1].request.title}</h3>
-          <p><strong>Type:</strong> {requests[1].request.type}</p>
+          <h3 className="text-center mb-3">{request.request.title}</h3>
+          <p><strong>Type:</strong> {request.request.type}</p>
           <p><strong>Published on:</strong> 2022-04-17</p>
-          <p><strong>Status:</strong> {requests[1].request.status}</p>
+          <p><strong>Status:</strong> {request.request.status}</p>
         </div>
         <div className="row row-cols-2 g-2">
           <div>

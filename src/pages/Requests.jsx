@@ -36,7 +36,7 @@ const Requests = () => {
             { 
               requests.map((request) => {
                 return (
-                  request.request.type === "material" ? <MaterialRequestCard /> : <ServiceRequestCard />
+                  request.request.type === "material" ? <MaterialRequestCard request={request} /> : <ServiceRequestCard request={request} />
                 )
               })
             }
