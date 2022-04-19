@@ -1,9 +1,12 @@
 import React from 'react';
 
-const MaterialRequestCard = () => {
+// DATA IMPORTS
+import requests from '../data/Requests';
+
+const MaterialRequestCard = ({request}) => {
   return (
-    <div className="request-card material-request-card">
-      <div className="card-content d-flex flex-column">
+    <div className="request-card">
+      <div className="card-content material-request-card d-flex flex-column p-3">
         material
       </div>
     </div>

@@ -2,9 +2,9 @@ import React from 'react';
 
 const ServiceRequestCard = () => {
   return (
-    <div className="request-card service-request-card">
-      <div className="card-content d-flex flex-column">
-        service
+    <div className="request-card">
+      <div className="card-content service-request-card d-flex flex-column p-3">
+        servicee
       </div>
     </div>
   );

@@ -18,17 +18,21 @@ const Requests = () => {
   }, []);
 
   return (
-    <div className="requests bg2 margin-mobile">
+    <div className="requests">
       <div class="container d-flex justify-content-center">
-        <div class="box border-radius-5 d-flex flex-column align-items-center p-3 my-3">
+        <div class="d-flex flex-column align-items-center my-3 py-3">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My Requests</h1>
-          <button className="profile-button btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewRequestModal()}>Request help</button>
-          <div className="caption d-flex align-self-start my-5">
-            <span className="me-2" id="material"></span><p className="pe-5 h5">Material need</p>
-            <span className="ms-5 me-2" id="service"></span><p className="h5">Punctual service</p>
+          <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewRequestModal()}>Request help</button>
+          <div className="caption d-flex flex-column flex-md-row align-self-start my-4">
+            <div className="d-flex align-items-center my-2 pe-md-5">
+              <span className="me-2" id="material"></span><p className="h5 m-0">Material need</p>
+            </div>
+            <div className="d-flex align-items-center my-2">
+              <span className="me-2" id="service"></span><p className="h5 m-0">Punctual service</p>
+            </div>
           </div>
 
-          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 py-4">
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
             { 
               requests.map((request) => {
                 return (
@@ -37,7 +41,6 @@ const Requests = () => {
               })
             }
           </div>
-
         </div>
       </div>
     </div>

@@ -17,6 +17,8 @@ const Home = () => {
 
   return (
     <div className="home">
+
+      {/* hero section */}
       <div className="hero-section">
         <div className="bg-picture"></div>
         <div className="hero-content d-flex flex-column justify-content-center align-items-center justify-content-md-start align-items-md-start">
@@ -29,6 +31,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* rules section */}
       <div className="rules-section">
         <div className="colored-bg d-flex flex-column justify-content-center align-items-center m-0 py-4">    
           <h1 className="text-white text-center fw-bold">How it works</h1>
@@ -45,7 +48,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="testimonials-section row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-4">
+      {/* testimonials section */}
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-4">
         { 
           testimonials.map((testimony) => {
             return (
