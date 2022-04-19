@@ -3,9 +3,6 @@ import React from 'react';
 // REACT BOOTSTRAP IMPORTS
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 
-// DATA IMPORTS
-import requests from '../data/Requests';
-
 const MaterialRequestCard = ({request}) => {
   return (
     <div className="request-card">

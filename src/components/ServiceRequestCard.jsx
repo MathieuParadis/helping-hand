@@ -1,7 +1,5 @@
 import React from 'react';
 
-import requests from '../data/Requests';
-
 const ServiceRequestCard = ({request}) => {
   return (
     <div className="request-card">
