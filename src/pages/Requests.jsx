@@ -31,7 +31,6 @@ const Requests = () => {
               <span className="me-2" id="service"></span><p className="h5 m-0">Punctual service</p>
             </div>
           </div>
-
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 d-flex justify-content-center w-100">
             { 
               requests.map((request) => {
