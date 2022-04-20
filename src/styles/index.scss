@@ -8,8 +8,9 @@
 @import './components/hamburgerMenu';
 @import './components/navigation';
 @import './components/requestCard';
-@import './components/_ruleCard';
-@import './components/_testimonyCard';
+@import './components/ruleCard';
+@import './components/showRequestModal';
+@import './components/testimonyCard';
 
 // PAGES STYLES IMPORTS
 @import './pages/chat';
@@ -17,8 +18,8 @@
 @import './pages/home';
 @import './pages/mapRequests';
 @import './pages/profile';
-@import './pages/requests';
 @import './pages/reset_password';
 @import './pages/rules';
 @import './pages/signin';
 @import './pages/signup';
+@import './pages/userRequests';

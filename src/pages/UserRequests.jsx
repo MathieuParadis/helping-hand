@@ -8,7 +8,7 @@ import ServiceRequestCard from '../components/ServiceRequestCard';
 // DATA IMPORTS
 import requests from '../data/Requests';
 
-const Requests = () => {
+const UserRequests = () => {
   const openNewRequestModal = (e) => {
     alert("opening new request modal");
   }
@@ -18,7 +18,7 @@ const Requests = () => {
   }, []);
 
   return (
-    <div className="requests">
+    <div className="user-requests">
       <div class="container d-flex justify-content-center w-100">
         <div class="d-flex flex-column align-items-center my-3 py-3 w-100">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My Requests</h1>
@@ -46,4 +46,4 @@ const Requests = () => {
   );
 };
 
-export default Requests;
+export default UserRequests;

@@ -8,11 +8,11 @@ import ForgottenPassword from './pages/Auth/ForgottenPassword';
 import Home from './pages/Home';
 import MapRequests from './pages/MapRequests';
 import Profile from './pages/Profile';
-import Requests from './pages/Requests';
 import ResetPassword from './pages/Auth/ResetPassword';
 import Rules from './pages/Rules';
 import Signin from './pages/Auth/Signin';
 import Signup from './pages/Auth/Signup';
+import UserRequests from './pages/UserRequests';
 
 // COMPONENT IMPORTS
 import Flash from './components/Flash';
@@ -36,11 +36,11 @@ const App = () => {
           <Route path="/forgotten-password" exact="true" element={<ForgottenPassword />} />
           <Route path="/all-requests" element={<MapRequests />} />
           <Route path="/my-profile" exact="true" element={<Profile />} />
-          <Route path="/my-requests" exact="true" element={<Requests />} />
           <Route path="/reset-password" exact="true" element={<ResetPassword />} />
           <Route path="/how-it-works" exact="true" element={<Rules />} />
           <Route path="/signin" exact="true" element={<Signin />} />
           <Route path="/signup" exact="true" element={<Signup />} />
+          <Route path="/my-requests" exact="true" element={<UserRequests />} />
         </Routes>
         <Footer />
       </Router>

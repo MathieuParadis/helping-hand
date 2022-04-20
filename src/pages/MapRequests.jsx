@@ -11,6 +11,9 @@ import ReactLoading from 'react-loading';
 // DATA IMPORTS
 import requests from '../data/Requests';
 
+// COMPONENTS IMPORTS
+import ShowRequestModal from '../components/ShowRequestModal';
+
 const maptilerProvider = maptiler('IwympTEN2FYbP2g5qdck', 'streets')
 
 const MapRequests = () => {
@@ -42,10 +45,15 @@ const MapRequests = () => {
     setCenter([40.014984, -105.270546]);
   }
 
-  window.onclick = (event) => {
+  window.onClick = (event) => {
     event.target === document.querySelector('.pigeon-overlays') &&
     closeBubbleRequestInfo();
   };
+
+  const openModal = () => {
+    let modal = document.querySelector(".show-request-modal");
+    modal.style.visibility = 'visible';
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -90,12 +98,13 @@ const MapRequests = () => {
                           <h5 className="">{currentRequest.request.title}</h5>
                           <p className="m-0"><strong>Type: </strong>{currentRequest.request.type}</p>
                           <p className="m-0"><strong>Location: </strong>{currentRequest.request.location}</p>
-                          <button className="btn button-primary w-100 p-1">See details</button>
+                          <button className="btn button-primary w-100 p-1" onClick={() => openModal()} >See details</button>
                         </>
                       }
                     </div>
                   </div>
                 </Overlay>
+                <ShowRequestModal request={currentRequest} />
               </Map>
             ) :
             (
@@ -106,7 +115,7 @@ const MapRequests = () => {
           }
         </div>
       </div>
-  </div>
+    </div>
   );
 };
 
