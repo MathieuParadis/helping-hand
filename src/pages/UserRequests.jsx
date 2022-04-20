@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 
 // COMPONENTS IMPORTS
 import MaterialRequestCard from '../components/MaterialRequestCard';
+import NewUserRequestModal from '../components/NewUserRequestModal';
 import ServiceRequestCard from '../components/ServiceRequestCard';
 import ShowUserRequestModal from '../components/ShowUserRequestModal';
 
@@ -11,7 +12,9 @@ import requests from '../data/Requests';
 
 const UserRequests = () => {
   const openNewRequestModal = (e) => {
-    alert("opening new request modal");
+    const newUserRequestModal = document.querySelector(".new-user-request-modal");
+    newUserRequestModal.style.visibility = 'visible';
+    document.querySelector("body").classList.add("clicked");
   }
 
   useEffect(() => {
@@ -20,6 +23,7 @@ const UserRequests = () => {
 
   return (
     <>
+      <NewUserRequestModal />
       {/* <ShowUserRequestModal request /> */}
       <div className="user-requests">
         <div class="container d-flex justify-content-center w-100">

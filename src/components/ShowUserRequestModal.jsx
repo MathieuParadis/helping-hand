@@ -3,8 +3,8 @@ import React from 'react';
 
 const ShowUserRequestModal = ({request}) => {
   const closeShowUserRequestModal = () => {
-    const modifyCredentialsModal = document.querySelector(".show-user-request-modal");
-    modifyCredentialsModal.style.visibility = "hidden";
+    const showUserRequestModal = document.querySelector(".show-user-request-modal");
+    showUserRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
   }
 
