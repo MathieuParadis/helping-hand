@@ -42,13 +42,11 @@ const MapRequests = () => {
 
     bubbleRequest.style.visibility = 'hidden';
     setZoom(12);
-    setCenter([40.014984, -105.270546]);
   }
 
-  window.onClick = (event) => {
-    event.target === document.querySelector('.pigeon-overlays') &&
+  const close = () => {
     closeBubbleRequestInfo();
-  };
+  }
 
   const openModal = () => {
     let modal = document.querySelector(".show-request-modal");
@@ -72,8 +70,7 @@ const MapRequests = () => {
             <span className="me-2" id="service"></span><p className="h5 m-0">Punctual service</p>
           </div>
         </div>
-
-
+        <ShowRequestModal request={currentRequest} />
         <div className="map d-flex justify-content-center align-items-center mb-4">
           { requests && requests.length > 0 ? 
             (
@@ -86,15 +83,14 @@ const MapRequests = () => {
                     )
                   })
                 }
-
-
                 <Overlay offset={[0, 0]}>
                   <div className="bubble-request">
                     <div className="bubble-pointer"></div>
-                    <div className="bubble d-flex flex-column justify-content-between align-items-center p-3">
+                    <div className="bubble d-flex flex-column justify-content-between align-items-center p-4">
                       {
                         currentRequest && 
                         <>
+                          <p className="close-button pointer h5 text-secondary" onClick={() => close()}>x</p>
                           <h5 className="">{currentRequest.request.title}</h5>
                           <p className="m-0"><strong>Type: </strong>{currentRequest.request.type}</p>
                           <p className="m-0"><strong>Location: </strong>{currentRequest.request.location}</p>
@@ -104,7 +100,6 @@ const MapRequests = () => {
                     </div>
                   </div>
                 </Overlay>
-                <ShowRequestModal request={currentRequest} />
               </Map>
             ) :
             (

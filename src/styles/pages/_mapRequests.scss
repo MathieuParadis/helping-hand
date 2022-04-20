@@ -49,11 +49,17 @@
 
       .bubble {
         position: absolute;
-        height: 220px;
-        width: 210px;
+        height: 230px;
+        width: 220px;
         background: white;
         border-radius: 10px;
         text-align: center;
+
+        .close-button {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+        }
       }
     }
   }

@@ -3,6 +3,8 @@ import React, {useState, useEffect} from 'react';
 
 const ShowRequestModal = ({request}) => {
   const modal = document.querySelector(".show-request-modal");
+  const modalOverlay = document.querySelector(".modal-overlay");
+  const modalContent = document.querySelector(".modal-content");
 
   const closeModal = () => {
     modal.style.visibility = "hidden";
@@ -13,7 +15,6 @@ const ShowRequestModal = ({request}) => {
     event.target !== document.querySelector('.modal-content') &&
     closeModal();
   };
-
 
   return (
     <div className="show-request-modal">
