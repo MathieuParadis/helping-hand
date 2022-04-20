@@ -2,9 +2,8 @@
 import React from 'react';
 
 const EditProfileModal = () => {
-  const editProfileModal = document.querySelector(".edit-profile-modal");
-
   const closeEditProfileModal = () => {
+    const editProfileModal = document.querySelector(".edit-profile-modal");
     editProfileModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
   }

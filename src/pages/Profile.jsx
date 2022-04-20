@@ -11,13 +11,15 @@ import id_icon from '../assets/logos/id_logo.svg';
 
 const Profile = () => {
   const openEditProfileModal = (e) => {
-    let editProfileModal = document.querySelector(".edit-profile-modal");
+    const editProfileModal = document.querySelector(".edit-profile-modal");
     editProfileModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
 
   const openModifyCredentialsModal = (e) => {
-    alert("opening modifiy credentials modal");
+    const modifyCredentialsModal = document.querySelector(".modify-credentials-modal");
+    modifyCredentialsModal.style.visibility = 'visible';
+    document.querySelector("body").classList.add("clicked");
   }
 
   useEffect(() => {
@@ -47,8 +49,8 @@ const Profile = () => {
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-xl-row justify-content-xl-between mt-5">
-                  <button className="profile-button btn button-primary border-radius-50 text-white mb-3 mb-xl-0" id="signup-btn" onClick={(e) => openEditProfileModal()}>Edit my profile</button>
-                  <button className="profile-button btn button-outline-primary border-radius-50" id="signup-btn" onClick={(e) => openModifyCredentialsModal()}>Modify my credentials</button>
+                  <button className="profile-button btn button-primary border-radius-50 text-white mb-3 mb-xl-0" onClick={(e) => openEditProfileModal()}>Edit my profile</button>
+                  <button className="profile-button btn button-outline-primary border-radius-50" onClick={(e) => openModifyCredentialsModal()}>Modify my credentials</button>
                 </div>
               </div>
             </div>
