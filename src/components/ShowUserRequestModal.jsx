@@ -14,11 +14,14 @@ const ShowUserRequestModal = ({request}) => {
       <div className="show-user-request-modal-white-bg">
         <div className="show-user-request-modal-content d-flex flex-column justify-content-between p-3 p-sm-4 p-md-5">
           <div>
-            Show user request modal
-            {request.request.title}
+            {request && (
+              <>
+                <h2>Show user request modal</h2>
+                <p>{request.request.title}</p>
+              </>
+            )}
           </div>
           <button className="btn button-danger button-chat p-1" onClick={() => closeShowUserRequestModal()}>Cancel</button>
-
         </div>
       </div>
     </div>

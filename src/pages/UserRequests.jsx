@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 // COMPONENTS IMPORTS
 import MaterialRequestCard from '../components/MaterialRequestCard';
@@ -11,9 +11,18 @@ import ShowUserRequestModal from '../components/ShowUserRequestModal';
 import requests from '../data/Requests';
 
 const UserRequests = () => {
-  const openNewRequestModal = (e) => {
+  const [currentUserRequest, setCurrentUserRequest] = useState(null);
+
+  const openNewUserRequestModal = (e) => {
     const newUserRequestModal = document.querySelector(".new-user-request-modal");
     newUserRequestModal.style.visibility = 'visible';
+    document.querySelector("body").classList.add("clicked");
+  }
+
+  const openShowUserRequestModal = (request) => {
+    setCurrentUserRequest(request);
+    const showUserRequestModal = document.querySelector(".show-user-request-modal");
+    showUserRequestModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
 
@@ -24,12 +33,12 @@ const UserRequests = () => {
   return (
     <>
       <NewUserRequestModal />
-      {/* <ShowUserRequestModal request /> */}
+      <ShowUserRequestModal request={currentUserRequest} />
       <div className="user-requests">
         <div class="container d-flex justify-content-center w-100">
           <div class="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My Requests</h1>
-            <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewRequestModal()}>Request help</button>
+            <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewUserRequestModal()}>Request help</button>
             <div className="caption d-flex flex-column flex-md-row align-self-start my-4">
               <div className="d-flex align-items-center my-2 pe-md-5">
                 <span className="me-2" id="material"></span><p className="h5 m-0">Material need</p>
@@ -42,7 +51,7 @@ const UserRequests = () => {
               { 
                 requests.map((request) => {
                   return (
-                    request.request.type === "material" ? <MaterialRequestCard request={request} /> : <ServiceRequestCard request={request} />
+                    request.request.type === "material" ? <MaterialRequestCard request={request} setOpenModal={openShowUserRequestModal} /> : <ServiceRequestCard request={request} setOpenModal={openShowUserRequestModal}/>
                   )
                 })
               }

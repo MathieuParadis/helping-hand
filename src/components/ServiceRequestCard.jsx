@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ServiceRequestCard = ({request}) => {
+const ServiceRequestCard = ({request, setOpenModal}) => {
   return (
     <div className="request-card">
       <div className="card-content service-request-card d-flex flex-column justify-content-between p-3">
@@ -12,7 +12,7 @@ const ServiceRequestCard = ({request}) => {
         </div>
         <div className="row row-cols-2 g-2">
           <div>
-            <button className="btn button-primary w-100 h-100 p-1">See details</button>
+            <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenModal(request)}>See details</button>
           </div>
           <div>
             <button className="btn button-outline-primary w-100 h-100 p-1">More options</button>
