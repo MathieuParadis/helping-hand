@@ -12,10 +12,10 @@ const ServiceRequestCard = ({request}) => {
         </div>
         <div className="row row-cols-2 g-2">
           <div>
-            <button className="btn button-primary w-100 h-100 p-1" id="signup-btn">See details</button>
+            <button className="btn button-primary w-100 h-100 p-1">See details</button>
           </div>
           <div>
-            <button className="btn button-outline-primary w-100 h-100 p-1" id="signup-btn">More options</button>
+            <button className="btn button-outline-primary w-100 h-100 p-1">More options</button>
           </div>
         </div>
       </div>

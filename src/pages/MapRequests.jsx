@@ -83,15 +83,14 @@ const MapRequests = () => {
                 <Overlay offset={[0, 0]}>
                   <div className="bubble-request">
                     <div className="bubble-pointer"></div>
-                    <div className="bubble d-flex flex-column justify-content-around align-items-center">
+                    <div className="bubble d-flex flex-column justify-content-between align-items-center p-3">
                       {
                         currentRequest && 
                         <>
-                        <h4>frethryt</h4>
-                          {/* <h3 className="m-0">{currentRequest.first_name}</h3>
-                          <h3 className="m-0">{currentRequest.last_name}</h3>
-                          <p className="m-0"><strong>Lat: </strong>{currentRequest.position.lat}</p>
-                          <p className="m-0"><strong>Lgn: </strong>{currentRequest.position.lgn}</p> */}
+                          <h5 className="">{currentRequest.request.title}</h5>
+                          <p className="m-0"><strong>Type: </strong>{currentRequest.request.type}</p>
+                          <p className="m-0"><strong>Location: </strong>{currentRequest.request.location}</p>
+                          <button className="btn button-primary w-100 p-1">See details</button>
                         </>
                       }
                     </div>

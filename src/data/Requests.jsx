@@ -52,7 +52,7 @@ const requests = [
   },
   { 
     request: {
-      title: "Need 10 bikes to donate to my local primary school",
+      title: "Need bikes",
       type: "material",
       description: "Looking for people to give away there old bikes to my local school to teach them how to ride.",
       location: "Boulder",
@@ -86,7 +86,7 @@ const requests = [
   },
   { 
     request: {
-      title: "Need old tennis balls for my dog",
+      title: "Need old tennis balls",
       type: "material",
       description: "Looking for old tennis balls to play with my dog.",
       location: "Boulder",
@@ -154,7 +154,7 @@ const requests = [
   },
   { 
     request: {
-      title: "Need help fix light in my living room",
+      title: "Need help to fix light",
       type: "service",
       description: "The light in my living room broke and I don't know how to replace it.",
       location: "Boulder",
