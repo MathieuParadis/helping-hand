@@ -1,9 +1,15 @@
 import React from 'react';
 
-// REACT BOOTSTRAP IMPORTS
-import { DropdownButton, Dropdown } from 'react-bootstrap';
+// COMPONENTS IMPORTS
+import DropdownMenuOptionsRequestCard from '../components/DropdownMenuOptionsRequestCard';
 
 const MaterialRequestCard = ({request}) => {
+  const openMenuRequestCard = () => {
+    let menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
+    menuRequestCard.style.visibility = 'visible';
+    alert(menuRequestCard.textContent);
+  }
+
   return (
     <div className="request-card">
       <div className="card-content material-request-card d-flex flex-column justify-content-between p-3">
@@ -18,8 +24,10 @@ const MaterialRequestCard = ({request}) => {
             <button className="btn button-primary w-100 h-100 p-1">See details</button>
           </div>
           <div>
-            <button className="btn button-outline-primary w-100 h-100 p-1">More options</button>
-            
+            <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" id={request.requester.last_name} onClick={(e) => openMenuRequestCard()}>
+              More options
+              <DropdownMenuOptionsRequestCard request={request.request} />
+            </button>
           </div>
         </div>
       </div>
