@@ -116,6 +116,10 @@ body {
   background-color: var(--basic-color-white);
   color: var(--basic-color-dark);
 
+  &.clicked {
+    overflow: hidden;
+  }
+
   @include mobile_and_tablet {
     margin: 20px 30px;
   }

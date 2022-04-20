@@ -8,6 +8,7 @@ const ShowRequestModal = ({request}) => {
 
   const closeModal = () => {
     modal.style.visibility = "hidden";
+    document.querySelector("body").classList.remove("clicked");
   }
 
   window.onclick = (event) => {
@@ -19,7 +20,7 @@ const ShowRequestModal = ({request}) => {
   return (
     <div className="show-request-modal">
       <div className="modal-overlay"></div>
-      <div className="modal-content">
+      <div className="modal-content p-3">
         {request && (
           <>
           {request.request.title}
