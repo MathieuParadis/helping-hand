@@ -11,7 +11,7 @@
   visibility: hidden;
   opacity: 1;
 
-  .modal-overlay {
+  .edit-profile-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -22,7 +22,7 @@
     opacity: 0.7;
   }
 
-  .modal-white-bg {
+  .edit-profile-modal-white-bg {
     display: flex;
     min-height: 70vh;
     width: 70%;
@@ -32,7 +32,7 @@
     overflow: hidden;
     position:relative;
 
-    .modal-content {
+    .edit-profile-modal-content {
       position: absolute;
       height: 100%;
       top: 0;

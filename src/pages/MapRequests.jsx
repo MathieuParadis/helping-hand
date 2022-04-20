@@ -44,10 +44,6 @@ const MapRequests = () => {
     setZoom(12);
   }
 
-  const close = () => {
-    closeBubbleRequestInfo();
-  }
-
   const openModal = () => {
     let modal = document.querySelector(".show-request-modal");
     modal.style.visibility = 'visible';
@@ -91,7 +87,7 @@ const MapRequests = () => {
                       {
                         currentRequest && 
                         <>
-                          <p className="close-button pointer h5 text-secondary" onClick={() => close()}>x</p>
+                          <p className="close-button pointer h5 text-secondary" onClick={() => closeBubbleRequestInfo()}>x</p>
                           <h5 className="">{currentRequest.request.title}</h5>
                           <p className="m-0"><strong>Type: </strong>{currentRequest.request.type}</p>
                           <p className="m-0"><strong>Location: </strong>{currentRequest.request.location}</p>

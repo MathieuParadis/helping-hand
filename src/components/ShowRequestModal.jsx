@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
 const ShowRequestModal = ({request}) => {
   const modal = document.querySelector(".show-request-modal");
@@ -33,7 +33,6 @@ const ShowRequestModal = ({request}) => {
               <p className="mb-4"><strong>Description: </strong>{request.request.description}</p>
             </div>
             <button className="btn button-primary button-chat p-1" onClick={() => openChat()} >Volunteer</button>
-
           </div>
         )}
       </div>

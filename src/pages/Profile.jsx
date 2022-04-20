@@ -11,7 +11,9 @@ import id_icon from '../assets/logos/id_logo.svg';
 
 const Profile = () => {
   const openEditProfileModal = (e) => {
-    alert("opening edit profile modal");
+    let editProfileModal = document.querySelector(".edit-profile-modal");
+    editProfileModal.style.visibility = 'visible';
+    document.querySelector("body").classList.add("clicked");
   }
 
   const openModifyCredentialsModal = (e) => {
