@@ -1,7 +1,7 @@
 // CONFIG IMPORTS
 import React from 'react';
 
-const ShowUserRequestModal = ({request}) => {
+const ShowUserRequestModal = ({request, setOpenEditModal}) => {
   const closeShowUserRequestModal = () => {
     const showUserRequestModal = document.querySelector(".show-user-request-modal");
     showUserRequestModal.style.visibility = "hidden";
@@ -29,7 +29,7 @@ const ShowUserRequestModal = ({request}) => {
                 <p className="mb-4"><strong>Description: </strong>{request.request.description}</p>
               </div>
               <div className="d-flex flex-column flex-md-row mt-4">
-                <button className="btn button-primary button-edit me-0 me-md-2 mb-2 mb-md-0 p-1">Edit request</button>
+                <button className="btn button-primary button-edit me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
                 <button className="btn button-outline-primary button-fulfilled ms-0 ms-md-2 p-1">Mark as fulfilled</button>
               </div>
             </div>

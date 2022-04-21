@@ -16,20 +16,35 @@ const UserRequests = () => {
 
   const openNewUserRequestModal = (e) => {
     const newUserRequestModal = document.querySelector(".new-user-request-modal");
+    const showUserRequestModal = document.querySelector(".show-user-request-modal");
+    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+
     newUserRequestModal.style.visibility = 'visible';
+    showUserRequestModal.style.visibility = 'hidden';
+    editUserRequestModal.style.visibility = 'hidden';
     document.querySelector("body").classList.add("clicked");
   }
 
   const openShowUserRequestModal = (request) => {
     setCurrentUserRequest(request);
+    const newUserRequestModal = document.querySelector(".new-user-request-modal");
     const showUserRequestModal = document.querySelector(".show-user-request-modal");
+    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+
+    newUserRequestModal.style.visibility = 'hidden';
     showUserRequestModal.style.visibility = 'visible';
+    editUserRequestModal.style.visibility = 'hidden';
     document.querySelector("body").classList.add("clicked");
   }
 
   const openEditUserRequestModal = (request) => {
     setCurrentUserRequest(request);
+    const newUserRequestModal = document.querySelector(".new-user-request-modal");
+    const showUserRequestModal = document.querySelector(".show-user-request-modal");
     const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+
+    newUserRequestModal.style.visibility = 'hidden';
+    showUserRequestModal.style.visibility = 'hidden';
     editUserRequestModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
@@ -61,7 +76,7 @@ const UserRequests = () => {
   return (
     <>
       <NewUserRequestModal />
-      <ShowUserRequestModal request={currentUserRequest} />
+      <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} />
       <EditUserRequestModal request={currentUserRequest} />
       <div className="user-requests">
         <div className="container d-flex justify-content-center w-100">
