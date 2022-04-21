@@ -1,51 +1,26 @@
 .request-card {
+  .material-request-card {
+    border: 2px solid var(--third-color);
+    border-top: 10px solid var(--third-color);
+    border-radius: 10px;
+  }
+  
+  .service-request-card {
+    border: 2px solid var(--sec-color);
+    border-top: 10px solid var(--sec-color);
+    border-radius: 10px;
+  }
+
   .card-content {
     position: relative;
     height: 100%;
     width: 100%;
     overflow: hidden;
 
-    .card-top {
-      height: 150px;
+
+    .dropdown {
       position: relative;
-
-      .card-pattern {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-bottom: 2px solid var(--sec-color);
-      }
-  
-      .picture {
-        width: 180px;
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 2px solid var(--sec-color);
-        border-radius: 50%;
-      }
-    }
-
-    .card-bottom {
-      padding: 6em 1em 1em 1em;
-      width: 100%;
-
-      p {
-        line-height: 1.6em;
-      }
     }
   }
 }
 
-.material-request-card {
-  border: 2px solid var(--third-color);
-  border-top: 10px solid var(--third-color);
-  border-radius: 10px;
-}
-
-.service-request-card {
-  border: 2px solid var(--sec-color);
-  border-top: 10px solid var(--sec-color);
-  border-radius: 10px;
-}

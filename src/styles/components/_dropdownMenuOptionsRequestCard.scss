@@ -1,7 +1,9 @@
 .dropdown-menu-options-request-card {
+  background-color: var(--light-bg-color);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   visibility: hidden;
+  transform: translateY(-105%);
 }

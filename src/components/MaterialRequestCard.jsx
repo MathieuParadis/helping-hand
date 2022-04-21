@@ -24,10 +24,10 @@ const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
             <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenShowModal(request)}>See details</button>
             <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenEditModal(request)}>Edit</button>
           </div>
-          <div>
-            <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" id={request.requester.last_name} onClick={(e) => openMenuRequestCard()}>
+          <div className="dropdown" id={request.requester.last_name}>
+            <DropdownMenuOptionsRequestCard request={request.request} />
+            <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" onClick={(e) => openMenuRequestCard()}>
               More options
-              <DropdownMenuOptionsRequestCard request={request.request} />
             </button>
           </div>
         </div>
