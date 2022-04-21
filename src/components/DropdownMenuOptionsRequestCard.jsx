@@ -2,8 +2,14 @@ import React from 'react';
 
 const DropdownMenuOptionsRequestCard = ({request}) => {
   return (
-    <div className="dropdown-menu-options-request-card p-2">
-      menu
+    <div className="dropdown-menu-options-request-card ms-2">
+      <ul className = "list-unstyled m-0 p-0">
+        <li className="m-0 p-2 pointer">Mark as fulfilled</li>
+        <li className="m-0 p-2 pointer">Edit request</li>
+        <hr className="m-0"></hr>
+        <li className="m-0 p-2 pointer">Delete request</li>
+      </ul>
+
     </div>
   );
 };

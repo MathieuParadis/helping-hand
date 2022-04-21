@@ -1,9 +1,19 @@
 .dropdown-menu-options-request-card {
-  background-color: var(--light-bg-color);
+  background-color: var(--basic-color-grey-light);
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 110%;
   visibility: hidden;
-  transform: translateY(-105%);
+  transform: translateY(-100%);
+
+  li {
+    font-size: 14px;
+    color: var(--prim-color);
+
+    &:hover {
+      background-color: var(--prim-color);
+      color: var(--basic-color-white);
+    }
+  }
 }
