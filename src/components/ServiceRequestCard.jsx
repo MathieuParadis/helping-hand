@@ -5,10 +5,22 @@ import React from 'react';
 import DropdownMenuOptionsRequestCard from '../components/DropdownMenuOptionsRequestCard';
 
 const ServiceRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
-  const openMenuRequestCard = () => {
-    let menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
-    menuRequestCard.style.visibility = 'visible';
-    alert(menuRequestCard.textContent);
+  const toggleMenuRequestCard = () => {
+    const menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
+    
+    if (menuRequestCard.style.visibility === 'visible') {
+      closeAllMenus();
+
+    } else {
+      closeAllMenus();
+      menuRequestCard.style.visibility = 'visible';
+    }
+  }
+
+  const closeAllMenus = () => {
+    const menus = document.querySelectorAll("div.dropdown-menu-options-request-card");
+    const menusArray = [...menus];
+    menusArray.map(menu => menu.style.visibility = 'hidden');
   }
 
   return (
@@ -25,8 +37,8 @@ const ServiceRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
             <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenShowModal(request)}>See details</button>
           </div>
           <div className="dropdown" id={request.requester.last_name}>
-            <DropdownMenuOptionsRequestCard request={request.request} setOpenEditModal={setOpenEditModal} />
-            <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" onClick={(e) => openMenuRequestCard()}>
+            <DropdownMenuOptionsRequestCard request={request} setOpenEditModal={setOpenEditModal} />
+            <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" onClick={(e) => toggleMenuRequestCard()}>
               More options
             </button>
           </div>

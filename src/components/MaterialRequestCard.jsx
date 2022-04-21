@@ -6,7 +6,7 @@ import DropdownMenuOptionsRequestCard from '../components/DropdownMenuOptionsReq
 
 const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
   const toggleMenuRequestCard = () => {
-    let menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
+    const menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
     
     if (menuRequestCard.style.visibility === 'visible') {
       closeAllMenus();

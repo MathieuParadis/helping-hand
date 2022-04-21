@@ -40,11 +40,17 @@ const UserRequests = () => {
     menusArray.map(menu => menu.style.visibility = 'hidden');
   }
 
-  // window.onclick = (event) => {
-  //   event.target !== document.querySelector("div.dropdown-menu-options-request-card") &&
-  //   event.target !== document.querySelector("button.button-dropdown") &&
-  //   closeAllMenus();
-  // };
+  window.onclick = (event) => {
+    const dropdownButtons = document.querySelectorAll("button.button-dropdown");
+    const dropdownButtonsArray = [...dropdownButtons];
+    const menus = document.querySelectorAll("div.dropdown-menu-options-request-card");
+    const menusArray = [...menus];
+  
+    ![...dropdownButtonsArray].includes(event.target) &&
+    ![...menusArray].includes(event.target) &&
+    closeAllMenus();
+  };
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
