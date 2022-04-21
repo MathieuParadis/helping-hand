@@ -4,7 +4,7 @@ import React from 'react';
 // COMPONENTS IMPORTS
 import DropdownMenuOptionsRequestCard from '../components/DropdownMenuOptionsRequestCard';
 
-const ServiceRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
+const ServiceRequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const toggleMenuRequestCard = () => {
     const menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
     
@@ -37,7 +37,11 @@ const ServiceRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
             <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenShowModal(request)}>See details</button>
           </div>
           <div className="dropdown" id={request.requester.last_name}>
-            <DropdownMenuOptionsRequestCard request={request} setOpenEditModal={setOpenEditModal} />
+            <DropdownMenuOptionsRequestCard 
+              request={request} 
+              setOpenEditModal={setOpenEditModal} 
+              setMarkRequestAsFulfilled={setMarkRequestAsFulfilled}
+            />
             <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" onClick={(e) => toggleMenuRequestCard()}>
               More options
             </button>

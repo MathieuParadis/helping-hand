@@ -49,6 +49,11 @@ const UserRequests = () => {
     document.querySelector("body").classList.add("clicked");
   }
 
+  const markRequestAsFulfilled = (request) => {
+    setCurrentUserRequest(request);
+    alert(request.request.title + " marked as fulfilled");
+  }
+
   const closeAllMenus = () => {
     const menus = document.querySelectorAll("div.dropdown-menu-options-request-card");
     const menusArray = [...menus];
@@ -82,7 +87,7 @@ const UserRequests = () => {
   return (
     <>
       <NewUserRequestModal />
-      <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} />
+      <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditUserRequestModal request={currentUserRequest} />
       <div className="user-requests">
         <div className="container d-flex justify-content-center w-100">
@@ -101,7 +106,21 @@ const UserRequests = () => {
               { 
                 requests.map((request) => {
                   return (
-                    request.request.type === "material" ? <MaterialRequestCard request={request} setOpenShowModal={openShowUserRequestModal} setOpenEditModal={openEditUserRequestModal} key={request.request.title} /> : <ServiceRequestCard request={request} setOpenShowModal={openShowUserRequestModal} setOpenEditModal={openEditUserRequestModal} key={request.request.title} />
+                    request.request.type === "material" ? 
+                    <MaterialRequestCard 
+                      request={request} 
+                      setOpenShowModal={openShowUserRequestModal} 
+                      setOpenEditModal={openEditUserRequestModal} 
+                      setMarkRequestAsFulfilled={markRequestAsFulfilled} 
+                      key={request.request.title} 
+                    /> : 
+                    <ServiceRequestCard 
+                      request={request} 
+                      setOpenShowModal={openShowUserRequestModal} 
+                      setOpenEditModal={openEditUserRequestModal}
+                      setMarkRequestAsFulfilled={markRequestAsFulfilled}
+                      key={request.request.title} 
+                    />
                   )
                 })
               }
