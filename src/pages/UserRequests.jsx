@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';
 
 // COMPONENTS IMPORTS
+import EditUserRequestModal from '../components/EditUserRequestModal';
 import MaterialRequestCard from '../components/MaterialRequestCard';
 import NewUserRequestModal from '../components/NewUserRequestModal';
 import ServiceRequestCard from '../components/ServiceRequestCard';
@@ -26,6 +27,13 @@ const UserRequests = () => {
     document.querySelector("body").classList.add("clicked");
   }
 
+  const openEditUserRequestModal = (request) => {
+    setCurrentUserRequest(request);
+    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+    editUserRequestModal.style.visibility = 'visible';
+    document.querySelector("body").classList.add("clicked");
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -34,6 +42,7 @@ const UserRequests = () => {
     <>
       <NewUserRequestModal />
       <ShowUserRequestModal request={currentUserRequest} />
+      <EditUserRequestModal request={currentUserRequest} />
       <div className="user-requests">
         <div class="container d-flex justify-content-center w-100">
           <div class="d-flex flex-column align-items-center my-3 py-3 w-100">
@@ -51,7 +60,7 @@ const UserRequests = () => {
               { 
                 requests.map((request) => {
                   return (
-                    request.request.type === "material" ? <MaterialRequestCard request={request} setOpenModal={openShowUserRequestModal} /> : <ServiceRequestCard request={request} setOpenModal={openShowUserRequestModal}/>
+                    request.request.type === "material" ? <MaterialRequestCard request={request} setOpenShowModal={openShowUserRequestModal} setOpenEditModal={openEditUserRequestModal} /> : <ServiceRequestCard request={request} setOpenShowModal={openShowUserRequestModal} setOpenEditModal={openEditUserRequestModal}/>
                   )
                 })
               }

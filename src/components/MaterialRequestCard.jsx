@@ -3,7 +3,7 @@ import React from 'react';
 // COMPONENTS IMPORTS
 import DropdownMenuOptionsRequestCard from '../components/DropdownMenuOptionsRequestCard';
 
-const MaterialRequestCard = ({request, setOpenModal}) => {
+const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
   const openMenuRequestCard = () => {
     let menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
     menuRequestCard.style.visibility = 'visible';
@@ -21,7 +21,8 @@ const MaterialRequestCard = ({request, setOpenModal}) => {
         </div>
         <div className="row row-cols-2 g-2">
           <div>
-            <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenModal(request)}>See details</button>
+            <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenShowModal(request)}>See details</button>
+            <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenEditModal(request)}>Edit</button>
           </div>
           <div>
             <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" id={request.requester.last_name} onClick={(e) => openMenuRequestCard()}>
