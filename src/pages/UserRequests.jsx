@@ -55,7 +55,7 @@ const UserRequests = () => {
     menusArray.map(menu => menu.style.visibility = 'hidden');
   }
 
-  useEffect(() => {
+  const closeMenus = () => {
     // closing menus on click anywhere on the screen except on menus and menu-dropdown-buttons
     window.onclick = (event) => {
       const dropdownButtons = document.querySelectorAll("button.button-dropdown");
@@ -66,7 +66,13 @@ const UserRequests = () => {
       ![...dropdownButtonsArray].includes(event.target) &&
       ![...menusArray].includes(event.target) &&
       closeAllMenus();
-    };
+    }
+  };
+
+  closeMenus();
+
+  useEffect(() => {
+    closeMenus();
   }, []);
 
   useEffect(() => {
