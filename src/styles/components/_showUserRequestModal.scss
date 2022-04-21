@@ -34,12 +34,12 @@
 
     .show-user-request-modal-content {
       position: absolute;
-      height: 100%;
+      height: auto;
       top: 0;
       left: 0;
       border: none;
 
-      .button-chat {
+      .button-edit, .button-fulfilled {
         width: 200px;
 
         @include mobile {

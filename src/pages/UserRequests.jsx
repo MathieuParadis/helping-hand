@@ -40,17 +40,19 @@ const UserRequests = () => {
     menusArray.map(menu => menu.style.visibility = 'hidden');
   }
 
-  window.onclick = (event) => {
-    const dropdownButtons = document.querySelectorAll("button.button-dropdown");
-    const dropdownButtonsArray = [...dropdownButtons];
-    const menus = document.querySelectorAll("div.dropdown-menu-options-request-card");
-    const menusArray = [...menus];
-  
-    ![...dropdownButtonsArray].includes(event.target) &&
-    ![...menusArray].includes(event.target) &&
-    closeAllMenus();
-  };
-
+  useEffect(() => {
+    // closing menus on click anywhere on the screen except on menus and menu-dropdown-buttons
+    window.onclick = (event) => {
+      const dropdownButtons = document.querySelectorAll("button.button-dropdown");
+      const dropdownButtonsArray = [...dropdownButtons];
+      const menus = document.querySelectorAll("div.dropdown-menu-options-request-card");
+      const menusArray = [...menus];
+    
+      ![...dropdownButtonsArray].includes(event.target) &&
+      ![...menusArray].includes(event.target) &&
+      closeAllMenus();
+    };
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
