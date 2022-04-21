@@ -1,3 +1,4 @@
+// CONFIG IMPORTS
 import React from 'react';
 
 // COMPONENTS IMPORTS
@@ -22,10 +23,9 @@ const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
         <div className="row row-cols-2 g-2">
           <div>
             <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenShowModal(request)}>See details</button>
-            <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenEditModal(request)}>Edit</button>
           </div>
           <div className="dropdown" id={request.requester.last_name}>
-            <DropdownMenuOptionsRequestCard request={request.request} />
+            <DropdownMenuOptionsRequestCard request={request.request} setOpenEditModal={setOpenEditModal} />
             <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" onClick={(e) => openMenuRequestCard()}>
               More options
             </button>

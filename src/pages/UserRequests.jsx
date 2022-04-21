@@ -44,8 +44,8 @@ const UserRequests = () => {
       <ShowUserRequestModal request={currentUserRequest} />
       <EditUserRequestModal request={currentUserRequest} />
       <div className="user-requests">
-        <div class="container d-flex justify-content-center w-100">
-          <div class="d-flex flex-column align-items-center my-3 py-3 w-100">
+        <div className="container d-flex justify-content-center w-100">
+          <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My Requests</h1>
             <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewUserRequestModal()}>Request help</button>
             <div className="caption d-flex flex-column flex-md-row align-self-start my-4">
@@ -60,7 +60,7 @@ const UserRequests = () => {
               { 
                 requests.map((request) => {
                   return (
-                    request.request.type === "material" ? <MaterialRequestCard request={request} setOpenShowModal={openShowUserRequestModal} setOpenEditModal={openEditUserRequestModal} /> : <ServiceRequestCard request={request} setOpenShowModal={openShowUserRequestModal} setOpenEditModal={openEditUserRequestModal}/>
+                    request.request.type === "material" ? <MaterialRequestCard request={request} setOpenShowModal={openShowUserRequestModal} setOpenEditModal={openEditUserRequestModal} key={request.request.title} /> : <ServiceRequestCard request={request} setOpenShowModal={openShowUserRequestModal} setOpenEditModal={openEditUserRequestModal} key={request.request.title} />
                   )
                 })
               }

@@ -14,12 +14,14 @@ const EditUserRequestModal = ({request}) => {
       <div className="edit-user-request-modal-white-bg">
         <div className="edit-user-request-modal-content d-flex flex-column justify-content-between p-3 p-sm-4 p-md-5">
           <div>
-            {request && (
+            <h2>Edit user request modal</h2>
+
+            {/* {request && (
               <>
                 <h2>Edit user request modal</h2>
                 <p>{request.request.title}</p>
               </>
-            )}
+            )} */}
           </div>
           <button className="btn button-danger button-chat p-1" onClick={() => closeEditUserRequestModal()}>Cancel</button>
         </div>
