@@ -71,6 +71,7 @@ const Navigation = () => {
               >
                 <Dropdown.Item href="/my-profile">My profile</Dropdown.Item>
                 <Dropdown.Item href="/my-requests">My requests</Dropdown.Item>
+                <Dropdown.Item href="/my-chats">My chats</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item>
                   <div className="d-flex" onClick={() => signOut()}>

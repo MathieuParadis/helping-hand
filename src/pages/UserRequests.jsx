@@ -94,7 +94,7 @@ const UserRequests = () => {
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My Requests</h1>
             <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewUserRequestModal()}>Request help</button>
-            <div className="caption d-flex flex-column flex-md-row align-self-start my-4">
+            <div className="caption d-flex flex-column flex-md-row align-self-start my-4 ps-3">
               <div className="d-flex align-items-center my-2 pe-md-5">
                 <span className="me-2" id="material"></span><p className="h5 m-0">Material need</p>
               </div>

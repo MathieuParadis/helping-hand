@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const HamburgerMenu = () => {
-  let loggedIn = false;
+  let loggedIn = true;
 
   const handleMenu = () => {
     document.querySelector(".span1").classList.toggle("clicked");
@@ -48,6 +48,7 @@ const HamburgerMenu = () => {
             <p className="menu-item my-2" onClick={() => openModalNewRequest()}>New request</p>
             <NavLink className="menu-link my-2" exact="true" to="/my-profile" onClick={handleMenu}>My profile</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/my-requests" onClick={handleMenu}>My requests</NavLink>
+            <NavLink className="menu-link my-2" exact="true" to="/my-chats" onClick={handleMenu}>My chats</NavLink>
             <p className="btn button-w200 button-danger border-radius-50 h4 my-2 py-2" onClick={() => signOut()}>Log out</p>
           </div>
         )
