@@ -11,6 +11,19 @@ const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
     alert(menuRequestCard.textContent);
   }
 
+  const closeMenuRequestCard  = () => {
+    let menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
+    
+    if (menuRequestCard.style.visibility === 'visible') {
+      menuRequestCard.style.visibility = 'hidden';
+    }
+  }
+
+  window.onclick = (event) => {
+    event.target !== document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card") &&
+    closeMenuRequestCard();
+  };
+
   return (
     <div className="request-card">
       <div className="card-content material-request-card d-flex flex-column justify-content-between p-3">
@@ -25,7 +38,7 @@ const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
             <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenShowModal(request)}>See details</button>
           </div>
           <div className="dropdown" id={request.requester.last_name}>
-            <DropdownMenuOptionsRequestCard request={request.request} setOpenEditModal={setOpenEditModal} />
+            <DropdownMenuOptionsRequestCard request={request} setOpenEditModal={setOpenEditModal} />
             <button className="btn button-outline-primary button-dropdown w-100 h-100 p-1" onClick={(e) => openMenuRequestCard()}>
               More options
             </button>

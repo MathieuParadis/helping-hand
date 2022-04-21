@@ -16,12 +16,11 @@ const EditUserRequestModal = ({request}) => {
           <div>
             <h2>Edit user request modal</h2>
 
-            {/* {request && (
+            {request && (
               <>
-                <h2>Edit user request modal</h2>
                 <p>{request.request.title}</p>
               </>
-            )} */}
+            )}
           </div>
           <button className="btn button-danger button-chat p-1" onClick={() => closeEditUserRequestModal()}>Cancel</button>
         </div>
