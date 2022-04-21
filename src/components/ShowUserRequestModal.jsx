@@ -8,19 +8,14 @@ const ShowUserRequestModal = ({request, setOpenEditModal}) => {
     document.querySelector("body").classList.remove("clicked");
   }
 
-  window.onclick = (event) => {
-    event.target === document.querySelector('.show-user-request-modal-overlay') &&
-    event.target !== document.querySelector('.show-user-request-modal-content') &&
-    closeShowUserRequestModal();
-  };
-
   return (
     <div className="show-user-request-modal">
       <div className="show-user-request-modal-overlay"></div>
       <div className="show-user-request-modal-white-bg">
 
         {request && (
-            <div className="show-user-request-modal-content d-flex flex-column justify-content-between p-3 p-sm-4 p-md-5">
+            <div className="show-user-request-modal-content d-flex flex-column justify-content-between p-4 p-md-5">
+              <p className="close-button pointer h4 text-secondary" onClick={() => closeShowUserRequestModal()}>x</p>
               <div>
                 <h2 className="text-primary fw-bold mb-5">{request.request.title}</h2>
                 <p className="mb-4"><strong>Requester: </strong>{request.requester.first_name} {request.requester.last_name}</p>
