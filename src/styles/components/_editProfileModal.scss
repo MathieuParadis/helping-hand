@@ -36,14 +36,6 @@
       min-height: 70vh;
       height: 100%;
       border: none;
-
-      .button-chat {
-        width: 200px;
-
-        @include mobile {
-          width: 100%;
-        }
-      }
     }
   }
 }

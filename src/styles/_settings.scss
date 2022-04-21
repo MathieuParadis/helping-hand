@@ -226,6 +226,14 @@ a {
   position: relative;
 }
 
+.button-modal {
+  width: 200px;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
 
 // -------------------- FONT COLOR CLASSES -------------------- //
 .text-primary {

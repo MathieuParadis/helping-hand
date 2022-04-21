@@ -27,7 +27,7 @@ const ShowRequestModal = ({request}) => {
               <p className="mb-4"><strong>Location: </strong>{request.request.location}</p>
               <p className="mb-4"><strong>Description: </strong>{request.request.description}</p>
             </div>
-            <button className="btn button-primary button-volunteer mt-4 p-1" onClick={() => openChat()} >Volunteer</button>
+            <button className="btn button-primary button-modal mt-4 p-1" onClick={() => openChat()} >Volunteer</button>
           </div>
         )}
       </div>

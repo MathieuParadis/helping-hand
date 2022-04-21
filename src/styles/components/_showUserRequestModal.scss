@@ -47,14 +47,6 @@
       min-height: 70vh;
       height: 100%;
       border: none;
-
-      .button-edit, .button-fulfilled {
-        width: 200px;
-
-        @include mobile {
-          width: 100%;
-        }
-      }
     }
   }
 }
