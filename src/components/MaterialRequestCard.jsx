@@ -7,12 +7,20 @@ import DropdownMenuOptionsRequestCard from '../components/DropdownMenuOptionsReq
 const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal}) => {
   const toggleMenuRequestCard = () => {
     let menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
-
+    
     if (menuRequestCard.style.visibility === 'visible') {
-      menuRequestCard.style.visibility = 'hidden';
+      closeAllMenus();
+
     } else {
+      closeAllMenus();
       menuRequestCard.style.visibility = 'visible';
     }
+  }
+
+  const closeAllMenus = () => {
+    const menus = document.querySelectorAll("div.dropdown-menu-options-request-card");
+    const menusArray = [...menus];
+    menusArray.map(menu => menu.style.visibility = 'hidden');
   }
 
   return (

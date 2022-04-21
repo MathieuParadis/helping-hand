@@ -34,6 +34,18 @@ const UserRequests = () => {
     document.querySelector("body").classList.add("clicked");
   }
 
+  const closeAllMenus = () => {
+    const menus = document.querySelectorAll("div.dropdown-menu-options-request-card");
+    const menusArray = [...menus];
+    menusArray.map(menu => menu.style.visibility = 'hidden');
+  }
+
+  // window.onclick = (event) => {
+  //   event.target !== document.querySelector("div.dropdown-menu-options-request-card") &&
+  //   event.target !== document.querySelector("button.button-dropdown") &&
+  //   closeAllMenus();
+  // };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

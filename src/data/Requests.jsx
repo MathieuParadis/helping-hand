@@ -148,8 +148,8 @@ const requests = [
       status: "in progress"
     },
     requester: {
-      first_name: "Omar",
-      last_name: "Lopez",
+      first_name: "Katie",
+      last_name: "Bloomerberg",
     }
   },
   { 
