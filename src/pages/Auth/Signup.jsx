@@ -59,7 +59,7 @@ const Signup = () => {
                   </div>
                   <div class="input mb-4 mb-md-0 ms-0 ms-md-2">
                     <label htmlFor="password" className="mb-1">Password confirmation</label>
-                    <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
+                    <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" required />
                     <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                   </div>
                 </div>
