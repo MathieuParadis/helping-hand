@@ -18,6 +18,7 @@ import UserRequests from './pages/UserRequests';
 import Flash from './components/Flash';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
+import NewUserRequestModal from './components/NewUserRequestModal';
 
 // REACT FONTAWESOME IMPORTS
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -30,6 +31,7 @@ const App = () => {
       <Router>
         <Navigation />
         <Flash />
+        <NewUserRequestModal />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/my-chats" element={<Chat />} />

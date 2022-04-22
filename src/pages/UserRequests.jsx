@@ -4,7 +4,6 @@ import React, {useState, useEffect} from 'react';
 // COMPONENTS IMPORTS
 import EditUserRequestModal from '../components/EditUserRequestModal';
 import MaterialRequestCard from '../components/MaterialRequestCard';
-import NewUserRequestModal from '../components/NewUserRequestModal';
 import ServiceRequestCard from '../components/ServiceRequestCard';
 import ShowUserRequestModal from '../components/ShowUserRequestModal';
 
@@ -86,7 +85,6 @@ const UserRequests = () => {
 
   return (
     <>
-      <NewUserRequestModal />
       <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditUserRequestModal request={currentUserRequest} />
       <div className="user-requests">
