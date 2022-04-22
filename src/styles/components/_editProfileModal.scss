@@ -70,6 +70,27 @@
           width: 20px;
         }
       }
+
+      .file-input {
+        .caption {
+          font-size: 12px;
+        }
+      
+        .plus-icon {
+          width: 30px;
+          padding: 5px;
+          border: 2px solid var(--prim-color);
+          border-radius: 50%;
+      
+          &:hover, &:focus {
+            transform: scale(1.1);
+          }
+        }
+      
+        // input {
+        //   display: none;
+        // }  
+      }
     }
   }
 }
