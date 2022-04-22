@@ -19,8 +19,8 @@ const Signin = () => {
 
   return (
     <div className="signin bg1 margin-mobile">
-      <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 d-flex flex-row-reverse my-3">
+      <div className="container d-flex justify-content-center align-items-center">
+        <div className="box box-shadow border-radius-5 d-flex flex-row-reverse my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 ps-md-3">
             <img src={pattern1} alt="sign in pattern illustration" className="pattern" />
           </div>
@@ -29,12 +29,12 @@ const Signin = () => {
             <h2 className="text-center pb-md-4 mb-5">Welcome back!</h2>
             <div className="form-container">
               <form onSubmit={LoginPostRequest} className="d-flex flex-column justify-content-center">
-                <div class="input mb-3">
+                <div className="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
-                <div class="input mb-4">
+                <div className="input mb-4">
                   <label htmlFor="password" className="mb-1">Password</label>
                   <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />

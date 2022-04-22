@@ -20,8 +20,8 @@ const Signup = () => {
 
   return (
     <div className="signup bg1 margin-mobile">
-      <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 d-flex my-3">
+      <div className="container d-flex justify-content-center align-items-center">
+        <div className="box box-shadow border-radius-5 d-flex my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-3 pe-md-3">
             <img src={pattern1} alt="sign up pattern illustration" className="pattern" />
           </div>
@@ -31,33 +31,33 @@ const Signup = () => {
             <div className="form-container">
               <form onSubmit={SignupPostRequest} className="d-flex flex-column justify-content-center">
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
-                  <div class="input mb-3 mb-md-0 me-0 me-md-2">
+                  <div className="input mb-3 mb-md-0 me-0 me-md-2">
                     <label htmlFor="first_name" className="mb-1">First name</label>
                     <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" required />
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
-                  <div class="input mb-3 mb-md-0 ms-0 ms-md-2">
+                  <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
                     <label htmlFor="last_name" className="mb-1">Last name</label>
                     <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" required />
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
                 </div>
-                <div class="file-input mb-3">
+                <div className="file-input mb-3">
                   <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
                   <input type="file" className="" id="file" aria-describedby="file input field" placeholder="" required />
                 </div>
-                <div class="input mb-3">
+                <div className="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-4">
-                  <div class="input mb-3 mb-md-0 me-0 me-md-2">
+                  <div className="input mb-3 mb-md-0 me-0 me-md-2">
                     <label htmlFor="password" className="mb-1">Password</label>
                     <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
                     <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                   </div>
-                  <div class="input mb-4 mb-md-0 ms-0 ms-md-2">
+                  <div className="input mb-4 mb-md-0 ms-0 ms-md-2">
                     <label htmlFor="password" className="mb-1">Password confirmation</label>
                     <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" required />
                     <img src={lock_icon} alt="lock_icon" className="lock-icon" />

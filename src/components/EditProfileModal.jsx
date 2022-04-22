@@ -8,7 +8,7 @@ import profile_icon from '../assets/logos/profile_logo.svg';
 import UploadControl from '../components/UploadControl';
 
 const EditProfileModal = ({userData}) => {
-  const {first_name, last_name, email, id} = userData;
+  const {first_name, last_name, id} = userData;
 
   const [fname, setFname] = useState(first_name);
   const [lname, setLname] = useState(last_name);
@@ -36,18 +36,18 @@ const EditProfileModal = ({userData}) => {
           <h2 className="text-primary fw-bold mb-5">Edit my information</h2>
           <div className="form-container w-100">
             <form onSubmit={updateInformationRequest} className="d-flex flex-column justify-content-center w-100">
-              <div class="input mb-3">
+              <div className="input mb-3">
                 <label htmlFor="first_name" className="mb-1">First name</label>
                 <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" value={fname} onChange={(e) => setFname(e.target.value)} required />
                 <img src={profile_icon} alt="profile_icon" className="profile-icon" />
               </div>
-              <div class="input mb-3">
+              <div className="input mb-3">
                 <label htmlFor="last_name" className="mb-1">Last name</label>
                 <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" value={lname} onChange={(e) => setLname(e.target.value)} required />
                 <img src={profile_icon} alt="profile_icon" className="profile-icon" />
               </div>
-              <div class="file-input mb-3">
-                <UploadControl />
+              <div className="file-input mb-3">
+                <UploadControl value={id.file_name} onChange={(e) => setId_card(e.target.value)}/>
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                 <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update profile</button>

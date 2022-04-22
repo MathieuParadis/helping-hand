@@ -18,8 +18,8 @@ const ForgottenPassword = () => {
 
   return (
     <div className="forgotten-password bg1 margin-mobile">
-      <div class="container d-flex justify-content-center align-items-center">
-        <div class="box box-shadow border-radius-5 p-3 d-flex my-3">
+      <div className="container d-flex justify-content-center align-items-center">
+        <div className="box box-shadow border-radius-5 p-3 d-flex my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 pe-md-3">
             <img src={forgotten_password_illustration} alt="Forgotten password illustration" className="illustration" />
           </div>
@@ -28,7 +28,7 @@ const ForgottenPassword = () => {
             <h2 className="text-center pb-md-4 mb-5">Forgot your<br></br>password?</h2>            
             <div className="form-container">
               <form onSubmit={postResetPasswordInstructionsRequest} className="d-flex flex-column justify-content-center">
-                <div class="input mb-3">
+                <div className="input mb-3">
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
