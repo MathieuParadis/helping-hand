@@ -1,14 +1,24 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useState} from 'react';
 
 // ASSETS IMPORTS
 import profile_icon from '../assets/logos/profile_logo.svg';
 
-const EditProfileModal = () => {
+const EditProfileModal = ({userData}) => {
+  const {first_name, last_name, email, id} = userData;
+
+  const [fname, setFname] = useState(first_name);
+  const [lname, setLname] = useState(last_name);
+  const [id_card, setId_card] = useState(id);
+
   const closeEditProfileModal = () => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
     editProfileModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
+  }
+
+  const handleFile = () => {
+    alert("uploading file");
   }
 
   const updateInformationRequest = () => {
@@ -25,21 +35,22 @@ const EditProfileModal = () => {
             <form onSubmit={updateInformationRequest} className="d-flex flex-column justify-content-center w-100">
               <div class="input mb-3">
                 <label htmlFor="first_name" className="mb-1">First name</label>
-                <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" required />
+                <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" value={fname} onChange={(e) => setFname(e.target.value)} required />
                 <img src={profile_icon} alt="profile_icon" className="profile-icon" />
               </div>
               <div class="input mb-3">
                 <label htmlFor="last_name" className="mb-1">Last name</label>
-                <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" required />
+                <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" value={lname} onChange={(e) => setLname(e.target.value)} required />
                 <img src={profile_icon} alt="profile_icon" className="profile-icon" />
               </div>
               <div class="file-input mb-3">
                 <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
-                <input type="file" className="" id="file" aria-describedby="file input field" placeholder="" required />
+                <p onChange={handleFile} htmlFor="ID"><p></p></p>
+                <input type="file" className="" id="file" aria-describedby="file input field" accept="image/png, image/jpeg" />
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                 <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update profile</button>
-                <button className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeEditProfileModal()}>Back</button>
+                <button type="reset" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeEditProfileModal()}>Back</button>
               </div>
             </form>
           </div>

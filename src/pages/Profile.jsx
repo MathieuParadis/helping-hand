@@ -32,7 +32,7 @@ const Profile = () => {
   
   return (
     <>
-      <EditProfileModal />
+      <EditProfileModal userData={user[0]} />
       <ModifyCredentialsModal />
       <div className="profile bg2 margin-mobile">
         <div class="container d-flex justify-content-center align-items-center">
@@ -49,7 +49,7 @@ const Profile = () => {
                 <div className="d-flex">
                   <p><strong>ID</strong>:&nbsp;</p>
                   <div className="id-card-box border-radius-5">
-                    <img className="id-card" src={id} alt="ID card"/>
+                    <img className="id-card" src={id.file} alt="ID card"/>
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-xl-row justify-content-xl-between mt-5">
