@@ -23,12 +23,20 @@ const NewUserRequestModal = () => {
           <div className="form-container w-100">
             <form onSubmit={createRequest} className="d-flex flex-column justify-content-center w-100">
               <div className="input mb-3">
-                <label htmlFor="first_name" className="mb-1">First name</label>
-                <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" required />
+                <label htmlFor="title" className="mb-1">Title&nbsp;<small className="caption">(50 characters max)</small></label>
+                <input type="text" className="form-control" id="title" aria-describedby="title input field" placeholder="Title" maxLength="50" required />
               </div>
               <div className="input mb-3">
-                <label htmlFor="last_name" className="mb-1">Last name</label>
-                <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" required />
+                <label htmlFor="location" className="mb-1">Location</label>
+                <input type="text" className="form-control" id="location" aria-describedby="Location input field" placeholder="Location" required />
+              </div>
+              <div className="input mb-3">
+                <label htmlFor="location" className="mb-1">Location</label>
+                <input type="text" className="form-control" id="location" aria-describedby="Location input field" placeholder="Location" required />
+              </div>
+              <div className="input mb-3">
+                <label htmlFor="description" className="mb-1">Description&nbsp;<small className="caption">(400 characters max)</small></label>
+                <textarea type="text" className="form-control" id="description" aria-describedby="Description input field" maxLength="400" rows="5" placeholder="Explain precisely what your need is here...." required />
               </div>
 
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
