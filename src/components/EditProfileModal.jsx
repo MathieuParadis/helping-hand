@@ -4,6 +4,9 @@ import React, {useState} from 'react';
 // ASSETS IMPORTS
 import profile_icon from '../assets/logos/profile_logo.svg';
 
+// COMPONENTS IMPORTS
+import UploadControl from '../components/UploadControl';
+
 const EditProfileModal = ({userData}) => {
   const {first_name, last_name, email, id} = userData;
 
@@ -44,9 +47,7 @@ const EditProfileModal = ({userData}) => {
                 <img src={profile_icon} alt="profile_icon" className="profile-icon" />
               </div>
               <div class="file-input mb-3">
-                <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
-                <p onChange={handleFile} htmlFor="ID"><p></p></p>
-                <input type="file" className="" id="file" aria-describedby="file input field" accept="image/png, image/jpeg" />
+                <UploadControl />
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                 <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update profile</button>
