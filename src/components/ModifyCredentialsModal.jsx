@@ -26,8 +26,8 @@ const ModifyCredentialsModal = () => {
           </div>
 
           <div className="d-flex flex-column flex-md-row mt-4">
-            <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => postModifyCredentialsRequest()}>Confirm changes</button>
-            <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => closeModifyCredentialsModal()}>Back</button>
+            <button className="btn button-success button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => postModifyCredentialsRequest()}>Confirm changes</button>
+            <button className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeModifyCredentialsModal()}>Back</button>
           </div>
 
           <div>
