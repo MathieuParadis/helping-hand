@@ -12,7 +12,7 @@ const EditUserRequestModal = ({request}) => {
     <div className="edit-user-request-modal">
       <div className="edit-user-request-modal-overlay"></div>
       <div className="edit-user-request-modal-white-bg">
-        <div className="edit-user-request-modal-content d-flex flex-column justify-content-between p-4 p-md-5">
+        <div className="edit-user-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
           <div>
             <h2>Edit user request modal</h2>
 
