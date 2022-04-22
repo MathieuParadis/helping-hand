@@ -26,6 +26,7 @@
           border: 1px solid var(--basic-color-grey-dark);
           width: 180px;
           height: 140px;
+          overflow: hidden;
 
           @include mobile_and_tablet {
             width: 140px;

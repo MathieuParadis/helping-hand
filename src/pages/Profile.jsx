@@ -1,15 +1,19 @@
 // CONFIG IMPORTS
 import React, {useEffect} from 'react';
 
+// DATA IMPORTS
+import user from '../data/User';
+
 // COMPONENTS IMPORTS
 import EditProfileModal from '../components/EditProfileModal';
 import ModifyCredentialsModal from '../components/ModifyCredentialsModal';
 
 // ASSETS IMPORTS
 import profile_illustration from '../assets/images/my_profile_illustration.svg';
-import id_icon from '../assets/logos/id_logo.svg';
 
 const Profile = () => {
+  const {first_name, last_name, email, id} = user[0];
+
   const openEditProfileModal = (e) => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
     editProfileModal.style.visibility = 'visible';
@@ -39,13 +43,13 @@ const Profile = () => {
             <div className="box-right d-flex flex-column justify-content-center col-12 col-sm-6 pe-sm-3">
               <h1 className="text-primary fw-bold pb-3 pb-md-4">My profile</h1>
               <div>
-                <p><strong>First name</strong>: Mathieu</p>
-                <p><strong>Last name</strong>: Paradis</p>
-                <p><strong>Email</strong>: mathieu@gmail.com</p>
+                <p><strong>First name</strong>: {first_name}</p>
+                <p><strong>Last name</strong>: {last_name}</p>
+                <p><strong>Email</strong>: {email}</p>
                 <div className="d-flex">
                   <p><strong>ID</strong>:&nbsp;</p>
                   <div className="id-card-box border-radius-5">
-                    <img className="id-card" src={id_icon} alt="ID card"/>
+                    <img className="id-card" src={id} alt="ID card"/>
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-xl-row justify-content-xl-between mt-5">
