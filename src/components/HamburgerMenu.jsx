@@ -16,13 +16,8 @@ const HamburgerMenu = () => {
 
   const openNewUserRequestModal = (e) => {
     const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
-
-    handleMenu();
     newUserRequestModal.style.visibility = 'visible';
-    showUserRequestModal.style.visibility = 'hidden';
-    editUserRequestModal.style.visibility = 'hidden';
+    handleMenu();
     document.querySelector("body").classList.add("clicked");
   }
 
