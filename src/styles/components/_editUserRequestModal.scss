@@ -25,6 +25,7 @@
   .edit-user-request-modal-white-bg {
     display: flex;
     min-height: 70vh;
+    max-height: 90vh;
     width: 70%;
     z-index: 21;
     background-color: var(--basic-color-white);
@@ -34,8 +35,10 @@
 
     .edit-user-request-modal-content {
       min-height: 70vh;
+      max-height: 90vh;
       height: 100%;
       border: none;
+      overflow-y: scroll;
     }
   }
 }
