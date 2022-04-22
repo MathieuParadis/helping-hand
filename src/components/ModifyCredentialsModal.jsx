@@ -28,17 +28,17 @@ const ModifyCredentialsModal = () => {
           <h2 className="text-primary fw-bold mb-5">Change my credentials</h2>
           <div className="form-container w-100">
             <form onSubmit={postModifyCredentialsRequest} className="d-flex flex-column justify-content-center w-100">
-              <div class="input mb-3">
+              <div className="input mb-3">
                 <label htmlFor="email" className="mb-1">Email</label>
                 <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
                 <img src={mail_icon} alt="mail_icon" className="mail-icon" />
               </div>
-              <div class="input mb-3">
+              <div className="input mb-3">
                 <label htmlFor="password" className="mb-1">Password</label>
                 <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
                 <img src={lock_icon} alt="lock_icon" className="lock-icon" />
               </div>
-              <div class="input mb-3">
+              <div className="input mb-3">
                 <label htmlFor="password" className="mb-1">Password confirmation</label>
                 <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" required />
                 <img src={lock_icon} alt="lock_icon" className="lock-icon" />

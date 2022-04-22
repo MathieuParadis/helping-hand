@@ -47,7 +47,7 @@ const EditProfileModal = ({userData}) => {
                 <img src={profile_icon} alt="profile_icon" className="profile-icon" />
               </div>
               <div className="file-input mb-3">
-                <UploadControl value={id.file_name} onChange={(e) => setId_card(e.target.value)}/>
+                <UploadControl value={id.file_name}/>
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                 <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update profile</button>

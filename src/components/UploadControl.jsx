@@ -4,9 +4,9 @@ import React, {useState} from 'react';
 // ASSETS IMPORTS
 import plus_icon from '../assets/logos/plus_logo.svg';
 
-const UploadControl = ({value, onChange}) => {
-  const hiddenFileInput = document.querySelector("#file")
-
+const UploadControl = ({value}) => {
+  const hiddenFileInput = React.useRef(null);
+  
   const handleClick = e => {
     hiddenFileInput.current.click();
   };

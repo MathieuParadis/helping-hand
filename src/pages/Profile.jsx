@@ -35,8 +35,8 @@ const Profile = () => {
       <EditProfileModal userData={user[0]} />
       <ModifyCredentialsModal />
       <div className="profile bg2 margin-mobile">
-        <div class="container d-flex justify-content-center align-items-center">
-          <div class="box box-shadow border-radius-5 p-3 d-flex flex-row-reverse my-3">
+        <div className="container d-flex justify-content-center align-items-center">
+          <div className="box box-shadow border-radius-5 p-3 d-flex flex-row-reverse my-3">
             <div className="box-left d-none d-sm-flex flex-column justify-content-center align-items-center col-sm-6 ps-sm-3">
               <img src={profile_illustration} alt="Profile illustration" className="illustration" />
             </div>
