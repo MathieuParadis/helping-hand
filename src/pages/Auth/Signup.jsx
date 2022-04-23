@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import { NavLink } from 'react-router-dom';
 
 // ASSETS IMPORTS
@@ -8,11 +8,37 @@ import auth_logo from '../../assets/logos/auth_logo.svg';
 import profile_icon from '../../assets/logos/profile_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
+import plus_icon from '../../assets/logos/plus_logo.svg';
+
 
 const Signup = () => {
+  const hiddenFileInput = useRef(null);
+  const [id_card, setId_card] = useState(null);
+
+
+  const handleClick = e => {
+    hiddenFileInput.current.click();
+  };
+
+  const getFileName = (file) => {
+    const indexSlash = file.lastIndexOf("/");
+    const indexBackSlash = file.lastIndexOf("\\");
+    file = file.slice(indexSlash + 1).slice(indexBackSlash + 1);
+
+    const array = file.split(".");
+    const fileName = array[0] + "." + array[array.length-1];
+    return fileName;
+  }
+
+  const handleChange = () => {
+    const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
+    labelHiddenFileInput.textContent =  getFileName(id_card);
+  }
+  
   const SignupPostRequest = (e) => {
     alert("Signing up");
   }
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,10 +68,20 @@ const Signup = () => {
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
                 </div>
-                <div className="file-input mb-3">
+                {/* <div className="file-input mb-3">
                   <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
                   <input type="file" className="" id="file" aria-describedby="file input field" placeholder="" required />
+                </div> */}
+
+              <div className="file-input mb-3">
+                <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
+                <div className="d-flex align-items-center">
+                  <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
+                  <p className="m-0 ps-3" id="labelHiddenFileInput">No file chosen</p>
                 </div>
+                <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg" ref={hiddenFileInput} />
+              </div>
+
                 <div className="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />

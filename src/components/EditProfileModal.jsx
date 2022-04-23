@@ -13,10 +13,6 @@ const EditProfileModal = ({userData}) => {
   const [id_card, setId_card] = useState(id);
   const hiddenFileInput = useRef(null);
 
-  const handleClick = e => {
-    hiddenFileInput.current.click();
-  };
-
   const closeEditProfileModal = () => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
     editProfileModal.style.visibility = "hidden";
@@ -26,6 +22,10 @@ const EditProfileModal = ({userData}) => {
   const updateInformationRequest = () => {
     alert("updating profile");
   }
+
+  const handleClick = e => {
+    hiddenFileInput.current.click();
+  };
 
   const getFileName = (file) => {
     const indexSlash = file.lastIndexOf("/");
@@ -41,7 +41,6 @@ const EditProfileModal = ({userData}) => {
     const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
     labelHiddenFileInput.textContent = getFileName(id_card);
   }
-
 
   return (
     <div className="edit-profile-modal">
@@ -61,7 +60,6 @@ const EditProfileModal = ({userData}) => {
                 <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" value={lname} onChange={(e) => setLname(e.target.value)} required />
                 <img src={profile_icon} alt="profile_icon" className="profile-icon" />
               </div>
-
               <div className="file-input mb-3">
                 <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
                 <div className="d-flex align-items-center">
