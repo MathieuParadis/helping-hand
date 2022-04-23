@@ -1,13 +1,9 @@
 // CONFIG IMPORTS
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 
 // ASSETS IMPORTS
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
-import t from '../assets/images/homepage_hero_bg.jpg';
-
-// COMPONENTS IMPORTS
-import UploadControl from '../components/UploadControl';
 
 const EditProfileModal = ({userData}) => {
   const {first_name, last_name, id} = userData;
@@ -32,22 +28,18 @@ const EditProfileModal = ({userData}) => {
   }
 
   const getFileName = (file) => {
-    let index = file.lastIndexOf("/");
-    file = file.slice(index + 1);
-
-    index = file.lastIndexOf("\\");
-    file = file.slice(index + 1);
+    const indexSlash = file.lastIndexOf("/");
+    const indexBackSlash = file.lastIndexOf("\\");
+    file = file.slice(indexSlash + 1).slice(indexBackSlash + 1);
 
     const array = file.split(".");
     const fileName = array[0] + "." + array[array.length-1];
     return fileName;
   }
 
-  getFileName(id_card);
-
-  const test2 = () => {
-    const shownFileInput = document.querySelector("#shownFileInput");
-    shownFileInput.value = getFileName(id_card);
+  const handleChange = () => {
+    const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
+    labelHiddenFileInput.textContent = getFileName(id_card);
   }
 
 
@@ -69,18 +61,14 @@ const EditProfileModal = ({userData}) => {
                 <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" value={lname} onChange={(e) => setLname(e.target.value)} required />
                 <img src={profile_icon} alt="profile_icon" className="profile-icon" />
               </div>
+
               <div className="file-input mb-3">
-                {/* <UploadControl value={id.file_name} onChange={(e) => setId_card(e.target.value)} /> */}
-                
                 <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
                 <div className="d-flex align-items-center">
                   <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
-                  <input type="text" className="m-0 ps-3" id="shownFileInput" value={getFileName(id)} />
+                  <p className="m-0 ps-3" id="labelHiddenFileInput">{getFileName(id)}</p>
                 </div>
-                <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => test2()} accept="image/png, image/jpeg" ref={hiddenFileInput} />
-
-
-
+                <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg" ref={hiddenFileInput} />
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                 <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update profile</button>
