@@ -38,7 +38,6 @@ const Signup = () => {
   const SignupPostRequest = (e) => {
     alert("Signing up");
   }
-  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -68,20 +67,14 @@ const Signup = () => {
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
                 </div>
-                {/* <div className="file-input mb-3">
+                <div className="file-input mb-3">
                   <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
-                  <input type="file" className="" id="file" aria-describedby="file input field" placeholder="" required />
-                </div> */}
-
-              <div className="file-input mb-3">
-                <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
-                <div className="d-flex align-items-center">
-                  <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
-                  <p className="m-0 ps-3" id="labelHiddenFileInput">No file chosen</p>
+                  <div className="d-flex align-items-center">
+                    <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
+                    <p className="m-0 ps-3" id="labelHiddenFileInput">No file chosen</p>
+                  </div>
+                  <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg" ref={hiddenFileInput} />
                 </div>
-                <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg" ref={hiddenFileInput} />
-              </div>
-
                 <div className="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />

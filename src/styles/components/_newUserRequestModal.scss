@@ -45,6 +45,10 @@
         display: block;
         width: 100%;
 
+        label {
+          font-size: 18px;
+        }
+
         .caption {
           font-size: 12px;
         }
@@ -78,20 +82,6 @@
           }
         }
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
   }
 }
