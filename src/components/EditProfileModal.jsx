@@ -63,12 +63,12 @@ const EditProfileModal = ({userData}) => {
                   <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" value={fname} onChange={(e) => setFname(e.target.value)} required />
                   <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                 </div>
-                <div className="input mb-3">
+                <div className="input my-3">
                   <label htmlFor="last_name" className="mb-1">Last name</label>
                   <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" value={lname} onChange={(e) => setLname(e.target.value)} required />
                   <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                 </div>
-                <div className="file-input mb-3">
+                <div className="file-input my-3">
                   <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
                   <div className="d-flex align-items-center">
                     <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />

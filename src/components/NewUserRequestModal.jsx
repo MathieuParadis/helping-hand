@@ -40,7 +40,7 @@ getPosition();
           <div className="form-container d-flex flex-grow-1 w-100">
             <form onSubmit={createRequest} className="d-flex flex-column justify-content-between w-100">
               <div>
-                <div className="input my-3">
+                <div className="input mb-3">
                   <label htmlFor="title" className="mb-1">Title&nbsp;<small className="caption">(50 characters max)</small></label>
                   <input type="text" className="form-control" id="title" aria-describedby="title input field" placeholder="Title" maxLength="50" required />
                 </div>

@@ -39,12 +39,12 @@ const ModifyCredentialsModal = ({userData}) => {
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" value={emailAdd} onChange={(e) => setEmailAdd(e.target.value)} required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
-                <div className="input mb-3">
+                <div className="input my-3">
                   <label htmlFor="password" className="mb-1">Password</label>
                   <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
-                <div className="input mb-3">
+                <div className="input my-3">
                   <label htmlFor="password" className="mb-1">Password confirmation</label>
                   <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
