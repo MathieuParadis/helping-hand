@@ -6,10 +6,7 @@ const user = [
     first_name: "Mathieu",
     last_name: "Paradis",
     email: "mathieu.paradis@gmail.com",
-    id: {
-      file: id_card,
-      file_name: "id_check.svg",
-    }
+    id: id_card
   },
 ];
 

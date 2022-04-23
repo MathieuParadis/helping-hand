@@ -49,7 +49,7 @@ const Profile = () => {
                 <div className="d-flex">
                   <p><strong>ID</strong>:&nbsp;</p>
                   <div className="id-card-box border-radius-5">
-                    <img className="id-card" src={id.file} alt="ID card"/>
+                    <img className="id-card" src={id} alt="ID card"/>
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-xl-row justify-content-xl-between mt-5">
