@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useState, useRef} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 
 // ASSETS IMPORTS
 import profile_icon from '../assets/logos/profile_logo.svg';
@@ -17,7 +17,14 @@ const EditProfileModal = ({userData}) => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
     editProfileModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
+    setFname(first_name);
+    setLname(last_name);
+    setId_card(id);
   }
+
+  useEffect(() => {
+    handleChange();
+  }, [id_card]);
 
   const updateInformationRequest = () => {
     alert("updating profile");
