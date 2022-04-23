@@ -14,6 +14,7 @@ const ModifyCredentialsModal = ({userData}) => {
     const modifyCredentialsModal = document.querySelector(".modify-credentials-modal");
     modifyCredentialsModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
+    setEmailAdd(email);
   }
 
   const postModifyCredentialsRequest = () => {
