@@ -27,24 +27,20 @@ const NewUserRequestModal = () => {
                   <label htmlFor="title" className="mb-1">Title&nbsp;<small className="caption">(50 characters max)</small></label>
                   <input type="text" className="form-control" id="title" aria-describedby="title input field" placeholder="Title" maxLength="50" required />
                 </div>
+
+
+                <div className="input mb-3 d-flex flex-column">
+                  <label htmlFor="type" className="mb-1">Type</label>
+                  <select className="select-form-control">
+                    <option value='0'>Material</option>
+                    <option value='1'>Service</option>
+                  </select>
+                </div>
+
+
                 <div className="input mb-3">
                   <label htmlFor="location" className="mb-1">Location</label>
                   <input type="text" className="form-control" id="location" aria-describedby="Location input field" placeholder="Location" required />
-                </div>
-                <div className="input mb-3 d-flex flex-column">
-                  <label htmlFor="location" className="mb-1">Location</label>
-
-                  <select className="input-display">
-                    <option value='0'>Non renseigné</option>
-                    <option value='1'>Homme</option>
-                    <option value='2'>Femme</option>
-                  </select>
-
-
-
-
-
-
                 </div>
                 <div className="input mb-3">
                   <label htmlFor="description" className="mb-1">Description&nbsp;<small className="caption">(400 characters max)</small></label>
