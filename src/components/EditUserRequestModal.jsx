@@ -6,7 +6,7 @@ const EditUserRequestModal = ({request}) => {
   let type = "";
   let description = "";
   let location = "";
-  let position = {lat: 0, long: 0};
+  let position = {lat: 0, lgn: 0};
   let status = "";
 
   if (request.request) {
