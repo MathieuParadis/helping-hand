@@ -1,11 +1,16 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 const NewUserRequestModal = () => {
+  const [lat, setLat] = useState("");
+  const [long, setLong] = useState("");
+
   const closeNewUserRequestModal = () => {
     const newUserRequestModal = document.querySelector(".new-user-request-modal");
     newUserRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
+    setLat("");
+    setLong("");
   }
 
   const createRequest = () => {
@@ -16,19 +21,14 @@ const NewUserRequestModal = () => {
 function getPosition() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      const lat = position.coords.latitude;
-      const long = position.coords.longitude;
-      const coordinates = [lat, long];
-      alert(coordinates);
-  
-      return coordinates
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
     });
   } else {
     alert("Your browser does not support this functionality");
   }
 }
 
-getPosition();
 
 
   return (
@@ -62,11 +62,11 @@ getPosition();
                   <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                     <div className="input mb-3 mb-md-0 me-0 me-md-2">
                       <label htmlFor="longitude" className="mb-1">Longitude</label>
-                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" required />
+                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
                     </div>
                     <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
                       <label htmlFor="latitude" className="mb-1">Latitude</label>
-                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" placeholder="Latitude" required />
+                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" placeholder="Latitude" value={long} onChange={(e) => setLong(e.target.value)} required />
                     </div>
                   </div>
                   <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
