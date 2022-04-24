@@ -10,6 +10,24 @@ import ShowUserRequestModal from '../components/ShowUserRequestModal';
 // DATA IMPORTS
 import requests from '../data/Requests';
 
+const emptyRequest = {
+  request: {
+    title: "",
+    type: "",
+    description: "",
+    location: "",
+    position: {
+      lat: 0,
+      lgn: 0,
+    },
+    status: ""
+  },
+  requester: {
+    first_name: "",
+    last_name: "",
+  }
+}
+
 const UserRequests = () => {
   const [currentUserRequest, setCurrentUserRequest] = useState(null);
 
@@ -26,6 +44,7 @@ const UserRequests = () => {
 
   const openShowUserRequestModal = (request) => {
     setCurrentUserRequest(request);
+
     const newUserRequestModal = document.querySelector(".new-user-request-modal");
     const showUserRequestModal = document.querySelector(".show-user-request-modal");
     const editUserRequestModal = document.querySelector(".edit-user-request-modal");
@@ -39,18 +58,15 @@ const UserRequests = () => {
   const openEditUserRequestModal = (request) => {
     setCurrentUserRequest(request);
 
-    if (currentUserRequest !== null) {
-      const newUserRequestModal = document.querySelector(".new-user-request-modal");
-      const showUserRequestModal = document.querySelector(".show-user-request-modal");
-      const editUserRequestModal = document.querySelector(".edit-user-request-modal");
-  
-      newUserRequestModal.style.visibility = 'hidden';
-      showUserRequestModal.style.visibility = 'hidden';
-      editUserRequestModal.style.visibility = 'visible';
-      document.querySelector("body").classList.add("clicked");
-    }
-  }
+    const newUserRequestModal = document.querySelector(".new-user-request-modal");
+    const showUserRequestModal = document.querySelector(".show-user-request-modal");
+    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
 
+    newUserRequestModal.style.visibility = 'hidden';
+    showUserRequestModal.style.visibility = 'hidden';
+    editUserRequestModal.style.visibility = 'visible';
+    document.querySelector("body").classList.add("clicked");
+  }
 
   const markRequestAsFulfilled = (request) => {
     setCurrentUserRequest(request);
@@ -87,15 +103,15 @@ const UserRequests = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // useEffect(() => {
+  // }, [currentUserRequest]);
+
   return (
     <>
-                <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
 
-      
-        if (currentUserRequest) {
-          <EditUserRequestModal request={currentUserRequest} />
-        }
-      
+    
+      <ShowUserRequestModal request={currentUserRequest ? currentUserRequest : emptyRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+      <EditUserRequestModal request={currentUserRequest ? currentUserRequest : emptyRequest} />
 
       <div className="user-requests">
         <div className="container d-flex justify-content-center w-100">

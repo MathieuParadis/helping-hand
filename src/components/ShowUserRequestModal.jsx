@@ -13,7 +13,7 @@ const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfil
       <div className="show-user-request-modal-overlay"></div>
       <div className="show-user-request-modal-white-bg">
 
-        {request && (
+        {request.request && (
             <div className="show-user-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
               <p className="close-button pointer h4 text-secondary" onClick={() => closeShowUserRequestModal()}>x</p>
               <div>

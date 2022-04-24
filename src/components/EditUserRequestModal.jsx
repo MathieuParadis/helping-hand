@@ -2,7 +2,10 @@
 import React from 'react';
 
 const EditUserRequestModal = ({request}) => {
-  alert(request)
+  const {title, type, } = request.request
+
+  alert(title);
+
   const closeEditUserRequestModal = () => {
     const editUserRequestModal = document.querySelector(".edit-user-request-modal");
     editUserRequestModal.style.visibility = "hidden";
