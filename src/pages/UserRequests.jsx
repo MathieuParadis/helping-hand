@@ -38,15 +38,19 @@ const UserRequests = () => {
 
   const openEditUserRequestModal = (request) => {
     setCurrentUserRequest(request);
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
 
-    newUserRequestModal.style.visibility = 'hidden';
-    showUserRequestModal.style.visibility = 'hidden';
-    editUserRequestModal.style.visibility = 'visible';
-    document.querySelector("body").classList.add("clicked");
+    if (currentUserRequest !== null) {
+      const newUserRequestModal = document.querySelector(".new-user-request-modal");
+      const showUserRequestModal = document.querySelector(".show-user-request-modal");
+      const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+  
+      newUserRequestModal.style.visibility = 'hidden';
+      showUserRequestModal.style.visibility = 'hidden';
+      editUserRequestModal.style.visibility = 'visible';
+      document.querySelector("body").classList.add("clicked");
+    }
   }
+
 
   const markRequestAsFulfilled = (request) => {
     setCurrentUserRequest(request);
@@ -85,8 +89,14 @@ const UserRequests = () => {
 
   return (
     <>
-      <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
-      <EditUserRequestModal request={currentUserRequest} />
+                <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+
+      
+        if (currentUserRequest) {
+          <EditUserRequestModal request={currentUserRequest} />
+        }
+      
+
       <div className="user-requests">
         <div className="container d-flex justify-content-center w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">

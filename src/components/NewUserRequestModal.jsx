@@ -29,8 +29,6 @@ function getPosition() {
   }
 }
 
-
-
   return (
     <div className="new-user-request-modal">
       <div className="new-user-request-modal-overlay"></div>
@@ -55,8 +53,6 @@ function getPosition() {
                   <label htmlFor="location" className="mb-1">Location</label>
                   <input type="text" className="form-control" id="location" aria-describedby="Location input field" placeholder="Location" required />
                 </div>
-
-
                 <div className="geo-position-section d-flex flex-column my-4">
                   <h5 className="mb-2">Geographical coordinates</h5>
                   <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
@@ -70,14 +66,7 @@ function getPosition() {
                     </div>
                   </div>
                   <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
-
                 </div>
-
-
-
-
-
-
                 <div className="input my-4">
                   <label htmlFor="description" className="mb-1">Description&nbsp;<small className="caption">(400 characters max)</small></label>
                   <textarea type="text" className="form-control" id="description" aria-describedby="Description input field" maxLength="400" rows="5" placeholder="Explain precisely what your need is here...." required />

@@ -22,10 +22,6 @@ const EditProfileModal = ({userData}) => {
     setId_card(id);
   }
 
-  useEffect(() => {
-    handleChange();
-  }, [id_card]);
-
   const updateInformationRequest = () => {
     alert("updating profile");
   }
@@ -48,6 +44,10 @@ const EditProfileModal = ({userData}) => {
     const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
     labelHiddenFileInput.textContent = getFileName(id_card);
   }
+
+  useEffect(() => {
+    handleChange();
+  }, [id_card]);
 
   return (
     <div className="edit-profile-modal">
