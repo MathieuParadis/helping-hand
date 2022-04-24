@@ -17,7 +17,6 @@ const NewUserRequestModal = () => {
     alert("creating new request");
   }
 
-
   const getPosition = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {

@@ -18,11 +18,8 @@ const EditUserRequestModal = ({request}) => {
   const [requestDescription, setRequestDescription] = useState(description);
   const [requestLocation, setRequestLocation] = useState(location);
   const [lat, setLat] = useState(position.lat);
-  const [long, setLong] = useState(position.long);
+  const [long, setLong] = useState(position.lgn);
   const [requestStatus, setRequestStatus] = useState(status);
-  
-  // alert(title);
-  // alert(requestTitle)
 
   const closeEditUserRequestModal = () => {
     const editUserRequestModal = document.querySelector(".edit-user-request-modal");
@@ -34,17 +31,16 @@ const EditUserRequestModal = ({request}) => {
     alert("updating request");
   }
 
-
-const getPosition = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      setLat(position.coords.latitude);
-      setLong(position.coords.longitude);
-    });
-  } else {
-    alert("Your browser does not support this functionality");
+  const getPosition = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+    } else {
+      alert("Your browser does not support this functionality");
+    }
   }
-}
 
 useEffect(() => {
   setRequestTitle(title);
@@ -52,10 +48,9 @@ useEffect(() => {
   setRequestDescription(description);
   setRequestLocation(location);
   setLat(position.lat);
-  setLong(position.long);
+  setLong(position.lgn);
   setRequestStatus(status);
 }, [request.request]);
-
 
   return (
     <div className="edit-user-request-modal">

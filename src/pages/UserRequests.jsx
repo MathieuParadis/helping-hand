@@ -11,7 +11,7 @@ import ShowUserRequestModal from '../components/ShowUserRequestModal';
 import requests from '../data/Requests';
 
 const UserRequests = () => {
-  const [currentUserRequest, setCurrentUserRequest] = useState({});
+  const [currentUserRequest, setCurrentUserRequest] = useState('');
 
   const openNewUserRequestModal = (e) => {
     const newUserRequestModal = document.querySelector(".new-user-request-modal");

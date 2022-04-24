@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const closeShowUserRequestModal = () => {
