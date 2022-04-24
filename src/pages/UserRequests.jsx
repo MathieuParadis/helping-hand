@@ -10,26 +10,8 @@ import ShowUserRequestModal from '../components/ShowUserRequestModal';
 // DATA IMPORTS
 import requests from '../data/Requests';
 
-const emptyRequest = {
-  request: {
-    title: "",
-    type: "",
-    description: "",
-    location: "",
-    position: {
-      lat: 0,
-      lgn: 0,
-    },
-    status: ""
-  },
-  requester: {
-    first_name: "",
-    last_name: "",
-  }
-}
-
 const UserRequests = () => {
-  const [currentUserRequest, setCurrentUserRequest] = useState(null);
+  const [currentUserRequest, setCurrentUserRequest] = useState({});
 
   const openNewUserRequestModal = (e) => {
     const newUserRequestModal = document.querySelector(".new-user-request-modal");
@@ -103,15 +85,12 @@ const UserRequests = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // useEffect(() => {
-  // }, [currentUserRequest]);
-
   return (
     <>
 
     
-      <ShowUserRequestModal request={currentUserRequest ? currentUserRequest : emptyRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
-      <EditUserRequestModal request={currentUserRequest ? currentUserRequest : emptyRequest} />
+      <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+      <EditUserRequestModal request={currentUserRequest} />
 
       <div className="user-requests">
         <div className="container d-flex justify-content-center w-100">
