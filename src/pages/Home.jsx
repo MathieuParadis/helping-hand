@@ -37,9 +37,9 @@ const Home = () => {
           <h1 className="text-white text-center fw-bold">How it works</h1>
           <div className="rule-cards row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4">
           { 
-            rules.map((rule) => {
+            rules.homepage.map((rule) => {
               return (
-                <RuleCard rule={rule} />
+                <RuleCard rule={rule} key={rule.title} />
               )
             })
           }
@@ -53,7 +53,7 @@ const Home = () => {
         { 
           testimonials.map((testimony) => {
             return (
-              <TestimonyCard testimony={testimony} />
+              <TestimonyCard testimony={testimony} key={testimony.name} />
             )
           })
         }
