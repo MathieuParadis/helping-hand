@@ -56,7 +56,7 @@ const MapRequests = () => {
 
   return (
     <div className="map-requests">
-      <div class="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
+      <div className="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
         <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">Requests around me</h1>
 
         <div className="caption d-flex flex-column flex-md-row align-self-start my-4">
