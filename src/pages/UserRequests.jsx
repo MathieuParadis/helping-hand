@@ -90,7 +90,7 @@ const UserRequests = () => {
       <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditUserRequestModal request={currentUserRequest} />
       <div className="user-requests">
-        <div className="container d-flex justify-content-center w-100">
+        <div className="container d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My requests</h1>
             <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewUserRequestModal()}>Request help</button>
