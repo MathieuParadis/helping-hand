@@ -4,6 +4,9 @@ import React, {useEffect} from 'react';
 // ASSETS IMPORTS
 import search_icon from '../assets/logos/search_logo.svg';
 
+// COMPONENTS IMPORTS
+import ChatCard from '../components/ChatCard';
+
 // DATA IMPORTS
 import chats from '../data/Chats';
 
@@ -30,13 +33,24 @@ const Chat = () => {
                 </div>
               </div>
             </div>
+
             <div class="row h-100">
               <div class="col-12 col-md-7 col-lg-8">
                 request
               </div>
-              <div class="col-12 col-md-5 col-lg-4 border-left-grey">
-                Search
-                <p>defwr</p>
+              <div class="col-12 col-md-5 col-lg-4 border-left-grey ps-0">
+                {
+                  chats && (
+                    chats.map((chat) => {
+                      return (
+                        <ChatCard chat={chat} key={chat.request.title} />
+                      )
+                    })
+                  )
+                }
+
+
+
               </div>
             </div>
 
