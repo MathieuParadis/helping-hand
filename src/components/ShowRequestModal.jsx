@@ -24,11 +24,14 @@ const ShowRequestModal = ({request}) => {
     }
   }, [request]);
 
+  useEffect(() => {
+  }, []);
+
   return (
     <div className="show-request-modal">
       <div className="show-request-modal-overlay"></div>
       <div className="show-request-modal-white-bg">
-        {request && (
+        {request.request && (
           <div className="show-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
             <p className="close-button pointer h4 text-secondary" onClick={() => closeShowRequestModal()}>x</p>
             <div>

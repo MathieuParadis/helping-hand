@@ -45,7 +45,7 @@ const MapRequests = () => {
   }
 
   const openShowRequestModal = () => {
-    let modal = document.querySelector(".show-request-modal");
+    const modal = document.querySelector(".show-request-modal");
     modal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }

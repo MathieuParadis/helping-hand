@@ -1,6 +1,10 @@
-import React from 'react';
+// CONFIG IMPORTS
+import React, {useEffect} from 'react';
 
-const ChatBanner = ({chat}) => {
+const ChatBanner = ({chat, setOpenShowRequestModal}) => {
+  useEffect(() => {
+  }, []);
+
   return (
     <div className="chat-banner d-flex justify-content-between align-items-center p-3">
       {
@@ -8,10 +12,10 @@ const ChatBanner = ({chat}) => {
           <>
             <div>
               <h4>{chat.request.title}</h4>
-              <p className="m-0">by {chat.request.requester.first_name} {chat.request.requester.last_name}</p>
+              <p className="m-0">by {chat.requester.first_name} {chat.requester.last_name}</p>
             </div>
             <div>
-              <button className="btn button-ternary button-w150 border-radius-50 p-2">See details</button>
+              <button className="btn button-ternary button-w150 border-radius-50 p-2" onClick={() => setOpenShowRequestModal()}>See details</button>
             </div>
           </>
         )

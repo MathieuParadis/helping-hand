@@ -10,10 +10,10 @@ const chats = [
         lgn: -105.35,
       },
       status: "in progress",
-      requester: {
-        first_name: "Cony",
-        last_name: "Chan",
-      }
+    },
+    requester: {
+      first_name: "Cony",
+      last_name: "Chan",
     },
     volunteer: {
       first_name: "Mathieu",
@@ -45,10 +45,10 @@ const chats = [
         lgn: -105.24,
       },
       status: "in progress",
-      requester: {
-        first_name: "Martin",
-        last_name: "Cooper",
-      }
+    },
+    requester: {
+      first_name: "Martin",
+      last_name: "Cooper",
     },
     volunteer: {
       first_name: "Mathieu",
