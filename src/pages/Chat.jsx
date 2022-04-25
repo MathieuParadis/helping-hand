@@ -38,6 +38,7 @@ const Chat = () => {
               <div class="col-12 col-md-7 col-lg-8">
                 request
               </div>
+              
               <div class="col-12 col-md-5 col-lg-4 border-left-grey ps-0">
                 {
                   chats && (
