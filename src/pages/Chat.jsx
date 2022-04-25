@@ -4,6 +4,9 @@ import React, {useEffect} from 'react';
 // ASSETS IMPORTS
 import search_icon from '../assets/logos/search_logo.svg';
 
+// DATA IMPORTS
+import chats from '../data/Chats';
+
 const Chat = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
