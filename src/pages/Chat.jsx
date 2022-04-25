@@ -40,10 +40,10 @@ const Chat = () => {
             <div className="box box-border-grey border-radius-5 w-100 h-100">
             
               <div className="row border-bottom-grey">
-                <div className="col-12 col-md-7 col-lg-8">
-                <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
+                <div className="col-12 col-md-7 col-lg-8 pe-md-0 ">
+                  <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                 </div>
-                <div className="col-12 col-md-5 col-lg-4 border-left-grey d-flex justify-content-center align-items-center ps-0">
+                <div className="col-12 col-md-5 col-lg-4 border-left-grey d-none d-md-flex justify-content-center align-items-center ps-md-0 ">
                   <div className="input p-3">
                     <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="Search chat ..." required />
                     <img src={search_icon} alt="search_icon" className="search-icon" />
