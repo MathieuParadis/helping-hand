@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 // ASSETS IMPORTS
 import mail_icon from '../assets/logos/mail_logo.svg';
@@ -25,12 +25,21 @@ const ModifyCredentialsModal = ({userData}) => {
     alert("deleting account");
   }
 
+  const scrollTopComponent = () => {
+    const modalTitle = document.querySelector(".modify-credentials-modal-title");
+    modalTitle.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  useEffect(() => {
+    scrollTopComponent();
+  }, [userData]);
+
   return (
     <div className="modify-credentials-modal">
       <div className="modify-credentials-modal-overlay"></div>
       <div className="modify-credentials-modal-white-bg">
         <div className="modify-credentials-modal-content d-flex flex-column justify-content-between align-items-center w-100 p-4 p-md-5">
-          <h2 className="text-primary fw-bold mb-5">Change my credentials</h2>
+          <h2 className="modify-credentials-modal-title text-primary fw-bold mb-5">Change my credentials</h2>
           <div className="form-container d-flex flex-grow-1 w-100">
             <form onSubmit={postModifyCredentialsRequest} className="d-flex flex-column justify-content-between w-100">
               <div>

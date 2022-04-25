@@ -25,6 +25,7 @@ const EditUserRequestModal = ({request}) => {
     const editUserRequestModal = document.querySelector(".edit-user-request-modal");
     editUserRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
+    scrollTopComponent();
   }
 
   const updateRequest = () => {
@@ -42,6 +43,11 @@ const EditUserRequestModal = ({request}) => {
     }
   }
 
+  const scrollTopComponent = () => {
+    const modalTitle = document.querySelector(".edit-user-request-modal-title");
+    modalTitle.scrollIntoView({ behavior: 'smooth' });
+  }
+
 useEffect(() => {
   setRequestTitle(title);
   setRequestType(type);
@@ -52,13 +58,17 @@ useEffect(() => {
   setRequestStatus(status);
 }, [request.request]);
 
+useEffect(() => {
+  scrollTopComponent();
+}, [request]);
+
   return (
     <div className="edit-user-request-modal">
       <div className="edit-user-request-modal-overlay"></div>
       <div className="edit-user-request-modal-white-bg">
-        {request.request && (
-          <div className="edit-user-request-modal-content d-flex flex-column justify-content-between align-items-center w-100 p-4 p-md-5">
-            <h2 className="text-primary fw-bold mb-5">Edit request</h2>
+        <div className="edit-user-request-modal-content d-flex flex-column justify-content-between align-items-center w-100 p-4 p-md-5">
+          <h2 className="edit-user-request-modal-title text-primary fw-bold mb-5">Edit request</h2>
+          {request.request && (
             <div className="form-container d-flex flex-grow-1 w-100">
               <form onSubmit={updateRequest} className="d-flex flex-column justify-content-between w-100">
                 <div>
@@ -102,8 +112,8 @@ useEffect(() => {
                 </div>
               </form>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

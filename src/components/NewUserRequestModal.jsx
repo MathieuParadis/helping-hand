@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 const NewUserRequestModal = () => {
   const [lat, setLat] = useState("");
@@ -11,6 +11,7 @@ const NewUserRequestModal = () => {
     document.querySelector("body").classList.remove("clicked");
     setLat("");
     setLong("");
+    scrollTopComponent();
   }
 
   const createRequest = () => {
@@ -28,12 +29,17 @@ const NewUserRequestModal = () => {
     }
   }
 
+  const scrollTopComponent = () => {
+    const modalTitle = document.querySelector(".new-user-request-modal-title");
+    modalTitle.scrollIntoView({ behavior: 'smooth' });
+  }
+
   return (
     <div className="new-user-request-modal">
       <div className="new-user-request-modal-overlay"></div>
       <div className="new-user-request-modal-white-bg">
         <div className="new-user-request-modal-content d-flex flex-column justify-content-between align-items-center w-100 p-4 p-md-5">
-          <h2 className="text-primary fw-bold mb-5">New request</h2>
+          <h2 className="new-user-request-modal-title text-primary fw-bold mb-5">New request</h2>
           <div className="form-container d-flex flex-grow-1 w-100">
             <form onSubmit={createRequest} className="d-flex flex-column justify-content-between w-100">
               <div>

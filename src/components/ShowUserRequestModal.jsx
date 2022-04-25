@@ -8,6 +8,17 @@ const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfil
     document.querySelector("body").classList.remove("clicked");
   }
 
+  const scrollTopComponent = () => {
+    const modalTitle = document.querySelector(".show-user-request-modal-title");
+    modalTitle.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  useEffect(() => {
+    if (request.request) {
+      scrollTopComponent();
+    }
+  }, [request]);
+
   return (
     <div className="show-user-request-modal">
       <div className="show-user-request-modal-overlay"></div>
@@ -16,7 +27,7 @@ const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfil
             <div className="show-user-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
               <p className="close-button pointer h4 text-secondary" onClick={() => closeShowUserRequestModal()}>x</p>
               <div>
-                <h2 className="text-primary fw-bold mb-5">{request.request.title}</h2>
+                <h2 className="show-user-request-modal-title text-primary fw-bold mb-5">{request.request.title}</h2>
                 <p className="mb-4"><strong>Requester: </strong>{request.requester.first_name} {request.requester.last_name}</p>
                 <p className="mb-4"><strong>Type: </strong>{request.request.type}</p>
                 <p className="mb-4"><strong>Location: </strong>{request.request.location}</p>

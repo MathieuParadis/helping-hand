@@ -45,16 +45,25 @@ const EditProfileModal = ({userData}) => {
     labelHiddenFileInput.textContent = getFileName(id_card);
   }
 
+  const scrollTopComponent = () => {
+    const modalTitle = document.querySelector(".edit-profile-modal-title");
+    modalTitle.scrollIntoView({ behavior: 'smooth' });
+  }
+
   useEffect(() => {
     handleChange();
   }, [id_card]);
+
+  useEffect(() => {
+    scrollTopComponent();
+  }, [userData]);
 
   return (
     <div className="edit-profile-modal">
       <div className="edit-profile-modal-overlay"></div>
       <div className="edit-profile-modal-white-bg">
         <div className="edit-profile-modal-content d-flex flex-column align-items-center w-100 p-4 p-md-5">
-          <h2 className="text-primary fw-bold mb-5">Edit my information</h2>
+          <h2 className="edit-profile-modal-title text-primary fw-bold mb-5">Edit my information</h2>
           <div className="form-container d-flex flex-grow-1 w-100">
             <form onSubmit={updateInformationRequest} className="d-flex flex-column justify-content-between w-100">
               <div>
