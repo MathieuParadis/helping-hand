@@ -314,9 +314,13 @@ a {
 }
 
 
-// -------------------- BOX SHADOW CLASSES -------------------- //
+// -------------------- BOX CLASSES -------------------- //
 .box-shadow {
   box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+}
+
+.box-border-grey {
+  border: 2px solid var(--basic-color-grey-dark);
 }
 
 
@@ -337,6 +341,21 @@ a {
   border-radius: 50px;
 }
 
+.border-top-grey {
+  border-top: 2px solid var(--basic-color-grey-dark);;
+}
+
+.border-bottom-grey {
+  border-bottom: 2px solid var(--basic-color-grey-dark);;
+}
+
+.border-left-grey {
+  border-left: 2px solid var(--basic-color-grey-dark);;
+}
+
+.border-right-grey {
+  border-right: 2px solid var(--basic-color-grey-dark);;
+}
 
 // -------------------- BACKGROUND CLASSES -------------------- //
 .bg1 {
