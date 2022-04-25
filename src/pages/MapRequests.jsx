@@ -91,7 +91,7 @@ const MapRequests = () => {
                           <h5 className="">{currentRequest.request.title}</h5>
                           <p className="m-0"><strong>Type: </strong>{currentRequest.request.type}</p>
                           <p className="m-0"><strong>Location: </strong>{currentRequest.request.location}</p>
-                          <button className="btn button-primary w-100 p-1" onClick={() => openShowRequestModal()} >See details</button>
+                          <button className="btn button-primary w-100 p-1" onClick={() => openShowRequestModal()}>See details</button>
                         </>
                       }
                     </div>
