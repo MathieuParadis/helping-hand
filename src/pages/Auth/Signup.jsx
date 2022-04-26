@@ -10,7 +10,6 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 import plus_icon from '../../assets/logos/plus_logo.svg';
 
-
 const Signup = () => {
   const hiddenFileInput = useRef(null);
   const [id_card, setId_card] = useState(null);

@@ -17,7 +17,6 @@ const Home = () => {
 
   return (
     <div className="home">
-
       {/* hero section */}
       <div className="hero-section">
         <div className="bg-picture"></div>

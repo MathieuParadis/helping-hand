@@ -105,14 +105,6 @@ const UserRequests = () => {
               { 
                 requests.map((request) => {
                   return (
-                    // request.request.type === "material" ? 
-                    // <MaterialRequestCard 
-                    //   request={request} 
-                    //   setOpenShowModal={openShowUserRequestModal} 
-                    //   setOpenEditModal={openEditUserRequestModal} 
-                    //   setMarkRequestAsFulfilled={markRequestAsFulfilled} 
-                    //   key={request.request.title} 
-                    // /> : 
                     <RequestCard 
                       request={request} 
                       setOpenShowModal={openShowUserRequestModal} 

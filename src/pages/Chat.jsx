@@ -62,7 +62,6 @@ const Chat = () => {
     <>
       <ShowUserRequestModal request={currentChat} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditUserRequestModal request={currentChat} />
-
       <div className="chat d-flex justify-content-center">
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
