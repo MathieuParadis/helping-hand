@@ -1,17 +1,13 @@
 .chat {
   min-height: 85vh;
-  max-height: 100vh;
   width: 100%;
 
   .box {
     overflow: hidden;
     min-height: 85vh;
-    max-height: 100vh;
+    max-height: 95vh;
 
     .top-section {
-      // .selected-chat-section {
-      // }
-
       .search-chat-section-content {
         .input {
           position: relative;
