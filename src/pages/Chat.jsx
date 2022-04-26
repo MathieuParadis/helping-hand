@@ -7,6 +7,7 @@ import search_icon from '../assets/logos/search_logo.svg';
 // COMPONENTS IMPORTS
 import ChatBanner from '../components/ChatBanner';
 import ChatCard from '../components/ChatCard';
+import ChatConversation from '../components/ChatConversation';
 import ShowRequestModal from '../components/ShowRequestModal';
 
 // DATA IMPORTS
@@ -43,6 +44,7 @@ const Chat = () => {
                 <div className="col-12 col-md-7 col-lg-8 pe-md-0 ">
                   <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                 </div>
+
                 <div className="col-12 col-md-5 col-lg-4 border-left-grey d-none d-md-flex justify-content-center align-items-center ps-md-0 ">
                   <div className="input p-3">
                     <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="Search chat ..." required />
@@ -53,7 +55,7 @@ const Chat = () => {
 
               <div className="row h-100">
                 <div className="col-12 col-md-7 col-lg-8">
-                  request
+                  <ChatConversation chat={currentChat} />
                 </div>
                 
                 <div className="col-12 col-md-5 col-lg-4 border-left-grey ps-0">
@@ -66,9 +68,6 @@ const Chat = () => {
                       })
                     )
                   }
-
-
-
                 </div>
               </div>
 
