@@ -35,7 +35,7 @@ const Chat = () => {
       <ShowRequestModal request={currentChat} />
 
       <div className="chat d-flex justify-content-center">
-        <div className="chat-container d-flex justify-content-center mx-0 w-100">
+        <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My chats</h1>
             <div className="box box-border-grey border-radius-5 w-100 h-100">
