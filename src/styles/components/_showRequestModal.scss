@@ -1,4 +1,4 @@
-.show-request-modal {
+.show-user-request-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,18 @@
   visibility: hidden;
   opacity: 1;
 
-  .show-request-modal-overlay {
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+
+    @include mobile {
+      top: 3px;
+      right: 6px;
+    }
+  }
+
+  .show-user-request-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -22,7 +33,7 @@
     opacity: 0.7;
   }
 
-  .show-request-modal-white-bg {
+  .show-user-request-modal-white-bg {
     display: flex;
     min-height: 70vh;
     max-height: 90vh;
@@ -33,18 +44,7 @@
     overflow: hidden;
     position:relative;
 
-    .close-button {
-      position: absolute;
-      top: 15px;
-      right: 25px;
-  
-      @include mobile {
-        top: 3px;
-        right: 6px;
-      }
-    }
-
-    .show-request-modal-content {
+    .show-user-request-modal-content {
       min-height: 70vh;
       max-height: 90vh;
       height: 100%;

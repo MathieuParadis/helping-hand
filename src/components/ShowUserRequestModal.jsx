@@ -8,6 +8,10 @@ const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfil
     document.querySelector("body").classList.remove("clicked");
   }
 
+  const openChat = () => {
+    alert("opening chat");
+  }
+
   const scrollTopComponent = () => {
     const modalTitle = document.querySelector(".show-user-request-modal-title");
     modalTitle.scrollIntoView({ behavior: 'smooth' });
@@ -37,6 +41,7 @@ const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfil
                 <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
                 <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button>
               </div>
+              <button className="btn d-none button-primary button-modal mt-4 p-1" onClick={() => openChat()} >Volunteer</button>
             </div>
           )}
       </div>
