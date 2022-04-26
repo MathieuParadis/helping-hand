@@ -12,7 +12,7 @@
       // .selected-chat-section {
       // }
 
-      .search-chat-section {
+      .search-chat-section-content {
         .input {
           position: relative;
           display: block;
@@ -46,11 +46,11 @@
     .bottom-section {
       overflow-y: hidden;
 
-      .chat-message-section {
+      .chat-message-section-content {
         overflow-y: hidden;
       }
 
-      .chat-index-section {
+      .chat-index-section-content {
         overflow-y: scroll;
       }
     }

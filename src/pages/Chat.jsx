@@ -47,11 +47,44 @@ const Chat = () => {
     alert(currentChat.request.title + " marked as fulfilled");
   }
 
+  const responsiveChat = () => {
+    const selectedChatSection = document.querySelector(".selected-chat-section");
+    const searchChatSection = document.querySelector(".search-chat-section");
+    const chatMessageSection = document.querySelector(".chat-message-section");
+    const chatIndexSection = document.querySelector(".chat-index-section");
+
+    if (currentChat === "") {
+      selectedChatSection.classList.remove("d-block");
+      selectedChatSection.classList.add("d-none", "d-md-block");
+
+      searchChatSection.classList.remove("d-none", "d-md-flex");
+      searchChatSection.classList.add("d-flex");
+      
+      chatMessageSection.classList.remove("d-block");
+      chatMessageSection.classList.add("d-none", "d-md-block");
+
+      chatIndexSection.classList.remove("d-none", "d-md-block");
+      chatIndexSection.classList.add("d-block");
+    } else {
+      selectedChatSection.classList.remove("d-none", "d-md-block");
+      selectedChatSection.classList.add("d-block");
+
+      searchChatSection.classList.remove("d-flex");
+      searchChatSection.classList.add("d-none", "d-md-flex");
+
+      chatMessageSection.classList.remove("d-none", "d-md-block");
+      chatMessageSection.classList.add("d-block");
+
+      chatIndexSection.classList.remove("d-block");
+      chatIndexSection.classList.add("d-none", "d-md-block");
+    }
+  }
 
 
 
-
-
+  useEffect(() => {
+    responsiveChat();
+  }, [currentChat]);
 
 
   useEffect(() => {
@@ -66,17 +99,21 @@ const Chat = () => {
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My chats</h1>
+
+
+            <button className="btn button-ternary button-w150 border-radius-50 d-block d-md-none p-2 mb-4" onClick={() => setCurrentChat("")}>Back</button>
+
             <div className="box box-border-grey d-flex flex-column border-radius-5 w-100 h-100">
             
               <div className="top-section row border-bottom-grey">
-                <div className="col-12 col-md-7 col-lg-8 pe-md-0 ">
-                  <div className="selected-chat-section">
+                <div className="selected-chat-section col-12 col-md-7 col-lg-8 pe-md-0 ">
+                  <div className="selected-chat-section-content">
                     <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                   </div>
                 </div>
 
-                <div className="col-12 col-md-5 col-lg-4 border-left-grey d-none d-md-flex justify-content-center align-items-center ps-0 ">
-                  <div className="search-chat-section w-100">
+                <div className="search-chat-section col-12 col-md-5 col-lg-4 border-left-grey justify-content-center align-items-center ps-0 ">
+                  <div className="search-chat-section-content w-100">
                     <div className="input p-3">
                       <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="Search chat ..." required />
                       <img src={search_icon} alt="search_icon" className="search-icon" />
@@ -86,14 +123,14 @@ const Chat = () => {
               </div>
 
               <div className="bottom-section row flex-grow-1">
-                <div className="col-12 col-md-7 col-lg-8 pe-0 h-100">
-                  <div className="chat-message-section h-100">
+                <div className="chat-message-section col-12 col-md-7 col-lg-8 pe-0 h-100">
+                  <div className="chat-message-section-content h-100">
                     <ChatConversation chat={currentChat} />
                   </div>
                 </div>
                 
-                <div className="col-12 col-md-5 col-lg-4 border-left-grey ps-0 h-100">
-                  <div className="chat-index-section h-100">
+                <div className="chat-index-section col-12 col-md-5 col-lg-4 border-left-grey ps-0 h-100">
+                  <div className="chat-index-section-content h-100">
                   {
                     chats && (
                       chats.map((chat) => {
