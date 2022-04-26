@@ -1,3 +1,4 @@
+// CONFIG IMPORTS
 import React from 'react';
 
 const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {

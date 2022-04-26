@@ -2,9 +2,9 @@
 import React, {useState, useEffect} from 'react';
 
 // COMPONENTS IMPORTS
-import EditUserRequestModal from '../components/EditUserRequestModal';
+import EditRequestModal from '../components/EditRequestModal';
 import RequestCard from '../components/RequestCard';
-import ShowUserRequestModal from '../components/ShowUserRequestModal';
+import ShowRequestModal from '../components/ShowRequestModal';
 
 // DATA IMPORTS
 import requests from '../data/Requests';
@@ -12,40 +12,40 @@ import requests from '../data/Requests';
 const UserRequests = () => {
   const [currentUserRequest, setCurrentUserRequest] = useState('');
 
-  const openNewUserRequestModal = (e) => {
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+  const openNewRequestModal = (e) => {
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const showRequestModal = document.querySelector(".show-user-request-modal");
+    const editRequestModal = document.querySelector(".edit-user-request-modal");
 
-    newUserRequestModal.style.visibility = 'visible';
-    showUserRequestModal.style.visibility = 'hidden';
-    editUserRequestModal.style.visibility = 'hidden';
+    newRequestModal.style.visibility = 'visible';
+    showRequestModal.style.visibility = 'hidden';
+    editRequestModal.style.visibility = 'hidden';
     document.querySelector("body").classList.add("clicked");
   }
 
-  const openShowUserRequestModal = (request) => {
+  const openShowRequestModal = (request) => {
     setCurrentUserRequest(request);
 
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const showRequestModal = document.querySelector(".show-user-request-modal");
+    const editRequestModal = document.querySelector(".edit-user-request-modal");
 
-    newUserRequestModal.style.visibility = 'hidden';
-    showUserRequestModal.style.visibility = 'visible';
-    editUserRequestModal.style.visibility = 'hidden';
+    newRequestModal.style.visibility = 'hidden';
+    showRequestModal.style.visibility = 'visible';
+    editRequestModal.style.visibility = 'hidden';
     document.querySelector("body").classList.add("clicked");
   }
 
-  const openEditUserRequestModal = (request) => {
+  const openEditRequestModal = (request) => {
     setCurrentUserRequest(request);
 
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const showRequestModal = document.querySelector(".show-user-request-modal");
+    const editRequestModal = document.querySelector(".edit-user-request-modal");
 
-    newUserRequestModal.style.visibility = 'hidden';
-    showUserRequestModal.style.visibility = 'hidden';
-    editUserRequestModal.style.visibility = 'visible';
+    newRequestModal.style.visibility = 'hidden';
+    showRequestModal.style.visibility = 'hidden';
+    editRequestModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
 
@@ -86,13 +86,13 @@ const UserRequests = () => {
 
   return (
     <>
-      <ShowUserRequestModal request={currentUserRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
-      <EditUserRequestModal request={currentUserRequest} />
+      <ShowRequestModal request={currentUserRequest} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+      <EditRequestModal request={currentUserRequest} />
       <div className="user-requests">
         <div className="container d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My requests</h1>
-            <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewUserRequestModal()}>Request help</button>
+            <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewRequestModal()}>Request help</button>
             <div className="caption d-flex flex-column flex-md-row align-self-start my-4 ps-3">
               <div className="d-flex align-items-center my-2 pe-md-5">
                 <span className="me-2" id="material"></span><p className="h5 m-0">Material need</p>
@@ -107,8 +107,8 @@ const UserRequests = () => {
                   return (
                     <RequestCard 
                       request={request} 
-                      setOpenShowModal={openShowUserRequestModal} 
-                      setOpenEditModal={openEditUserRequestModal}
+                      setOpenShowModal={openShowRequestModal} 
+                      setOpenEditModal={openEditRequestModal}
                       setMarkRequestAsFulfilled={markRequestAsFulfilled}
                       key={request.request.title} 
                     />

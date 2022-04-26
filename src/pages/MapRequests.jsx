@@ -9,8 +9,8 @@ import { maptiler } from 'pigeon-maps/providers';
 import ReactLoading from 'react-loading';
 
 // COMPONENTS IMPORTS
-import EditUserRequestModal from '../components/EditUserRequestModal';
-import ShowUserRequestModal from '../components/ShowUserRequestModal';
+import EditRequestModal from '../components/EditRequestModal';
+import ShowRequestModal from '../components/ShowRequestModal';
 
 // DATA IMPORTS
 import requests from '../data/Requests';
@@ -45,25 +45,25 @@ const MapRequests = () => {
     setZoom(12);
   }
 
-  const openShowUserRequestModal = () => {
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+  const openShowRequestModal = () => {
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const showRequestModal = document.querySelector(".show-user-request-modal");
+    const editRequestModal = document.querySelector(".edit-user-request-modal");
 
-    newUserRequestModal.style.visibility = 'hidden';
-    showUserRequestModal.style.visibility = 'visible';
-    editUserRequestModal.style.visibility = 'hidden';
+    newRequestModal.style.visibility = 'hidden';
+    showRequestModal.style.visibility = 'visible';
+    editRequestModal.style.visibility = 'hidden';
     document.querySelector("body").classList.add("clicked");
   }
 
-  const openEditUserRequestModal = () => {
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+  const openEditRequestModal = () => {
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const showRequestModal = document.querySelector(".show-user-request-modal");
+    const editRequestModal = document.querySelector(".edit-user-request-modal");
 
-    newUserRequestModal.style.visibility = 'hidden';
-    showUserRequestModal.style.visibility = 'hidden';
-    editUserRequestModal.style.visibility = 'visible';
+    newRequestModal.style.visibility = 'hidden';
+    showRequestModal.style.visibility = 'hidden';
+    editRequestModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
 
@@ -77,8 +77,8 @@ const MapRequests = () => {
 
   return (
     <>
-      <ShowUserRequestModal request={currentRequest} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
-      <EditUserRequestModal request={currentRequest} />
+      <ShowRequestModal request={currentRequest} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+      <EditRequestModal request={currentRequest} />
       <div className="map-requests">
         <div className="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">Requests around me</h1>
@@ -114,7 +114,7 @@ const MapRequests = () => {
                             <h5 className="">{currentRequest.request.title}</h5>
                             <p className="m-0"><strong>Type: </strong>{currentRequest.request.type}</p>
                             <p className="m-0"><strong>Location: </strong>{currentRequest.request.location}</p>
-                            <button className="btn button-primary w-100 p-1" onClick={() => openShowUserRequestModal()}>See details</button>
+                            <button className="btn button-primary w-100 p-1" onClick={() => openShowRequestModal()}>See details</button>
                           </>
                         }
                       </div>

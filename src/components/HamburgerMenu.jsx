@@ -14,9 +14,9 @@ const HamburgerMenu = () => {
     document.querySelector("body").classList.toggle("clicked");
   };
 
-  const openNewUserRequestModal = (e) => {
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    newUserRequestModal.style.visibility = 'visible';
+  const openNewRequestModal = (e) => {
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    newRequestModal.style.visibility = 'visible';
     handleMenu();
     document.querySelector("body").classList.add("clicked");
   }
@@ -47,7 +47,7 @@ const HamburgerMenu = () => {
           <div className="menu">
             <NavLink className="menu-link my-2" exact="true" to="/" onClick={handleMenu}>Home</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/how-it-works" onClick={handleMenu}>How it works</NavLink>
-            <p className="menu-item my-2" onClick={() => openNewUserRequestModal()}>New request</p>
+            <p className="menu-item my-2" onClick={() => openNewRequestModal()}>New request</p>
             <NavLink className="menu-link my-2" exact="true" to="/my-profile" onClick={handleMenu}>My profile</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/my-requests" onClick={handleMenu}>My requests</NavLink>
             <NavLink className="menu-link my-2" exact="true" to="/my-chats" onClick={handleMenu}>My chats</NavLink>

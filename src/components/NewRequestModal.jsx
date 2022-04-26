@@ -1,13 +1,13 @@
 // CONFIG IMPORTS
 import React, {useState} from 'react';
 
-const NewUserRequestModal = () => {
+const NewRequestModal = () => {
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
 
-  const closeNewUserRequestModal = () => {
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    newUserRequestModal.style.visibility = "hidden";
+  const closeNewRequestModal = () => {
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    newRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
     setLat("");
     setLong("");
@@ -79,7 +79,7 @@ const NewUserRequestModal = () => {
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                 <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update profile</button>
-                <button type="reset" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeNewUserRequestModal()}>Back</button>
+                <button type="reset" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeNewRequestModal()}>Back</button>
               </div>
             </form>
           </div>
@@ -89,4 +89,4 @@ const NewUserRequestModal = () => {
   );
 };
 
-export default NewUserRequestModal;
+export default NewRequestModal;

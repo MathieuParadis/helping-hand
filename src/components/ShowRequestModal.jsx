@@ -1,10 +1,10 @@
 // CONFIG IMPORTS
 import React, {useEffect} from 'react';
 
-const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
-  const closeShowUserRequestModal = () => {
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    showUserRequestModal.style.visibility = "hidden";
+const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
+  const closeShowRequestModal = () => {
+    const showRequestModal = document.querySelector(".show-user-request-modal");
+    showRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
   }
 
@@ -29,7 +29,7 @@ const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfil
       <div className="show-user-request-modal-white-bg">
         {request.request && (
             <div className="show-user-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
-              <p className="close-button pointer h4 text-secondary" onClick={() => closeShowUserRequestModal()}>x</p>
+              <p className="close-button pointer h4 text-secondary" onClick={() => closeShowRequestModal()}>x</p>
               <div>
                 <h2 className="show-user-request-modal-title text-primary fw-bold mb-5">{request.request.title}</h2>
                 <p className="mb-4"><strong>Requester: </strong>{request.requester.first_name} {request.requester.last_name}</p>
@@ -49,4 +49,4 @@ const ShowUserRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfil
   );
 };
 
-export default ShowUserRequestModal;
+export default ShowRequestModal;

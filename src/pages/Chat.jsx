@@ -8,8 +8,8 @@ import search_icon from '../assets/logos/search_logo.svg';
 import ChatBanner from '../components/ChatBanner';
 import ChatCard from '../components/ChatCard';
 import ChatConversation from '../components/ChatConversation';
-import EditUserRequestModal from '../components/EditUserRequestModal';
-import ShowUserRequestModal from '../components/ShowUserRequestModal';
+import EditRequestModal from '../components/EditRequestModal';
+import ShowRequestModal from '../components/ShowRequestModal';
 
 // DATA IMPORTS
 import chats from '../data/Chats';
@@ -21,25 +21,25 @@ const Chat = () => {
     setCurrentChat(chat);
   }
 
-  const openShowUserRequestModal = () => {
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+  const openShowRequestModal = () => {
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const showRequestModal = document.querySelector(".show-user-request-modal");
+    const editRequestModal = document.querySelector(".edit-user-request-modal");
 
-    newUserRequestModal.style.visibility = 'hidden';
-    showUserRequestModal.style.visibility = 'visible';
-    editUserRequestModal.style.visibility = 'hidden';
+    newRequestModal.style.visibility = 'hidden';
+    showRequestModal.style.visibility = 'visible';
+    editRequestModal.style.visibility = 'hidden';
     document.querySelector("body").classList.add("clicked");
   }
 
-  const openEditUserRequestModal = () => {
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    const showUserRequestModal = document.querySelector(".show-user-request-modal");
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
+  const openEditRequestModal = () => {
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const showRequestModal = document.querySelector(".show-user-request-modal");
+    const editRequestModal = document.querySelector(".edit-user-request-modal");
 
-    newUserRequestModal.style.visibility = 'hidden';
-    showUserRequestModal.style.visibility = 'hidden';
-    editUserRequestModal.style.visibility = 'visible';
+    newRequestModal.style.visibility = 'hidden';
+    showRequestModal.style.visibility = 'hidden';
+    editRequestModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
 
@@ -60,8 +60,8 @@ const Chat = () => {
 
   return (
     <>
-      <ShowUserRequestModal request={currentChat} setOpenEditModal={openEditUserRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
-      <EditUserRequestModal request={currentChat} />
+      <ShowRequestModal request={currentChat} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+      <EditRequestModal request={currentChat} />
       <div className="chat d-flex justify-content-center">
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
@@ -70,7 +70,7 @@ const Chat = () => {
             
               <div className="row border-bottom-grey">
                 <div className="col-12 col-md-7 col-lg-8 pe-md-0 ">
-                  <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowUserRequestModal} />
+                  <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                 </div>
 
                 <div className="col-12 col-md-5 col-lg-4 border-left-grey d-none d-md-flex justify-content-center align-items-center ps-md-0 ">

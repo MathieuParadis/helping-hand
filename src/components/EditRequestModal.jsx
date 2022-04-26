@@ -1,7 +1,7 @@
 // CONFIG IMPORTS
 import React, {useEffect, useState} from 'react';
 
-const EditUserRequestModal = ({request}) => {
+const EditRequestModal = ({request}) => {
   let title = "";
   let type = "";
   let description = "";
@@ -21,9 +21,9 @@ const EditUserRequestModal = ({request}) => {
   const [long, setLong] = useState(position.lgn);
   const [requestStatus, setRequestStatus] = useState(status);
 
-  const closeEditUserRequestModal = () => {
-    const editUserRequestModal = document.querySelector(".edit-user-request-modal");
-    editUserRequestModal.style.visibility = "hidden";
+  const closeEditRequestModal = () => {
+    const editRequestModal = document.querySelector(".edit-user-request-modal");
+    editRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
     scrollTopComponent();
   }
@@ -108,7 +108,7 @@ useEffect(() => {
                 </div>
                 <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                   <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update request</button>
-                  <button type="reset" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeEditUserRequestModal()}>Back</button>
+                  <button type="reset" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeEditRequestModal()}>Back</button>
                 </div>
               </form>
             </div>
@@ -119,4 +119,4 @@ useEffect(() => {
   );
 };
 
-export default EditUserRequestModal;
+export default EditRequestModal;

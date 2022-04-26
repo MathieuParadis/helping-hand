@@ -25,9 +25,9 @@ const Navigation = () => {
     }
   }
 
-  const openNewUserRequestModal = (e) => {
-    const newUserRequestModal = document.querySelector(".new-user-request-modal");
-    newUserRequestModal.style.visibility = 'visible';
+  const openNewRequestModal = (e) => {
+    const newRequestModal = document.querySelector(".new-user-request-modal");
+    newRequestModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
 
@@ -64,7 +64,7 @@ const Navigation = () => {
                 <div className="d-none d-lg-flex">
                   <NavLink exact="true" to="/" className="navlink h4 me-4 me-xl-4 mb-0">Home</NavLink>
                   <NavLink exact="true" to="/how-it-works" className="navlink h4 me-4 me-xl-4 mb-0">How it works</NavLink>
-                  <p className="navlink h4 mb-0" onClick={() => openNewUserRequestModal()}>New request</p>
+                  <p className="navlink h4 mb-0" onClick={() => openNewRequestModal()}>New request</p>
                 </div>
               </div>           
               <DropdownButton 
