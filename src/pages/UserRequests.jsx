@@ -13,9 +13,9 @@ const UserRequests = () => {
   const [currentUserRequest, setCurrentUserRequest] = useState('');
 
   const openNewRequestModal = (e) => {
-    const newRequestModal = document.querySelector(".new-user-request-modal");
-    const showRequestModal = document.querySelector(".show-user-request-modal");
-    const editRequestModal = document.querySelector(".edit-user-request-modal");
+    const newRequestModal = document.querySelector(".new-request-modal");
+    const showRequestModal = document.querySelector(".show-request-modal");
+    const editRequestModal = document.querySelector(".edit-request-modal");
 
     newRequestModal.style.visibility = 'visible';
     showRequestModal.style.visibility = 'hidden';
@@ -26,9 +26,9 @@ const UserRequests = () => {
   const openShowRequestModal = (request) => {
     setCurrentUserRequest(request);
 
-    const newRequestModal = document.querySelector(".new-user-request-modal");
-    const showRequestModal = document.querySelector(".show-user-request-modal");
-    const editRequestModal = document.querySelector(".edit-user-request-modal");
+    const newRequestModal = document.querySelector(".new-request-modal");
+    const showRequestModal = document.querySelector(".show-request-modal");
+    const editRequestModal = document.querySelector(".edit-request-modal");
 
     newRequestModal.style.visibility = 'hidden';
     showRequestModal.style.visibility = 'visible';
@@ -39,9 +39,9 @@ const UserRequests = () => {
   const openEditRequestModal = (request) => {
     setCurrentUserRequest(request);
 
-    const newRequestModal = document.querySelector(".new-user-request-modal");
-    const showRequestModal = document.querySelector(".show-user-request-modal");
-    const editRequestModal = document.querySelector(".edit-user-request-modal");
+    const newRequestModal = document.querySelector(".new-request-modal");
+    const showRequestModal = document.querySelector(".show-request-modal");
+    const editRequestModal = document.querySelector(".edit-request-modal");
 
     newRequestModal.style.visibility = 'hidden';
     showRequestModal.style.visibility = 'hidden';
@@ -88,7 +88,7 @@ const UserRequests = () => {
     <>
       <ShowRequestModal request={currentUserRequest} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditRequestModal request={currentUserRequest} />
-      <div className="user-requests">
+      <div className="requests">
         <div className="container d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My requests</h1>

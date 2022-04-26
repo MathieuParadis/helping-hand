@@ -26,7 +26,7 @@ const Navigation = () => {
   }
 
   const openNewRequestModal = (e) => {
-    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const newRequestModal = document.querySelector(".new-request-modal");
     newRequestModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }

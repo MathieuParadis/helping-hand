@@ -15,7 +15,7 @@ const HamburgerMenu = () => {
   };
 
   const openNewRequestModal = (e) => {
-    const newRequestModal = document.querySelector(".new-user-request-modal");
+    const newRequestModal = document.querySelector(".new-request-modal");
     newRequestModal.style.visibility = 'visible';
     handleMenu();
     document.querySelector("body").classList.add("clicked");

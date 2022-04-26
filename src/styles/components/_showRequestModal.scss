@@ -1,4 +1,4 @@
-.show-user-request-modal {
+.show-request-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,7 +22,7 @@
     }
   }
 
-  .show-user-request-modal-overlay {
+  .show-request-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -33,7 +33,7 @@
     opacity: 0.7;
   }
 
-  .show-user-request-modal-white-bg {
+  .show-request-modal-white-bg {
     display: flex;
     min-height: 70vh;
     max-height: 90vh;
@@ -44,7 +44,7 @@
     overflow: hidden;
     position:relative;
 
-    .show-user-request-modal-content {
+    .show-request-modal-content {
       min-height: 70vh;
       max-height: 90vh;
       height: 100%;

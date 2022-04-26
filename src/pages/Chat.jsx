@@ -22,9 +22,9 @@ const Chat = () => {
   }
 
   const openShowRequestModal = () => {
-    const newRequestModal = document.querySelector(".new-user-request-modal");
-    const showRequestModal = document.querySelector(".show-user-request-modal");
-    const editRequestModal = document.querySelector(".edit-user-request-modal");
+    const newRequestModal = document.querySelector(".new-request-modal");
+    const showRequestModal = document.querySelector(".show-request-modal");
+    const editRequestModal = document.querySelector(".edit-request-modal");
 
     newRequestModal.style.visibility = 'hidden';
     showRequestModal.style.visibility = 'visible';
@@ -33,9 +33,9 @@ const Chat = () => {
   }
 
   const openEditRequestModal = () => {
-    const newRequestModal = document.querySelector(".new-user-request-modal");
-    const showRequestModal = document.querySelector(".show-user-request-modal");
-    const editRequestModal = document.querySelector(".edit-user-request-modal");
+    const newRequestModal = document.querySelector(".new-request-modal");
+    const showRequestModal = document.querySelector(".show-request-modal");
+    const editRequestModal = document.querySelector(".edit-request-modal");
 
     newRequestModal.style.visibility = 'hidden';
     showRequestModal.style.visibility = 'hidden';

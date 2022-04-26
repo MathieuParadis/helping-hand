@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 
 const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const closeShowRequestModal = () => {
-    const showRequestModal = document.querySelector(".show-user-request-modal");
+    const showRequestModal = document.querySelector(".show-request-modal");
     showRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
   }
@@ -13,7 +13,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
   }
 
   const scrollTopComponent = () => {
-    const modalTitle = document.querySelector(".show-user-request-modal-title");
+    const modalTitle = document.querySelector(".show-request-modal-title");
     modalTitle.scrollIntoView({ behavior: 'smooth' });
   }
 
@@ -24,14 +24,14 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
   }, [request]);
 
   return (
-    <div className="show-user-request-modal">
-      <div className="show-user-request-modal-overlay"></div>
-      <div className="show-user-request-modal-white-bg">
+    <div className="show-request-modal">
+      <div className="show-request-modal-overlay"></div>
+      <div className="show-request-modal-white-bg">
         {request.request && (
-            <div className="show-user-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
+            <div className="show-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
               <p className="close-button pointer h4 text-secondary" onClick={() => closeShowRequestModal()}>x</p>
               <div>
-                <h2 className="show-user-request-modal-title text-primary fw-bold mb-5">{request.request.title}</h2>
+                <h2 className="show-request-modal-title text-primary fw-bold mb-5">{request.request.title}</h2>
                 <p className="mb-4"><strong>Requester: </strong>{request.requester.first_name} {request.requester.last_name}</p>
                 <p className="mb-4"><strong>Type: </strong>{request.request.type}</p>
                 <p className="mb-4"><strong>Location: </strong>{request.request.location}</p>
