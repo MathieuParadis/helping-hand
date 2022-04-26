@@ -3,8 +3,7 @@ import React, {useState, useEffect} from 'react';
 
 // COMPONENTS IMPORTS
 import EditUserRequestModal from '../components/EditUserRequestModal';
-import MaterialRequestCard from '../components/MaterialRequestCard';
-import ServiceRequestCard from '../components/ServiceRequestCard';
+import RequestCard from '../components/RequestCard';
 import ShowUserRequestModal from '../components/ShowUserRequestModal';
 
 // DATA IMPORTS
@@ -106,15 +105,15 @@ const UserRequests = () => {
               { 
                 requests.map((request) => {
                   return (
-                    request.request.type === "material" ? 
-                    <MaterialRequestCard 
-                      request={request} 
-                      setOpenShowModal={openShowUserRequestModal} 
-                      setOpenEditModal={openEditUserRequestModal} 
-                      setMarkRequestAsFulfilled={markRequestAsFulfilled} 
-                      key={request.request.title} 
-                    /> : 
-                    <ServiceRequestCard 
+                    // request.request.type === "material" ? 
+                    // <MaterialRequestCard 
+                    //   request={request} 
+                    //   setOpenShowModal={openShowUserRequestModal} 
+                    //   setOpenEditModal={openEditUserRequestModal} 
+                    //   setMarkRequestAsFulfilled={markRequestAsFulfilled} 
+                    //   key={request.request.title} 
+                    // /> : 
+                    <RequestCard 
                       request={request} 
                       setOpenShowModal={openShowUserRequestModal} 
                       setOpenEditModal={openEditUserRequestModal}

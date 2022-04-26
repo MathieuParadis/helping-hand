@@ -8,11 +8,11 @@ import { maptiler } from 'pigeon-maps/providers';
 // REACT LOADING IMPORTS
 import ReactLoading from 'react-loading';
 
-// DATA IMPORTS
-import requests from '../data/Requests';
-
 // COMPONENTS IMPORTS
 import ShowRequestModal from '../components/ShowRequestModal';
+
+// DATA IMPORTS
+import requests from '../data/Requests';
 
 const maptilerProvider = maptiler('IwympTEN2FYbP2g5qdck', 'streets')
 

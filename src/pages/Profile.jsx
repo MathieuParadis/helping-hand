@@ -1,15 +1,15 @@
 // CONFIG IMPORTS
 import React, {useEffect} from 'react';
 
-// DATA IMPORTS
-import user from '../data/User';
+// ASSETS IMPORTS
+import profile_illustration from '../assets/images/my_profile_illustration.svg';
 
 // COMPONENTS IMPORTS
 import EditProfileModal from '../components/EditProfileModal';
 import ModifyCredentialsModal from '../components/ModifyCredentialsModal';
 
-// ASSETS IMPORTS
-import profile_illustration from '../assets/images/my_profile_illustration.svg';
+// DATA IMPORTS
+import user from '../data/User';
 
 const Profile = () => {
   const {first_name, last_name, email, id} = user[0];

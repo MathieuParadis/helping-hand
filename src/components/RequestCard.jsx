@@ -2,9 +2,9 @@
 import React from 'react';
 
 // COMPONENTS IMPORTS
-import DropdownMenuOptionsRequestCard from '../components/DropdownMenuOptionsRequestCard';
+import DropdownMenuOptionsRequestCard from './DropdownMenuOptionsRequestCard';
 
-const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkRequestAsFulfilled}) => {
+const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const toggleMenuRequestCard = () => {
     const menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
     
@@ -25,7 +25,7 @@ const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal, setMa
 
   return (
     <div className="request-card">
-      <div className="card-content material-request-card d-flex flex-column justify-content-between p-3">
+      <div className={`card-content ${request.request.type}-request-card d-flex flex-column justify-content-between p-3`}>
         <div>
           <h3 className="text-center mb-3">{request.request.title}</h3>
           <p><strong>Type:</strong> {request.request.type}</p>
@@ -52,4 +52,4 @@ const MaterialRequestCard = ({request, setOpenShowModal, setOpenEditModal, setMa
   );
 };
 
-export default MaterialRequestCard;
+export default RequestCard;
