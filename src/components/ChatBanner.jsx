@@ -6,7 +6,7 @@ const ChatBanner = ({chat, setOpenShowRequestModal}) => {
   }, []);
 
   return (
-    <div className="chat-banner d-flex flex-column flex-md-row justify-content-between align-items-md-center p-3">
+    <div className="chat-banner d-flex justify-content-between align-items-center p-3">
       {
         chat.request && (
           <>
@@ -14,7 +14,7 @@ const ChatBanner = ({chat, setOpenShowRequestModal}) => {
               <h4>{chat.request.title}</h4>
               <p className="m-0">by {chat.requester.first_name} {chat.requester.last_name}</p>
             </div>
-            <div className="pt-3 pt-md-0 ps-md-4">
+            <div className="ps-5 ps-md-4">
               <button className="btn button-ternary button-w150 border-radius-50 p-2" onClick={() => setOpenShowRequestModal()}>See details</button>
             </div>
           </>
