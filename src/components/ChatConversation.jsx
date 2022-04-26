@@ -9,7 +9,7 @@ const ChatConversation = ({chat}) => {
   }, []);
 
   return (
-    <div className="chat-conversation p-3">
+    <div className="chat-conversation h-100 p-3">
       {
         chat.messages && (
           chat.messages.map((message) => {
