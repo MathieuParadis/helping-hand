@@ -21,14 +21,17 @@ const chats = [
     },
     messages: [
       {
+        id: 1,
         body: "Hello",
         author: "Mathieu Paradis",
       },
       {
+        id: 2,
         body: "Hello",
         author: "Cony Chan",
       },
       {
+        id: 3,
         body: "How May I help you",
         author: "Mathieu Paradis",
       },
@@ -56,14 +59,17 @@ const chats = [
     },
     messages: [
       {
+        id: 4,
         body: "Hello",
         author: "Mathieu Paradis",
       },
       {
+        id: 5,
         body: "Hi",
         author: "Martin Cooper",
       },
       {
+        id: 6,
         body: "How May I help you?",
         author: "Mathieu Paradis",
       },

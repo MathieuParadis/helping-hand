@@ -1,17 +1,22 @@
 // CONFIG IMPORTS
 import React, {useEffect} from 'react';
 
+// COMPONENTS IMPORTS
+import ChatMessage from '../components/ChatMessage';
+
 const ChatConversation = ({chat}) => {
   useEffect(() => {
   }, []);
 
   return (
-    <div className="chat-conversation d-flex justify-content-between align-items-center p-3">
+    <div className="chat-conversation p-3">
       {
         chat.messages && (
-          <>
-
-          </>
+          chat.messages.map((message) => {
+            return (
+              <ChatMessage message={message} key={message.body + message.author} />
+            )
+          })
         )
       }
 

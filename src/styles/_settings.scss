@@ -381,6 +381,18 @@ a {
   }
 }
 
+.bg-primary {
+  background-color: var(--prim-color) !important;
+}
+
+.bg-grey-light {
+  background-color: var(--basic-color-grey-light) !important;
+}
+
+.bg-grey-dark {
+  background-color: var(--basic-color-grey-dark) !important;
+}
+
 
 // -------------------- MARGIN CLASSES -------------------- //
 .margin-mobile {
