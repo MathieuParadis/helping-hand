@@ -9,8 +9,12 @@
     max-height: 100vh;
 
     .top-section {
+      // .selected-chat-section {
+      // }
+
       .search-chat-section {
         margin-left: -10px;
+        padding-left: 10px;
 
         .input {
           position: relative;
@@ -45,9 +49,9 @@
     .bottom-section {
       overflow-y: hidden;
 
-      // .chat-message-section {
-      //   padding-left: 10px;
-      // }
+      .chat-message-section {
+        overflow-y: hidden;
+      }
 
       .chat-index-section {
         overflow-y: scroll;

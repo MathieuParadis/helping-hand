@@ -225,6 +225,51 @@ const chats = [
         body: "How May I help you",
         author: "Mathieu Paradis",
       },
+      {
+        id: 19,
+        body: "Hello",
+        author: "Mathieu Paradis",
+      },
+      {
+        id: 20,
+        body: "Hello",
+        author: "Cony Chan",
+      },
+      {
+        id: 21,
+        body: "How May I help you",
+        author: "Mathieu Paradis",
+      },
+      {
+        id: 22,
+        body: "Hello",
+        author: "Mathieu Paradis",
+      },
+      {
+        id: 23,
+        body: "Hello",
+        author: "Cony Chan",
+      },
+      {
+        id: 24,
+        body: "How May I help you",
+        author: "Mathieu Paradis",
+      },
+      {
+        id: 25,
+        body: "Hello",
+        author: "Mathieu Paradis",
+      },
+      {
+        id: 26,
+        body: "Hello",
+        author: "Cony Chan",
+      },
+      {
+        id: 27,
+        body: "How May I help you",
+        author: "Mathieu Paradis",
+      },
     ]
   },
 ];
