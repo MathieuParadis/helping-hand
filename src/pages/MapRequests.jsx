@@ -30,12 +30,13 @@ const MapRequests = () => {
   }
 
   const displayBubbleRequestInfo = (request) => {
-    const bubbleRequest = document.querySelector(".bubble-request");
-
-    bubbleRequest.style.visibility = 'visible';
     setCurrentRequest(request);
     setCenter([request.request.position.lat, request.request.position.lgn]);
     setZoom(13);
+
+    const bubbleRequest = document.querySelector(".bubble-request");
+    bubbleRequest.style.visibility = 'visible';
+
   }
 
   const closeBubbleRequestInfo = () => {
@@ -103,7 +104,7 @@ const MapRequests = () => {
                       )
                     })
                   }
-                  <Overlay offset={[0, 0]} anchor={[currentRequest.request.position.lat, currentRequest.request.position.lgn]}>
+                  <Overlay offset={[0, 0]} anchor={currentRequest !== "" ? [currentRequest.request.position.lat, currentRequest.request.position.lgn] : [0, 0]}>
                     <div className="bubble-request">
                       <div className="bubble-pointer"></div>
                       <div className="bubble d-flex flex-column justify-content-between align-items-center p-4">

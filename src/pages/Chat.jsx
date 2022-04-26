@@ -103,14 +103,7 @@ const Chat = () => {
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My chats</h1>
-
-
-        
-
-            <p className="back text-secondary align-self-start" onClick={() => setCurrentChat("")}>
-              <strong>&#8592; </strong>Back
-            </p>
-
+            <p className="back text-secondary align-self-start" onClick={() => setCurrentChat("")}>&#8592; Back</p>
             <div className="box box-border-grey d-flex flex-column border-radius-5 w-100 h-100">
               <div className="top-section row border-bottom-grey">
                 <div className="selected-chat-section col-12 col-md-7 col-lg-8 pe-md-0 ">
