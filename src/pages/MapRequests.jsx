@@ -103,7 +103,7 @@ const MapRequests = () => {
                       )
                     })
                   }
-                  <Overlay offset={[0, 0]}>
+                  <Overlay offset={[0, 0]} anchor={[currentRequest.request.position.lat, currentRequest.request.position.lgn]}>
                     <div className="bubble-request">
                       <div className="bubble-pointer"></div>
                       <div className="bubble d-flex flex-column justify-content-between align-items-center p-4">
