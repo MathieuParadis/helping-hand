@@ -82,7 +82,7 @@ const Chat = () => {
               </div>
 
               <div className="bottom-section row flex-grow-1">
-                <div className="chat-message-section col-12 col-md-7 col-lg-8 pe-0">
+                <div className="chat-message-section col-12 col-md-7 col-lg-8 pe-0 h-100">
                   <ChatConversation chat={currentChat} />
                 </div>
                 
