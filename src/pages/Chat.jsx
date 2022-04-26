@@ -48,12 +48,16 @@ const Chat = () => {
   }
 
   const responsiveChat = () => {
+    const back = document.querySelector(".back");
     const selectedChatSection = document.querySelector(".selected-chat-section");
     const searchChatSection = document.querySelector(".search-chat-section");
     const chatMessageSection = document.querySelector(".chat-message-section");
     const chatIndexSection = document.querySelector(".chat-index-section");
 
     if (currentChat === "") {
+      back.classList.remove("d-block", "d-md-none");
+      back.classList.add("d-none");
+
       selectedChatSection.classList.remove("d-block");
       selectedChatSection.classList.add("d-none", "d-md-block");
 
@@ -66,6 +70,9 @@ const Chat = () => {
       chatIndexSection.classList.remove("d-none", "d-md-block");
       chatIndexSection.classList.add("d-block");
     } else {
+      back.classList.remove("d-none");
+      back.classList.add("d-block", "d-md-none");
+
       selectedChatSection.classList.remove("d-none", "d-md-block");
       selectedChatSection.classList.add("d-block");
 
@@ -80,12 +87,9 @@ const Chat = () => {
     }
   }
 
-
-
   useEffect(() => {
     responsiveChat();
   }, [currentChat]);
-
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -101,10 +105,13 @@ const Chat = () => {
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My chats</h1>
 
 
-            <button className="btn button-ternary button-w150 border-radius-50 d-block d-md-none p-2 mb-4" onClick={() => setCurrentChat("")}>Back</button>
+        
+
+            <p className="back text-secondary align-self-start" onClick={() => setCurrentChat("")}>
+              <strong>&#8592; </strong>Back
+            </p>
 
             <div className="box box-border-grey d-flex flex-column border-radius-5 w-100 h-100">
-            
               <div className="top-section row border-bottom-grey">
                 <div className="selected-chat-section col-12 col-md-7 col-lg-8 pe-md-0 ">
                   <div className="selected-chat-section-content">
