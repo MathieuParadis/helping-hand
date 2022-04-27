@@ -78,7 +78,7 @@ const EditProfileModal = ({userData}) => {
                   <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                 </div>
                 <div className="file-input my-3">
-                  <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(jpeg, png only)</small></label>
+                  <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(.jpg, .png, and .pdf only)</small></label>
                   <div className="d-flex align-items-center">
                     <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
                     <p className="m-0 ps-3" id="labelHiddenFileInput">{getFileName(id)}</p>
