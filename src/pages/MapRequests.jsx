@@ -36,7 +36,6 @@ const MapRequests = () => {
 
     const bubbleRequest = document.querySelector(".bubble-request");
     bubbleRequest.style.visibility = 'visible';
-
   }
 
   const closeBubbleRequestInfo = () => {
