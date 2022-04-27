@@ -11,7 +11,7 @@ const ChatBanner = ({chat, setOpenShowRequestModal}) => {
         chat.request && (
           <div className="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center p-3">
             <div>
-              <h4 className="text-center">{chat.request.title}</h4>
+              <h5 className="text-center">{chat.request.title}</h5>
               <p className="m-0 text-center text-lg-start">by {chat.requester.first_name} {chat.requester.last_name}</p>
             </div>
             <div className="pt-3 pt-lg-0 ps-lg-5">
