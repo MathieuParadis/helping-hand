@@ -73,8 +73,8 @@ const NewRequestModal = () => {
                   <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
                 </div>
                 <div className="input my-4">
-                  <label htmlFor="description" className="mb-1">Description&nbsp;<small className="caption">(400 characters max)</small></label>
-                  <textarea type="text" className="form-control" id="description" aria-describedby="Description input field" maxLength="400" rows="5" placeholder="Explain precisely what your need is here...." required />
+                  <label htmlFor="description" className="mb-1">Description&nbsp;<small className="caption">(300 characters max)</small></label>
+                  <textarea type="text" className="form-control" id="description" aria-describedby="Description input field" maxLength="300" rows="5" placeholder="Explain precisely what your need is here...." required />
                 </div>
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
