@@ -20,7 +20,6 @@ const ChatBanner = ({chat, setOpenShowRequestModal}) => {
           </div>
         )
       }
-
     </div>
   );
 };

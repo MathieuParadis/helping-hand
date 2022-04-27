@@ -111,7 +111,7 @@ const Chat = () => {
                     <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                   </div>
                 </div>
-                <div className="search-chat-section col-12 col-md-5 col-lg-4 border-left-grey justify-content-center align-items-center ps-0 ">
+                <div className="search-chat-section col-12 col-md-5 col-lg-4 border-left-grey justify-content-center align-items-center ps-md-0">
                   <div className="search-chat-section-content w-100">
                     <div className="input p-3">
                       <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="Search chat ..." required />
@@ -121,12 +121,12 @@ const Chat = () => {
                 </div>
               </div>
               <div className="bottom-section row flex-grow-1">
-                <div className="chat-message-section col-12 col-md-7 col-lg-8 pe-0 h-100">
+                <div className="chat-message-section col-12 col-md-7 col-lg-8 pe-md-0 h-100">
                   <div className="chat-message-section-content h-100">
                     <ChatConversation chat={currentChat} />
                   </div>
                 </div>
-                <div className="chat-index-section col-12 col-md-5 col-lg-4 border-left-grey ps-0 h-100">
+                <div className="chat-index-section col-12 col-md-5 col-lg-4 border-left-grey ps-md-0 h-100">
                   <div className="chat-index-section-content h-100">
                   {
                     chats && (
