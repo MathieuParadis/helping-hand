@@ -82,8 +82,10 @@ const MapRequests = () => {
       <div className="map-requests">
         <div className="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">Requests around me</h1>
-
-          <div className="caption d-flex flex-column flex-md-row align-self-start my-4">
+          <h5 className="counter align-self-md-start text-center text-md-start">
+            There are <strong>{requests.length}</strong> help requests around you.<br></br>Start volunteering now!
+          </h5>
+          <div className="caption d-flex flex-column flex-md-row align-self-start mb-4">
             <div className="d-flex align-items-center my-2 pe-md-5">
               <span className="me-2" id="material"></span><p className="h5 m-0">Material need</p>
             </div>
