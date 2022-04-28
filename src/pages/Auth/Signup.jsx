@@ -72,7 +72,7 @@ const Signup = () => {
                     <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
                     <p className="m-0 ps-3" id="labelHiddenFileInput">No file chosen</p>
                   </div>
-                  <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg" ref={hiddenFileInput} />
+                  <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} />
                 </div>
                 <div className="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
