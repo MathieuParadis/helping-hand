@@ -9,8 +9,35 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
-  const LoginPostRequest = (e) => {
-    alert("Signing in");
+  const login = (e) => {
+    e.preventDefault();
+    const email_add = document.querySelector('#email').value;
+    const pw = document.querySelector('#password').value;
+
+    const data = {
+      email: email_add,
+      password: pw
+    };
+
+    const url = 'http://localhost:3000/signin';
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data) {
+        console.log(data);
+      }
+    })
+    .catch(error =>{
+      console.log(error);
+    })
   }
 
   useEffect(() => {
@@ -28,7 +55,7 @@ const Signin = () => {
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-md-4 mb-5">Welcome back!</h2>
             <div className="form-container">
-              <form onSubmit={LoginPostRequest} className="d-flex flex-column justify-content-center">
+              <form onSubmit={login} className="d-flex flex-column justify-content-center">
                 <div className="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Email" required />
