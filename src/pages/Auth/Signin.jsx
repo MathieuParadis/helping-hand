@@ -2,9 +2,6 @@
 import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 
-// REACT COOKIE IMPORTS
-import { useCookies } from "react-cookie";
-
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
 import auth_logo from '../../assets/logos/auth_logo.svg';
@@ -28,15 +25,21 @@ const Signin = () => {
 
     fetch(url, {
       method: "POST",
-      // mode: 'cors',
+      mode: 'cors',
       headers: {
         'Accept': 'application/json',
         "Content-Type": "application/json",
+        "Authorization": 'Bearer Token'
       },
       body: JSON.stringify(data),
     })
     .then(response => {
-      console.log(response.headers);
+      console.log(response.getHeader("jwt_token"));
+      
+      for (var pair of response.headers.entries()) { // accessing the entries
+          console.log(pair)
+     }
+     
       return response.json();
 
     })
