@@ -9,8 +9,6 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
-  const [cookie, setCookie] = useCookies(["cookie time"]);
-
   const login = (e) => {
     e.preventDefault();
     const email_add = document.querySelector('#email').value;
@@ -29,24 +27,13 @@ const Signin = () => {
       headers: {
         'Accept': 'application/json',
         "Content-Type": "application/json",
-        "Authorization": 'Bearer Token'
       },
       body: JSON.stringify(data),
     })
-    .then(response => {
-      console.log(response.getHeader("jwt_token"));
-      
-      for (var pair of response.headers.entries()) { // accessing the entries
-          console.log(pair)
-     }
-     
-      return response.json();
-
-    })
+    .then(response => response.json())
     .then(response => {
       if (response.user) {
         console.log(response.user);
-        // saveJWTinCookie(response);
       } else {
         console.log(response.error);
       }
@@ -54,10 +41,6 @@ const Signin = () => {
     .catch(error =>{
       console.log(error);
     })
-  }
-
-  const saveJWTinCookie = (response) => {
-    setCookie('jwt_token', response.headers);
   }
 
   useEffect(() => {

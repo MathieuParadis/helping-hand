@@ -1,9 +1,8 @@
 // CONFIG IMPORTS
 import React, {useEffect} from 'react';
-import RuleBox from '../components/Rulebox';
 
 // COMPONENTS IMPORTS
-import RuleCard from '../components/RuleCard';
+import RuleBox from '../components/Rulebox';
 
 // DATA IMPORTS
 import rules from '../data/Rules';
