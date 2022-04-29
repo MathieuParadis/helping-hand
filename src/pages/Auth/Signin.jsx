@@ -2,6 +2,9 @@
 import React, {useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 
+// REACT COOKIE IMPORTS
+import { useCookies } from "react-cookie";
+
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
 import auth_logo from '../../assets/logos/auth_logo.svg';
@@ -9,6 +12,8 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
+  const [cookie, setCookie] = useCookies(["cookie time"]);
+
   const login = (e) => {
     e.preventDefault();
     const email_add = document.querySelector('#email').value;
@@ -23,21 +28,33 @@ const Signin = () => {
 
     fetch(url, {
       method: "POST",
+      // mode: 'cors',
       headers: {
         'Accept': 'application/json',
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data) {
-        console.log(data);
+    .then(response => {
+      console.log(response.headers);
+      return response.json();
+
+    })
+    .then(response => {
+      if (response.user) {
+        console.log(response.user);
+        // saveJWTinCookie(response);
+      } else {
+        console.log(response.error);
       }
     })
     .catch(error =>{
       console.log(error);
     })
+  }
+
+  const saveJWTinCookie = (response) => {
+    setCookie('jwt_token', response.headers);
   }
 
   useEffect(() => {
