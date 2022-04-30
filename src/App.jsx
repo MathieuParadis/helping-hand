@@ -1,6 +1,6 @@
 // CONFIG IMPORTS
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // PAGE IMPORTS
 import Chat from './pages/Chat';
@@ -26,6 +26,12 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fab);
 
 const App = () => {
+
+  const isUserAuthenticated = () => {
+    return localStorage.getItem('jwt_token') !== null ? true : false
+  };
+
+
   return (
     <div className="app">
       <Router>
@@ -33,16 +39,23 @@ const App = () => {
         <Flash />
         <NewRequestModal />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={isUserAuthenticated() ? <MapRequests /> : <Home />} />
           <Route path="/my-chats" element={<Chat />} />
           <Route path="/forgotten-password" exact="true" element={<ForgottenPassword />} />
-          <Route path="/all-requests" element={<MapRequests />} />
           <Route path="/my-profile" exact="true" element={<Profile />} />
           <Route path="/reset-password" exact="true" element={<ResetPassword />} />
           <Route path="/how-it-works" exact="true" element={<Rules />} />
-          <Route path="/signin" exact="true" element={<Signin />} />
+          <Route path="/signin" exact="true" element={isUserAuthenticated() ? <Navigate to="/" replace /> : <Signin />} />
           <Route path="/signup" exact="true" element={<Signup />} />
           <Route path="/my-requests" exact="true" element={<UserRequests />} />
+
+{/* 
+          <Route  path="/" element={user ? <Home /> : <Register />} />
+          <Route path="/login" element={user ? <Navigate to="/" replace /> :  <Login />}  />
+          <Route path = "/register" element={user ? <Navigate to="/" replace /> :  <Register />}
+ */}
+
+
         </Routes>
         <Footer />
       </Router>

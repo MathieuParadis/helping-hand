@@ -32,8 +32,11 @@ const Signin = () => {
     })
     .then(response => response.json())
     .then(response => {
-      if (response.user) {
+      if (response.user ) {
+        console.log("response")
         console.log(response.user);
+        console.log(response.token)
+        localStorage.setItem('jwt_token', response.token);
       } else {
         console.log(response.error);
       }
