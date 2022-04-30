@@ -40,22 +40,14 @@ const App = () => {
         <NewRequestModal />
         <Routes>
           <Route path="/" element={isUserAuthenticated() ? <MapRequests /> : <Home />} />
-          <Route path="/my-chats" element={<Chat />} />
-          <Route path="/forgotten-password" exact="true" element={<ForgottenPassword />} />
-          <Route path="/my-profile" exact="true" element={<Profile />} />
-          <Route path="/reset-password" exact="true" element={<ResetPassword />} />
           <Route path="/how-it-works" exact="true" element={<Rules />} />
           <Route path="/signin" exact="true" element={isUserAuthenticated() ? <Navigate to="/" replace /> : <Signin />} />
-          <Route path="/signup" exact="true" element={<Signup />} />
-          <Route path="/my-requests" exact="true" element={<UserRequests />} />
-
-{/* 
-          <Route  path="/" element={user ? <Home /> : <Register />} />
-          <Route path="/login" element={user ? <Navigate to="/" replace /> :  <Login />}  />
-          <Route path = "/register" element={user ? <Navigate to="/" replace /> :  <Register />}
- */}
-
-
+          <Route path="/signup" exact="true" element={isUserAuthenticated() ? <Navigate to="/" replace /> : <Signup />} />
+          <Route path="/forgotten-password" exact="true" element={isUserAuthenticated() ? <Navigate to="/my-profile" replace /> : <ForgottenPassword />} />
+          <Route path="/reset-password" exact="true" element={isUserAuthenticated() ? <Navigate to="/my-profile" replace /> : <ResetPassword />} />
+          <Route path="/my-chats" exact="true" element={isUserAuthenticated() ? <Chat /> : <Navigate to="/" replace />} />
+          <Route path="/my-profile" exact="true" element={isUserAuthenticated() ? <Profile /> : <Navigate to="/" replace />} />
+          <Route path="/my-requests" exact="true" element={isUserAuthenticated() ? <UserRequests /> : <Navigate to="/" replace />} />
         </Routes>
         <Footer />
       </Router>
