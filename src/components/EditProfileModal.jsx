@@ -1,12 +1,14 @@
 // CONFIG IMPORTS
 import React, {useEffect, useState, useRef} from 'react';
 
+import id from '../assets/images/rules/id_check.svg';
+
 // ASSETS IMPORTS
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
 const EditProfileModal = ({userData}) => {
-  const {first_name, last_name, id} = userData;
+  const {first_name, last_name} = userData;
 
   const [fname, setFname] = useState(first_name);
   const [lname, setLname] = useState(last_name);
