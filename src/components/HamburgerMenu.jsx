@@ -1,9 +1,14 @@
 // CONFIG IMPORTS
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+
+// CONTEXT IMPORTS
+import AuthContext from './AuthContext';
+import FlashContext from './FlashContext';
 
 const HamburgerMenu = () => {
-  let loggedIn = true;
+  const {authenticated, setAuthenticated} = useContext(AuthContext);
+  const { flash, setFlash } = useContext(FlashContext);
 
   const handleMenu = () => {
     document.querySelector(".span1").classList.toggle("clicked");
@@ -34,7 +39,7 @@ const HamburgerMenu = () => {
         <span className="span3"></span>
       </div>
       <div className="overlay"></div>
-      {!loggedIn ? 
+      {!authenticated ? 
         (
           <div className="menu">
             <NavLink className="menu-link my-2" exact="true" to="/" onClick={handleMenu}>Home</NavLink>
