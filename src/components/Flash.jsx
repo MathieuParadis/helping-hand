@@ -5,7 +5,7 @@ import React, { useEffect, useContext } from 'react';
 import FlashContext from '../components/FlashContext';
 
 const Flash = () => {
-  const {flash, setFlash} = useContext(FlashContext);
+  const { flash } = useContext(FlashContext);
   let {type, message, display} = flash;
 
   const hideFlash = () => {

@@ -14,7 +14,7 @@ import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
   const {authenticated, setAuthenticated} = useContext(AuthContext);
-  const {flash, setFlash} = useContext(FlashContext);
+  const { flash } = useContext(FlashContext);
 
   const login = (e) => {
     e.preventDefault();
@@ -40,11 +40,7 @@ const Signin = () => {
     .then(response => response.json())
     .then(response => {
       if (response.user ) {
-        console.log("response")
-        console.log(response.user);
-        console.log(response.token)
         localStorage.setItem('jwt_token', response.token);
-
         setAuthenticated(true);
         flash.type = 'success';
         flash.message = response.message;
