@@ -9,11 +9,11 @@ const Flash = () => {
   let {type, message, display} = flash;
 
   const hideFlash = () => {
-    setFlash({
-      type: '',
-      message: '',
-      display: false,
-    })
+    setFlash(
+      type = "",
+      message = "",
+      display = false
+    )
 
     const flash = document.querySelector(".flash");   
     flash.classList.remove("flash-success", "flash-warning", "flash-danger");
