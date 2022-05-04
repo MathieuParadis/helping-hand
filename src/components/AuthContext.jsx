@@ -1,4 +1,5 @@
-import { createContext } from "react";
+// CONFIG IMPORTS
+import React, { createContext } from "react";
 
 const authContext = createContext({
   authenticated: false,

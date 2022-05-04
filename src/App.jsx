@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
-// CONTEXT IMPORT
+// CONTEXT IMPORTS
 import AuthContext from './components/AuthContext';
+import FlashContext from './components/FlashContext';
 
 // PAGE IMPORTS
 import Chat from './pages/Chat';
@@ -29,7 +30,14 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fab);
 
 const App = () => { 
+  const emptyFlash = {
+    type: "",
+    message: "",
+    display: false,
+  }
+
   const [authenticated, setAuthenticated] = useState(false);
+  const [flash, setFlash] = useState(emptyFlash);
 
   const isUserAuthenticated = () => {
     return localStorage.getItem('jwt_token') !== null ? setAuthenticated(true) : setAuthenticated(false);
@@ -42,23 +50,25 @@ const App = () => {
   return (
     <div className="app">
       <AuthContext.Provider value={{authenticated, setAuthenticated}}>
-        <Router>
-          <Navigation />
-          <Flash />
-          <NewRequestModal />
-          <Routes>
-            <Route path="/" element={authenticated ? <MapRequests /> : <Home />} />
-            <Route path="/how-it-works" exact="true" element={<Rules />} />
-            <Route path="/signin" exact="true" element={authenticated ? <Navigate to="/" replace /> : <Signin />} />
-            <Route path="/signup" exact="true" element={authenticated ? <Navigate to="/" replace /> : <Signup />} />
-            <Route path="/forgotten-password" exact="true" element={authenticated ? <Navigate to="/my-profile" replace /> : <ForgottenPassword />} />
-            <Route path="/reset-password" exact="true" element={authenticated ? <Navigate to="/my-profile" replace /> : <ResetPassword />} />
-            <Route path="/my-chats" exact="true" element={authenticated ? <Chat /> : <Navigate to="/" replace />} />
-            <Route path="/my-profile" exact="true" element={authenticated ? <Profile /> : <Navigate to="/" replace />} />
-            <Route path="/my-requests" exact="true" element={authenticated ? <UserRequests /> : <Navigate to="/" replace />} />
-          </Routes>
-          <Footer />
-        </Router>
+        <FlashContext.Provider value={{flash, setFlash}}>
+          <Router>
+            <Navigation />
+            <Flash />
+            <NewRequestModal />
+            <Routes>
+              <Route path="/" element={authenticated ? <MapRequests /> : <Home />} />
+              <Route path="/how-it-works" exact="true" element={<Rules />} />
+              <Route path="/signin" exact="true" element={authenticated ? <Navigate to="/" replace /> : <Signin />} />
+              <Route path="/signup" exact="true" element={authenticated ? <Navigate to="/" replace /> : <Signup />} />
+              <Route path="/forgotten-password" exact="true" element={authenticated ? <Navigate to="/my-profile" replace /> : <ForgottenPassword />} />
+              <Route path="/reset-password" exact="true" element={authenticated ? <Navigate to="/my-profile" replace /> : <ResetPassword />} />
+              <Route path="/my-chats" exact="true" element={authenticated ? <Chat /> : <Navigate to="/" replace />} />
+              <Route path="/my-profile" exact="true" element={authenticated ? <Profile /> : <Navigate to="/" replace />} />
+              <Route path="/my-requests" exact="true" element={authenticated ? <UserRequests /> : <Navigate to="/" replace />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </FlashContext.Provider>
       </AuthContext.Provider>
     </div>
   );

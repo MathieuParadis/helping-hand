@@ -2,8 +2,9 @@
 import React, { useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
-// CONTEXT IMPORT
+// CONTEXT IMPORTS
 import AuthContext from '../../components/AuthContext';
+import FlashContext from '../../components/FlashContext';
 
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
@@ -13,6 +14,7 @@ import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
   const {authenticated, setAuthenticated} = useContext(AuthContext);
+  const {flash, setFlash} = useContext(FlashContext);
 
   const login = (e) => {
     e.preventDefault();
@@ -44,8 +46,9 @@ const Signin = () => {
         localStorage.setItem('jwt_token', response.token);
 
         setAuthenticated(true);
-        alert(response.message);
-
+        flash.type = 'success';
+        flash.message = response.message;
+        flash.display = true;
       } else {
         console.log(response.error);
       }

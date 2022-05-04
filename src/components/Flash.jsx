@@ -1,20 +1,35 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+
+// CONTEXT IMPORT
+import FlashContext from '../components/FlashContext';
 
 const Flash = () => {
+  const {flash, setFlash} = useContext(FlashContext);
+  let {type, message, display} = flash;
+
   const hideFlash = () => {
-    const flash = document.querySelector(".flash");
-    const flashContent = document.querySelector(".flash-content");
-    
+    type = "";
+    message = "";
+    display = false;
+
+    const flash = document.querySelector(".flash");   
     flash.classList.remove("flash-success", "flash-warning", "flash-danger");
-    flashContent.innerText = "";
   }
 
+  useEffect(() => {
+    if (display) {
+      window.scrollTo(0, 0);
+    } else {
+      hideFlash();
+    }
+  }, [flash])
+
   return (
-    <div className="flash">
+    <div className={`flash flash-${type}`}>
       <div className="d-flex justify-content-between">
-        <div className="flash-content"></div>
-        <div className="flash-close ps-5">X</div>
+        <div className="flash-content">{message}</div>
+        <div className="flash-close ps-5" onClick={() => hideFlash()}>X</div>
       </div>
     </div>
   );
