@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 // CONTEXT IMPORTS
 import AuthContext from '../../components/Context/AuthContext';
 import FlashContext from '../../components/Context/FlashContext';
+import UserContext from '../../components/Context/UserContext';
 
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
@@ -17,6 +18,7 @@ import plus_icon from '../../assets/logos/plus_logo.svg';
 const Signup = () => {
   const {authenticated, setAuthenticated} = useContext(AuthContext);
   const { flash, setFlash } = useContext(FlashContext);
+  const { user, setUser } = useContext(UserContext);
   const hiddenFileInput = useRef(null);
   const [id_card, setId_card] = useState(null);
 
@@ -51,14 +53,14 @@ const Signup = () => {
     .then(response => {
       if (response.user ) {
         localStorage.setItem('jwt_token', response.token);
-        localStorage.setItem('user', response.user);
         setAuthenticated(true);
-        emptyFormFields();
+        setUser(response.user);
         setFlash({
           type: 'success',
           message: response.message,
           display: true,
         });
+        emptyFormFields();
       } else {
         setFlash({
           type: 'danger',
