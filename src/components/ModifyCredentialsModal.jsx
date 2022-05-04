@@ -44,28 +44,36 @@ const ModifyCredentialsModal = ({userData}) => {
       mode: 'cors',
       headers: {
         'Accept': 'application/json',
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
       },
       body: JSON.stringify(data),
     })
     .then(response => response.json())
     .then(response => {
-      localStorage.clear();
-      setAuthenticated(false);
-      setUser({});
-      setFlash({
-        type: 'success',
-        message: "deleted user",
-        display: true,
-      });
+      if (response.message) {
+        localStorage.clear();
+        setAuthenticated(false);
+        setUser({});
+        setFlash({
+          type: 'success',
+          message: response.message,
+          display: true,
+        });
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
       closeModifyCredentialsModal();
     })
-    .catch(error =>{
+    .catch(error => {
       closeModifyCredentialsModal();
       setFlash({
         type: 'danger',
-        message: 'An error occured. Please try again!',
+        message: error,
         display: true,
       })
     })
