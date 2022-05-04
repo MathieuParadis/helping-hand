@@ -19,13 +19,20 @@
 .flash-success {
   visibility: visible;
   display: block;
-  background-color: var(--success-bg-color);
-  color: var(--success-color);
+  background-color: var( --lightest-success-color);
+  color: var( --darkest-success-color);
 }
 
 .flash-danger {
   visibility: visible;
   display: block;
-  background-color: var(--danger-bg-color);
-  color: var(--danger-color);
+  background-color: var( --lightest-danger-color);
+  color: var( --darkest-danger-color);
+}
+
+.flash-warning {
+  visibility: visible;
+  display: block;
+  background-color: var( --lightest-warning-color);
+  color: var( --darkest-warning-color);
 }
