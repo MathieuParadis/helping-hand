@@ -51,18 +51,21 @@ const ModifyCredentialsModal = ({userData}) => {
     })
     .then(response => response.json())
     .then(response => {
+      localStorage.clear();
       setAuthenticated(false);
       setUser({});
       setFlash({
         type: 'success',
         message: "deleted user",
         display: true,
-      })
+      });
+      closeModifyCredentialsModal();
     })
     .catch(error =>{
+      closeModifyCredentialsModal();
       setFlash({
         type: 'danger',
-        message: error,
+        message: 'An error occured. Please try again!',
         display: true,
       })
     })
