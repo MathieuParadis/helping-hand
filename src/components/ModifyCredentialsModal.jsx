@@ -2,8 +2,8 @@
 import React, {useEffect, useState, useContext} from 'react';
 
 // CONTEXT IMPORTS
-import AuthContext from './AuthContext';
-import FlashContext from './FlashContext';
+import AuthContext from './Context/AuthContext';
+import FlashContext from './Context/FlashContext';
 
 // ASSETS IMPORTS
 import mail_icon from '../assets/logos/mail_logo.svg';

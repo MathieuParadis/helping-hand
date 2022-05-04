@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // CONTEXT IMPORTS
-import AuthContext from './components/AuthContext';
-import FlashContext from './components/FlashContext';
+import AuthContext from './components/Context/AuthContext';
+import FlashContext from './components/Context/FlashContext';
 
 // PAGE IMPORTS
 import Chat from './pages/Chat';

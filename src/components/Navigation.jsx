@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 // CONTEXT IMPORTS
-import AuthContext from './AuthContext';
-import FlashContext from './FlashContext';
+import AuthContext from './Context/AuthContext';
+import FlashContext from './Context/FlashContext';
 
 // REACT BOOTSTRAP IMPORTS
 import { DropdownButton, Dropdown } from 'react-bootstrap';

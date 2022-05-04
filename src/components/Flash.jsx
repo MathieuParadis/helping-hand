@@ -1,8 +1,8 @@
 // CONFIG IMPORTS
 import React, { useEffect, useContext } from 'react';
 
-// CONTEXT IMPORT
-import FlashContext from '../components/FlashContext';
+// CONTEXT IMPORTS
+import FlashContext from './Context/FlashContext';
 
 const Flash = () => {
   const { flash, setFlash } = useContext(FlashContext);

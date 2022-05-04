@@ -12,7 +12,7 @@ import ModifyCredentialsModal from '../components/ModifyCredentialsModal';
 import user from '../data/User';
 
 const Profile = () => {
-  const {first_name, last_name, email, id} = user[0];
+  const {first_name, last_name, email, id} = localStorage.getItem('user');
 
   const openEditProfileModal = (e) => {
     const editProfileModal = document.querySelector(".edit-profile-modal");

@@ -1,9 +1,9 @@
 // CONFIG IMPORTS
 import React, { createContext } from "react";
 
-const authContext = createContext({
+const AuthContext = createContext({
   authenticated: false,
   setAuthenticated: (auth) => {}
 });
 
-export default authContext;
+export default AuthContext;

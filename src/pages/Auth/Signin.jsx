@@ -3,8 +3,8 @@ import React, { useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 // CONTEXT IMPORTS
-import AuthContext from '../../components/AuthContext';
-import FlashContext from '../../components/FlashContext';
+import AuthContext from '../../components/Context/AuthContext';
+import FlashContext from '../../components/Context/FlashContext';
 
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
@@ -42,6 +42,9 @@ const Signin = () => {
       if (response.user ) {
         localStorage.setItem('jwt_token', response.token);
         localStorage.setItem('user', response.user);
+        console.log(response.user);
+        console.log(response);
+        console.log(localStorage.getItem('user'))
         setAuthenticated(true);
         emptyFormFields();
         setFlash({
