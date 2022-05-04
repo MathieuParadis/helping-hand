@@ -51,10 +51,18 @@ const Signin = () => {
         flash.display = true;
       } else {
         console.log(response.error);
+        console.log(flash);
+        flash.type = 'danger';
+        flash.message = response.error;
+        flash.display = true;
+        console.log(flash);
       }
     })
     .catch(error =>{
       console.log(error);
+      flash.type = 'danger';
+      flash.message = error;
+      flash.display = true;
     })
   }
 
