@@ -27,8 +27,14 @@ const HamburgerMenu = () => {
   }
 
   const signOut = () => {
+    localStorage.clear();
+    setAuthenticated(false);
     handleMenu();
-    alert("logging out");
+    setFlash({
+      type: 'success',
+      message: "Logged out successfully",
+      display: true,
+    });
   }
 
   return (
