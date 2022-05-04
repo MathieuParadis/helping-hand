@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 // CONTEXT IMPORT

@@ -12,8 +12,7 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
-  const loggedIn = useContext(AuthContext);
-  // const [loggedIn, setLoggedIn] = useState(false);
+  const {authenticated, setAuthenticated} = useContext(AuthContext);
   const navigate = useNavigate();
 
   const login = (e) => {
@@ -48,6 +47,8 @@ const Signin = () => {
         // if (localStorage.getItem('jwt_token')) {
         //   setLoggedIn(true);
         // }
+
+        setAuthenticated(true);
 
       } else {
         console.log(response.error);
