@@ -1,6 +1,10 @@
 // CONFIG IMPORTS
-import React, {useEffect, useState, useRef} from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+
+// CONTEXT IMPORTS
+import AuthContext from '../../components/AuthContext';
+import FlashContext from '../../components/FlashContext';
 
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
@@ -11,9 +15,71 @@ import lock_icon from '../../assets/logos/lock_logo.svg';
 import plus_icon from '../../assets/logos/plus_logo.svg';
 
 const Signup = () => {
+  const {authenticated, setAuthenticated} = useContext(AuthContext);
+  const { flash, setFlash } = useContext(FlashContext);
+
   const hiddenFileInput = useRef(null);
   const [id_card, setId_card] = useState(null);
 
+  const register = (e) => {
+    e.preventDefault();
+    const fname = document.querySelector('#first-name').value;
+    const lname = document.querySelector('#last-name').value;
+    const email_add = document.querySelector('#email').value;
+    const pw = document.querySelector('#password').value;
+    const pw_confirmation = document.querySelector('#password-confirmation').value;
+
+    const data = {
+      first_name: fname,
+      last_name: lname,
+      email: email_add,
+      password: pw,
+      password_confirmation: pw_confirmation      
+    };
+
+    const url = 'http://localhost:3000/signup';
+
+    fetch(url, {
+      method: "POST",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response.user ) {
+        localStorage.setItem('jwt_token', response.token);
+        setAuthenticated(true);
+        emptyFormFields();
+        setFlash({
+          type: 'success',
+          message: response.message,
+          display: true,
+        });
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+    })
+    .catch(error =>{
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
+  }
+
+  const emptyFormFields = () => {
+    document.querySelector('#email').value = "";
+    document.querySelector('#password').value = "";
+  }
 
   const handleClick = e => {
     hiddenFileInput.current.click();
@@ -34,9 +100,6 @@ const Signup = () => {
     labelHiddenFileInput.textContent =  getFileName(id_card);
   }
   
-  const SignupPostRequest = (e) => {
-    alert("Signing up");
-  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -53,7 +116,7 @@ const Signup = () => {
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-md-4 mb-5">Sign up</h2>
             <div className="form-container">
-              <form onSubmit={SignupPostRequest} className="d-flex flex-column justify-content-center">
+              <form onSubmit={register} className="d-flex flex-column justify-content-center">
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                   <div className="input mb-3 mb-md-0 me-0 me-md-2">
                     <label htmlFor="first_name" className="mb-1">First name</label>
