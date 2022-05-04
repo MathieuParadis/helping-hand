@@ -30,53 +30,55 @@ const ModifyCredentialsModal = ({userData}) => {
   }
   
   const deleteAccount = () => {
-    const email_add = document.querySelector('#email').value;
+    if (window.confirm("You are about to delete your account. \n \nAre you sure?")) {
+      const email_add = document.querySelector('#email').value;
 
-    const data = {
-      email: email
-    };
+      const data = {
+        email: email
+      };
 
-    const url = `http://localhost:3000/users/${id}`;
-    const token = localStorage.getItem('jwt_token');
+      const url = `http://localhost:3000/users/${id}`;
+      const token = localStorage.getItem('jwt_token');
 
-    fetch(url, {
-      method: "DELETE",
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      },
-      body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(response => {
-      if (response.message) {
-        localStorage.clear();
-        setAuthenticated(false);
-        setUser({});
-        setFlash({
-          type: 'success',
-          message: response.message,
-          display: true,
-        });
-      } else {
+      fetch(url, {
+        method: "DELETE",
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => response.json())
+      .then(response => {
+        if (response.message) {
+          localStorage.clear();
+          setAuthenticated(false);
+          setUser({});
+          setFlash({
+            type: 'success',
+            message: response.message,
+            display: true,
+          });
+        } else {
+          setFlash({
+            type: 'danger',
+            message: response.error,
+            display: true,
+          })
+        }
+        closeModifyCredentialsModal();
+      })
+      .catch(error => {
+        closeModifyCredentialsModal();
         setFlash({
           type: 'danger',
-          message: response.error,
+          message: error,
           display: true,
         })
-      }
-      closeModifyCredentialsModal();
-    })
-    .catch(error => {
-      closeModifyCredentialsModal();
-      setFlash({
-        type: 'danger',
-        message: error,
-        display: true,
       })
-    })
+    }
   }
 
   const scrollTopComponent = () => {
