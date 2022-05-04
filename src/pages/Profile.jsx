@@ -17,7 +17,7 @@ import ModifyCredentialsModal from '../components/ModifyCredentialsModal';
 import user from '../data/User';
 
 const Profile = () => {
-  const {authenticated, setAuthenticated} = useContext(AuthContext);
+  const { authenticated, setAuthenticated } = useContext(AuthContext);
   const { flash, setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
 

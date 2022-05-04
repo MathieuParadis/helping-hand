@@ -4,16 +4,18 @@ import React, {useEffect, useState, useContext} from 'react';
 // CONTEXT IMPORTS
 import AuthContext from './Context/AuthContext';
 import FlashContext from './Context/FlashContext';
+import UserContext from './Context/UserContext';
 
 // ASSETS IMPORTS
 import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
 const ModifyCredentialsModal = ({userData}) => {
-  const {email} = userData;
+  const {id, email} = userData;
 
-  const {authenticated, setAuthenticated} = useContext(AuthContext);
+  const { authenticated, setAuthenticated } = useContext(AuthContext);
   const { flash, setFlash } = useContext(FlashContext);
+  const { user, setUser } = useContext(UserContext);
   const [emailAdd, setEmailAdd] = useState(email);
 
   const closeModifyCredentialsModal = () => {
@@ -27,10 +29,15 @@ const ModifyCredentialsModal = ({userData}) => {
     alert("submitting changes");
   }
   
-  const deleteAccount = (e) => {
-    e.preventDefault();
-  
-    const url = 'http://localhost:3000/users';
+  const deleteAccount = () => {
+    const email_add = document.querySelector('#email').value;
+
+    const data = {
+      email: email
+    };
+
+    const url = `http://localhost:3000/users/${id}`;
+    const token = localStorage.getItem('jwt_token');
 
     fetch(url, {
       method: "DELETE",
@@ -38,26 +45,19 @@ const ModifyCredentialsModal = ({userData}) => {
       headers: {
         'Accept': 'application/json',
         "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + token,
       },
+      body: JSON.stringify(data),
     })
     .then(response => response.json())
     .then(response => {
-      // if (response.user ) {
-      //   localStorage.setItem('jwt_token', response.token);
-      //   setAuthenticated(true);
-      //   emptyFormFields();
-      //   setFlash({
-      //     type: 'success',
-      //     message: response.message,
-      //     display: true,
-      //   });
-      // } else {
-      //   setFlash({
-      //     type: 'danger',
-      //     message: response.error,
-      //     display: true,
-      //   })
-      // }
+      setAuthenticated(false);
+      setUser({});
+      setFlash({
+        type: 'success',
+        message: "deleted user",
+        display: true,
+      })
     })
     .catch(error =>{
       setFlash({
