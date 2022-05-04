@@ -1,7 +1,7 @@
 // CONFIG IMPORTS
 import React, {useEffect, useState, useRef} from 'react';
 
-import id from '../assets/images/rules/id_check.svg';
+import id_card_default from '../assets/images/rules/id_check.svg';
 
 // ASSETS IMPORTS
 import profile_icon from '../assets/logos/profile_logo.svg';
@@ -12,7 +12,7 @@ const EditProfileModal = ({userData}) => {
 
   const [fname, setFname] = useState(first_name);
   const [lname, setLname] = useState(last_name);
-  const [id_card, setId_card] = useState(id);
+  const [id_card, setId_card] = useState(id_card_default);
   const hiddenFileInput = useRef(null);
 
   const closeEditProfileModal = () => {
@@ -21,7 +21,7 @@ const EditProfileModal = ({userData}) => {
     document.querySelector("body").classList.remove("clicked");
     setFname(first_name);
     setLname(last_name);
-    setId_card(id);
+    setId_card(id_card_default);
   }
 
   const updateInformationRequest = () => {
@@ -83,7 +83,7 @@ const EditProfileModal = ({userData}) => {
                   <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(.jpg, .png, and .pdf only)</small></label>
                   <div className="d-flex align-items-center">
                     <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
-                    <p className="m-0 ps-3" id="labelHiddenFileInput">{getFileName(id)}</p>
+                    <p className="m-0 ps-3" id="labelHiddenFileInput">{getFileName(id_card_default)}</p>
                   </div>
                   <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} />
                 </div>

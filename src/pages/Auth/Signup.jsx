@@ -102,7 +102,6 @@ const Signup = () => {
     labelHiddenFileInput.textContent =  getFileName(id_card);
   }
   
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

@@ -21,7 +21,7 @@ const Profile = () => {
   const { flash, setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
 
-  const {first_name, last_name, email, id} = user;
+  const {id, first_name, last_name, email, id_card} = user;
 
   const openEditProfileModal = (e) => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
@@ -58,7 +58,7 @@ const Profile = () => {
                 <div className="d-flex">
                   <p><strong>ID</strong>:&nbsp;</p>
                   <div className="id-card-box border-radius-5">
-                    <img className="id-card" src={id} alt="ID card"/>
+                    <img className="id-card" src={id_card} alt="ID card"/>
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-xl-row justify-content-xl-between mt-5">
