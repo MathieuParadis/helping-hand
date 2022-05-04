@@ -42,13 +42,13 @@ const Signin = () => {
       if (response.user ) {
         localStorage.setItem('jwt_token', response.token);
         setAuthenticated(true);
+        emptyFormFields();
         setFlash({
           type: 'success',
           message: response.message,
           display: true,
-        })
+        });
       } else {
-        console.log(response.error);
         setFlash({
           type: 'danger',
           message: response.error,
@@ -57,13 +57,17 @@ const Signin = () => {
       }
     })
     .catch(error =>{
-      console.log(error);
       setFlash({
         type: 'danger',
         message: error,
         display: true,
       })
     })
+  }
+
+  const emptyFormFields = () => {
+    document.querySelector('#email').value = "";
+    document.querySelector('#password').value = "";
   }
 
   useEffect(() => {
