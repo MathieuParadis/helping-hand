@@ -6,7 +6,7 @@ const FlashContext = createContext({
     type: "",
     message: "",
     display: false,
-  }
+  },
 });
 
 export default FlashContext;

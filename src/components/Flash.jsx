@@ -5,13 +5,15 @@ import React, { useEffect, useContext } from 'react';
 import FlashContext from '../components/FlashContext';
 
 const Flash = () => {
-  const { flash } = useContext(FlashContext);
+  const { flash, setFlash } = useContext(FlashContext);
   let {type, message, display} = flash;
 
   const hideFlash = () => {
-    type = "";
-    message = "";
-    display = false;
+    setFlash({
+      type: '',
+      message: '',
+      display: false,
+    })
 
     const flash = document.querySelector(".flash");   
     flash.classList.remove("flash-success", "flash-warning", "flash-danger");
