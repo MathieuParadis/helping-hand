@@ -41,6 +41,7 @@ const Signin = () => {
     .then(response => {
       if (response.user ) {
         localStorage.setItem('jwt_token', response.token);
+        localStorage.setItem('user', response.user);
         setAuthenticated(true);
         emptyFormFields();
         setFlash({

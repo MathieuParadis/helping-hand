@@ -17,7 +17,6 @@ import plus_icon from '../../assets/logos/plus_logo.svg';
 const Signup = () => {
   const {authenticated, setAuthenticated} = useContext(AuthContext);
   const { flash, setFlash } = useContext(FlashContext);
-
   const hiddenFileInput = useRef(null);
   const [id_card, setId_card] = useState(null);
 
@@ -52,6 +51,7 @@ const Signup = () => {
     .then(response => {
       if (response.user ) {
         localStorage.setItem('jwt_token', response.token);
+        localStorage.setItem('user', response.user);
         setAuthenticated(true);
         emptyFormFields();
         setFlash({

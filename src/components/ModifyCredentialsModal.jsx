@@ -1,5 +1,9 @@
 // CONFIG IMPORTS
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+
+// CONTEXT IMPORTS
+import AuthContext from './AuthContext';
+import FlashContext from './FlashContext';
 
 // ASSETS IMPORTS
 import mail_icon from '../assets/logos/mail_logo.svg';
@@ -8,6 +12,8 @@ import lock_icon from '../assets/logos/lock_logo.svg';
 const ModifyCredentialsModal = ({userData}) => {
   const {email} = userData;
 
+  const {authenticated, setAuthenticated} = useContext(AuthContext);
+  const { flash, setFlash } = useContext(FlashContext);
   const [emailAdd, setEmailAdd] = useState(email);
 
   const closeModifyCredentialsModal = () => {
@@ -20,9 +26,46 @@ const ModifyCredentialsModal = ({userData}) => {
   const postModifyCredentialsRequest = () => {
     alert("submitting changes");
   }
+  
+  const deleteAccount = (e) => {
+    e.preventDefault();
+  
+    const url = 'http://localhost:3000/users';
 
-  const deleteAccountRequest = () => {
-    alert("deleting account");
+    fetch(url, {
+      method: "DELETE",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        "Content-Type": "application/json",
+      },
+    })
+    .then(response => response.json())
+    .then(response => {
+      // if (response.user ) {
+      //   localStorage.setItem('jwt_token', response.token);
+      //   setAuthenticated(true);
+      //   emptyFormFields();
+      //   setFlash({
+      //     type: 'success',
+      //     message: response.message,
+      //     display: true,
+      //   });
+      // } else {
+      //   setFlash({
+      //     type: 'danger',
+      //     message: response.error,
+      //     display: true,
+      //   })
+      // }
+    })
+    .catch(error =>{
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
   }
 
   const scrollTopComponent = () => {
@@ -67,7 +110,7 @@ const ModifyCredentialsModal = ({userData}) => {
           </div>
           <div className="d-flex flex-column align-items-center w-100 mt-5">
             <p className="h6 text-center mb-3">Or</p>
-            <button className="btn button-danger button-modal p-1" onClick={() => deleteAccountRequest()}>Delete account</button>
+            <button className="btn button-danger button-modal p-1" onClick={() => deleteAccount()}>Delete account</button>
           </div>
         </div>
       </div>
