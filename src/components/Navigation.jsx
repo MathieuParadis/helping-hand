@@ -39,10 +39,14 @@ const Navigation = () => {
   }
 
   const signOut = () => {
-    alert("logging out");
+    localStorage.clear();
+    setAuthenticated(false);
+    setFlash({
+      type: 'success',
+      message: "Logged out successfully",
+      display: true,
+    });
   }
-
-  let loggedIn = true;
 
   return (
     <>
