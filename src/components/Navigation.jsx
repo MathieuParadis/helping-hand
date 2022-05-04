@@ -1,6 +1,10 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+
+// CONTEXT IMPORTS
+import AuthContext from './AuthContext';
+import FlashContext from './FlashContext';
 
 // REACT BOOTSTRAP IMPORTS
 import { DropdownButton, Dropdown } from 'react-bootstrap';
@@ -14,6 +18,9 @@ import profile_round_logo from '../assets/logos/profile_round_logo.svg';
 import logout_logo from '../assets/logos/logout_logo.svg';
 
 const Navigation = () => {
+  const {authenticated, setAuthenticated} = useContext(AuthContext);
+  const { flash, setFlash } = useContext(FlashContext);
+
   const location = useLocation();
   const navigate = useNavigate()
 
@@ -41,7 +48,7 @@ const Navigation = () => {
     <>
       <HamburgerMenu />
       <div className="navigation">
-        {!loggedIn ? 
+        {!authenticated ? 
           (
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center">
