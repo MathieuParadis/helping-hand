@@ -1,6 +1,6 @@
 // CONFIG IMPORTS
 import React, { useEffect, useContext } from 'react';
-import { NavLink, useNavigate} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // CONTEXT IMPORT
 import AuthContext from '../../components/AuthContext';
@@ -13,7 +13,6 @@ import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
   const {authenticated, setAuthenticated} = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const login = (e) => {
     e.preventDefault();
@@ -44,11 +43,8 @@ const Signin = () => {
         console.log(response.token)
         localStorage.setItem('jwt_token', response.token);
 
-        // if (localStorage.getItem('jwt_token')) {
-        //   setLoggedIn(true);
-        // }
-
         setAuthenticated(true);
+        alert(response.message);
 
       } else {
         console.log(response.error);
@@ -58,12 +54,6 @@ const Signin = () => {
       console.log(error);
     })
   }
-
-  // useEffect(() => {
-  //   if (loggedIn === true) {
-  //     navigate('/');
-  //   }
-  // }, [loggedIn]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
