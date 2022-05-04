@@ -1,6 +1,9 @@
 // CONFIG IMPORTS
-import React, {useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
+import { NavLink, useNavigate} from 'react-router-dom';
+
+// CONTEXT IMPORT
+import AuthContext from '../../components/AuthContext';
 
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
@@ -9,6 +12,10 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
+  const loggedIn = useContext(AuthContext);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
   const login = (e) => {
     e.preventDefault();
     const email_add = document.querySelector('#email').value;
@@ -37,6 +44,11 @@ const Signin = () => {
         console.log(response.user);
         console.log(response.token)
         localStorage.setItem('jwt_token', response.token);
+
+        // if (localStorage.getItem('jwt_token')) {
+        //   setLoggedIn(true);
+        // }
+
       } else {
         console.log(response.error);
       }
@@ -45,6 +57,12 @@ const Signin = () => {
       console.log(error);
     })
   }
+
+  // useEffect(() => {
+  //   if (loggedIn === true) {
+  //     navigate('/');
+  //   }
+  // }, [loggedIn]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
