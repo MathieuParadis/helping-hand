@@ -3,7 +3,7 @@ import React, {useEffect, useState, useRef, useContext} from 'react';
 
 // CONTEXT IMPORTS
 import FlashContext from './Context/FlashContext';
-import UserContext from './Context/UserContext';
+import UserContext from '../components/Context/UserContext';
 
 import id_card_default from '../assets/images/rules/id_check.svg';
 
@@ -16,8 +16,8 @@ const EditProfileModal = () => {
   const { user, setUser } = useContext(UserContext);
   const { id, first_name, last_name } = user;
 
-  const [fname, setFname] = useState(first_name);
-  const [lname, setLname] = useState(last_name);
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
   const [id_card, setId_card] = useState(id_card_default);
   const hiddenFileInput = useRef(null);
 
@@ -51,7 +51,10 @@ const EditProfileModal = () => {
       },
       body: JSON.stringify(data),
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      return response.json()
+    })
     .then(response => {
       if (response.user) {
         setUser(response.user);
@@ -59,7 +62,7 @@ const EditProfileModal = () => {
           type: 'success',
           message: response.message,
           display: true,
-        });
+        })
       } else {
         console.log(response)
         setFlash({
@@ -103,6 +106,23 @@ const EditProfileModal = () => {
     const modalTitle = document.querySelector(".edit-profile-modal-title");
     modalTitle.scrollIntoView({ behavior: 'smooth' });
   }
+
+  // useEffect(() => {
+  //   if (userData.first_name && userData.last_name) {
+  //     console.log((userData))
+  //     setFname(userData.first_name);
+  //     setLname(userData.last_name);     
+  //   }
+  // }, [userData]);
+
+
+
+  useEffect(() => {
+    if (user && user.first_name) {
+      setFname(first_name);
+      setLname(last_name);  
+    }
+  }, [user]);
 
   useEffect(() => {
     handleChange();

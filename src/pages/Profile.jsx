@@ -13,24 +13,19 @@ import ModifyCredentialsModal from '../components/ModifyCredentialsModal';
 
 const Profile = () => {
   const { user } = useContext(UserContext);
-
   const { first_name, last_name, email, id_card } = user;
 
-  const openEditProfileModal = (e) => {
+  const openEditProfileModal = () => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
     editProfileModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
 
-  const openModifyCredentialsModal = (e) => {
+  const openModifyCredentialsModal = () => {
     const modifyCredentialsModal = document.querySelector(".modify-credentials-modal");
     modifyCredentialsModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
-
-  useEffect(() => {
-  
-  }, [user]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
