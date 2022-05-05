@@ -43,6 +43,12 @@ const App = () => {
     isUserAuthenticated();
   }, [authenticated]);
 
+  useEffect(() => {
+    if(localStorage.getItem('user') !== null ) {
+      setUser(JSON.parse(localStorage.getItem('user')));
+    }
+  }, [user]);
+
   return (
     <div className="app">
       <AuthContext.Provider value={{authenticated, setAuthenticated}}>

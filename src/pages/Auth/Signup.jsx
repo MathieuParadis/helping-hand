@@ -53,6 +53,8 @@ const Signup = () => {
     .then(response => {
       if (response.user) {
         localStorage.setItem('jwt_token', response.token);
+        localStorage.setItem('user', JSON.stringify(response.user));
+
         setAuthenticated(true);
         setUser(response.user);
         setFlash({

@@ -29,9 +29,13 @@ const Profile = () => {
   }
 
   useEffect(() => {
+  
+  }, [user]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <>
       <EditProfileModal />
