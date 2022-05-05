@@ -14,9 +14,9 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
 const Signin = () => {
-  const {authenticated, setAuthenticated} = useContext(AuthContext);
-  const { flash, setFlash } = useContext(FlashContext);
-  const { user, setUser } = useContext(UserContext);
+  const { setAuthenticated} = useContext(AuthContext);
+  const { setFlash } = useContext(FlashContext);
+  const { setUser } = useContext(UserContext);
 
   const login = (e) => {
     e.preventDefault();

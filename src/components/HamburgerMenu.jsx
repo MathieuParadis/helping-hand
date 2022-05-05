@@ -1,14 +1,14 @@
 // CONFIG IMPORTS
 import React, { useContext } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // CONTEXT IMPORTS
 import AuthContext from './Context/AuthContext';
 import FlashContext from './Context/FlashContext';
 
 const HamburgerMenu = () => {
-  const {authenticated, setAuthenticated} = useContext(AuthContext);
-  const { flash, setFlash } = useContext(FlashContext);
+  const { authenticated, setAuthenticated } = useContext(AuthContext);
+  const { setFlash } = useContext(FlashContext);
 
   const handleMenu = () => {
     document.querySelector(".span1").classList.toggle("clicked");

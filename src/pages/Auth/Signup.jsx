@@ -16,9 +16,9 @@ import lock_icon from '../../assets/logos/lock_logo.svg';
 import plus_icon from '../../assets/logos/plus_logo.svg';
 
 const Signup = () => {
-  const {authenticated, setAuthenticated} = useContext(AuthContext);
-  const { flash, setFlash } = useContext(FlashContext);
-  const { user, setUser } = useContext(UserContext);
+  const { setAuthenticated } = useContext(AuthContext);
+  const { setFlash } = useContext(FlashContext);
+  const { setUser } = useContext(UserContext);
   const hiddenFileInput = useRef(null);
   const [id_card, setId_card] = useState(null);
 

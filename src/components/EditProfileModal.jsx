@@ -12,7 +12,7 @@ import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
 const EditProfileModal = () => {
-  const { flash, setFlash } = useContext(FlashContext);
+  const { setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
   const { id, first_name, last_name } = user;
 

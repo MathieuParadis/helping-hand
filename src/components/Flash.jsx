@@ -6,7 +6,7 @@ import FlashContext from './Context/FlashContext';
 
 const Flash = () => {
   const { flash, setFlash } = useContext(FlashContext);
-  let {type, message, display} = flash;
+  let { type, message, display } = flash;
 
   const hideFlash = () => {
     setFlash(

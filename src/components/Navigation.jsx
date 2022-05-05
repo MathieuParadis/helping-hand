@@ -19,7 +19,7 @@ import logout_logo from '../assets/logos/logout_logo.svg';
 
 const Navigation = () => {
   const {authenticated, setAuthenticated} = useContext(AuthContext);
-  const { flash, setFlash } = useContext(FlashContext);
+  const { setFlash } = useContext(FlashContext);
 
   const location = useLocation();
   const navigate = useNavigate()
