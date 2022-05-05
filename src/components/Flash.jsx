@@ -22,6 +22,7 @@ const Flash = () => {
   useEffect(() => {
     if (display) {
       window.scrollTo(0, 0);
+      setTimeout(function() { hideFlash(); }, 4000);
     } else {
       hideFlash();
     }
