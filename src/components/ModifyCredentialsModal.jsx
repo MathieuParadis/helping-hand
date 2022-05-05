@@ -10,14 +10,16 @@ import UserContext from './Context/UserContext';
 import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
-const ModifyCredentialsModal = (userData) => {
+const ModifyCredentialsModal = ({userData}) => {
   const { setAuthenticated } = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const { id, email } = userData;
 
   const [loaded, setLoaded] = useState(false);
-  const [emailAdd, setEmailAdd] = useState(email);
+  const [emailAdd, setEmailAdd] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
   const closeModifyCredentialsModal = () => {
     const modifyCredentialsModal = document.querySelector(".modify-credentials-modal");
@@ -26,10 +28,58 @@ const ModifyCredentialsModal = (userData) => {
     setEmailAdd(email);
   }
 
-  const postModifyCredentialsRequest = () => {
-    const email_add = document.querySelector('#email').value;
+  const modifyCredentials = (e) => {
+    e.preventDefault();
 
-    alert("submitting changes");
+    const data = {
+      email: emailAdd,
+      password: password,
+      password_confirmation: passwordConfirmation
+    };
+
+    const url = `http://localhost:3000/users/${id}`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "PUT",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(response => {
+      if (response.user) {
+        localStorage.setItem('user', JSON.stringify(response.user));
+        setUser(response.user);
+        setFlash({
+          type: 'success',
+          message: "Profile updated successfully",
+          display: true,
+        })
+      } else {
+        console.log(response)
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+      closeModifyCredentialsModal();
+    })
+    .catch(error => {
+      closeModifyCredentialsModal();
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
   }
   
   const deleteAccount = () => {
@@ -83,8 +133,16 @@ const ModifyCredentialsModal = (userData) => {
   }
 
   useEffect(() => {
+    if (userData.email && !loaded) {
+      console.log(userData.email);
+      setEmailAdd(userData.email);
+      setLoaded(true);    
+    }
+  }, [userData]);
+
+  useEffect(() => {
     scrollTopComponent();
-  }, [user]);
+  }, [userData]);
 
   return (
     <div className="modify-credentials-modal">
@@ -93,7 +151,7 @@ const ModifyCredentialsModal = (userData) => {
         <div className="modify-credentials-modal-content d-flex flex-column justify-content-between align-items-center w-100 p-4 p-md-5">
           <h2 className="modify-credentials-modal-title text-primary fw-bold mb-5">Change my credentials</h2>
           <div className="form-container d-flex flex-grow-1 w-100">
-            <form onSubmit={postModifyCredentialsRequest} className="d-flex flex-column justify-content-between w-100">
+            <form onSubmit={modifyCredentials} className="d-flex flex-column justify-content-between w-100">
               <div>
                 <div className="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
@@ -102,12 +160,12 @@ const ModifyCredentialsModal = (userData) => {
                 </div>
                 <div className="input my-3">
                   <label htmlFor="password" className="mb-1">Password</label>
-                  <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" />
+                  <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
                 <div className="input my-3">
                   <label htmlFor="password" className="mb-1">Password confirmation</label>
-                  <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" />
+                  <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>  
               </div>
