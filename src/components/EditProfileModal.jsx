@@ -67,6 +67,7 @@ const EditProfileModal = () => {
           display: true,
         })
       }
+      closeEditProfileModal();
     })
     .catch(error => {
       closeEditProfileModal();
