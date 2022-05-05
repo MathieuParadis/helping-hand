@@ -33,8 +33,8 @@ const Profile = () => {
 
   return (
     <>
-      <EditProfileModal userData={user} />
-      <ModifyCredentialsModal userData={user} />
+      <EditProfileModal />
+      <ModifyCredentialsModal />
       <div className="profile bg2 margin-mobile">
         <div className="container d-flex justify-content-center align-items-center mx-0 w-100">
           <div className="box box-shadow border-radius-5 p-3 d-flex flex-row-reverse my-3">

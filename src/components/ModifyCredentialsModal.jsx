@@ -10,11 +10,11 @@ import UserContext from './Context/UserContext';
 import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
-const ModifyCredentialsModal = ({userData}) => {
+const ModifyCredentialsModal = () => {
   const { setAuthenticated } = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
-  const { setUser } = useContext(UserContext);
-  const { id, email } = userData;
+  const { user, setUser } = useContext(UserContext);
+  const { id, email } = user;
 
   const [loaded, setLoaded] = useState(false);
   const [emailAdd, setEmailAdd] = useState("");
@@ -26,6 +26,7 @@ const ModifyCredentialsModal = ({userData}) => {
     modifyCredentialsModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
     setEmailAdd(email);
+    setLoaded(false); 
   }
 
   const modifyCredentials = (e) => {
@@ -59,7 +60,7 @@ const ModifyCredentialsModal = ({userData}) => {
         setUser(response.user);
         setFlash({
           type: 'success',
-          message: "Profile updated successfully",
+          message: "Credentials updated successfully",
           display: true,
         })
       } else {
@@ -133,16 +134,16 @@ const ModifyCredentialsModal = ({userData}) => {
   }
 
   useEffect(() => {
-    if (userData.email && !loaded) {
-      console.log(userData.email);
-      setEmailAdd(userData.email);
+    if (user.email && !loaded) {
+      console.log(user.email);
+      setEmailAdd(user.email);
       setLoaded(true);    
     }
-  }, [userData]);
+  }, [user]);
 
   useEffect(() => {
     scrollTopComponent();
-  }, [userData]);
+  }, [user]);
 
   return (
     <div className="modify-credentials-modal">

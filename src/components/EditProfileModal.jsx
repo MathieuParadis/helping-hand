@@ -11,10 +11,10 @@ import id_card_default from '../assets/images/rules/id_check.svg';
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
-const EditProfileModal = ({userData}) => {
+const EditProfileModal = () => {
   const { setFlash } = useContext(FlashContext);
-  const { setUser } = useContext(UserContext);
-  const { id, first_name, last_name } = userData;
+  const { user, setUser } = useContext(UserContext);
+  const { id, first_name, last_name } = user;
 
   const [loaded, setLoaded] = useState(false);
   const [fname, setFname] = useState("");
@@ -29,6 +29,7 @@ const EditProfileModal = ({userData}) => {
     setFname(first_name);
     setLname(last_name);
     setId_card(id_card_default);
+    setLoaded(false); 
   }
 
   const updateProfile = (e) => {
@@ -109,12 +110,12 @@ const EditProfileModal = ({userData}) => {
   }
 
   useEffect(() => {
-    if (userData.first_name && !loaded) {
-      setFname(userData.first_name);
-      setLname(userData.last_name); 
+    if (user.first_name && !loaded) {
+      setFname(user.first_name);
+      setLname(user.last_name); 
       setLoaded(true);    
     }
-  }, [userData]);
+  }, [user]);
 
   useEffect(() => {
     handleChange();
@@ -122,7 +123,7 @@ const EditProfileModal = ({userData}) => {
 
   useEffect(() => {
     scrollTopComponent();
-  }, [userData]);
+  }, [user]);
 
   return (
     <div className="edit-profile-modal">
