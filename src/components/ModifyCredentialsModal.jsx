@@ -10,12 +10,12 @@ import UserContext from './Context/UserContext';
 import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
-const ModifyCredentialsModal = ({userData}) => {
-  const { id, email } = userData;
-
+const ModifyCredentialsModal = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
   const { flash, setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
+  const { id, email } = user;
+
   const [emailAdd, setEmailAdd] = useState(email);
 
   const closeModifyCredentialsModal = () => {
@@ -88,7 +88,7 @@ const ModifyCredentialsModal = ({userData}) => {
 
   useEffect(() => {
     scrollTopComponent();
-  }, [userData]);
+  }, [user]);
 
   return (
     <div className="modify-credentials-modal">
