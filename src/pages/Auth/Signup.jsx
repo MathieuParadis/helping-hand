@@ -51,7 +51,7 @@ const Signup = () => {
     })
     .then(response => response.json())
     .then(response => {
-      if (response.user ) {
+      if (response.user) {
         localStorage.setItem('jwt_token', response.token);
         setAuthenticated(true);
         setUser(response.user);

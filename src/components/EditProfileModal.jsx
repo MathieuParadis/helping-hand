@@ -1,5 +1,9 @@
 // CONFIG IMPORTS
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef, useContext} from 'react';
+
+// CONTEXT IMPORTS
+import FlashContext from './Context/FlashContext';
+import UserContext from './Context/UserContext';
 
 import id_card_default from '../assets/images/rules/id_check.svg';
 
@@ -7,8 +11,10 @@ import id_card_default from '../assets/images/rules/id_check.svg';
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
-const EditProfileModal = ({userData}) => {
-  const {first_name, last_name} = userData;
+const EditProfileModal = () => {
+  const { flash, setFlash } = useContext(FlashContext);
+  const { user, setUser } = useContext(UserContext);
+  const { id, first_name, last_name } = user;
 
   const [fname, setFname] = useState(first_name);
   const [lname, setLname] = useState(last_name);
@@ -24,8 +30,52 @@ const EditProfileModal = ({userData}) => {
     setId_card(id_card_default);
   }
 
-  const updateInformationRequest = () => {
-    alert("updating profile");
+  const updateProfile = (e) => {
+    e.preventDefault();
+
+    const data = {
+      first_name: fname,
+      last_name: lname
+    };
+
+    const url = `http://localhost:3000/users/${id}`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "PUT",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response.user) {
+        setUser(response.user);
+        setFlash({
+          type: 'success',
+          message: response.message,
+          display: true,
+        });
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+    })
+    .catch(error => {
+      closeEditProfileModal();
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
   }
 
   const handleClick = e => {
@@ -58,7 +108,7 @@ const EditProfileModal = ({userData}) => {
 
   useEffect(() => {
     scrollTopComponent();
-  }, [userData]);
+  }, [user]);
 
   return (
     <div className="edit-profile-modal">
@@ -67,7 +117,7 @@ const EditProfileModal = ({userData}) => {
         <div className="edit-profile-modal-content d-flex flex-column align-items-center w-100 p-4 p-md-5">
           <h2 className="edit-profile-modal-title text-primary fw-bold mb-5">Edit my information</h2>
           <div className="form-container d-flex flex-grow-1 w-100">
-            <form onSubmit={updateInformationRequest} className="d-flex flex-column justify-content-between w-100">
+            <form onSubmit={updateProfile} className="d-flex flex-column justify-content-between w-100">
               <div>
                 <div className="input mb-3">
                   <label htmlFor="first_name" className="mb-1">First name</label>

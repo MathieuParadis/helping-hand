@@ -11,7 +11,7 @@ import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
 const ModifyCredentialsModal = ({userData}) => {
-  const {id, email} = userData;
+  const { id, email } = userData;
 
   const { authenticated, setAuthenticated } = useContext(AuthContext);
   const { flash, setFlash } = useContext(FlashContext);

@@ -2,8 +2,6 @@
 import React, {useEffect, useContext} from 'react';
 
 // CONTEXT IMPORTS
-import AuthContext from '../components/Context/AuthContext';
-import FlashContext from '../components/Context/FlashContext';
 import UserContext from '../components/Context/UserContext';
 
 // ASSETS IMPORTS
@@ -13,15 +11,10 @@ import profile_illustration from '../assets/images/my_profile_illustration.svg';
 import EditProfileModal from '../components/EditProfileModal';
 import ModifyCredentialsModal from '../components/ModifyCredentialsModal';
 
-// DATA IMPORTS
-import user from '../data/User';
-
 const Profile = () => {
-  const { authenticated, setAuthenticated } = useContext(AuthContext);
-  const { flash, setFlash } = useContext(FlashContext);
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
-  const {id, first_name, last_name, email, id_card} = user;
+  const { first_name, last_name, email, id_card } = user;
 
   const openEditProfileModal = (e) => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
@@ -41,7 +34,7 @@ const Profile = () => {
   
   return (
     <>
-      <EditProfileModal userData={user} />
+      <EditProfileModal />
       <ModifyCredentialsModal userData={user} />
       <div className="profile bg2 margin-mobile">
         <div className="container d-flex justify-content-center align-items-center mx-0 w-100">
