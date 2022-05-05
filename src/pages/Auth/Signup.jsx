@@ -64,9 +64,15 @@ const Signup = () => {
         });
         emptyFormFields();
       } else {
+        const errors = response.error;
+        const arrayErrors = [];
+        Object.keys(errors).map(function(key, index) {
+          arrayErrors.push(`${key} : ${errors[key][0]}`)
+        })
+        const errorMessage = arrayErrors.join(" | ");
         setFlash({
           type: 'danger',
-          message: response.error,
+          message: errorMessage,
           display: true,
         })
       }
@@ -148,12 +154,12 @@ const Signup = () => {
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-4">
                   <div className="input mb-3 mb-md-0 me-0 me-md-2">
                     <label htmlFor="password" className="mb-1">Password</label>
-                    <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" required />
+                    <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" minLength="6" required />
                     <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                   </div>
                   <div className="input mb-4 mb-md-0 ms-0 ms-md-2">
                     <label htmlFor="password" className="mb-1">Password confirmation</label>
-                    <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" required />
+                    <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" minLength="6" required />
                     <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                   </div>
                 </div>
