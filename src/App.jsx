@@ -41,16 +41,13 @@ const App = () => {
   }
 
   const handleAuthenticationContext = () => {
-    return (isUserAuthenticated !== null ? setAuthenticated(true) : setAuthenticated(false)) 
+    return (token !== null ? setAuthenticated(true) : setAuthenticated(false)) 
   }
 
   useEffect(() => {
     isUserAuthenticated();
-  }, [token]);
-
-  useEffect(() => {
     handleAuthenticationContext();
-  }, [isUserAuthenticated()]);
+  }, [token]);
 
   useEffect(() => {
     if(localStorage.getItem('user') !== null ) {
