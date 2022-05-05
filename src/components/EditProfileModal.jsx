@@ -11,11 +11,12 @@ import id_card_default from '../assets/images/rules/id_check.svg';
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
-const EditProfileModal = () => {
+const EditProfileModal = ({userData}) => {
   const { setFlash } = useContext(FlashContext);
-  const { user, setUser } = useContext(UserContext);
-  const { id, first_name, last_name } = user;
+  const { setUser } = useContext(UserContext);
+  const { id, first_name, last_name } = userData;
 
+  const [loaded, setLoaded] = useState(false);
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [id_card, setId_card] = useState(id_card_default);
@@ -107,22 +108,14 @@ const EditProfileModal = () => {
     modalTitle.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // useEffect(() => {
-  //   if (userData.first_name && userData.last_name) {
-  //     console.log((userData))
-  //     setFname(userData.first_name);
-  //     setLname(userData.last_name);     
-  //   }
-  // }, [userData]);
-
-
 
   useEffect(() => {
-    if (user && user.first_name) {
-      setFname(first_name);
-      setLname(last_name);  
+    if (userData.first_name && !loaded) {
+      setFname(userData.first_name);
+      setLname(userData.last_name); 
+      setLoaded(true);    
     }
-  }, [user]);
+  }, [userData]);
 
   useEffect(() => {
     handleChange();
@@ -130,7 +123,7 @@ const EditProfileModal = () => {
 
   useEffect(() => {
     scrollTopComponent();
-  }, [user]);
+  }, [userData]);
 
   return (
     <div className="edit-profile-modal">
