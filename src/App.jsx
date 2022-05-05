@@ -34,14 +34,23 @@ const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [flash, setFlash] = useState({});
   const [user, setUser] = useState({});
+  const token = localStorage.getItem('jwt_token');
 
   const isUserAuthenticated = () => {
-    return localStorage.getItem('jwt_token') !== null ? setAuthenticated(true) : setAuthenticated(false);
-  };
+    return (token !== null ? true : false) 
+  }
+
+  const handleAuthenticationContext = () => {
+    return (isUserAuthenticated !== null ? setAuthenticated(true) : setAuthenticated(false)) 
+  }
 
   useEffect(() => {
     isUserAuthenticated();
-  }, [authenticated]);
+  }, [token]);
+
+  useEffect(() => {
+    handleAuthenticationContext();
+  }, [isUserAuthenticated()]);
 
   useEffect(() => {
     if(localStorage.getItem('user') !== null ) {
@@ -59,15 +68,15 @@ const App = () => {
               <Flash />
               <NewRequestModal />
               <Routes>
-                <Route path="/" element={authenticated ? <MapRequests /> : <Home />} />
+                <Route path="/" element={isUserAuthenticated() ? <MapRequests /> : <Home />} />
                 <Route path="/how-it-works" exact="true" element={<Rules />} />
-                <Route path="/signin" exact="true" element={authenticated ? <Navigate to="/" replace /> : <Signin />} />
-                <Route path="/signup" exact="true" element={authenticated ? <Navigate to="/" replace /> : <Signup />} />
-                <Route path="/forgotten-password" exact="true" element={authenticated ? <Navigate to="/my-profile" replace /> : <ForgottenPassword />} />
-                <Route path="/reset-password" exact="true" element={authenticated ? <Navigate to="/my-profile" replace /> : <ResetPassword />} />
-                <Route path="/my-chats" exact="true" element={authenticated ? <Chat /> : <Navigate to="/" replace />} />
-                <Route path="/my-profile" exact="true" element={authenticated ? <Profile /> : <Navigate to="/" replace />} />
-                <Route path="/my-requests" exact="true" element={authenticated ? <UserRequests /> : <Navigate to="/" replace />} />
+                <Route path="/signin" exact="true" element={isUserAuthenticated() ? <Navigate to="/" replace /> : <Signin />} />
+                <Route path="/signup" exact="true" element={isUserAuthenticated() ? <Navigate to="/" replace /> : <Signup />} />
+                <Route path="/forgotten-password" exact="true" element={isUserAuthenticated() ? <Navigate to="/my-profile" replace /> : <ForgottenPassword />} />
+                <Route path="/reset-password" exact="true" element={isUserAuthenticated() ? <Navigate to="/my-profile" replace /> : <ResetPassword />} />
+                <Route path="/my-chats" exact="true" element={isUserAuthenticated() ? <Chat /> : <Navigate to="/" replace />} />
+                <Route path="/my-profile" exact="true" element={isUserAuthenticated() ? <Profile /> : <Navigate to="/" replace />} />
+                <Route path="/my-requests" exact="true" element={isUserAuthenticated() ? <UserRequests /> : <Navigate to="/" replace />} />
               </Routes>
               <Footer />
             </Router>
