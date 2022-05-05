@@ -53,15 +53,15 @@ const EditProfileModal = ({userData}) => {
       body: JSON.stringify(data),
     })
     .then(response => {
-      console.log(response);
       return response.json()
     })
     .then(response => {
       if (response.user) {
+        localStorage.setItem('user', JSON.stringify(response.user));
         setUser(response.user);
         setFlash({
           type: 'success',
-          message: response.message,
+          message: "Profile updated successfully",
           display: true,
         })
       } else {
@@ -107,7 +107,6 @@ const EditProfileModal = ({userData}) => {
     const modalTitle = document.querySelector(".edit-profile-modal-title");
     modalTitle.scrollIntoView({ behavior: 'smooth' });
   }
-
 
   useEffect(() => {
     if (userData.first_name && !loaded) {
