@@ -61,6 +61,7 @@ const EditProfileModal = () => {
           display: true,
         });
       } else {
+        console.log(response)
         setFlash({
           type: 'danger',
           message: response.error,

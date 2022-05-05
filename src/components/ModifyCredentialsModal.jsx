@@ -33,10 +33,6 @@ const ModifyCredentialsModal = () => {
   
   const deleteAccount = () => {
     if (window.confirm("You are about to delete your account. \n \nAre you sure?")) {
-      const data = {
-        email: email
-      };
-
       const url = `http://localhost:3000/users/${id}`;
       const token = localStorage.getItem('jwt_token');
 
@@ -48,7 +44,6 @@ const ModifyCredentialsModal = () => {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + token,
         },
-        body: JSON.stringify(data),
       })
       .then(response => response.json())
       .then(response => {
