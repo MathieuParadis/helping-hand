@@ -10,12 +10,13 @@ import UserContext from './Context/UserContext';
 import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
-const ModifyCredentialsModal = () => {
+const ModifyCredentialsModal = (userData) => {
   const { setAuthenticated } = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
-  const { id, email } = user;
+  const { id, email } = userData;
 
+  const [loaded, setLoaded] = useState(false);
   const [emailAdd, setEmailAdd] = useState(email);
 
   const closeModifyCredentialsModal = () => {
