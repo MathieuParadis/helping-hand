@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 // CONTEXT IMPORTS
 import AuthContext from '../../components/Context/AuthContext';
 import FlashContext from '../../components/Context/FlashContext';
+import UserContext from '../../components/Context/UserContext';
 
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
@@ -17,6 +18,7 @@ import plus_icon from '../../assets/logos/plus_logo.svg';
 const Signup = () => {
   const { setAuthenticated } = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
+  const { setUser } = useContext(UserContext);
   const hiddenFileInput = useRef(null);
   const [id_card, setId_card] = useState(null);
 
@@ -54,6 +56,7 @@ const Signup = () => {
         localStorage.setItem('user', JSON.stringify(response.user));
 
         setAuthenticated(true);
+        setUser(response.user);
         setFlash({
           type: 'success',
           message: response.message,
@@ -62,9 +65,10 @@ const Signup = () => {
         emptyFormFields();
       } else {
         const errors = response.error;
+        console.log(errors);
         const arrayErrors = [];
         Object.keys(errors).map(function(key, index) {
-          arrayErrors.push(`${key} : ${errors[key][0]}`)
+          arrayErrors.push(`${key} ${errors[key][0]}`)
           return true
         })
         const errorMessage = arrayErrors.join(" | ");
