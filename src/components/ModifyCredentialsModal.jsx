@@ -166,12 +166,12 @@ const ModifyCredentialsModal = () => {
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
                 <div className="input my-3">
-                  <label htmlFor="password" className="mb-1">Password&nbsp;<small className="caption">(6 characters min)</small></label>
+                  <label htmlFor="password" className="mb-1">New password&nbsp;<small className="caption">(6 characters min)</small></label>
                   <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" minLength="6" value={password} onChange={(e) => setPassword(e.target.value)}/>
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
                 <div className="input my-3">
-                  <label htmlFor="password" className="mb-1">Password confirmation</label>
+                  <label htmlFor="password" className="mb-1">Confirm new password</label>
                   <input type="password" className="form-control" id="password-confirmation" aria-describedby="password input field" placeholder="Password" minLength="6" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>  
