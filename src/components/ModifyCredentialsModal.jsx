@@ -32,56 +32,59 @@ const ModifyCredentialsModal = () => {
 
   const modifyCredentials = (e) => {
     e.preventDefault();
+    if (pwdCorrect()) {
+      const data = {
+        email: emailAdd,
+        password: password,
+        password_confirmation: passwordConfirmation
+      };
 
-    const data = {
-      email: emailAdd,
-      password: password,
-      password_confirmation: passwordConfirmation
-    };
+      const url = `http://localhost:3000/users/${id}`;
+      const token = localStorage.getItem('jwt_token');
 
-    const url = `http://localhost:3000/users/${id}`;
-    const token = localStorage.getItem('jwt_token');
-
-    fetch(url, {
-      method: "PUT",
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      },
-      body: JSON.stringify(data),
-    })
-    .then(response => {
-      return response.json()
-    })
-    .then(response => {
-      if (response.user) {
-        localStorage.setItem('user', JSON.stringify(response.user));
-        setUser(response.user);
-        setFlash({
-          type: 'success',
-          message: "Credentials updated successfully",
-          display: true,
-        })
-      } else {
-        console.log(response)
+      fetch(url, {
+        method: "PUT",
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+        body: JSON.stringify(data),
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        if (response.user) {
+          localStorage.setItem('user', JSON.stringify(response.user));
+          setUser(response.user);
+          setFlash({
+            type: 'success',
+            message: "Credentials updated successfully",
+            display: true,
+          })
+        } else {
+          console.log(response)
+          setFlash({
+            type: 'danger',
+            message: response.error,
+            display: true,
+          })
+        }
+        closeModifyCredentialsModal();
+      })
+      .catch(error => {
+        closeModifyCredentialsModal();
         setFlash({
           type: 'danger',
-          message: response.error,
+          message: error,
           display: true,
         })
-      }
-      closeModifyCredentialsModal();
-    })
-    .catch(error => {
-      closeModifyCredentialsModal();
-      setFlash({
-        type: 'danger',
-        message: error,
-        display: true,
       })
-    })
+    } else {
+      alert("Pasword and password confirmation must be the same");
+    }
   }
   
   const deleteAccount = () => {
@@ -128,6 +131,14 @@ const ModifyCredentialsModal = () => {
       })
     }
   }
+
+  const pwdCorrect = () => {
+    if (password === passwordConfirmation) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const emptyFormFields = () => {
     setPassword("");

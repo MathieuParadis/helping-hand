@@ -66,7 +66,6 @@ const ResetPassword = () => {
   const emptyFormFields = () => {
     document.querySelector('#email').value = "";
     document.querySelector('#password').value = "";
-
   }
 
   useEffect(() => {
@@ -92,7 +91,7 @@ const ResetPassword = () => {
                 </div>
                 <div className="input mb-4">
                   <label htmlFor="password" className="mb-1">New password</label>
-                  <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Your new password" required />
+                  <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Your new password" minLength="6" required />
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                 </div>
                 <button type="submit" className="btn button-primary button-w200 border-radius-50 text-white align-self-center mt-4" id="reset-pw-btn">Reset password</button>
