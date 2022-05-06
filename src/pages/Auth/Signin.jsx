@@ -16,7 +16,6 @@ import lock_icon from '../../assets/logos/lock_logo.svg';
 const Signin = () => {
   const { setAuthenticated} = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
-  const { setUser } = useContext(UserContext);
 
   const login = (e) => {
     e.preventDefault();
@@ -46,7 +45,6 @@ const Signin = () => {
         localStorage.setItem('user', JSON.stringify(response.user));
 
         setAuthenticated(true);
-        setUser(response.user);
         setFlash({
           type: 'success',
           message: response.message,
