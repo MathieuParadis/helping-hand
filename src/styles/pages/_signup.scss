@@ -80,10 +80,6 @@
           label {
             font-size: 18px;
           }
-
-          .caption {
-            font-size: 12px;
-          }
         
           .plus-icon {
             width: 30px;
@@ -99,6 +95,10 @@
           input {
             display: none;
           }  
+        }
+        
+        .caption {
+          font-size: 12px;
         }
       }
     }

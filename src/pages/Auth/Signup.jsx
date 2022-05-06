@@ -18,7 +18,6 @@ import plus_icon from '../../assets/logos/plus_logo.svg';
 const Signup = () => {
   const { setAuthenticated } = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
-  const { setUser } = useContext(UserContext);
   const hiddenFileInput = useRef(null);
   const [id_card, setId_card] = useState(null);
 
@@ -56,7 +55,6 @@ const Signup = () => {
         localStorage.setItem('user', JSON.stringify(response.user));
 
         setAuthenticated(true);
-        setUser(response.user);
         setFlash({
           type: 'success',
           message: response.message,
@@ -153,7 +151,7 @@ const Signup = () => {
                 </div>
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-4">
                   <div className="input mb-3 mb-md-0 me-0 me-md-2">
-                    <label htmlFor="password" className="mb-1">Password</label>
+                    <label htmlFor="password" className="mb-1">Password&nbsp;<small className="caption">(6 characters min)</small></label>
                     <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" minLength="6" required />
                     <img src={lock_icon} alt="lock_icon" className="lock-icon" />
                   </div>
