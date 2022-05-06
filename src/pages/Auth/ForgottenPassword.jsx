@@ -1,6 +1,9 @@
 // CONFIG IMPORTS
-import React, {useEffect} from 'react';
+import React, { useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+
+// CONTEXT IMPORTS
+import FlashContext from '../../components/Context/FlashContext';
 
 // ASSETS IMPORTS
 import forgotten_password_illustration from '../../assets/images/forgotten_password_illustration.svg';
@@ -8,8 +11,55 @@ import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 
 const ForgottenPassword = () => {
-  const postResetPasswordInstructionsRequest = (e) => {
-    alert("reset password request");
+  const { setFlash } = useContext(FlashContext);
+
+  const sendResetPasswordInstructionsRequest = (e) => {
+    e.preventDefault();
+    const email_add = document.querySelector('#email').value;
+
+    const data = {
+      email: email_add,
+    };
+
+    const url = 'http://localhost:3000/forgotten-password';
+
+    fetch(url, {
+      method: "POST",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response.message ) {
+        setFlash({
+          type: 'success',
+          message: response.message,
+          display: true,
+        });
+        emptyFormFields();
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+    })
+    .catch(error =>{
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
+  }
+
+  const emptyFormFields = () => {
+    document.querySelector('#email').value = "";
   }
   
   useEffect(() => {
@@ -27,7 +77,7 @@ const ForgottenPassword = () => {
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-md-4 mb-5">Forgot your<br></br>password?</h2>            
             <div className="form-container">
-              <form onSubmit={postResetPasswordInstructionsRequest} className="d-flex flex-column justify-content-center">
+              <form onSubmit={sendResetPasswordInstructionsRequest} className="d-flex flex-column justify-content-center">
                 <div className="input mb-3">
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
