@@ -136,12 +136,12 @@ const EditProfileModal = () => {
               <div>
                 <div className="input mb-3">
                   <label htmlFor="first_name" className="mb-1">First name</label>
-                  <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" value={fname} onChange={(e) => setFname(e.target.value)} required />
+                  <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" minLength="2" maxLength="100" value={fname} onChange={(e) => setFname(e.target.value)} required />
                   <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                 </div>
                 <div className="input my-3">
                   <label htmlFor="last_name" className="mb-1">Last name</label>
-                  <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" value={lname} onChange={(e) => setLname(e.target.value)} required />
+                  <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" minLength="2" maxLength="100" value={lname} onChange={(e) => setLname(e.target.value)} required />
                   <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                 </div>
                 <div className="file-input my-3">

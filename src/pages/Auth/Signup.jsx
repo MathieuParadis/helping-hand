@@ -87,6 +87,7 @@ const Signup = () => {
   const emptyFormFields = () => {
     document.querySelector('#email').value = "";
     document.querySelector('#password').value = "";
+    document.querySelector('#password-confirmation').value = "";
   }
 
   const handleClick = e => {
@@ -127,12 +128,12 @@ const Signup = () => {
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                   <div className="input mb-3 mb-md-0 me-0 me-md-2">
                     <label htmlFor="first_name" className="mb-1">First name</label>
-                    <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" required />
+                    <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" minLength="2" maxLength="100" required />
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
                   <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
                     <label htmlFor="last_name" className="mb-1">Last name</label>
-                    <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" required />
+                    <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" minLength="2" maxLength="100" required />
                     <img src={profile_icon} alt="profile_icon" className="profile-icon" />
                   </div>
                 </div>

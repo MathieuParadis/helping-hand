@@ -27,6 +27,7 @@ const ModifyCredentialsModal = () => {
     document.querySelector("body").classList.remove("clicked");
     setEmailAdd(email);
     setLoaded(false); 
+    emptyFormFields();
   }
 
   const modifyCredentials = (e) => {
@@ -126,6 +127,11 @@ const ModifyCredentialsModal = () => {
         })
       })
     }
+  }
+
+  const emptyFormFields = () => {
+    document.querySelector('#password').value = "";
+    document.querySelector('#password-confirmation').value = "";
   }
 
   const scrollTopComponent = () => {
