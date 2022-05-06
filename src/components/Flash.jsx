@@ -26,7 +26,7 @@ const Flash = () => {
     } else {
       hideFlash();
     }
-  }, [flash])
+  }, [flash, display])
 
   return (
     <div className={`flash flash-${type}`}>

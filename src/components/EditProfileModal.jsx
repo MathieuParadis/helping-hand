@@ -115,7 +115,7 @@ const EditProfileModal = () => {
       setLname(user.last_name); 
       setLoaded(true);    
     }
-  }, [user]);
+  }, [user, loaded]);
 
   useEffect(() => {
     handleChange();

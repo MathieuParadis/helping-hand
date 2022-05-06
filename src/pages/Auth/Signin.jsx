@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 // CONTEXT IMPORTS
 import AuthContext from '../../components/Context/AuthContext';
 import FlashContext from '../../components/Context/FlashContext';
-import UserContext from '../../components/Context/UserContext';
 
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';

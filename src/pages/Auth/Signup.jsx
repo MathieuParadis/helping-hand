@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 // CONTEXT IMPORTS
 import AuthContext from '../../components/Context/AuthContext';
 import FlashContext from '../../components/Context/FlashContext';
-import UserContext from '../../components/Context/UserContext';
 
 // ASSETS IMPORTS
 import pattern1 from '../../assets/images/pattern1.svg';
@@ -66,6 +65,7 @@ const Signup = () => {
         const arrayErrors = [];
         Object.keys(errors).map(function(key, index) {
           arrayErrors.push(`${key} : ${errors[key][0]}`)
+          return true
         })
         const errorMessage = arrayErrors.join(" | ");
         setFlash({
