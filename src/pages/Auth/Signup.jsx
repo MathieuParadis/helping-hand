@@ -33,6 +33,7 @@ const Signup = () => {
     var form_data = new FormData();
     form_data.append('first_name', fname);
     form_data.append('last_name', lname);
+    form_data.append('id_card', idCardFile, idCardFile.name);
     form_data.append('email', email_add);
     form_data.append('password', pw);
     form_data.append('password_confirmation', pw_confirmation);
@@ -47,11 +48,9 @@ const Signup = () => {
       },
       body: form_data,
     })
+    .then(response => response.json())
     .then(response => {
-      console.log(response);
-      return response.json()
-      })
-    .then(response => {
+      console.log(response.user)
       if (response.user) {
         localStorage.setItem('jwt_token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));
@@ -100,7 +99,6 @@ const Signup = () => {
   };
 
   const handleChange = () => {
-    console.log(idCardFile)
     if (idCardFile && idCardFile.name) {
       const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
       labelHiddenFileInput.textContent =  idCardFile.name;

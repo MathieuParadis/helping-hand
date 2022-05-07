@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 
 // CONTEXT IMPORTS
 import UserContext from '../components/Context/UserContext';
@@ -13,7 +13,7 @@ import ModifyCredentialsModal from '../components/ModifyCredentialsModal';
 
 const Profile = () => {
   const { user } = useContext(UserContext);
-  const { first_name, last_name, email, id_card } = user;
+  const { first_name, last_name, email, id_card_url } = user;
 
   const openEditProfileModal = () => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
@@ -26,6 +26,8 @@ const Profile = () => {
     modifyCredentialsModal.style.visibility = 'visible';
     document.querySelector("body").classList.add("clicked");
   }
+
+  console.log( user)
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,7 +52,7 @@ const Profile = () => {
                 <div className="d-flex">
                   <p><strong>ID</strong>:&nbsp;</p>
                   <div className="id-card-box border-radius-5">
-                    <img className="id-card" src={id_card} alt="ID card"/>
+                    <img className="id-card" src={id_card_url} alt="ID card"/>
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-xl-row justify-content-xl-between mt-5">
