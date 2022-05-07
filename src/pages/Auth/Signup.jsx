@@ -20,7 +20,7 @@ const Signup = () => {
   const { setFlash } = useContext(FlashContext);
   const { setUser } = useContext(UserContext);
   const hiddenFileInput = useRef(null);
-  const [id_card, setId_card] = useState(null);
+  const [idCardFile, setIdCardFile] = useState(null);
 
   const register = (e) => {
     e.preventDefault();
@@ -30,13 +30,12 @@ const Signup = () => {
     const pw = document.querySelector('#password').value;
     const pw_confirmation = document.querySelector('#password-confirmation').value;
 
-    const data = {
-      first_name: fname,
-      last_name: lname,
-      email: email_add,
-      password: pw,
-      password_confirmation: pw_confirmation      
-    };
+    var form_data = new FormData();
+    form_data.append('first_name', fname);
+    form_data.append('last_name', lname);
+    form_data.append('email', email_add);
+    form_data.append('password', pw);
+    form_data.append('password_confirmation', pw_confirmation);
 
     const url = 'http://localhost:3000/signup';
 
@@ -45,11 +44,13 @@ const Signup = () => {
       mode: 'cors',
       headers: {
         'Accept': 'application/json',
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: form_data,
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+      return response.json()
+      })
     .then(response => {
       if (response.user) {
         localStorage.setItem('jwt_token', response.token);
@@ -110,7 +111,7 @@ const Signup = () => {
 
   const handleChange = () => {
     const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
-    labelHiddenFileInput.textContent =  getFileName(id_card);
+    labelHiddenFileInput.textContent =  getFileName(idCardFile);
   }
   
   useEffect(() => {
@@ -128,7 +129,7 @@ const Signup = () => {
             <img src={auth_logo} alt="authentification logo" className="auth-logo align-self-center mb-2" />
             <h2 className="text-center pb-md-4 mb-5">Sign up</h2>
             <div className="form-container">
-              <form onSubmit={register} className="d-flex flex-column justify-content-center">
+              <form onSubmit={register} className="d-flex flex-column justify-content-center" id="signupForm">
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                   <div className="input mb-3 mb-md-0 me-0 me-md-2">
                     <label htmlFor="first_name" className="mb-1">First name</label>
@@ -147,7 +148,7 @@ const Signup = () => {
                     <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
                     <p className="m-0 ps-3" id="labelHiddenFileInput">No file chosen</p>
                   </div>
-                  <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} />
+                  <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setIdCardFile(e.target.files[0])} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} />
                 </div>
                 <div className="input mb-3">
                   <label htmlFor="email" className="mb-1">Email</label>
