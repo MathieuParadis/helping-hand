@@ -99,21 +99,18 @@ const Signup = () => {
     hiddenFileInput.current.click();
   };
 
-  const getFileName = (file) => {
-    const indexSlash = file.lastIndexOf("/");
-    const indexBackSlash = file.lastIndexOf("\\");
-    file = file.slice(indexSlash + 1).slice(indexBackSlash + 1);
-
-    const array = file.split(".");
-    const fileName = array[0] + "." + array[array.length-1];
-    return fileName;
-  }
-
   const handleChange = () => {
-    const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
-    labelHiddenFileInput.textContent =  getFileName(idCardFile);
+    console.log(idCardFile)
+    if (idCardFile && idCardFile.name) {
+      const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
+      labelHiddenFileInput.textContent =  idCardFile.name;
+    }
   }
-  
+
+  useEffect(() => {
+    handleChange();
+  }, [idCardFile]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
