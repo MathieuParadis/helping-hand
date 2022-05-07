@@ -1,6 +1,6 @@
 // CONFIG IMPORTS
 import React, { useEffect, useContext } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useLocation } from 'react-router';
 
 // CONTEXT IMPORTS
 import FlashContext from '../../components/Context/FlashContext';
@@ -15,6 +15,10 @@ const ResetPassword = () => {
   const { setFlash } = useContext(FlashContext);
   const { tokenSlug } = useParams();
 
+  console.log(useParams());
+  console.log(useLocation());
+
+
   const resetPassword = (e) => {
     e.preventDefault();
     const email_add = document.querySelector('#email').value;
@@ -27,6 +31,8 @@ const ResetPassword = () => {
     };
 
     const url = 'http://localhost:3000/reset-password';
+
+    console.log(tokenSlug)
 
     fetch(url, {
       method: "POST",
