@@ -18,7 +18,7 @@ import profile_round_logo from '../assets/logos/profile_round_logo.svg';
 import logout_logo from '../assets/logos/logout_logo.svg';
 
 const Navigation = () => {
-  const {authenticated, setAuthenticated} = useContext(AuthContext);
+  const { authenticated, setAuthenticated } = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
 
   const location = useLocation();

@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 // COMPONENTS IMPORTS
 import EditRequestModal from '../components/EditRequestModal';

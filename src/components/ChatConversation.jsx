@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 // COMPONENTS IMPORTS
 import ChatMessage from '../components/ChatMessage';
@@ -19,7 +19,6 @@ const ChatConversation = ({chat}) => {
           })
         )
       }
-
     </div>
   );
 };

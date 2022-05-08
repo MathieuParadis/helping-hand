@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 // ASSETS IMPORTS
 import search_icon from '../assets/logos/search_logo.svg';

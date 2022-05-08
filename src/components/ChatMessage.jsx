@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 // DATA IMPORTS
 import user from '../data/User';

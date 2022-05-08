@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 // PIGEON MAPS IMPORTS
 import { Map, ZoomControl, Marker, Overlay } from "pigeon-maps";

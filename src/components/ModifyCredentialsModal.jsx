@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
 import AuthContext from './Context/AuthContext';
@@ -32,6 +32,7 @@ const ModifyCredentialsModal = () => {
 
   const modifyCredentials = (e) => {
     e.preventDefault();
+
     if (pwdCorrect()) {
       const data = {
         email: emailAdd,
@@ -176,7 +177,6 @@ const ModifyCredentialsModal = () => {
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
                 <div className="input my-3">
-                  
                   <label htmlFor="password" className="mb-1">New password*</label>
                   <input type="password" className="form-control" id="password" aria-describedby="password input field" placeholder="Password" minLength="6" value={password} onChange={(e) => setPassword(e.target.value)}/>
                   <img src={lock_icon} alt="lock_icon" className="lock-icon" />

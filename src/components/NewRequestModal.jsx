@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const NewRequestModal = () => {
   const [lat, setLat] = useState("");

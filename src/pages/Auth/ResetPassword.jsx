@@ -15,12 +15,9 @@ const ResetPassword = () => {
   const { setFlash } = useContext(FlashContext);
   const { tokenSlug } = useParams();
 
-  console.log(useParams());
-  console.log(useLocation());
-
-
   const resetPassword = (e) => {
     e.preventDefault();
+
     const email_add = document.querySelector('#email').value;
     const pw = document.querySelector('#password').value;
 
@@ -31,8 +28,6 @@ const ResetPassword = () => {
     };
 
     const url = 'http://localhost:3000/reset-password';
-
-    console.log(tokenSlug)
 
     fetch(url, {
       method: "POST",

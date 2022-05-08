@@ -5,8 +5,6 @@ import React, { useEffect, useState, useRef, useContext } from 'react';
 import FlashContext from './Context/FlashContext';
 import UserContext from '../components/Context/UserContext';
 
-import id_card_default from '../assets/images/rules/id_check.svg';
-
 // ASSETS IMPORTS
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
@@ -39,6 +37,7 @@ const EditProfileModal = () => {
 
   const updateProfile = (e) => {
     e.preventDefault();
+    
     var form_data = new FormData();
     form_data.append('first_name', fname);
     form_data.append('last_name', lname);
@@ -133,11 +132,6 @@ const EditProfileModal = () => {
   }
 
   useEffect(() => {
-    const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
-    labelHiddenFileInput.textContent = idCardFileName;
-  }, [idCardFileName]);
-
-  useEffect(() => {
     if (user.first_name && !loaded) {
       setFname(user.first_name);
       setLname(user.last_name); 
@@ -178,10 +172,9 @@ const EditProfileModal = () => {
                   <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(.jpg, .png, and .pdf only)</small></label>
                   <div className="d-flex align-items-center">
                     <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
-                    <p className="m-0 ps-3" id="labelHiddenFileInput">{getFileName(id_card_default)}</p>
+                    <p className="m-0 ps-3" id="labelHiddenFileInput">{idCardFileName}</p>
                   </div>
                   <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setIdCardFile(e.target.files[0])} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} />
-                  {/* <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} /> */}
                 </div>
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">

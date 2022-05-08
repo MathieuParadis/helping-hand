@@ -3,12 +3,13 @@ import React from 'react';
 
 const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const markAsFulfilled = () => {
-  alert("marking request as fulfilled");
-}
+    alert("marking request as fulfilled");
+  }
 
   const deleteRequest = () => {
     window.confirm("You are about to delete this request. \n\nAre you sure?");
   }
+  
   return (
     <div className="dropdown-menu-options-request-card ms-2">
       <ul className = "list-unstyled m-0 p-0">

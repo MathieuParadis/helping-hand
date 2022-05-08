@@ -10,7 +10,6 @@ const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkReques
     
     if (menuRequestCard.style.visibility === 'visible') {
       closeAllMenus();
-
     } else {
       closeAllMenus();
       menuRequestCard.style.visibility = 'visible';

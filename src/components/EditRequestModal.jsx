@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 const EditRequestModal = ({request}) => {
   let title = "";
@@ -48,19 +48,19 @@ const EditRequestModal = ({request}) => {
     modalTitle.scrollIntoView({ behavior: 'smooth' });
   }
 
-useEffect(() => {
-  setRequestTitle(title);
-  setRequestType(type);
-  setRequestDescription(description);
-  setRequestLocation(location);
-  setLat(position.lat);
-  setLong(position.lgn);
-  setRequestStatus(status);
-}, [request.request]);
+  useEffect(() => {
+    setRequestTitle(title);
+    setRequestType(type);
+    setRequestDescription(description);
+    setRequestLocation(location);
+    setLat(position.lat);
+    setLong(position.lgn);
+    setRequestStatus(status);
+  }, [request.request]);
 
-useEffect(() => {
-  scrollTopComponent();
-}, [request]);
+  useEffect(() => {
+    scrollTopComponent();
+  }, [request]);
 
   return (
     <div className="edit-request-modal">
