@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, {useEffect, useState, useRef, useContext} from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 
 // CONTEXT IMPORTS
 import FlashContext from './Context/FlashContext';
@@ -14,12 +14,14 @@ import plus_icon from '../assets/logos/plus_logo.svg';
 const EditProfileModal = () => {
   const { setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
-  const { id, first_name, last_name } = user;
+  const { id, first_name, last_name, id_card_url } = user;
 
   const [loaded, setLoaded] = useState(false);
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
-  const [id_card, setId_card] = useState(id_card_default);
+  const [idCardFile, setIdCardFile] = useState(null);
+  const [idCardFileName, setIdCardFileName] = useState("");
+  const [idCardFileType, setIdCardFileType] = useState(null);
   const hiddenFileInput = useRef(null);
 
   const closeEditProfileModal = () => {
@@ -28,17 +30,16 @@ const EditProfileModal = () => {
     document.querySelector("body").classList.remove("clicked");
     setFname(first_name);
     setLname(last_name);
-    setId_card(id_card_default);
     setLoaded(false); 
+    setIdCardFile('');
+    setIdCardFileName(getFileName(id_card_url));
   }
 
   const updateProfile = (e) => {
     e.preventDefault();
-
-    const data = {
-      first_name: fname,
-      last_name: lname
-    };
+    var form_data = new FormData();
+    form_data.append('first_name', fname);
+    form_data.append('last_name', lname);
 
     const url = `http://localhost:3000/users/${id}`;
     const token = localStorage.getItem('jwt_token');
@@ -48,10 +49,9 @@ const EditProfileModal = () => {
       mode: 'cors',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
       },
-      body: JSON.stringify(data),
+      body: form_data,
     })
     .then(response => {
       return response.json()
@@ -89,19 +89,11 @@ const EditProfileModal = () => {
     hiddenFileInput.current.click();
   };
 
-  const getFileName = (file) => {
-    const indexSlash = file.lastIndexOf("/");
-    const indexBackSlash = file.lastIndexOf("\\");
-    file = file.slice(indexSlash + 1).slice(indexBackSlash + 1);
-
-    const array = file.split(".");
-    const fileName = array[0] + "." + array[array.length-1];
-    return fileName;
-  }
-
   const handleChange = () => {
-    const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
-    labelHiddenFileInput.textContent = getFileName(id_card);
+    if (idCardFile && idCardFile.name) {
+      setIdCardFileName(idCardFile.name);
+      setIdCardFileType(idCardFile.name.split(".").slice(-1)[0]);
+    } 
   }
 
   const scrollTopComponent = () => {
@@ -109,17 +101,34 @@ const EditProfileModal = () => {
     modalTitle.scrollIntoView({ behavior: 'smooth' });
   }
 
+  const getFileName = (fileURL) => {
+    const name = fileURL.split("/").slice(-1)[0];
+    return name
+  }
+
+  const getFileType = (fileURL) => {
+    const name = fileURL.split(".").slice(-1)[0];
+    return name
+  }
+
+  useEffect(() => {
+    const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
+    labelHiddenFileInput.textContent = idCardFileName;
+  }, [idCardFileName]);
+
   useEffect(() => {
     if (user.first_name && !loaded) {
       setFname(user.first_name);
       setLname(user.last_name); 
-      setLoaded(true);    
+      setIdCardFileName(getFileName(user.id_card_url));
+      setIdCardFileType(getFileType(id_card_url));
+      setLoaded(true);  
     }
   }, [user, loaded]);
 
   useEffect(() => {
     handleChange();
-  }, [id_card]);
+  }, [idCardFile]);
 
   useEffect(() => {
     scrollTopComponent();
@@ -150,7 +159,8 @@ const EditProfileModal = () => {
                     <img src={plus_icon} alt="plus_icon" className="plus-icon pointer" onClick={handleClick} />
                     <p className="m-0 ps-3" id="labelHiddenFileInput">{getFileName(id_card_default)}</p>
                   </div>
-                  <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} />
+                  <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setIdCardFile(e.target.files[0])} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} />
+                  {/* <input type="file" className="" id="hiddenFileInput" aria-describedby="file input field" onInput={(e) => setId_card(e.target.value)} onChange={(e) => handleChange()} accept="image/png, image/jpeg, application/pdf" ref={hiddenFileInput} /> */}
                 </div>
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">

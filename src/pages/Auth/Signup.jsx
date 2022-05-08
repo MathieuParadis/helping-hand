@@ -122,7 +122,7 @@ const Signup = () => {
   const handleChange = () => {
     if (idCardFile && idCardFile.name) {
       const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
-      labelHiddenFileInput.textContent =  idCardFile.name;
+      labelHiddenFileInput.textContent = idCardFile.name;
       setIdCardFileName(idCardFile.name);
       setIdCardFileType(idCardFile.name.split(".").slice(-1)[0]);
     }

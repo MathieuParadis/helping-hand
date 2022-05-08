@@ -152,7 +152,6 @@ const ModifyCredentialsModal = () => {
 
   useEffect(() => {
     if (user.email && !loaded) {
-      console.log(user.email);
       setEmailAdd(user.email);
       setLoaded(true);    
     }
