@@ -44,7 +44,7 @@ const Profile = () => {
   useEffect(() => {
     if (id_card_url) {
       setIdCardFileName(getFileName(id_card_url));
-      setIdCardFileType(getFileType(id_card_url));
+      setIdCardFileType(getFileType(id_card_url).toLowerCase());
     }
   }, [user]);
 

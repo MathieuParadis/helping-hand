@@ -124,7 +124,7 @@ const Signup = () => {
       const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
       labelHiddenFileInput.textContent = idCardFile.name;
       setIdCardFileName(idCardFile.name);
-      setIdCardFileType(idCardFile.name.split(".").slice(-1)[0]);
+      setIdCardFileType(idCardFile.name.split(".").slice(-1)[0].toLowerCase());
     }
   }
 

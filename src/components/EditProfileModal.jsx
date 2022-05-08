@@ -16,6 +16,8 @@ const EditProfileModal = () => {
   const { user, setUser } = useContext(UserContext);
   const { id, first_name, last_name, id_card_url } = user;
 
+  const acceptedFileTypes = ['pdf', 'png', 'jpg', 'jpeg'];
+
   const [loaded, setLoaded] = useState(false);
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -41,48 +43,67 @@ const EditProfileModal = () => {
     form_data.append('first_name', fname);
     form_data.append('last_name', lname);
 
-    const url = `http://localhost:3000/users/${id}`;
-    const token = localStorage.getItem('jwt_token');
+    if (idCardFileName) {
+      if ( acceptedFileTypes.includes(idCardFileType)) {
+        form_data.append('id_card', idCardFile, idCardFile.name);
 
-    fetch(url, {
-      method: "PUT",
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      },
-      body: form_data,
-    })
-    .then(response => {
-      return response.json()
-    })
-    .then(response => {
-      if (response.user) {
-        localStorage.setItem('user', JSON.stringify(response.user));
-        setUser(response.user);
-        setFlash({
-          type: 'success',
-          message: "Profile updated successfully",
-          display: true,
+        const url = `http://localhost:3000/users/${id}`;
+        const token = localStorage.getItem('jwt_token');
+    
+        fetch(url, {
+          method: "PUT",
+          mode: 'cors',
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token,
+          },
+          body: form_data,
+        })
+        .then(response => {
+          return response.json()
+        })
+        .then(response => {
+          if (response.user) {
+            localStorage.setItem('user', JSON.stringify(response.user));
+            console.log(response)
+            setUser(response.user);
+            setFlash({
+              type: 'success',
+              message: "Profile updated successfully",
+              display: true,
+            })
+          } else {
+            console.log(response)
+            setFlash({
+              type: 'danger',
+              message: response.error,
+              display: true,
+            })
+          }
+          closeEditProfileModal();
+        })
+        .catch(error => {
+          closeEditProfileModal();
+          setFlash({
+            type: 'danger',
+            message: error,
+            display: true,
+          })
         })
       } else {
-        console.log(response)
         setFlash({
           type: 'danger',
-          message: response.error,
+          message: "The file type you uploaded is incorrect",
           display: true,
         })
       }
-      closeEditProfileModal();
-    })
-    .catch(error => {
-      closeEditProfileModal();
+    } else {
       setFlash({
         type: 'danger',
-        message: error,
+        message: "File with your ID card is missing",
         display: true,
       })
-    })
+    }
   }
 
   const handleClick = e => {
@@ -92,7 +113,7 @@ const EditProfileModal = () => {
   const handleChange = () => {
     if (idCardFile && idCardFile.name) {
       setIdCardFileName(idCardFile.name);
-      setIdCardFileType(idCardFile.name.split(".").slice(-1)[0]);
+      setIdCardFileType(idCardFile.name.split(".").slice(-1)[0].toLowerCase());
     } 
   }
 
@@ -121,7 +142,7 @@ const EditProfileModal = () => {
       setFname(user.first_name);
       setLname(user.last_name); 
       setIdCardFileName(getFileName(user.id_card_url));
-      setIdCardFileType(getFileType(id_card_url));
+      setIdCardFileType(getFileType(id_card_url).toLowerCase());
       setLoaded(true);  
     }
   }, [user, loaded]);
