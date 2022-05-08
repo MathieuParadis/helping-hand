@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
 import UserContext from '../components/Context/UserContext';
@@ -15,6 +15,9 @@ const Profile = () => {
   const { user } = useContext(UserContext);
   const { first_name, last_name, email, id_card_url } = user;
 
+  const [idCardFileName, setIdCardFileName] = useState("");
+  const [idCardFileType, setIdCardFileType] = useState("");
+
   const openEditProfileModal = () => {
     const editProfileModal = document.querySelector(".edit-profile-modal");
     editProfileModal.style.visibility = 'visible';
@@ -27,7 +30,24 @@ const Profile = () => {
     document.querySelector("body").classList.add("clicked");
   }
 
-  console.log( user)
+  const getFileName = (fileURL) => {
+    const name = fileURL.split("/").slice(-1);
+    return name
+  }
+
+  const getFileType = (fileURL) => {
+    const name = fileURL.split(".").slice(-1);
+    return name
+  }
+
+
+  useEffect(() => {
+    if (id_card_url) {
+      setIdCardFileName(getFileName(id_card_url));
+      setIdCardFileType(getFileType(id_card_url));
+    }
+  }, [user]);
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -51,8 +71,11 @@ const Profile = () => {
                 <p><strong>Email</strong>: {email}</p>
                 <div className="d-flex">
                   <p><strong>ID</strong>:&nbsp;</p>
-                  <div className="id-card-box border-radius-5">
-                    <img className="id-card" src={id_card_url} alt="ID card"/>
+                  <div>
+                    <p>{idCardFileName}</p>
+                    <div className="id-card-box border-radius-5">
+                      <img className="id-card" src={id_card_url} alt="ID card"/>
+                    </div>
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-xl-row justify-content-xl-between mt-5">
