@@ -24,8 +24,8 @@
       .box-right {
         .id-card-box {
           border: 1px solid var(--basic-color-grey-dark);
-          width: 180px;
-          height: 140px;
+          width: 250px;
+          height: 150px;
           overflow: hidden;
 
           @include mobile_and_tablet {

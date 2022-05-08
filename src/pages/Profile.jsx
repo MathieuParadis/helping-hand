@@ -40,14 +40,12 @@ const Profile = () => {
     return name
   }
 
-
   useEffect(() => {
     if (id_card_url) {
       setIdCardFileName(getFileName(id_card_url));
       setIdCardFileType(getFileType(id_card_url));
     }
   }, [user]);
-
 
   useEffect(() => {
     window.scrollTo(0, 0);
