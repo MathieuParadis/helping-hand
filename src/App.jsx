@@ -12,6 +12,7 @@ import Chat from './pages/Chat';
 import ForgottenPassword from './pages/Auth/ForgottenPassword';
 import Home from './pages/Home';
 import MapRequests from './pages/MapRequests';
+import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 import ResetPassword from './pages/Auth/ResetPassword';
 import Rules from './pages/Rules';
@@ -65,7 +66,7 @@ const App = () => {
               <Flash />
               <NewRequestModal />
               <Routes>
-                <Route path="/" element={isUserAuthenticated() ? <MapRequests /> : <Home />} />
+                <Route path="/" exact="true" element={isUserAuthenticated() ? <MapRequests /> : <Home />} />
                 <Route path="/how-it-works" exact="true" element={<Rules />} />
                 <Route path="/signin" exact="true" element={isUserAuthenticated() ? <Navigate to="/" replace /> : <Signin />} />
                 <Route path="/signup" exact="true" element={isUserAuthenticated() ? <Navigate to="/" replace /> : <Signup />} />
@@ -74,6 +75,7 @@ const App = () => {
                 <Route path="/my-chats" exact="true" element={isUserAuthenticated() ? <Chat /> : <Navigate to="/" replace />} />
                 <Route path="/my-profile" exact="true" element={isUserAuthenticated() ? <Profile /> : <Navigate to="/" replace />} />
                 <Route path="/my-requests" exact="true" element={isUserAuthenticated() ? <UserRequests /> : <Navigate to="/" replace />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />
             </Router>
