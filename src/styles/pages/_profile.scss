@@ -24,13 +24,13 @@
       .box-right {
         .id-card-box {
           border: 1px solid var(--basic-color-grey-dark);
-          width: 250px;
-          height: 150px;
+          width: 230px;
+          height: 180px;
           overflow: hidden;
 
           @include mobile_and_tablet {
-            width: 140px;
-            height: 110px;
+            width: 169px;
+            height: 133px;
           }
 
           .id-card {

@@ -74,10 +74,10 @@ const Profile = () => {
                     <p>{idCardFileName}</p>
                     <div className="id-card-box border-radius-5">
                       {
-                      idCardFileType === "pdf" ? 
-                      <img className="id-card" src={pdf_icon} alt="pdf icon"/> :
-                      <img className="id-card" src={id_card_url} alt="ID card picture"/>
-                    }
+                        idCardFileType === "pdf" ? 
+                        <img className="id-card" src={pdf_icon} alt="pdf icon"/> :
+                        <img className="id-card" src={id_card_url} alt="ID card picture"/>
+                      }
                     </div>
                   </div>
                 </div>
