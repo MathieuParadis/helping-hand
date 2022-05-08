@@ -6,6 +6,7 @@ import UserContext from '../components/Context/UserContext';
 
 // ASSETS IMPORTS
 import profile_illustration from '../assets/images/my_profile_illustration.svg';
+import pdf_icon from '../assets/logos/pdf_icon.svg';
 
 // COMPONENTS IMPORTS
 import EditProfileModal from '../components/EditProfileModal';
@@ -31,12 +32,12 @@ const Profile = () => {
   }
 
   const getFileName = (fileURL) => {
-    const name = fileURL.split("/").slice(-1);
+    const name = fileURL.split("/").slice(-1)[0];
     return name
   }
 
   const getFileType = (fileURL) => {
-    const name = fileURL.split(".").slice(-1);
+    const name = fileURL.split(".").slice(-1)[0];
     return name
   }
 
@@ -72,7 +73,11 @@ const Profile = () => {
                   <div>
                     <p>{idCardFileName}</p>
                     <div className="id-card-box border-radius-5">
-                      <img className="id-card" src={id_card_url} alt="ID card"/>
+                      {
+                      idCardFileType === "pdf" ? 
+                      <img className="id-card" src={pdf_icon} alt="pdf icon"/> :
+                      <img className="id-card" src={id_card_url} alt="ID card picture"/>
+                    }
                     </div>
                   </div>
                 </div>

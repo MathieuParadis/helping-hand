@@ -21,6 +21,10 @@ const Signup = () => {
   const { setUser } = useContext(UserContext);
   const hiddenFileInput = useRef(null);
   const [idCardFile, setIdCardFile] = useState(null);
+  const [idCardFileName, setIdCardFileName] = useState(null);
+  const [idCardFileType, setIdCardFileType] = useState(null);
+
+  const acceptedFileTypes = ['pdf', 'png', 'jpg', 'jpeg'];
 
   const register = (e) => {
     e.preventDefault();
@@ -33,59 +37,76 @@ const Signup = () => {
     var form_data = new FormData();
     form_data.append('first_name', fname);
     form_data.append('last_name', lname);
-    form_data.append('id_card', idCardFile, idCardFile.name);
     form_data.append('email', email_add);
     form_data.append('password', pw);
     form_data.append('password_confirmation', pw_confirmation);
 
-    const url = 'http://localhost:3000/signup';
+    if (idCardFileName) {
+      if ( acceptedFileTypes.includes(idCardFileType)) {
+        form_data.append('id_card', idCardFile, idCardFile.name);
 
-    fetch(url, {
-      method: "POST",
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-      },
-      body: form_data,
-    })
-    .then(response => response.json())
-    .then(response => {
-      console.log(response.user)
-      if (response.user) {
-        localStorage.setItem('jwt_token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
+        const url = 'http://localhost:3000/signup';
 
-        setAuthenticated(true);
-        setUser(response.user);
-        setFlash({
-          type: 'success',
-          message: response.message,
-          display: true,
-        });
-        emptyFormFields();
-      } else {
-        const errors = response.error;
-        console.log(errors);
-        const arrayErrors = [];
-        Object.keys(errors).map(function(key, index) {
-          arrayErrors.push(`${key} ${errors[key][0]}`)
-          return true
+        fetch(url, {
+          method: "POST",
+          mode: 'cors',
+          headers: {
+            'Accept': 'application/json',
+          },
+          body: form_data,
         })
-        const errorMessage = arrayErrors.join(" | ");
+        .then(response => response.json())
+        .then(response => {
+          console.log(response.user)
+          if (response.user) {
+            localStorage.setItem('jwt_token', response.token);
+            localStorage.setItem('user', JSON.stringify(response.user));
+    
+            setAuthenticated(true);
+            setUser(response.user);
+            setFlash({
+              type: 'success',
+              message: response.message,
+              display: true,
+            });
+            emptyFormFields();
+          } else {
+            const errors = response.error;
+            console.log(errors);
+            const arrayErrors = [];
+            Object.keys(errors).map(function(key, index) {
+              arrayErrors.push(`${key} ${errors[key][0]}`)
+              return true
+            })
+            const errorMessage = arrayErrors.join(" | ");
+            setFlash({
+              type: 'danger',
+              message: errorMessage,
+              display: true,
+            })
+          }
+        })
+        .catch(error =>{
+          setFlash({
+            type: 'danger',
+            message: error,
+            display: true,
+          })
+        })
+      } else {
         setFlash({
           type: 'danger',
-          message: errorMessage,
+          message: "The file type you uploaded is incorrect",
           display: true,
         })
       }
-    })
-    .catch(error =>{
+    } else {
       setFlash({
         type: 'danger',
-        message: error,
+        message: "File with your ID card is missing",
         display: true,
       })
-    })
+    }
   }
 
   const emptyFormFields = () => {
@@ -102,6 +123,8 @@ const Signup = () => {
     if (idCardFile && idCardFile.name) {
       const labelHiddenFileInput = document.querySelector("#labelHiddenFileInput");
       labelHiddenFileInput.textContent =  idCardFile.name;
+      setIdCardFileName(idCardFile.name);
+      setIdCardFileType(idCardFile.name.split(".").slice(-1)[0]);
     }
   }
 
