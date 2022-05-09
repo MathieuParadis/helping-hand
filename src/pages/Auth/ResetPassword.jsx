@@ -11,6 +11,9 @@ import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
+// DATA IMPORTS
+import domainName from '../../data/DomainName';
+
 const ResetPassword = () => {
   const { setFlash } = useContext(FlashContext);
   const { tokenSlug } = useParams();
@@ -27,7 +30,7 @@ const ResetPassword = () => {
       token: tokenSlug,
     };
 
-    const url = 'http://localhost:3000/reset-password';
+    const url = `http://${domainName}/reset-password`;
 
     fetch(url, {
       method: "POST",

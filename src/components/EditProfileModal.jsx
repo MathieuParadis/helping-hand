@@ -9,6 +9,9 @@ import UserContext from '../components/Context/UserContext';
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
+// DATA IMPORTS
+import domainName from '../data/DomainName';
+
 const EditProfileModal = () => {
   const { setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
@@ -46,7 +49,8 @@ const EditProfileModal = () => {
       if ( acceptedFileTypes.includes(idCardFileType)) {
         form_data.append('id_card', idCardFile, idCardFile.name);
 
-        const url = `http://localhost:3000/users/${id}`;
+        const url = `http://${domainName}/users/${id}`;
+        
         const token = localStorage.getItem('jwt_token');
     
         fetch(url, {

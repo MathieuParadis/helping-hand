@@ -10,6 +10,9 @@ import forgotten_password_illustration from '../../assets/images/forgotten_passw
 import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 
+// DATA IMPORTS
+import domainName from '../../data/DomainName';
+
 const ForgottenPassword = () => {
   const { setFlash } = useContext(FlashContext);
 
@@ -21,7 +24,7 @@ const ForgottenPassword = () => {
       email: email_add,
     };
 
-    const url = 'http://localhost:3000/forgotten-password';
+    const url = `http://${domainName}/forgotten-password`;
 
     fetch(url, {
       method: "POST",

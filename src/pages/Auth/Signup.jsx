@@ -15,6 +15,9 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 import plus_icon from '../../assets/logos/plus_logo.svg';
 
+// DATA IMPORTS
+import domainName from '../../data/DomainName';
+
 const Signup = () => {
   const { setAuthenticated } = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
@@ -45,7 +48,7 @@ const Signup = () => {
       if ( acceptedFileTypes.includes(idCardFileType)) {
         form_data.append('id_card', idCardFile, idCardFile.name);
 
-        const url = 'http://localhost:3000/signup';
+        const url = `http://${domainName}/signup`;
 
         fetch(url, {
           method: "POST",

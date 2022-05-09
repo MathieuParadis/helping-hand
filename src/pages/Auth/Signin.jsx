@@ -13,6 +13,9 @@ import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
+// DATA IMPORTS
+import domainName from '../../data/DomainName';
+
 const Signin = () => {
   const { setAuthenticated} = useContext(AuthContext);
   const { setFlash } = useContext(FlashContext);
@@ -28,7 +31,7 @@ const Signin = () => {
       password: pw
     };
 
-    const url = 'http://localhost:3000/signin';
+    const url = `http://${domainName}/signin`;
 
     fetch(url, {
       method: "POST",
