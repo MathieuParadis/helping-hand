@@ -11,7 +11,7 @@ import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
 // DATA IMPORTS
-import domainName from '../data/DomainName';
+import baseURL from '../data/BaseURL';
 
 const ModifyCredentialsModal = () => {
   const { setAuthenticated } = useContext(AuthContext);
@@ -43,7 +43,7 @@ const ModifyCredentialsModal = () => {
         password_confirmation: passwordConfirmation
       };
 
-      const url = `http://${domainName}/users/${id}`;
+      const url = `${baseURL}/users/${id}`;
       const token = localStorage.getItem('jwt_token');
 
       fetch(url, {
@@ -93,7 +93,7 @@ const ModifyCredentialsModal = () => {
   
   const deleteAccount = () => {
     if (window.confirm("You are about to delete your account. \n \nAre you sure?")) {
-      const url = `http://${domainName}/users/${id}`;
+      const url = `${baseURL}/users/${id}`;
       const token = localStorage.getItem('jwt_token');
 
       fetch(url, {

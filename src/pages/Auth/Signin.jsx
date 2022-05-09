@@ -14,7 +14,7 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
 // DATA IMPORTS
-import domainName from '../../data/DomainName';
+import baseURL from '../../data/BaseURL';
 
 const Signin = () => {
   const { setAuthenticated} = useContext(AuthContext);
@@ -31,7 +31,7 @@ const Signin = () => {
       password: pw
     };
 
-    const url = `http://${domainName}/signin`;
+    const url = `${baseURL}/signin`;
 
     fetch(url, {
       method: "POST",

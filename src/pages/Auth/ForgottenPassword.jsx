@@ -11,7 +11,7 @@ import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 
 // DATA IMPORTS
-import domainName from '../../data/DomainName';
+import baseURL from '../../data/BaseURL';
 
 const ForgottenPassword = () => {
   const { setFlash } = useContext(FlashContext);
@@ -24,7 +24,7 @@ const ForgottenPassword = () => {
       email: email_add,
     };
 
-    const url = `http://${domainName}/forgotten-password`;
+    const url = `${baseURL}/forgotten-password`;
 
     fetch(url, {
       method: "POST",

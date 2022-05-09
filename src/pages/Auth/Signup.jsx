@@ -16,7 +16,7 @@ import lock_icon from '../../assets/logos/lock_logo.svg';
 import plus_icon from '../../assets/logos/plus_logo.svg';
 
 // DATA IMPORTS
-import domainName from '../../data/DomainName';
+import baseURL from '../../data/BaseURL';
 
 const Signup = () => {
   const { setAuthenticated } = useContext(AuthContext);
@@ -31,6 +31,7 @@ const Signup = () => {
 
   const register = (e) => {
     e.preventDefault();
+
     const fname = document.querySelector('#first-name').value;
     const lname = document.querySelector('#last-name').value;
     const email_add = document.querySelector('#email').value;
@@ -48,7 +49,7 @@ const Signup = () => {
       if ( acceptedFileTypes.includes(idCardFileType)) {
         form_data.append('id_card', idCardFile, idCardFile.name);
 
-        const url = `http://${domainName}/signup`;
+        const url = `${baseURL}/signup`;
 
         fetch(url, {
           method: "POST",

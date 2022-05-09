@@ -12,7 +12,7 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
 // DATA IMPORTS
-import domainName from '../../data/DomainName';
+import baseURL from '../../data/BaseURL';
 
 const ResetPassword = () => {
   const { setFlash } = useContext(FlashContext);
@@ -30,7 +30,7 @@ const ResetPassword = () => {
       token: tokenSlug,
     };
 
-    const url = `http://${domainName}/reset-password`;
+    const url = `${baseURL}/reset-password`;
 
     fetch(url, {
       method: "POST",

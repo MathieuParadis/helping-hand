@@ -10,7 +10,7 @@ import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
 // DATA IMPORTS
-import domainName from '../data/DomainName';
+import baseURL from '../data/BaseURL';
 
 const EditProfileModal = () => {
   const { setFlash } = useContext(FlashContext);
@@ -49,7 +49,7 @@ const EditProfileModal = () => {
       if ( acceptedFileTypes.includes(idCardFileType)) {
         form_data.append('id_card', idCardFile, idCardFile.name);
 
-        const url = `http://${domainName}/users/${id}`;
+        const url = `${baseURL}/users/${id}`;
         
         const token = localStorage.getItem('jwt_token');
     
