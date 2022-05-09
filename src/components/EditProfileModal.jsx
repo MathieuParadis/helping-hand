@@ -44,10 +44,13 @@ const EditProfileModal = () => {
     var form_data = new FormData();
     form_data.append('first_name', fname);
     form_data.append('last_name', lname);
+    
+    if (idCardFile) {
+      form_data.append('id_card', idCardFile, idCardFile.name);
+    }
 
     if (idCardFileName) {
       if ( acceptedFileTypes.includes(idCardFileType)) {
-        form_data.append('id_card', idCardFile, idCardFile.name);
 
         const url = `${baseURL}/users/${id}`;
         

@@ -59,13 +59,8 @@ const Signup = () => {
           },
           body: form_data,
         })
+        .then(response => response.json())
         .then(response => {
-          console.log(response);
-          response.json();
-        })
-        .then(response => {
-          console.log(response);
-          console.log(response.user);
           if (response.user) {
             localStorage.setItem('jwt_token', response.token);
             localStorage.setItem('user', JSON.stringify(response.user));
