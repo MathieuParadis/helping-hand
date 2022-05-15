@@ -68,7 +68,7 @@ const MapRequests = () => {
 
   const displayBubbleRequestInfo = (request) => {
     setCurrentRequest(request);
-    setCenter([Number(request.lat), Number(request.lng)]);
+    setCenter([request.lat, request.lng]);
     setZoom(13);
 
     const bubbleRequest = document.querySelector(".bubble-request");
@@ -144,11 +144,11 @@ const MapRequests = () => {
                   {
                     requests.map((request) => {
                       return (
-                        <Marker width={100} anchor={[Number(request.lat), Number(request.lng)]} color={MarkerColorChoice(request)} onClick={() => displayBubbleRequestInfo(request)} key={request.id} />
+                        <Marker width={100} anchor={[request.lat, request.lng]} color={MarkerColorChoice(request)} onClick={() => displayBubbleRequestInfo(request)} key={request.id} />
                       )
                     })
                   }
-                  <Overlay offset={[0, 0]} anchor={currentRequest !== "" ? [Number(currentRequest.lat), Number(currentRequest.lng)] : [0, 0]}>
+                  <Overlay offset={[0, 0]} anchor={currentRequest !== "" ? [currentRequest.lat, currentRequest.lng] : [0, 0]}>
                     <div className="bubble-request">
                       <div className="bubble-pointer"></div>
                       <div className="bubble d-flex flex-column justify-content-between align-items-center p-4">
