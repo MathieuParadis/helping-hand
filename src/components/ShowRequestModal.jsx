@@ -1,7 +1,12 @@
 // CONFIG IMPORTS
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+
+// CONTEXT IMPORTS
+import UserContext from './Context/UserContext';
 
 const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
+  const { user } = useContext(UserContext);
+
   const closeShowRequestModal = () => {
     const showRequestModal = document.querySelector(".show-request-modal");
     showRequestModal.style.visibility = "hidden";
@@ -37,11 +42,18 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
                 <p className="mb-4"><strong>Location: </strong>{request.location}</p>
                 <p className="mb-4"><strong>Description: </strong>{request.description}</p>
               </div>
-              <div className="d-flex flex-column flex-md-row mt-4">
-                <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
-                <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button>
-              </div>
-              <button className="btn d-none button-primary button-modal mt-4 p-1" onClick={() => openChat()} >Volunteer</button>
+              {
+                user.id === request.user.id ? 
+                  (
+                    <div className="d-flex flex-column flex-md-row mt-4">
+                      <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
+                      <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button>
+                    </div>
+                  ) :
+                  (
+                    <button className="btn button-primary button-modal mt-4 p-1" onClick={() => openChat()}>Volunteer</button>
+                  )
+              }
             </div>
           )}
       </div>
