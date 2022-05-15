@@ -1,5 +1,8 @@
 // CONFIG IMPORTS
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+
+// CONTEXT IMPORTS
+import FlashContext from '../components/Context/FlashContext';
 
 // COMPONENTS IMPORTS
 import EditRequestModal from '../components/EditRequestModal';
@@ -7,9 +10,12 @@ import RequestCard from '../components/RequestCard';
 import ShowRequestModal from '../components/ShowRequestModal';
 
 // DATA IMPORTS
-import requests from '../data/Requests';
+import baseURL from '../data/BaseURL';
 
 const UserRequests = () => {
+  const { setFlash } = useContext(FlashContext);
+
+  const [currentUserRequests, setCurrentUserRequests] = useState('');
   const [currentUserRequest, setCurrentUserRequest] = useState('');
 
   const openNewRequestModal = (e) => {
@@ -74,7 +80,42 @@ const UserRequests = () => {
     }
   };
 
+  const getCurrentUserRequests = () => {
+    const url = `${baseURL}/requests`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    })
+    .then(response => {
+      console.log(response)
+      return response.json()
+    })
+    .then(response => {
+      console.log(response)
+      setCurrentUserRequests(response)
+    })
+    .catch(errors => {
+      console.log(errors)
+      setFlash({
+        type: 'danger',
+        message: "An error occured, please try again",
+        display: true,
+      })
+    })
+  }
+
   closeMenus();
+  
+  useEffect(() => {
+    getCurrentUserRequests();
+  }, [currentUserRequests]);
 
   useEffect(() => {
     closeMenus();
@@ -103,14 +144,14 @@ const UserRequests = () => {
             </div>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 d-flex justify-content-center w-100">
               { 
-                requests.map((request) => {
+                currentUserRequests.map((request) => {
                   return (
                     <RequestCard 
                       request={request} 
                       setOpenShowModal={openShowRequestModal} 
                       setOpenEditModal={openEditRequestModal}
                       setMarkRequestAsFulfilled={markRequestAsFulfilled}
-                      key={request.request.title} 
+                      key={request.title} 
                     />
                   )
                 })

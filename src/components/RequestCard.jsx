@@ -6,7 +6,7 @@ import DropdownMenuOptionsRequestCard from './DropdownMenuOptionsRequestCard';
 
 const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const toggleMenuRequestCard = () => {
-    const menuRequestCard = document.querySelector("#" + request.requester.last_name + "> div.dropdown-menu-options-request-card");
+    const menuRequestCard = document.querySelector("#" + request.user.last_name + "> div.dropdown-menu-options-request-card");
     
     if (menuRequestCard.style.visibility === 'visible') {
       closeAllMenus();
@@ -24,18 +24,18 @@ const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkReques
 
   return (
     <div className="request-card">
-      <div className={`card-content ${request.request.type}-request-card d-flex flex-column justify-content-between p-3`}>
+      <div className={`card-content ${request.request_type}-request-card d-flex flex-column justify-content-between p-3`}>
         <div>
-          <h3 className="text-center mb-3">{request.request.title}</h3>
-          <p><strong>Type:</strong> {request.request.type}</p>
+          <h3 className="text-center mb-3">{request.title}</h3>
+          <p><strong>Type:</strong> {request.request_type}</p>
           <p><strong>Published on:</strong> 2022-04-07</p>
-          <p><strong>Status:</strong> {request.request.status}</p>
+          <p><strong>Status:</strong> {request.status}</p>
         </div>
         <div className="row row-cols-2 g-2">
           <div>
             <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenShowModal(request)}>See details</button>
           </div>
-          <div className="dropdown" id={request.requester.last_name}>
+          <div className="dropdown" id={request.user.last_name}>
             <DropdownMenuOptionsRequestCard 
               request={request} 
               setOpenEditModal={setOpenEditModal} 
