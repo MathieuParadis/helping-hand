@@ -1,5 +1,8 @@
 // CONFIG IMPORTS
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+
+// CONTEXT IMPORTS
+import FlashContext from '../components/Context/FlashContext';
 
 // PIGEON MAPS IMPORTS
 import { Map, ZoomControl, Marker, Overlay } from "pigeon-maps";
@@ -13,25 +16,68 @@ import EditRequestModal from '../components/EditRequestModal';
 import ShowRequestModal from '../components/ShowRequestModal';
 
 // DATA IMPORTS
-import requests from '../data/Requests';
+import baseURL from '../data/BaseURL';
 
 const maptilerProvider = maptiler('IwympTEN2FYbP2g5qdck', 'streets')
 
 const MapRequests = () => {
+  const { setFlash } = useContext(FlashContext);
+
+  const [requests, setRequests] = useState();
   const [center, setCenter] = useState([40.014984, -105.270546]); // default center: Boulder, Colorado
   const [zoom, setZoom] = useState(12);
   const [currentRequest, setCurrentRequest] = useState("");
 
   const colorMaterial = "#F4A896";
-  const colorService = "#262F53"
+  const colorService = "#262F53";
+
+  const getRequests = () => {
+    const url = `${baseURL}/requests`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    })
+    .then(response => {
+      console.log(response)
+      return response.json()
+    })
+    .then(response => {
+      console.log(response)
+      if (response.requests) {
+        setRequests(response.requests)
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+      console.log(response)
+    })
+    .catch(errors => {
+      console.log(errors)
+      setFlash({
+        type: 'danger',
+        message: "An error occured, please try again",
+        display: true,
+      })
+    })
+  }
 
   const MarkerColorChoice = (request) => {
-    return request.request.type === "material" ? colorMaterial : colorService;
+    return request.request_type === "material" ? colorMaterial : colorService;
   }
 
   const displayBubbleRequestInfo = (request) => {
     setCurrentRequest(request);
-    setCenter([request.request.position.lat, request.request.position.lgn]);
+    setCenter([Number(request.lat), Number(request.lng)]);
     setZoom(13);
 
     const bubbleRequest = document.querySelector(".bubble-request");
@@ -72,6 +118,10 @@ const MapRequests = () => {
   }
 
   useEffect(() => {
+    getRequests();
+  }, [requests]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
@@ -82,9 +132,11 @@ const MapRequests = () => {
       <div className="map-requests">
         <div className="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">Requests around me</h1>
-          <h5 className="counter align-self-md-start text-center text-md-start">
-            There are <strong>{requests.length}</strong> help requests around you.<br></br>Start volunteering now!
-          </h5>
+            { requests &&
+              <h5 className="counter align-self-md-start text-center text-md-start">
+                There are <strong>{requests.length}</strong> help requests around you.<br></br>Start volunteering now!
+              </h5>
+            }
           <div className="caption d-flex flex-column flex-md-row align-self-start mb-4">
             <div className="d-flex align-items-center my-2 pe-md-5">
               <span className="me-2" id="material"></span><p className="h5 m-0">Material need</p>
@@ -101,11 +153,11 @@ const MapRequests = () => {
                   {
                     requests.map((request) => {
                       return (
-                        <Marker width={100} anchor={[request.request.position.lat, request.request.position.lgn]} color={MarkerColorChoice(request)} onClick={() => displayBubbleRequestInfo(request)} key={request.requester.first_name + request.requester.last_name} />
+                        <Marker width={100} anchor={[Number(request.lat), Number(request.lng)]} color={MarkerColorChoice(request)} onClick={() => displayBubbleRequestInfo(request)} key={request.id} />
                       )
                     })
                   }
-                  <Overlay offset={[0, 0]} anchor={currentRequest !== "" ? [currentRequest.request.position.lat, currentRequest.request.position.lgn] : [0, 0]}>
+                  <Overlay offset={[0, 0]} anchor={currentRequest !== "" ? [Number(currentRequest.lat), Number(currentRequest.lng)] : [0, 0]}>
                     <div className="bubble-request">
                       <div className="bubble-pointer"></div>
                       <div className="bubble d-flex flex-column justify-content-between align-items-center p-4">
@@ -113,9 +165,9 @@ const MapRequests = () => {
                           currentRequest && 
                           <>
                             <p className="close-button pointer h5 text-secondary" onClick={() => closeBubbleRequestInfo()}>x</p>
-                            <h5 className="">{currentRequest.request.title}</h5>
-                            <p className="m-0"><strong>Type: </strong>{currentRequest.request.type}</p>
-                            <p className="m-0"><strong>Location: </strong>{currentRequest.request.location}</p>
+                            <h5 className="">{currentRequest.title}</h5>
+                            <p className="m-0"><strong>Type: </strong>{currentRequest.request_type}</p>
+                            <p className="m-0"><strong>Location: </strong>{currentRequest.location}</p>
                             <button className="btn button-primary w-100 p-1" onClick={() => openShowRequestModal()}>See details</button>
                           </>
                         }

@@ -3,14 +3,12 @@ import React, { useEffect, useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
 import FlashContext from './Context/FlashContext';
-import UserContext from './Context/UserContext';
 
 // DATA IMPORTS
 import baseURL from '../data/BaseURL';
 
 const NewRequestModal = () => {
   const { setFlash } = useContext(FlashContext);
-  const { user, setUser } = useContext(UserContext);
 
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
