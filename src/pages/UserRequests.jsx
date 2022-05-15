@@ -81,7 +81,7 @@ const UserRequests = () => {
   };
 
   const getCurrentUserRequests = () => {
-    const url = `${baseURL}/requests`;
+    const url = `${baseURL}/user-requests`;
     const token = localStorage.getItem('jwt_token');
 
     fetch(url, {
@@ -143,7 +143,7 @@ const UserRequests = () => {
               </div>
             </div>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 d-flex justify-content-center w-100">
-              { 
+              { currentUserRequests &&
                 currentUserRequests.map((request) => {
                   return (
                     <RequestCard 
@@ -151,7 +151,7 @@ const UserRequests = () => {
                       setOpenShowModal={openShowRequestModal} 
                       setOpenEditModal={openEditRequestModal}
                       setMarkRequestAsFulfilled={markRequestAsFulfilled}
-                      key={request.title} 
+                      key={request.id} 
                     />
                   )
                 })

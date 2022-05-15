@@ -6,7 +6,7 @@ import DropdownMenuOptionsRequestCard from './DropdownMenuOptionsRequestCard';
 
 const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const toggleMenuRequestCard = () => {
-    const menuRequestCard = document.querySelector("#" + request.user.last_name + "> div.dropdown-menu-options-request-card");
+    const menuRequestCard = document.querySelector("#R" + request.id + "> div.dropdown-menu-options-request-card");
     
     if (menuRequestCard.style.visibility === 'visible') {
       closeAllMenus();
@@ -35,7 +35,7 @@ const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkReques
           <div>
             <button className="btn button-primary w-100 h-100 p-1" onClick={() => setOpenShowModal(request)}>See details</button>
           </div>
-          <div className="dropdown" id={request.user.last_name}>
+          <div className="dropdown" id={`R${request.id}`}>
             <DropdownMenuOptionsRequestCard 
               request={request} 
               setOpenEditModal={setOpenEditModal} 
