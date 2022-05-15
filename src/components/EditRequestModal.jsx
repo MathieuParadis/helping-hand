@@ -27,6 +27,7 @@ const EditRequestModal = ({request}) => {
     editRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
     scrollTopComponent();
+    setFields();
   }
 
   const updateRequest = () => {
@@ -49,7 +50,7 @@ const EditRequestModal = ({request}) => {
     modalTitle.scrollIntoView({ behavior: 'smooth' });
   }
 
-  useEffect(() => {
+  const setFields = () => {
     setRequestTitle(title);
     setRequestType(type);
     setRequestDescription(description);
@@ -57,6 +58,10 @@ const EditRequestModal = ({request}) => {
     setRequestLatitude(lat);
     setRequestLongitude(lng);
     setRequestStatus(status);
+  }
+
+  useEffect(() => {
+    setFields();
   }, [request]);
 
   useEffect(() => {
@@ -109,7 +114,7 @@ const EditRequestModal = ({request}) => {
                 </div>
                 <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                   <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update request</button>
-                  <button type="resetRequest" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeEditRequestModal()}>Back</button>
+                  <button type="reset" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeEditRequestModal()}>Back</button>
                 </div>
               </form>
             </div>
