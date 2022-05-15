@@ -45,18 +45,19 @@ const NewRequestModal = () => {
               <div>
                 <div className="input mb-3">
                   <label htmlFor="title" className="mb-1">Title&nbsp;<small className="caption">(50 characters max)</small></label>
-                  <input type="text" className="form-control" id="title" aria-describedby="title input field" placeholder="Title" maxLength="50" required />
+                  <input type="text" className="form-control" id="title" aria-describedby="title input field" placeholder="Title" minLength="2" maxLength="50" required />
                 </div>
                 <div className="input my-3 d-flex flex-column">
                   <label htmlFor="type" className="mb-1">Type</label>
                   <select className="select-form-control">
-                    <option value='0'>Material</option>
-                    <option value='1'>Service</option>
+                    <option value="" className="text-primary" disabled="disabled">-- Please choose a type --</option>
+                    <option value='material'>Material</option>
+                    <option value='service'>Service</option>
                   </select>
                 </div>
                 <div className="input my-3">
                   <label htmlFor="location" className="mb-1">Location</label>
-                  <input type="text" className="form-control" id="location" aria-describedby="Location input field" placeholder="Location" required />
+                  <input type="text" className="form-control" id="location" aria-describedby="Location input field" placeholder="Location" minLength="2" maxLength="50" required />
                 </div>
                 <div className="geo-position-section d-flex flex-column my-4">
                   <h5 className="mb-2">Geographical coordinates</h5>
@@ -74,7 +75,7 @@ const NewRequestModal = () => {
                 </div>
                 <div className="input my-4">
                   <label htmlFor="description" className="mb-1">Description&nbsp;<small className="caption">(300 characters max)</small></label>
-                  <textarea type="text" className="form-control" id="description" aria-describedby="Description input field" maxLength="300" rows="5" placeholder="Explain precisely what your need is here...." required />
+                  <textarea type="text" className="form-control" id="description" aria-describedby="Description input field" minLength="10" maxLength="300" rows="5" placeholder="Explain precisely what your need is here...." required />
                 </div>
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
