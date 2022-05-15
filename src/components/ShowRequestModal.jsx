@@ -18,7 +18,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
   }
 
   useEffect(() => {
-    if (request.request) {
+    if (request) {
       scrollTopComponent();
     }
   }, [request]);
@@ -27,15 +27,15 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
     <div className="show-request-modal">
       <div className="show-request-modal-overlay"></div>
       <div className="show-request-modal-white-bg">
-        {request.request && (
+        {request && (
             <div className="show-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
               <p className="close-button pointer h4 text-secondary" onClick={() => closeShowRequestModal()}>x</p>
               <div>
-                <h2 className="show-request-modal-title text-primary fw-bold mb-5">{request.request.title}</h2>
-                <p className="mb-4"><strong>Requester: </strong>{request.requester.first_name} {request.requester.last_name}</p>
-                <p className="mb-4"><strong>Type: </strong>{request.request.type}</p>
-                <p className="mb-4"><strong>Location: </strong>{request.request.location}</p>
-                <p className="mb-4"><strong>Description: </strong>{request.request.description}</p>
+                <h2 className="show-request-modal-title text-primary fw-bold mb-5">{request.title}</h2>
+                {/* <p className="mb-4"><strong>Requester: </strong>{request.user.first_name}</p> */}
+                <p className="mb-4"><strong>Type: </strong>{request.type}</p>
+                <p className="mb-4"><strong>Location: </strong>{request.location}</p>
+                <p className="mb-4"><strong>Description: </strong>{request.description}</p>
               </div>
               <div className="d-flex flex-column flex-md-row mt-4">
                 <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>

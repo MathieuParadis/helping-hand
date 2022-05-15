@@ -50,16 +50,7 @@ const MapRequests = () => {
     })
     .then(response => {
       console.log(response)
-      if (response.requests) {
-        setRequests(response.requests)
-      } else {
-        setFlash({
-          type: 'danger',
-          message: response.error,
-          display: true,
-        })
-      }
-      console.log(response)
+      setRequests(response)
     })
     .catch(errors => {
       console.log(errors)
