@@ -6,19 +6,20 @@ const EditRequestModal = ({request}) => {
   let type = "";
   let description = "";
   let location = "";
-  let position = {lat: 0, lgn: 0};
+  let lat = 0;
+  let lng = 0;
   let status = "";
 
-  if (request.request) {
-    ({title, type, description, location, position, status} = request.request)
+  if (request) {
+    ({title, type, description, location, lat, lng, status} = request)
   }
 
   const [requestTitle, setRequestTitle] = useState(title);
   const [requestType, setRequestType] = useState(type);
   const [requestDescription, setRequestDescription] = useState(description);
   const [requestLocation, setRequestLocation] = useState(location);
-  const [lat, setLat] = useState(position.lat);
-  const [long, setLong] = useState(position.lgn);
+  const [latitude, setRequestLatitude] = useState(lat);
+  const [longitude, setRequestLongitude] = useState(lng);
   const [requestStatus, setRequestStatus] = useState(status);
 
   const closeEditRequestModal = () => {
@@ -35,8 +36,8 @@ const EditRequestModal = ({request}) => {
   const getPosition = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
+        setRequestLatitude(position.coords.latitude);
+        setRequestLongitude(position.coords.longitude);
       });
     } else {
       alert("Your browser does not support this functionality");
@@ -53,10 +54,10 @@ const EditRequestModal = ({request}) => {
     setRequestType(type);
     setRequestDescription(description);
     setRequestLocation(location);
-    setLat(position.lat);
-    setLong(position.lgn);
+    setRequestLatitude(lat);
+    setRequestLongitude(lng);
     setRequestStatus(status);
-  }, [request.request]);
+  }, [request]);
 
   useEffect(() => {
     scrollTopComponent();
@@ -68,7 +69,7 @@ const EditRequestModal = ({request}) => {
       <div className="edit-request-modal-white-bg">
         <div className="edit-request-modal-content d-flex flex-column justify-content-between align-items-center w-100 p-4 p-md-5">
           <h2 className="edit-request-modal-title text-primary fw-bold mb-5">Edit request</h2>
-          {request.request && (
+          {request && (
             <div className="form-container d-flex flex-grow-1 w-100">
               <form onSubmit={updateRequest} className="d-flex flex-column justify-content-between w-100">
                 <div>
@@ -92,14 +93,14 @@ const EditRequestModal = ({request}) => {
                     <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                       <div className="input mb-3 mb-md-0 me-0 me-md-2">
                         <label htmlFor="latitude" className="mb-1">Latitude</label>
-                        <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
+                        <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" placeholder="Latitude" value={latitude} onChange={(e) => setRequestLatitude(e.target.value)} required />
                       </div>
                       <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
                         <label htmlFor="longitude" className="mb-1">Longitude</label>
-                        <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
+                        <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" value={longitude} onChange={(e) => setRequestLongitude(e.target.value)} required />
                       </div>
                     </div>
-                    <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
+                    <button type="resetRequest" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
                   </div>
                   <div className="input my-4">
                     <label htmlFor="description" className="mb-1">Description&nbsp;<small className="caption">(300 characters max)</small></label>
@@ -108,7 +109,7 @@ const EditRequestModal = ({request}) => {
                 </div>
                 <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                   <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update request</button>
-                  <button type="reset" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeEditRequestModal()}>Back</button>
+                  <button type="resetRequest" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => closeEditRequestModal()}>Back</button>
                 </div>
               </form>
             </div>
