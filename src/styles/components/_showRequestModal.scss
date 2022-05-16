@@ -13,6 +13,7 @@
 
   .close-button {
     position: absolute;
+    z-index: 101 ;
     top: 15px;
     right: 25px;
 
@@ -45,11 +46,16 @@
     position:relative;
 
     .show-request-modal-content {
+      position: relative;
       min-height: 70vh;
       max-height: 90vh;
       height: 100%;
       border: none;
       overflow-y: scroll;
+
+      .banner {
+        width: 180px;
+      }
     }
   }
 }

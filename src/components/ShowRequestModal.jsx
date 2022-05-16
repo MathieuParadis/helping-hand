@@ -4,6 +4,10 @@ import React, { useEffect, useContext } from 'react';
 // CONTEXT IMPORTS
 import UserContext from './Context/UserContext';
 
+// ASSETS IMPORTS
+import expired_banner from '../assets/images/expired_banner.svg';
+import fulfilled_banner from '../assets/images/fulfilled_banner.svg';
+
 const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const { user } = useContext(UserContext);
 
@@ -35,7 +39,9 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
         <p className="close-button pointer h4 text-secondary" onClick={() => closeShowRequestModal()}>x</p>
         {request && (
             <div className="show-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
-              <div>
+              {/* { request.status == 'expired' && (<img src={expired_banner} alt="expired banner image" className="banner" />) }
+              { request.status == 'fulfilled' && (<img src={fulfilled_banner} alt="fulfilled banner image" className="banner" />) } */}
+              <div className="d-flex flex-column">
                 <h2 className="show-request-modal-title text-primary fw-bold mb-5">{request.title}</h2>
                 <p className="mb-4">
                   <strong>Requester: </strong>
@@ -51,6 +57,8 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
                       <p className="mb-4"><strong>Status: </strong>{request.status}</p>
                     )
                 }
+                { request.status == 'expired' && (<img src={expired_banner} alt="expired banner image" className="banner" />) }
+                { request.status == 'fulfilled' && (<img src={fulfilled_banner} alt="fulfilled banner image" className="banner align-self-center" />) }
               </div>
               {
                 user.id === request.user.id ? 
