@@ -54,8 +54,21 @@ const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkReque
   return (
     <div className="dropdown-menu-options-request-card ms-2">
       <ul className = "list-unstyled m-0 p-0">
-        <li className="m-0 p-2 pointer" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</li>
-        <li className="m-0 p-2 pointer" onClick={() => setOpenEditModal(request)}>Edit request</li>
+        {
+          request.status == 'fulfilled' ? 
+          (
+            <>
+              <li className="m-0 p-2 disabled">Mark as fulfilled</li>
+              <li className="m-0 p-2 disabled">Edit request</li>
+            </>
+          ) : 
+          (
+            <>
+              <li className="m-0 p-2 pointer" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</li>
+              <li className="m-0 p-2 pointer" onClick={() => setOpenEditModal(request)}>Edit request</li>
+            </>
+          )
+        }
         <hr className="m-0"></hr>
         <li className="m-0 p-2 pointer" onClick={() => deleteRequest()}>Delete request</li>
       </ul>

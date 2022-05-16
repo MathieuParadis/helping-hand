@@ -151,7 +151,6 @@ const EditRequestModal = ({request}) => {
                             <option value='material'>Material</option>
                             <option value='service'>Service</option>
                           </>
-
                         ) : 
                         (
                           <>

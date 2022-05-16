@@ -16,4 +16,14 @@
       color: var(--basic-color-white);
     }
   }
+
+  .disabled {
+    color: var(--prim-color);
+    opacity: 0.5;
+
+    &:hover {
+      background-color: var(--basic-color-grey-light);
+      color: var(--prim-color);
+    }
+  }
 }

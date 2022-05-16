@@ -45,14 +45,29 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
                 <p className="mb-4"><strong>Type: </strong>{request.request_type}</p>
                 <p className="mb-4"><strong>Location: </strong>{request.location}</p>
                 <p className="mb-4"><strong>Description: </strong>{request.description}</p>
+                {
+                  user.id === request.user.id ? 
+                    (
+                      <p className="mb-4"><strong>Status: </strong>{request.status}</p>
+                    ) : ("")
+                }
               </div>
               {
                 user.id === request.user.id ? 
-                  (
-                    <div className="d-flex flex-column flex-md-row mt-4">
-                      <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
-                      <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button>
-                    </div>
+                  ( 
+                    request.status == 'in progress' ? 
+                    (
+                      <div className="d-flex flex-column flex-md-row mt-4">
+                        <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
+                        <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button>
+                      </div>
+                    ) : 
+                    (
+                      <div className="d-flex flex-column flex-md-row mt-4">
+                        <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" disabled>Edit request</button>
+                        <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" disabled>Mark as fulfilled</button>
+                      </div>
+                    )
                   ) :
                   (
                     <button className="btn button-primary button-modal mt-4 p-1" onClick={() => openChat()}>Volunteer</button>
