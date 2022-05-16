@@ -12,18 +12,18 @@ const EditRequestModal = ({request}) => {
 
   let id = ""
   let title = "";
-  let type = "";
+  let request_type = "";
   let description = "";
   let location = "";
   let lat = 0;
   let lng = 0;
 
   if (request) {
-    ({ id, title, type, description, location, lat, lng } = request)
+    ({ id, title, request_type, description, location, lat, lng } = request)
   }
 
   const [requestTitle, setRequestTitle] = useState(title);
-  const [requestType, setRequestType] = useState(type);
+  const [requestType, setRequestType] = useState(request_type);
   const [requestDescription, setRequestDescription] = useState(description);
   const [requestLocation, setRequestLocation] = useState(location);
   const [latitude, setRequestLatitude] = useState(lat);
@@ -112,7 +112,7 @@ const EditRequestModal = ({request}) => {
 
   const setFields = () => {
     setRequestTitle(title);
-    setRequestType(type);
+    setRequestType(request_type);
     setRequestDescription(description);
     setRequestLocation(location);
     setRequestLatitude(lat);
@@ -122,7 +122,7 @@ const EditRequestModal = ({request}) => {
   useEffect(() => {
     setFields();
   }, [request]);
-
+  
   useEffect(() => {
     scrollTopComponent();
   }, [request]);
@@ -143,9 +143,23 @@ const EditRequestModal = ({request}) => {
                   </div>
                   <div className="input my-3 d-flex flex-column">
                     <label htmlFor="type" className="mb-1">Type</label>
-                    <select className="select-form-control">
-                      <option value='0'>Material</option>
-                      <option value='1'>Service</option>
+                    <select className="select-form-control" value={requestType} onChange={(e) => setRequestType(e.target.value)}>
+                      {
+                        requestType == 'material' ? 
+                        (
+                          <>
+                            <option value='material'>Material</option>
+                            <option value='service'>Service</option>
+                          </>
+
+                        ) : 
+                        (
+                          <>
+                            <option value='service'>Service</option>
+                            <option value='material'>Material</option>
+                          </>
+                        )
+                      }
                     </select>
                   </div>
                   <div className="input my-3">
