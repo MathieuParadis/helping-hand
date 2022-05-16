@@ -84,11 +84,11 @@ const UserRequests = () => {
       body: JSON.stringify(data),
     })
     .then(response => {
-      console.log(response)
+      // console.log(response);
       return response.json();
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       closeShowRequestModal();
       if (response.message) {
         setFlash({
@@ -105,7 +105,7 @@ const UserRequests = () => {
       }
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
       closeShowRequestModal();
       setFlash({
         type: 'danger',
@@ -149,15 +149,15 @@ const UserRequests = () => {
       },
     })
     .then(response => {
-      console.log(response)
+      // console.log(response)
       return response.json()
     })
     .then(response => {
-      console.log(response)
+      // console.log(response)
       setCurrentUserRequests(response)
     })
     .catch(errors => {
-      console.log(errors)
+      // console.log(errors)
       setFlash({
         type: 'danger',
         message: "An error occured, please try again",
@@ -184,7 +184,7 @@ const UserRequests = () => {
     <>
       <ShowRequestModal request={currentUserRequest} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditRequestModal request={currentUserRequest} />
-      <div className="requests">
+      <div className="user-requests">
         <div className="container d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My requests</h1>

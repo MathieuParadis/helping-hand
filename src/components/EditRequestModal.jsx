@@ -1,17 +1,25 @@
 // CONFIG IMPORTS
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+
+// CONTEXT IMPORTS
+import FlashContext from '../components/Context/FlashContext';
+
+// DATA IMPORTS
+import baseURL from '../data/BaseURL';
 
 const EditRequestModal = ({request}) => {
+  const { setFlash } = useContext(FlashContext);
+
+  let id = ""
   let title = "";
   let type = "";
   let description = "";
   let location = "";
   let lat = 0;
   let lng = 0;
-  let status = "";
 
   if (request) {
-    ({title, type, description, location, lat, lng, status} = request)
+    ({ id, title, type, description, location, lat, lng } = request)
   }
 
   const [requestTitle, setRequestTitle] = useState(title);
@@ -20,7 +28,6 @@ const EditRequestModal = ({request}) => {
   const [requestLocation, setRequestLocation] = useState(location);
   const [latitude, setRequestLatitude] = useState(lat);
   const [longitude, setRequestLongitude] = useState(lng);
-  const [requestStatus, setRequestStatus] = useState(status);
 
   const closeEditRequestModal = () => {
     const editRequestModal = document.querySelector(".edit-request-modal");
@@ -30,8 +37,61 @@ const EditRequestModal = ({request}) => {
     setFields();
   }
 
-  const updateRequest = () => {
-    alert("updating request");
+  const updateRequest = (e) => {
+    e.preventDefault();
+
+    const data = {
+      title: requestTitle,
+      request_type: requestType,
+      location: requestLocation,
+      lat: latitude,
+      lng: longitude,
+      description: requestDescription
+    };
+
+    const url = `${baseURL}/requests/${id}`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "PUT",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      console.log(response)
+      return response.json();
+    })
+    .then(response => {
+      console.log(response);
+      closeEditRequestModal();
+      if (response.message) {
+        setFlash({
+          type: 'success',
+          message: response.message,
+          display: true,
+        });
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      closeEditRequestModal();
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
   }
 
   const getPosition = () => {
@@ -57,7 +117,6 @@ const EditRequestModal = ({request}) => {
     setRequestLocation(location);
     setRequestLatitude(lat);
     setRequestLongitude(lng);
-    setRequestStatus(status);
   }
 
   useEffect(() => {
@@ -105,7 +164,7 @@ const EditRequestModal = ({request}) => {
                         <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" value={longitude} onChange={(e) => setRequestLongitude(e.target.value)} required />
                       </div>
                     </div>
-                    <button type="resetRequest" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
+                    <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
                   </div>
                   <div className="input my-4">
                     <label htmlFor="description" className="mb-1">Description&nbsp;<small className="caption">(300 characters max)</small></label>

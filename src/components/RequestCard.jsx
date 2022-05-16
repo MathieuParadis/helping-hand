@@ -24,11 +24,11 @@ const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkReques
 
   return (
     <div className="request-card">
-      <div className={`card-content ${request.request_type}-request-card d-flex flex-column justify-content-between p-3`}>
-        <div>
+      <div className={`card-content ${request.request_type}-request-card d-flex flex-column justify-content-between p-3 overflow-hidden`}>
+        <div className="overflow-hidden">
           <h3 className="text-center mb-3">{request.title}</h3>
           <p><strong>Type:</strong> {request.request_type}</p>
-          <p><strong>Published on:</strong> 2022-04-07</p>
+          <p><strong>Published on:</strong> {request.publish_date}</p>
           <p><strong>Status:</strong> {request.status}</p>
         </div>
         <div className="row row-cols-2 g-2">
