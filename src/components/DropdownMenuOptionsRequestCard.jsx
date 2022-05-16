@@ -10,9 +10,6 @@ import baseURL from '../data/BaseURL';
 const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const { setFlash } = useContext(FlashContext);
   const { id } = request;
-  const markAsFulfilled = () => {
-    alert("marking request as fulfilled");
-  }
 
   const deleteRequest = () => {
     if (window.confirm("You are about to delete this request. \n\nAre you sure?")) {

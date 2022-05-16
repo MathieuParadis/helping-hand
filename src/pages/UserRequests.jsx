@@ -55,9 +55,64 @@ const UserRequests = () => {
     document.querySelector("body").classList.add("clicked");
   }
 
+  const closeShowRequestModal = () => {
+    const showRequestModal = document.querySelector(".show-request-modal");
+    showRequestModal.style.visibility = "hidden";
+    document.querySelector("body").classList.remove("clicked");
+  }
+
   const markRequestAsFulfilled = (request) => {
     setCurrentUserRequest(request);
-    alert(request.request.title + " marked as fulfilled");
+
+    const { id } = request
+
+    const data = {
+      status: "fulfilled"
+    };
+
+    const url = `${baseURL}/requests/${id}`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "PUT",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      console.log(response)
+      return response.json();
+    })
+    .then(response => {
+      console.log(response);
+      closeShowRequestModal();
+      if (response.message) {
+        setFlash({
+          type: 'success',
+          message: 'Request marked as fulfilled',
+          display: true,
+        });
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      closeShowRequestModal();
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
   }
 
   const closeAllMenus = () => {

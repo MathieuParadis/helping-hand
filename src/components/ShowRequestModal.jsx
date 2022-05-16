@@ -38,7 +38,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
               <div>
                 <h2 className="show-request-modal-title text-primary fw-bold mb-5">{request.title}</h2>
                 <p className="mb-4"><strong>Requester: </strong>{request.user.first_name} {request.user.last_name}</p>
-                <p className="mb-4"><strong>Type: </strong>{request.type}</p>
+                <p className="mb-4"><strong>Type: </strong>{request.request_type}</p>
                 <p className="mb-4"><strong>Location: </strong>{request.location}</p>
                 <p className="mb-4"><strong>Description: </strong>{request.description}</p>
               </div>
