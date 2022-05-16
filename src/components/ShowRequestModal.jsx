@@ -40,16 +40,16 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled}
                 <p className="mb-4">
                   <strong>Requester: </strong>
                   {request.user.first_name} {request.user.last_name}
-                  { user.id === request.user.id ? (" (yourself)") : ("") }
+                  { user.id === request.user.id && (" (yourself)") }
                 </p>
                 <p className="mb-4"><strong>Type: </strong>{request.request_type}</p>
                 <p className="mb-4"><strong>Location: </strong>{request.location}</p>
                 <p className="mb-4"><strong>Description: </strong>{request.description}</p>
                 {
-                  user.id === request.user.id ? 
+                  user.id === request.user.id && 
                     (
                       <p className="mb-4"><strong>Status: </strong>{request.status}</p>
-                    ) : ("")
+                    )
                 }
               </div>
               {

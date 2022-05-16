@@ -4,6 +4,10 @@ import React from 'react';
 // COMPONENTS IMPORTS
 import DropdownMenuOptionsRequestCard from './DropdownMenuOptionsRequestCard';
 
+// ASSETS IMPORTS
+import expired_banner from '../assets/images/expired_banner.svg';
+import fulfilled_banner from '../assets/images/fulfilled_banner.svg';
+
 const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkRequestAsFulfilled}) => {
   const toggleMenuRequestCard = () => {
     const menuRequestCard = document.querySelector("#R" + request.id + "> div.dropdown-menu-options-request-card");
@@ -25,6 +29,8 @@ const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkReques
   return (
     <div className="request-card">
       <div className={`card-content ${request.request_type}-request-card d-flex flex-column justify-content-between p-3 overflow-hidden`}>
+        { request.status == 'expired' && (<img src={expired_banner} alt="expired banner image" className="banner" />) }
+        { request.status == 'fulfilled' && (<img src={fulfilled_banner} alt="fulfilled banner image" className="banner" />) }
         <div className="overflow-hidden">
           <h3 className="text-center mb-3">{request.title}</h3>
           <p><strong>Type:</strong> {request.request_type}</p>
