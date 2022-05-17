@@ -223,11 +223,37 @@ const UserRequests = () => {
   }
 
   const filterRequests = (keyword) => {
-    if(keyword == '') {
-      setFilteredCurrentUserRequests(currentUserRequests)
-    } else {
-      let requests = currentUserRequests.filter((request) => request.status == keyword )
-      setFilteredCurrentUserRequests(requests)
+    const tabs = document.querySelectorAll(".tab")
+    const tabAll = document.querySelector("#all");
+    const tabInProgress = document.querySelector("#in-progress");
+    const tabExpired = document.querySelector("#expired");
+    const tabFulfilled = document.querySelector("#fulfilled");
+
+    [...tabs].map((tab) => tab.classList.remove('active-tab'));
+
+    switch(keyword) {
+      case 'all':
+        setFilteredCurrentUserRequests(currentUserRequests);
+        tabAll.classList.add('active-tab');
+        break;
+      case 'in progress':
+        let requestsInProgress = currentUserRequests.filter((request) => request.status == 'in progress');
+        setFilteredCurrentUserRequests(requestsInProgress);
+        tabInProgress.classList.add('active-tab');
+        break;
+      case 'expired':
+        let requestsExpired = currentUserRequests.filter((request) => request.status == 'expired');
+        setFilteredCurrentUserRequests(requestsExpired);
+        tabExpired.classList.add('active-tab');
+        break;
+      case 'fulfilled':
+        let requestsFulfilled = currentUserRequests.filter((request) => request.status == 'fulfilled');
+        setFilteredCurrentUserRequests(requestsFulfilled);
+        tabFulfilled.classList.add('active-tab');
+        break;
+      default:
+        setFilteredCurrentUserRequests(currentUserRequests);
+        tabAll.classList.add('active-tab');
     }
   };
 
@@ -239,7 +265,7 @@ const UserRequests = () => {
 
   useEffect(() => {
     if (filteredCurrentUserRequests == '') {
-      filterRequests('')
+      filterRequests('all');
     }
   }, [currentUserRequests]);
 
@@ -270,10 +296,10 @@ const UserRequests = () => {
             </div>
             <div className="tabs-area d-flex flex-column align-items-center w-100 pb-3">
               <ul className="row row-cols-md-2 row-cols-md-4 p-0 w-100">
-                <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim" onClick={(e) => filterRequests('')}>All</li>
-                <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim border-left-prim" onClick={(e) => filterRequests('in progress')}>In progress</li>
-                <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim border-left-md-prim" onClick={(e) => filterRequests('expired')}>Expired</li>
-                <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim border-left-prim" onClick={(e) => filterRequests('fulfilled')}>Fulfilled</li>
+                <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim" id="all" onClick={(e) => filterRequests('all')}>All</li>
+                <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim border-left-prim" id="in-progress" onClick={(e) => filterRequests('in progress')}>In progress</li>
+                <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim border-left-md-prim" id="expired" onClick={(e) => filterRequests('expired')}>Expired</li>
+                <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim border-left-prim" id="fulfilled" onClick={(e) => filterRequests('fulfilled')}>Fulfilled</li>
               </ul>
               <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 d-flex justify-content-center pt-2 w-100">
                 { filteredCurrentUserRequests &&
