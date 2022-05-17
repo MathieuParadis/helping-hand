@@ -6,6 +6,7 @@
     border: 2px solid var(--prim-color);
     border-radius: 5px;
     overflow: hidden;
+    min-height: 350px;
 
     .tab {
       &:hover {

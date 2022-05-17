@@ -4,6 +4,9 @@ import React, { useEffect, useState, useContext } from 'react';
 // CONTEXT IMPORTS
 import FlashContext from '../components/Context/FlashContext';
 
+// REACT LOADING IMPORTS
+import ReactLoading from 'react-loading';
+
 // COMPONENTS IMPORTS
 import EditRequestModal from '../components/EditRequestModal';
 import RequestCard from '../components/RequestCard';
@@ -16,7 +19,7 @@ const UserRequests = () => {
   const { setFlash } = useContext(FlashContext);
 
   const [currentUserRequests, setCurrentUserRequests] = useState('');
-  const [filteredCurrentUserRequests, setFilteredCurrentUserRequests] = useState('');
+  const [filteredCurrentUserRequests, setFilteredCurrentUserRequests] = useState(null);
   const [currentUserRequest, setCurrentUserRequest] = useState('');
 
   const openNewRequestModal = (e) => {
@@ -264,7 +267,7 @@ const UserRequests = () => {
   }, [currentUserRequests]);
 
   useEffect(() => {
-    if (filteredCurrentUserRequests == '') {
+    if (!filteredCurrentUserRequests) {
       filterRequests('all');
     }
   }, [currentUserRequests]);
@@ -302,19 +305,35 @@ const UserRequests = () => {
                 <li className="tab list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3 border-bottom-prim border-left-prim" id="fulfilled" onClick={(e) => filterRequests('fulfilled')}>Fulfilled</li>
               </ul>
               <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 d-flex justify-content-center pt-2 w-100">
-                { filteredCurrentUserRequests &&
-                  filteredCurrentUserRequests.map((request) => {
-                    return (
-                      <RequestCard 
-                        request={request} 
-                        setOpenShowModal={openShowRequestModal} 
-                        setOpenEditModal={openEditRequestModal}
-                        setMarkRequestAsFulfilled={markRequestAsFulfilled}
-                        setRepublishRequest={republishRequest}
-                        key={request.id} 
-                      />
+                { filteredCurrentUserRequests ?
+                  // 3 cases: not fetch yet => display Loading component
+                  //          no request => displays sentence no request here yet
+                  //          requests fetched => displays requests in cards
+                  (
+                    filteredCurrentUserRequests.length > 0 ?
+                    (
+                      filteredCurrentUserRequests.map((request) => {
+                        return (
+                          <RequestCard 
+                            request={request} 
+                            setOpenShowModal={openShowRequestModal} 
+                            setOpenEditModal={openEditRequestModal}
+                            setMarkRequestAsFulfilled={markRequestAsFulfilled}
+                            setRepublishRequest={republishRequest}
+                            key={request.id} 
+                          />
+                        )
+                      })
+                    ) :
+                    (
+                      <p className="w-100 text-center pt-5 mt-5 h5">You do not have any request here for the moment</p>
                     )
-                  })
+                  ) : 
+                  ( 
+                    <div className="d-flex justify-content-center align-items-center w-100 p-3">
+                      <ReactLoading type={"spinningBubbles"} color={"#358597"} height={'10%'} width={'10%'} />
+                    </div>
+                  )
                 }
               </div>
             </div>
