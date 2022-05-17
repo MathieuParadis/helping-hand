@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Welcome on the Helping Hand app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center" >
+  <a href="https://helpping-hand.herokuapp.com/"><img src="https://github.com/MathieuParadis/helping-hand/blob/main/src/assets/logos/helping_hand_logo_with_text.svg" alt="Helping Hand logo"/></a>
+</p>
 
-## Available Scripts
 
-In the project directory, you can run:
+## Description :
+Helping Hand is a local charity whose mission is to help to build a strong community by promoting the good. We aim to educate, and inspire people to embrace kindness and charitable giving, and in doing so, be the change they want to be in the world. To achieved this goal, we have developed a plateform to help connecting people in need with volunteers within the community. We believe that by making it easier for people to give and reach out to help those less fortunate than themselves, they will feel empowered and are more likely to volunteer.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Developpers:
+- [Mathieu](https://github.com/MathieuParadis)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Tools:
+- Backend
+[Ruby on Rails](https://rubyonrails.org/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Frontend
+[React JS](https://reactjs.org/)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Helping Hand Backend:
+* [Git repository](https://github.com/MathieuParadis/helping-hand-back)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+End points of the app in production
+* [Users](https://helpping-hand-back.herokuapp.com/users)
+* [Requests](https://helpping-hand-back.herokuapp.com/requests)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How to use it:
+### In development:
+Clone the repository on your machine, and run:
+  ```
+  npm install
+  npm start
+  ```
+  
+Then, access the app in your browser at http://localhost:3000/ 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### In production:
+Go to the [Helping Hand](https://helpping-hand.herokuapp.com/) and enjoy the experience!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
