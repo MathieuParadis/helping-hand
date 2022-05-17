@@ -222,7 +222,6 @@ const UserRequests = () => {
     })
   }
 
-
   const filterRequests = (keyword) => {
     if(keyword == '') {
       setFilteredCurrentUserRequests(currentUserRequests)
@@ -270,13 +269,13 @@ const UserRequests = () => {
               </div>
             </div>
             <div className="tabs-area d-flex flex-column align-items-center w-100 pb-3">
-              <ul className="d-flex justify-content-start w-100 p-0">
-                <li className="tab list-unstyled me-4 h4 text-center pointer" onClick={(e) => filterRequests('')}>All</li>
-                <li className="tab list-unstyled mx-4 h4 text-center pointer" onClick={(e) => filterRequests('in progress')}>In progress</li>
-                <li className="tab list-unstyled mx-4 h4 text-center pointer" onClick={(e) => filterRequests('expired')}>Expired</li>
-                <li className="tab list-unstyled me-4 h4 text-center pointer" onClick={(e) => filterRequests('fulfilled')}>Fulfilled</li>
+              <ul className="row row-cols-md-2 row-cols-md-4 p-0 w-100">
+                <li className="list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3" onClick={(e) => filterRequests('')}>All</li>
+                <li className="list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3" onClick={(e) => filterRequests('in progress')}>In progress</li>
+                <li className="list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3" onClick={(e) => filterRequests('expired')}>Expired</li>
+                <li className="list-unstyled my-0 py-2 h4 text-center pointer col-6 col-md-3" onClick={(e) => filterRequests('fulfilled')}>Fulfilled</li>
               </ul>
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 d-flex justify-content-center w-100">
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-4 g-4 d-flex justify-content-center pt-2 w-100">
                 { filteredCurrentUserRequests &&
                   filteredCurrentUserRequests.map((request) => {
                     return (

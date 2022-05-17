@@ -3,11 +3,8 @@
   width: 100%;
 
   .tabs-area {
-    border: 1px solid black;
-
-    .tab {
-      width: 150px;
-    }
+    border: 1px solid var(--prim-color);
+    border-radius: 5px;
   }
 
   .caption {
