@@ -104,8 +104,66 @@ const MapRequests = () => {
     document.querySelector("body").classList.add("clicked");
   }
 
-  const markRequestAsFulfilled = () => {
-    alert(currentRequest.request.title + " marked as fulfilled");
+  const closeShowRequestModal = () => {
+    const showRequestModal = document.querySelector(".show-request-modal");
+    showRequestModal.style.visibility = "hidden";
+    document.querySelector("body").classList.remove("clicked");
+  }
+
+  const markRequestAsFulfilled = (request) => {
+    setCurrentRequest(request);
+
+    const { id } = request
+
+    const data = {
+      status: "fulfilled"
+    };
+
+    const url = `${baseURL}/requests/${id}`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "PUT",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      // console.log(response);
+      return response.json();
+    })
+    .then(response => {
+      // console.log(response);
+      closeShowRequestModal();
+      closeBubbleRequestInfo();
+      if (response.message) {
+        setFlash({
+          type: 'success',
+          message: 'Request marked as fulfilled',
+          display: true,
+        });
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+    })
+    .catch(error => {
+      // console.log(error);
+      closeShowRequestModal();
+      closeBubbleRequestInfo();
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
   }
 
   useEffect(() => {
