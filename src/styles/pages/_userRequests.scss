@@ -1,24 +1,30 @@
 .user-requests {
-  .container {
-    min-height: 85vh;
-    width: 100%;
-  }
-}
+  min-height: 85vh;
+  width: 100%;
 
-.caption {
-  span#material {
-    content: "";
-    display: block;
-    height: 20px;
-    width: 20px;
-    background: var(--third-color);
+  .tabs-area {
+    border: 1px solid black;
+
+    .tab {
+      width: 150px;
+    }
   }
 
-  span#service {
-    content: "";
-    display: block;
-    height: 20px;
-    width: 20px;
-    background: var(--sec-color);
+  .caption {
+    span#material {
+      content: "";
+      display: block;
+      height: 20px;
+      width: 20px;
+      background: var(--third-color);
+    }
+
+    span#service {
+      content: "";
+      display: block;
+      height: 20px;
+      width: 20px;
+      background: var(--sec-color);
+    }
   }
 }
