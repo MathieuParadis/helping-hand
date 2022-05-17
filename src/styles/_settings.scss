@@ -357,6 +357,28 @@ a {
   border-right: 2px solid var(--basic-color-grey-dark);;
 }
 
+.border-top-prim {
+  border-top: 2px solid var(--prim-color);
+}
+
+.border-bottom-prim {
+  border-bottom: 2px solid var(--prim-color);
+}
+
+.border-left-prim {
+  border-left: 2px solid var(--prim-color);
+}
+
+.border-right-prim {
+  border-right: 2px solid var(--prim-color);
+}
+
+.border-left-md-prim {
+  @include tablet_and_large_screen {
+    border-left: 2px solid var(--prim-color);
+  }
+}
+
 
 // -------------------- BACKGROUND CLASSES -------------------- //
 .bg1 {
