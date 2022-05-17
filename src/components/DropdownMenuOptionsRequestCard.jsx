@@ -7,7 +7,7 @@ import FlashContext from './Context/FlashContext';
 // DATA IMPORTS
 import baseURL from '../data/BaseURL';
 
-const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkRequestAsFulfilled}) => {
+const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
   const { setFlash } = useContext(FlashContext);
   const { id } = request;
 
@@ -68,6 +68,10 @@ const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkReque
               <li className="m-0 p-2 pointer" onClick={() => setOpenEditModal(request)}>Edit request</li>
             </>
           )
+        }
+        {
+          request.status == 'expired' &&
+          <li className="m-0 p-2 pointer" onClick={() => setRepublishRequest(request)}>Republish</li>
         }
         <hr className="m-0"></hr>
         <li className="m-0 p-2 pointer" onClick={() => deleteRequest()}>Delete request</li>

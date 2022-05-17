@@ -115,6 +115,61 @@ const UserRequests = () => {
     })
   }
 
+  const republishRequest = (request) => {
+    setCurrentUserRequest(request);
+
+    const { id } = request
+
+    const data = {
+      status: "in_progress",
+      expiry_date: parseInt(Date.now() / 1000, 10) + 86400
+    };
+
+    const url = `${baseURL}/requests/${id}`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "PUT",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      // console.log(response);
+      return response.json();
+    })
+    .then(response => {
+      // console.log(response);
+      closeShowRequestModal();
+      if (response.message) {
+        setFlash({
+          type: 'success',
+          message: 'Request republished successfully',
+          display: true,
+        });
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+    })
+    .catch(error => {
+      // console.log(error);
+      closeShowRequestModal();
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
+  }
+
   const closeAllMenus = () => {
     const menus = document.querySelectorAll("div.dropdown-menu-options-request-card");
     const menusArray = [...menus];
@@ -182,7 +237,7 @@ const UserRequests = () => {
 
   return (
     <>
-      <ShowRequestModal request={currentUserRequest} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+      <ShowRequestModal request={currentUserRequest} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} setRepublishRequest={republishRequest} />
       <EditRequestModal request={currentUserRequest} />
       <div className="user-requests">
         <div className="container d-flex justify-content-center mx-0 w-100">
@@ -206,6 +261,7 @@ const UserRequests = () => {
                       setOpenShowModal={openShowRequestModal} 
                       setOpenEditModal={openEditRequestModal}
                       setMarkRequestAsFulfilled={markRequestAsFulfilled}
+                      setRepublishRequest={republishRequest}
                       key={request.id} 
                     />
                   )
