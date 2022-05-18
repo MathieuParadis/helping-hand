@@ -139,10 +139,14 @@ const ModifyCredentialsModal = () => {
   }
 
   const pwdCorrect = () => {
-    if (password === passwordConfirmation) {
-      return true;
+    if (password.length > 0) {
+      if (password === passwordConfirmation) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-      return false;
+      return true
     }
   };
 
