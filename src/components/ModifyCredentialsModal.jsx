@@ -42,7 +42,10 @@ const ModifyCredentialsModal = () => {
       const data = {
         email: emailAdd,
         password: password,
-        password_confirmation: passwordConfirmation
+        password_confirmation: passwordConfirmation,
+        position_attributes: {lat: 6, lng: 4}
+        // lat: 50,
+        // lgn: 50
       };
 
       const url = `${baseURL}/users/${id}`;

@@ -44,7 +44,9 @@ const EditProfileModal = () => {
     var form_data = new FormData();
     form_data.append('first_name', fname);
     form_data.append('last_name', lname);
-    
+
+    var position = JSON.stringify({lat: 555, lng: 555});
+    form_data.append('position_attributes', position);
     if (idCardFile) {
       form_data.append('id_card', idCardFile, idCardFile.name);
     }
