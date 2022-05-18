@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
 import UserContext from './Context/UserContext';
@@ -10,11 +10,13 @@ import fulfilled_banner from '../assets/images/fulfilled_banner.svg';
 
 const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
   const { user } = useContext(UserContext);
+  const [modalOpen, setModalOpen] = useState(true);
 
   const closeShowRequestModal = () => {
     const showRequestModal = document.querySelector(".show-request-modal");
     showRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
+    setModalOpen(false);
   }
 
   const openChat = () => {
@@ -29,8 +31,9 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
   useEffect(() => {
     if (request) {
       scrollTopComponent();
+      setModalOpen(true);
     }
-  }, [request]);
+  }, [modalOpen]);
 
   return (
     <div className="show-request-modal">
@@ -55,19 +58,19 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
                       <p className="mb-4"><strong>Status: </strong>{request.status}</p>
                     )
                 }
-                { request.status == 'expired' && (<img src={expired_banner} alt="expired banner image" className="banner align-self-center" />) }
-                { request.status == 'fulfilled' && (<img src={fulfilled_banner} alt="fulfilled banner image" className="banner align-self-center" />) }
+                { request.status === 'expired' && (<img src={expired_banner} alt="expired banner" className="banner align-self-center" />) }
+                { request.status === 'fulfilled' && (<img src={fulfilled_banner} alt="fulfilled banner" className="banner align-self-center" />) }
               </div>
               {
                 user.id === request.user.id ? 
                   ( 
-                    request.status != 'fulfilled' ? 
+                    request.status !== 'fulfilled' ? 
                     (
                       <div className="d-flex flex-column flex-md-row mt-4">
                         <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
                         <button className="btn button-outline-primary button-modal mx-0 mx-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button>
                         {
-                          request.status == 'expired' && 
+                          request.status === 'expired' && 
                           <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => setRepublishRequest(request)}>Republish request</button>
                         }
                       </div>
@@ -77,7 +80,6 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
                         <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" disabled>Edit request</button>
                         <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" disabled>Mark as fulfilled</button>
                       </div>
-             
                     )
                   ) :
                   (

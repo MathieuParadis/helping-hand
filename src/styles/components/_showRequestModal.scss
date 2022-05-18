@@ -36,19 +36,23 @@
 
   .show-request-modal-white-bg {
     display: flex;
-    min-height: 70vh;
-    max-height: 90vh;
-    width: 70%;
+    min-height: var(--modal-min-height);
+    max-height: var(--modal-max-height);
+    width: var(--modal-width);
     z-index: 21;
     background-color: var(--basic-color-white);
     border-radius: 0px;
     overflow: hidden;
     position:relative;
 
+    @include mobile {
+      width: var(--modal-width-mobile);
+    }
+
     .show-request-modal-content {
       position: relative;
-      min-height: 70vh;
-      max-height: 90vh;
+      min-height: var(--modal-min-height);
+      max-height: var(--modal-max-height);
       height: 100%;
       border: none;
       overflow-y: scroll;

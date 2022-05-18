@@ -47,6 +47,12 @@ $warning-lightest: #ffda6a;
 $warning-darker: #bf9105;
 $warning-darkest: #806104;
 
+// -------------------- HEIGHTS AND WIDTHS VARIABLES -------------------- //
+$modal-width: 70%;
+$modal-width-mobile: 80%;
+$modal-min-height: 70vh;
+$modal-max-height: 90vh;
+
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 :root {
@@ -83,6 +89,11 @@ $warning-darkest: #806104;
   --lightest-warning-color: #{$warning-lightest};
   --darker-warning-color: #{$warning-darker};
   --darkest-warning-color: #{$warning-darkest};
+
+  --modal-width: #{$modal-width};
+  --modal-width-mobile: #{$modal-width-mobile};
+  --modal-min-height: #{$modal-min-height};
+  --modal-max-height: #{$modal-max-height};
 }
 
 @mixin small_mobile {

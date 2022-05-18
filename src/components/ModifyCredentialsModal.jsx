@@ -19,6 +19,7 @@ const ModifyCredentialsModal = () => {
   const { user, setUser } = useContext(UserContext);
   const { id, email } = user;
 
+  const [modalOpen, setModalOpen] = useState(true);
   const [loaded, setLoaded] = useState(false);
   const [emailAdd, setEmailAdd] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +31,7 @@ const ModifyCredentialsModal = () => {
     document.querySelector("body").classList.remove("clicked");
     setEmailAdd(email);
     setLoaded(false); 
+    setModalOpen(false);
     emptyFormFields();
   }
 
@@ -151,7 +153,7 @@ const ModifyCredentialsModal = () => {
 
   const scrollTopComponent = () => {
     const modalTitle = document.querySelector(".modify-credentials-modal-title");
-    modalTitle.scrollIntoView({ behavior: 'smooth' });
+    modalTitle.scrollIntoView();
   }
 
   useEffect(() => {
@@ -162,8 +164,11 @@ const ModifyCredentialsModal = () => {
   }, [user, loaded]);
 
   useEffect(() => {
-    scrollTopComponent();
-  }, [user]);
+    if (user) {
+      scrollTopComponent();
+      setModalOpen(true);
+    }
+  }, [modalOpen]);
 
   return (
     <div className="modify-credentials-modal">

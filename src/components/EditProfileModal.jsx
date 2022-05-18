@@ -33,9 +33,9 @@ const EditProfileModal = () => {
     document.querySelector("body").classList.remove("clicked");
     setFname(first_name);
     setLname(last_name);
-    setLoaded(false); 
     setIdCardFile('');
     setIdCardFileName(getFileName(id_card_url));
+    setLoaded(false); 
   }
 
   const updateProfile = (e) => {
