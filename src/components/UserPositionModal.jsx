@@ -5,32 +5,27 @@ import React, { useEffect, useState, useContext } from 'react';
 import FlashContext from './Context/FlashContext';
 import UserContext from './Context/UserContext';
 
+// ASSETS IMPORTS
+import position_icon from '../assets/logos/position_logo.svg';
+
 // DATA IMPORTS
 import baseURL from '../data/BaseURL';
 
 const UserPositionModal = () => {
   const { setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
+  const { id, first_name, last_name } = user;
 
-  const { id } = user;
-
-  const [lat, setLat] = useState("");
-  const [long, setLong] = useState("");
-
-  // const closeUserPositionModal = () => {
-  //   const userPositionModal = document.querySelector(".user-position-modal");
-  //   userPositionModal.style.visibility = "hidden";
-  //   document.querySelector("body").classList.remove("clicked");
-  // }
+  const [lat, setLat] = useState('');
+  const [long, setLong] = useState('');
 
   const sharePosition = (e) => {
     e.preventDefault();
     
     var form_data = new FormData();
  
-    var position = JSON.stringify({lat: 100, lng: 122});
-    form_data.append('position_attributes', position);
-
+    let geoPosition = JSON.stringify({lat: lat, lng: long});
+    form_data.append('position_attributes', geoPosition);
 
     const url = `${baseURL}/users/${id}`;
     
@@ -57,7 +52,7 @@ const UserPositionModal = () => {
         setUser(response.user);
         setFlash({
           type: 'success',
-          message: "Profile updated successfully",
+          message: "Position updated successfully",
           display: true,
         })
       } else {
@@ -68,10 +63,8 @@ const UserPositionModal = () => {
           display: true,
         })
       }
-      // closeEditProfileModal();
     })
     .catch(error => {
-      // closeEditProfileModal();
       setFlash({
         type: 'danger',
         message: error,
@@ -80,9 +73,6 @@ const UserPositionModal = () => {
     })
   }
     
-
-
-
   const getPosition = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -108,32 +98,28 @@ const UserPositionModal = () => {
       <div className="user-position-modal-overlay"></div>
       <div className="user-position-modal-white-bg">
         <div className="user-position-modal-content d-flex flex-column justify-content-between align-items-center w-100 p-4 p-md-5">
-          <h2 className="user-position-modal-title text-primary fw-bold mb-5">Set up your position/location</h2>
+          <h2 className="user-position-modal-title text-primary text-center fw-bold mb-5">Set up your position</h2>
           <div className="form-container d-flex flex-grow-1 w-100">
             <form onSubmit={sharePosition} className="d-flex flex-column justify-content-between w-100">
-              <div>
-                <div className="input mb-3">
-                  <label htmlFor="title" className="mb-1">Title&nbsp;<small className="caption">(50 characters max)</small></label>
-                  {/* <input type="text" className="form-control" id="title" aria-describedby="title input field" placeholder="Title" minLength="2" maxLength="50" value={title} onChange={(e) => setTitle(e.target.value)} required /> */}
-                </div>
-
-                <div className="geo-position-section d-flex flex-column my-4">
-                  <h5 className="mb-2">Geographical coordinates</h5>
-                  <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
-                    <div className="input mb-3 mb-md-0 me-0 me-md-2">
-                      <label htmlFor="latitude" className="mb-1">Latitude</label>
-                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
-                    </div>
-                    <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
-                      <label htmlFor="longitude" className="mb-1">Longitude</label>
-                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
-                    </div>
+              <p>Dear <strong>{first_name}</strong>,</p>
+              <p>Thank you for joining the Helping Hand community.<br></br>Before continuing to the app, we need you to share your position with us in order to be able to show you requests around you</p>
+              <div className="geo-position-section d-flex flex-column my-4">
+                <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
+                  <div className="input mb-3 mb-md-0 me-0 me-md-2">
+                    <label htmlFor="latitude" className="mb-1">Latitude</label>
+                    <input type="number" className="form-control" id="latitude-user-profile" aria-describedby="latitude input field" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
+                    <img src={position_icon} alt="position icon" className="position-icon" />
                   </div>
-                  <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
+                  <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
+                    <label htmlFor="longitude" className="mb-1">Longitude</label>
+                    <input type="number" className="form-control" id="longitude-user-profile" aria-describedby="longitude input field" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
+                    <img src={position_icon} alt="position icon" className="position-icon" />
+                  </div>
                 </div>
+                <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
-                <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Share position</button>
+                <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update position</button>
               </div>
             </form>
           </div>

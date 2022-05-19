@@ -43,7 +43,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
         {request && (
             <div className="show-request-modal-content d-flex flex-column justify-content-between w-100 p-4 p-md-5">
               <div className="d-flex flex-column">
-                <h2 className="show-request-modal-title text-primary fw-bold mb-5">{request.title}</h2>
+                <h2 className="show-request-modal-title text-primary text-center fw-bold mb-5">{request.title}</h2>
                 <p className="mb-4">
                   <strong>Requester: </strong>
                   {request.user.first_name} {request.user.last_name}

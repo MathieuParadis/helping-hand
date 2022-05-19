@@ -184,7 +184,7 @@ const EditProfileModal = () => {
       <div className="edit-profile-modal-overlay"></div>
       <div className="edit-profile-modal-white-bg">
         <div className="edit-profile-modal-content d-flex flex-column align-items-center w-100 p-4 p-md-5">
-          <h2 className="edit-profile-modal-title text-primary fw-bold mb-5">Edit my information</h2>
+          <h2 className="edit-profile-modal-title text-primary text-center fw-bold mb-5">Edit my information</h2>
           <div className="form-container d-flex flex-grow-1 w-100">
             <form onSubmit={updateProfile} className="d-flex flex-column justify-content-between w-100">
               <div>
@@ -203,12 +203,12 @@ const EditProfileModal = () => {
                   <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                     <div className="input mb-3 mb-md-0 me-0 me-md-2">
                       <label htmlFor="latitude" className="mb-1">Latitude</label>
-                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
+                      <input type="number" className="form-control" id="latitude-user-profile" aria-describedby="latitude input field" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
                       <img src={position_icon} alt="position icon" className="position-icon" />
                     </div>
                     <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
                       <label htmlFor="longitude" className="mb-1">Longitude</label>
-                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
+                      <input type="number" className="form-control" id="longitude-user-profile" aria-describedby="longitude input field" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
                       <img src={position_icon} alt="position icon" className="position-icon" />
                     </div>
                   </div>

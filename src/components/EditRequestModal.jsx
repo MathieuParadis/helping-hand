@@ -132,7 +132,7 @@ const EditRequestModal = ({request}) => {
       <div className="edit-request-modal-overlay"></div>
       <div className="edit-request-modal-white-bg">
         <div className="edit-request-modal-content d-flex flex-column justify-content-between align-items-center w-100 p-4 p-md-5">
-          <h2 className="edit-request-modal-title text-primary fw-bold mb-5">Edit request</h2>
+          <h2 className="edit-request-modal-title text-primary text-center fw-bold mb-5">Edit request</h2>
           {request && (
             <div className="form-container d-flex flex-grow-1 w-100">
               <form onSubmit={updateRequest} className="d-flex flex-column justify-content-between w-100">
