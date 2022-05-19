@@ -14,7 +14,7 @@ import ModifyCredentialsModal from '../components/ModifyCredentialsModal';
 
 const Profile = () => {
   const { user } = useContext(UserContext);
-  const { first_name, last_name, email, id_card_url } = user;
+  const { first_name, last_name, email, id_card_url, position } = user;
 
   const [idCardFileName, setIdCardFileName] = useState("");
   const [idCardFileType, setIdCardFileType] = useState("");
@@ -67,6 +67,7 @@ const Profile = () => {
               <div>
                 <p><strong>First name</strong>: {first_name}</p>
                 <p><strong>Last name</strong>: {last_name}</p>
+                <p><strong>Latitude, Longitude</strong>: [{position.lat}, {position.lng}]</p>
                 <p><strong>Email</strong>: {email}</p>
                 <div className="d-flex">
                   <p><strong>ID</strong>:&nbsp;</p>
