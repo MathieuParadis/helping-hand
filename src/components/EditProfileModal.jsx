@@ -15,7 +15,7 @@ import baseURL from '../data/BaseURL';
 const EditProfileModal = () => {
   const { setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
-  const { id, first_name, last_name, id_card_url } = user;
+  const { id, first_name, last_name, id_card_url, position } = user;
 
   const acceptedFileTypes = ['pdf', 'png', 'jpg', 'jpeg'];
 
@@ -45,7 +45,7 @@ const EditProfileModal = () => {
     form_data.append('first_name', fname);
     form_data.append('last_name', lname);
 
-    var position = JSON.stringify({lat: 555, lng: 555});
+    var position = JSON.stringify({lat: 100, lng: 122});
     form_data.append('position_attributes', position);
     if (idCardFile) {
       form_data.append('id_card', idCardFile, idCardFile.name);
@@ -68,9 +68,11 @@ const EditProfileModal = () => {
           body: form_data,
         })
         .then(response => {
+          // console.log(response);
           return response.json()
         })
         .then(response => {
+          // console.log(response);
           if (response.user) {
             localStorage.setItem('user', JSON.stringify(response.user));
             console.log(response)
