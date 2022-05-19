@@ -25,6 +25,7 @@ import Flash from './components/Flash';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import NewRequestModal from './components/NewRequestModal';
+import UserPositionModal from './components/UserPositionModal';
 
 // REACT FONTAWESOME IMPORTS
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -34,7 +35,7 @@ library.add(fab);
 const App = () => { 
   const [authenticated, setAuthenticated] = useState(false);
   const [flash, setFlash] = useState({});
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(false);
   const token = localStorage.getItem('jwt_token');
 
   const isUserAuthenticated = () => {
@@ -44,6 +45,10 @@ const App = () => {
   const handleAuthenticationContext = () => {
     return (token !== null ? setAuthenticated(true) : setAuthenticated(false)) 
   }
+
+  console.log(user)
+  console.log(user.position)
+
 
   useEffect(() => {
     isUserAuthenticated();
@@ -65,6 +70,9 @@ const App = () => {
               <Navigation />
               <Flash />
               <NewRequestModal />
+              {
+                user && user.position === undefined && <UserPositionModal />
+              }
               <Routes>
                 <Route path="/" exact="true" element={isUserAuthenticated() ? <MapRequests /> : <Home />} />
                 <Route path="/how-it-works" exact="true" element={<Rules />} />

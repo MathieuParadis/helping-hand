@@ -1,4 +1,4 @@
-.new-request-modal {
+.user-position-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,10 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
-  opacity: 1;
 
-  .new-request-modal-overlay {
+  .user-position-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -22,7 +20,7 @@
     opacity: 0.7;
   }
 
-  .new-request-modal-white-bg {
+  .user-position-modal-white-bg {
     display: flex;
     min-height: var(--modal-min-height);
     max-height: var(--modal-max-height);
@@ -37,7 +35,7 @@
       width: var(--modal-width-mobile);
     }
 
-    .new-request-modal-content {
+    .user-position-modal-content {
       min-height: var(--modal-min-height);
       max-height: var(--modal-max-height);
       height: 100%;
@@ -51,10 +49,6 @@
 
         label {
           font-size: 18px;
-        }
-
-        .caption {
-          font-size: 12px;
         }
 
         input, select {
@@ -75,16 +69,6 @@
           }
         }  
 
-        .select-form-control {
-          &::after {
-            position: absolute;
-            content: " \2193";
-            top: 0px;
-            right: -11px;
-            height: 20px;
-            width: 20px;
-          }
-        }
       }
     }
   }
