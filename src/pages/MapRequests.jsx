@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
 import FlashContext from '../components/Context/FlashContext';
+import UserContext from '../components/Context/UserContext';
 
 // PIGEON MAPS IMPORTS
 import { Map, ZoomControl, Marker, Overlay } from "pigeon-maps";
@@ -22,10 +23,13 @@ const maptilerProvider = maptiler('IwympTEN2FYbP2g5qdck', 'streets')
 
 const MapRequests = () => {
   const { setFlash } = useContext(FlashContext);
+  const { user } = useContext(UserContext);
+  const { position } = user
 
+  const [loaded, setLoaded] = useState(false);
   const [requests, setRequests] = useState();
-  const [center, setCenter] = useState([40.014984, -105.270546]); // default center: Boulder, Colorado
-  const [zoom, setZoom] = useState(12);
+  const [center, setCenter] = useState(false); 
+  const [zoom, setZoom] = useState(16);
   const [currentRequest, setCurrentRequest] = useState("");
 
   const colorMaterial = "#F4A896";
@@ -45,15 +49,15 @@ const MapRequests = () => {
       },
     })
     .then(response => {
-      console.log(response)
+      // console.log(response);
       return response.json()
     })
     .then(response => {
-      console.log(response)
-      setRequests(response)
+      // console.log(response);
+      setRequests(response);
     })
     .catch(errors => {
-      console.log(errors)
+      // console.log(errors);
       setFlash({
         type: 'danger',
         message: "An error occured, please try again",
@@ -165,6 +169,13 @@ const MapRequests = () => {
       })
     })
   }
+  
+  useEffect(() => {
+    if (position && !loaded) {
+      setCenter([parseFloat(position.lat), parseFloat(position.lng)]);
+      setLoaded(true);
+    }
+  }, [position]);
 
   useEffect(() => {
     getRequests();
@@ -195,9 +206,9 @@ const MapRequests = () => {
             </div>
           </div>
           <div className="map d-flex justify-content-center align-items-center mb-4">
-            { requests ? 
-              (
-                <Map provider={maptilerProvider} dprs={[1, 2]} center={center} defaultZoom={12} zoom={zoom}>
+            { requests && loaded ? 
+              ( 
+                <Map provider={maptilerProvider} dprs={[1, 2]} center={center} zoom={zoom}>
                   <ZoomControl />
                   {
                     requests.map((request) => {

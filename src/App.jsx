@@ -46,10 +46,6 @@ const App = () => {
     return (token !== null ? setAuthenticated(true) : setAuthenticated(false)) 
   }
 
-  console.log(user)
-  console.log(user.position)
-
-
   useEffect(() => {
     isUserAuthenticated();
     handleAuthenticationContext();

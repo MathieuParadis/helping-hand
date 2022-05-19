@@ -198,9 +198,6 @@ const EditProfileModal = () => {
                   <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" minLength="2" maxLength="100" value={lname} onChange={(e) => setLname(e.target.value)} required />
                   <img src={profile_icon} alt="profile icon" className="profile-icon" />
                 </div>
-
-
-
                 <div className="geo-position-section d-flex flex-column my-4">
                   <h5 className="mb-2">Geographical coordinates</h5>
                   <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
@@ -217,12 +214,6 @@ const EditProfileModal = () => {
                   </div>
                   <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
                 </div>
-
-
-
-
-
-
                 <div className="file-input my-3">
                   <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(.jpg, .png, and .pdf only)</small></label>
                   <div className="d-flex align-items-center">
