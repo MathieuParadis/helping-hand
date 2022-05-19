@@ -12,7 +12,7 @@ const UserPositionModal = () => {
   const { setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
 
-  const { id, position } = user;
+  const { id } = user;
 
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
@@ -53,7 +53,7 @@ const UserPositionModal = () => {
       // console.log(response);
       if (response.user) {
         localStorage.setItem('user', JSON.stringify(response.user));
-        console.log(response)
+        console.log(response);
         setUser(response.user);
         setFlash({
           type: 'success',

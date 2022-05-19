@@ -6,6 +6,7 @@ import FlashContext from './Context/FlashContext';
 import UserContext from '../components/Context/UserContext';
 
 // ASSETS IMPORTS
+import position_icon from '../assets/logos/position_logo.svg';
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
@@ -20,10 +21,12 @@ const EditProfileModal = () => {
   const acceptedFileTypes = ['pdf', 'png', 'jpg', 'jpeg'];
 
   const [loaded, setLoaded] = useState(false);
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
+  const [lat, setLat] = useState('');
+  const [long, setLong] = useState('');
   const [idCardFile, setIdCardFile] = useState(null);
-  const [idCardFileName, setIdCardFileName] = useState("");
+  const [idCardFileName, setIdCardFileName] = useState('');
   const [idCardFileType, setIdCardFileType] = useState(null);
   const hiddenFileInput = useRef(null);
 
@@ -33,6 +36,8 @@ const EditProfileModal = () => {
     document.querySelector("body").classList.remove("clicked");
     setFname(first_name);
     setLname(last_name);
+    setLat(position.lat);
+    setLong(position.lng);
     setIdCardFile('');
     setIdCardFileName(getFileName(id_card_url));
     setLoaded(false); 
@@ -41,12 +46,13 @@ const EditProfileModal = () => {
   const updateProfile = (e) => {
     e.preventDefault();
     
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append('first_name', fname);
     form_data.append('last_name', lname);
 
-    var position = JSON.stringify({lat: 100, lng: 122});
-    form_data.append('position_attributes', position);
+    let geoPosition = JSON.stringify({lat: lat, lng: long});
+    form_data.append('position_attributes', geoPosition);
+
     if (idCardFile) {
       form_data.append('id_card', idCardFile, idCardFile.name);
     }
@@ -142,10 +148,23 @@ const EditProfileModal = () => {
     return name
   }
 
+  const getPosition = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+    } else {
+      alert("Your browser does not support this functionality");
+    }
+  }
+
   useEffect(() => {
     if (user.first_name && !loaded) {
       setFname(user.first_name);
       setLname(user.last_name); 
+      setLat(user.position.lat); 
+      setLong(user.position.lng); 
       setIdCardFileName(getFileName(user.id_card_url));
       setIdCardFileType(getFileType(id_card_url).toLowerCase());
       setLoaded(true);  
@@ -172,13 +191,38 @@ const EditProfileModal = () => {
                 <div className="input mb-3">
                   <label htmlFor="first_name" className="mb-1">First name</label>
                   <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="First name" minLength="2" maxLength="100" value={fname} onChange={(e) => setFname(e.target.value)} required />
-                  <img src={profile_icon} alt="profile_icon" className="profile-icon" />
+                  <img src={profile_icon} alt="profile icon" className="profile-icon" />
                 </div>
                 <div className="input my-3">
                   <label htmlFor="last_name" className="mb-1">Last name</label>
                   <input type="text" className="form-control" id="last-name" aria-describedby="last_name input field" placeholder="Last name" minLength="2" maxLength="100" value={lname} onChange={(e) => setLname(e.target.value)} required />
-                  <img src={profile_icon} alt="profile_icon" className="profile-icon" />
+                  <img src={profile_icon} alt="profile icon" className="profile-icon" />
                 </div>
+
+
+
+                <div className="geo-position-section d-flex flex-column my-4">
+                  <h5 className="mb-2">Geographical coordinates</h5>
+                  <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
+                    <div className="input mb-3 mb-md-0 me-0 me-md-2">
+                      <label htmlFor="latitude" className="mb-1">Latitude</label>
+                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
+                      <img src={position_icon} alt="position icon" className="position-icon" />
+                    </div>
+                    <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
+                      <label htmlFor="longitude" className="mb-1">Longitude</label>
+                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
+                      <img src={position_icon} alt="position icon" className="position-icon" />
+                    </div>
+                  </div>
+                  <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
+                </div>
+
+
+
+
+
+
                 <div className="file-input my-3">
                   <label htmlFor="ID" className="mb-1">ID&nbsp;<small className="caption">(.jpg, .png, and .pdf only)</small></label>
                   <div className="d-flex align-items-center">
