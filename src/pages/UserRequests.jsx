@@ -65,6 +65,10 @@ const UserRequests = () => {
     document.querySelector("body").classList.remove("clicked");
   }
 
+  const toggleRequestStatusCaption = () => {
+    const toggleLink = document.querySelector("a.toggle-link");
+  }
+
   const markRequestAsFulfilled = (request) => {
     setCurrentUserRequest(request);
 
@@ -289,13 +293,24 @@ const UserRequests = () => {
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">My requests</h1>
             <button className="btn button-w150 button-outline-primary" id="signup-btn" onClick={(e) => openNewRequestModal()}>Request help</button>
-            <div className="caption d-flex flex-column flex-md-row align-self-start my-4 ps-3">
+            <div className="caption d-flex flex-column flex-md-row align-self-start my-4">
               <div className="d-flex align-items-center my-2 pe-md-5">
                 <span className="me-2" id="material"></span><p className="h5 m-0">Material need</p>
               </div>
               <div className="d-flex align-items-center my-2">
                 <span className="me-2" id="service"></span><p className="h5 m-0">Punctual service</p>
               </div>
+            </div>
+            <div className="d-flex flex-column align-self-start">
+              <div className="d-flex align-items-baseline mb-2">
+                <h5 className="m-0">Request status:&#160;</h5>
+                <a className="pointer m-0 toggle-link">See more</a>
+              </div>
+              <ul className="request-status-caption">
+                <li className="mb-2"><strong>In progress:</strong> fefef</li>
+                <li className="mb-2"><strong>Expired:</strong> fefef</li>
+                <li className="mb-2"><strong>Fulfilled:</strong> fefef</li>
+              </ul>
             </div>
             <div className="tabs-area d-flex flex-column align-items-center w-100 pb-3">
               <ul className="row row-cols-md-2 row-cols-md-4 p-0 w-100">
