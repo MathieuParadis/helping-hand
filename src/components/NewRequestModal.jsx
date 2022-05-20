@@ -149,11 +149,11 @@ const NewRequestModal = () => {
                   <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                     <div className="input mb-3 mb-md-0 me-0 me-md-2">
                       <label htmlFor="latitude" className="mb-1">Latitude&nbsp;<small className="caption">[-90; +90]°</small></label>
-                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" min="-90" max="90" step="0.0001" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
+                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" min="-90" max="90" step="0.00001" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
                     </div>
                     <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
                       <label htmlFor="longitude" className="mb-1">Longitude&nbsp;<small className="caption">[-180; +180]°</small></label>
-                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" min="-180" max="180" step="0.0001" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
+                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" min="-180" max="180" step="0.00001" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
                     </div>
                   </div>
                   <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
