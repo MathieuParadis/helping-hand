@@ -1,6 +1,6 @@
 // CONFIG IMPORTS
 import React, { useEffect, useContext } from 'react';
-import { useParams, useLocation } from 'react-router';
+import { useParams } from 'react-router';
 
 // CONTEXT IMPORTS
 import FlashContext from '../../components/Context/FlashContext';

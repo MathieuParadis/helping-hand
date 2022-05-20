@@ -32,11 +32,20 @@ const MapRequests = () => {
   const [zoom, setZoom] = useState(16);
   const [currentRequest, setCurrentRequest] = useState("");
 
+  let centerLat = 0;
+  let centerLng = 0;
+
+  if (center) {
+    [centerLat, centerLng] = center;
+  }
+
   const colorMaterial = "#F4A896";
   const colorService = "#262F53";
 
   const getRequests = () => {
-    const url = `${baseURL}/requests`;
+    const url = `${baseURL}/requests/${centerLat}/${centerLng}`;
+    console.log(url);
+
     const token = localStorage.getItem('jwt_token');
 
     fetch(url, {
@@ -208,7 +217,7 @@ const MapRequests = () => {
           <div className="map d-flex justify-content-center align-items-center mb-4">
             { requests && loaded ? 
               ( 
-                <Map provider={maptilerProvider} dprs={[1, 2]} center={center} zoom={zoom}>
+                <Map provider={maptilerProvider} dprs={[1, 2]} center={center} zoom={zoom} onBoundsChanged={({ center, zoom }) => { setCenter(center); setZoom(zoom) }}>
                   <ZoomControl />
                   {
                     requests.map((request) => {
