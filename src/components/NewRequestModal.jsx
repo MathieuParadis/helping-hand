@@ -119,6 +119,12 @@ const NewRequestModal = () => {
     scrollTopComponent();
   }, []);
 
+  useEffect(() => {
+    window.onload = (event) => {
+      getPosition();
+    };
+  }, []);
+
   return (
     <div className="new-request-modal">
       <div className="new-request-modal-overlay"></div>

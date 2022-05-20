@@ -41,11 +41,11 @@ const UserPositionModal = () => {
       body: form_data,
     })
     .then(response => {
-      // console.log(response);
+      console.log(response);
       return response.json()
     })
     .then(response => {
-      // console.log(response);
+      console.log(response);
       if (response.user) {
         localStorage.setItem('user', JSON.stringify(response.user));
         console.log(response);
@@ -56,7 +56,7 @@ const UserPositionModal = () => {
           display: true,
         })
       } else {
-        console.log(response)
+        // console.log(response);
         setFlash({
           type: 'danger',
           message: response.error,
@@ -65,6 +65,7 @@ const UserPositionModal = () => {
       }
     })
     .catch(error => {
+      console.log(error);
       setFlash({
         type: 'danger',
         message: error,
@@ -91,6 +92,12 @@ const UserPositionModal = () => {
 
   useEffect(() => {
     scrollTopComponent();
+  }, []);
+
+  useEffect(() => {
+    window.onload = (event) => {
+      getPosition();
+    };
   }, []);
 
   return (
