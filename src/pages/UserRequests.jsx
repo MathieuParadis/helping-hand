@@ -272,6 +272,7 @@ const UserRequests = () => {
   
   useEffect(() => {
     getCurrentUserRequests();
+    filterRequests();
   }, [currentUserRequests]);
 
   useEffect(() => {
