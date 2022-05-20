@@ -59,8 +59,12 @@ const Signup = () => {
           },
           body: form_data,
         })
-        .then(response => response.json())
         .then(response => {
+          console.log(response);
+          return response.json()
+        })
+        .then(response => {
+          console.log(response);
           if (response.user) {
             localStorage.setItem('jwt_token', response.token);
             localStorage.setItem('user', JSON.stringify(response.user));
@@ -89,10 +93,11 @@ const Signup = () => {
             })
           }
         })
-        .catch(error =>{
+        .catch(errors =>{
+          console.log(errors);
           setFlash({
             type: 'danger',
-            message: error,
+            message: errors,
             display: true,
           })
         })

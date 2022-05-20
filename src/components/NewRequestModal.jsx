@@ -134,7 +134,7 @@ const NewRequestModal = () => {
                 </div>
                 <div className="input my-3 d-flex flex-column">
                   <label htmlFor="type" className="mb-1">Type</label>
-                  <select className="select-form-control" value={type} onChange={(e) => setType(e.target.value)}>
+                  <select className="select-form-control" value={type} onChange={(e) => setType(e.target.value)} required>
                     <option value="" className="text-primary" disabled="disabled">-- Please choose a type --</option>
                     <option value='material'>Material</option>
                     <option value='service'>Service</option>
@@ -149,11 +149,11 @@ const NewRequestModal = () => {
                   <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                     <div className="input mb-3 mb-md-0 me-0 me-md-2">
                       <label htmlFor="latitude" className="mb-1">Latitude</label>
-                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
+                      <input type="number" className="form-control" id="latitude" aria-describedby="latitude input field" min="-90" max="90" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
                     </div>
                     <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
                       <label htmlFor="longitude" className="mb-1">Longitude</label>
-                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
+                      <input type="number" className="form-control" id="longitude" aria-describedby="longitude input field" min="-180" max="180" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
                     </div>
                   </div>
                   <button type="reset" className="btn button-outline-primary button-w150 p-1" onClick={() => getPosition()}>Use my position</button>
