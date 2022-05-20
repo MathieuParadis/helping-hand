@@ -20,6 +20,7 @@ const UserRequests = () => {
 
   const [currentUserRequests, setCurrentUserRequests] = useState('');
   const [filteredCurrentUserRequests, setFilteredCurrentUserRequests] = useState(null);
+  const [keyword, setKeyword] = useState('');
   const [currentUserRequest, setCurrentUserRequest] = useState('');
 
   const openNewRequestModal = (e) => {
@@ -245,21 +246,25 @@ const UserRequests = () => {
     switch(keyword) {
       case 'all':
         setFilteredCurrentUserRequests(currentUserRequests);
+        setKeyword('all');
         tabAll.classList.add('active-tab');
         break;
       case 'in progress':
         let requestsInProgress = currentUserRequests.filter((request) => request.status == 'in progress');
         setFilteredCurrentUserRequests(requestsInProgress);
+        setKeyword('in progress');
         tabInProgress.classList.add('active-tab');
         break;
       case 'expired':
         let requestsExpired = currentUserRequests.filter((request) => request.status == 'expired');
         setFilteredCurrentUserRequests(requestsExpired);
+        setKeyword('expired');
         tabExpired.classList.add('active-tab');
         break;
       case 'fulfilled':
         let requestsFulfilled = currentUserRequests.filter((request) => request.status == 'fulfilled');
         setFilteredCurrentUserRequests(requestsFulfilled);
+        setKeyword('fulfilled');
         tabFulfilled.classList.add('active-tab');
         break;
       default:
@@ -272,7 +277,7 @@ const UserRequests = () => {
   
   useEffect(() => {
     getCurrentUserRequests();
-    filterRequests();
+    filterRequests(keyword);
   }, [currentUserRequests]);
 
   useEffect(() => {
