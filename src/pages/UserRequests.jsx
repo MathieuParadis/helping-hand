@@ -66,7 +66,11 @@ const UserRequests = () => {
   }
 
   const toggleRequestStatusCaption = () => {
-    const toggleLink = document.querySelector("a.toggle-link");
+    const toggleLink = document.querySelector('a.toggle-link');
+    toggleLink.classList.toggle('link-clicked');
+
+    const requestStatusCaption = document.querySelector('ul.request-status-caption');
+    requestStatusCaption.classList.toggle('hidden-section');  
   }
 
   const markRequestAsFulfilled = (request) => {
@@ -130,7 +134,7 @@ const UserRequests = () => {
 
     const data = {
       status: "in_progress",
-      expiry_date: parseInt(Date.now() / 1000, 10) + 86400
+      expiry_date: parseInt(Date.now() / 1000, 10) + (86400*3)
     };
 
     const url = `${baseURL}/requests/${id}`;
@@ -301,15 +305,16 @@ const UserRequests = () => {
                 <span className="me-2" id="service"></span><p className="h5 m-0">Punctual service</p>
               </div>
             </div>
-            <div className="d-flex flex-column align-self-start">
+            <div className="d-flex flex-column align-self-start mb-3">
               <div className="d-flex align-items-baseline mb-2">
                 <h5 className="m-0">Request status:&#160;</h5>
-                <a className="pointer m-0 toggle-link">See more</a>
+                <a className="pointer m-0 toggle-link" onClick={(e) => toggleRequestStatusCaption()}>See more</a>
               </div>
-              <ul className="request-status-caption">
-                <li className="mb-2"><strong>In progress:</strong> fefef</li>
-                <li className="mb-2"><strong>Expired:</strong> fefef</li>
-                <li className="mb-2"><strong>Fulfilled:</strong> fefef</li>
+              <ul className="request-status-caption hidden-section">
+                <li className="mb-2"><strong>In progress:</strong> Requests that have been published or republished within the last 72 hours</li>
+                <li className="mb-2"><strong>Expired:</strong> Requests that have been published for over 3 days and that have not been fulfilled</li>
+                <li className="mb-2"><strong>Fulfilled:</strong> Requests that have been marked as fulfilled, either by the volunteer, or by the author of the request</li>
+                <li className="list-unstyled fst-italic mb-2">Important notice: In order to avoid requests that last forever, and for clarity purpose, once 5 different users have contacted you, the request is no longer displayed on the map. Similarly, after 3 days, if your request is not fulfilled yet, it expires. However you always have the possibility to republish it. Though, once a request is marked as fulfilled, it cannot be republished anymore.</li>
               </ul>
             </div>
             <div className="tabs-area d-flex flex-column align-items-center w-100 pb-3">

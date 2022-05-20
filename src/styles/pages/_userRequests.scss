@@ -35,6 +35,24 @@
   }
 }
 
+.link-clicked {
+  visibility: hidden;
+
+  &:after {
+    content:'See less'; 
+    visibility: visible;
+    position: absolute;
+    transform: translateX(-119%);
+  }
+}
+
+.hidden-section {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
 .active-tab {
   background-color: var(--prim-color);
   color: var(--basic-color-white);
