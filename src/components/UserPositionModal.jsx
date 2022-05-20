@@ -106,13 +106,13 @@ const UserPositionModal = () => {
               <div className="geo-position-section d-flex flex-column my-4">
                 <div className="d-flex flex-column flex-md-row mb-0 mb-md-3">
                   <div className="input mb-3 mb-md-0 me-0 me-md-2">
-                    <label htmlFor="latitude" className="mb-1">Latitude</label>
-                    <input type="number" className="form-control" id="latitude-user-profile" aria-describedby="latitude input field" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
+                    <label htmlFor="latitude" className="mb-1">Latitude&nbsp;<small className="caption">[-90; +90]°</small></label>
+                    <input type="number" className="form-control" id="latitude-user-profile" aria-describedby="latitude input field" min="-90" max="90" placeholder="Latitude" value={lat} onChange={(e) => setLat(e.target.value)} required />
                     <img src={position_icon} alt="position icon" className="position-icon" />
                   </div>
                   <div className="input mb-3 mb-md-0 ms-0 ms-md-2">
-                    <label htmlFor="longitude" className="mb-1">Longitude</label>
-                    <input type="number" className="form-control" id="longitude-user-profile" aria-describedby="longitude input field" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
+                    <label htmlFor="longitude" className="mb-1">Longitude&nbsp;<small className="caption">[-180; +180]°</small></label>
+                    <input type="number" className="form-control" id="longitude-user-profile" aria-describedby="longitude input field" min="-180" max="180" placeholder="Longitude" value={long} onChange={(e) => setLong(e.target.value)} required />
                     <img src={position_icon} alt="position icon" className="position-icon" />
                   </div>
                 </div>

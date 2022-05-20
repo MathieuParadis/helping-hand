@@ -69,7 +69,7 @@ const Profile = () => {
                   <div>
                     <p><strong>First name</strong>: {first_name}</p>
                     <p><strong>Last name</strong>: {last_name}</p>
-                    <p><strong>Latitude, Longitude</strong>: [{position.lat}, {position.lng}]</p>
+                    <p><strong>Latitude, Longitude</strong>: [{position.lat}°, {position.lng}°]</p>
                     <p><strong>Email</strong>: {email}</p>
                     <div className="d-flex">
                       <p><strong>ID</strong>:&nbsp;</p>

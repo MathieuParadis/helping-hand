@@ -41,6 +41,10 @@
       height: 100%;
       border: none;
       overflow-y: scroll;
+
+      .caption {
+        font-size: 12px;
+      }
       
       .input {
         position: relative;

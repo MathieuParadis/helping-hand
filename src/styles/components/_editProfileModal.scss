@@ -43,6 +43,10 @@
       height: 100%;
       border: none;
       overflow-y: scroll;
+
+      .caption {
+        font-size: 12px;
+      }
       
       .input {
         position: relative;
@@ -86,11 +90,7 @@
         label {
           font-size: 18px;
         }
-        
-        .caption {
-          font-size: 12px;
-        }
-      
+             
         .plus-icon {
           width: 30px;
           padding: 5px;
