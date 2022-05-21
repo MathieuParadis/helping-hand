@@ -74,16 +74,42 @@ const UserPositionModal = () => {
     })
   }
     
+  // const getPosition = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(function(position) {
+  //       setLat(position.coords.latitude);
+  //       setLong(position.coords.longitude);
+  //     });
+  //   } else {
+  //     alert("Your browser does not support this functionality");
+  //   }
+  // }
+
   const getPosition = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
-      });
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setLat(position.coords.latitude);
+          setLong(position.coords.longitude);
+            // document.getElementById("txtLat").value = position.coords.latitude;
+            // document.getElementById("txtLon").value = position.coords.longitude;
+        },
+        function (error) {
+            alert(error.code + ": " + error.message);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 10000,
+          timeout: 5000
+        }
+      );
     } else {
       alert("Your browser does not support this functionality");
     }
   }
+
+
+
 
   const scrollTopComponent = () => {
     const modalTitle = document.querySelector(".user-position-modal-title");
@@ -92,12 +118,6 @@ const UserPositionModal = () => {
 
   useEffect(() => {
     scrollTopComponent();
-  }, []);
-
-  useEffect(() => {
-    window.onload = (event) => {
-      getPosition();
-    };
   }, []);
 
   return (
