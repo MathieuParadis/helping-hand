@@ -74,25 +74,12 @@ const UserPositionModal = () => {
     })
   }
     
-  // const getPosition = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(function(position) {
-  //       setLat(position.coords.latitude);
-  //       setLong(position.coords.longitude);
-  //     });
-  //   } else {
-  //     alert("Your browser does not support this functionality");
-  //   }
-  // }
-
   const getPosition = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         function (position) {
-          setLat(position.coords.latitude);
-          setLong(position.coords.longitude);
-            // document.getElementById("txtLat").value = position.coords.latitude;
-            // document.getElementById("txtLon").value = position.coords.longitude;
+          setLat(Math.round(position.coords.latitude * 100000) / 100000);
+          setLong(Math.round(position.coords.longitude * 100000) / 100000);
         },
         function (error) {
             alert(error.code + ": " + error.message);
@@ -107,9 +94,6 @@ const UserPositionModal = () => {
       alert("Your browser does not support this functionality");
     }
   }
-
-
-
 
   const scrollTopComponent = () => {
     const modalTitle = document.querySelector(".user-position-modal-title");

@@ -96,10 +96,20 @@ const EditRequestModal = ({request}) => {
 
   const getPosition = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        setRequestLatitude(position.coords.latitude);
-        setRequestLongitude(position.coords.longitude);
-      });
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setRequestLatitude(Math.round(position.coords.latitude * 100000) / 100000);
+          setRequestLongitude(Math.round(position.coords.longitude * 100000) / 100000);
+        },
+        function (error) {
+            alert(error.code + ": " + error.message);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 10000,
+          timeout: 5000
+        }
+      );
     } else {
       alert("Your browser does not support this functionality");
     }

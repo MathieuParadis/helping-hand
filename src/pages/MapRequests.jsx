@@ -31,6 +31,7 @@ const MapRequests = () => {
   const [center, setCenter] = useState(false); 
   const [zoom, setZoom] = useState(16);
   const [currentRequest, setCurrentRequest] = useState("");
+  const [UserRequestsCount, setUserRequestsCount] = useState(0);
 
   let centerLat = 0;
   let centerLng = 0;
@@ -178,6 +179,18 @@ const MapRequests = () => {
       })
     })
   }
+
+  const countingUserRequest = () => {
+    let count = 0;
+
+    requests && requests.map((request) => {
+
+      if (request.user.id == user.id) {
+        count += 1;
+      }    
+    })
+    setUserRequestsCount(count);
+  }
   
   useEffect(() => {
     if (position && !loaded) {
@@ -188,6 +201,7 @@ const MapRequests = () => {
 
   useEffect(() => {
     getRequests();
+    countingUserRequest();
   }, [requests]);
 
   useEffect(() => {
@@ -202,9 +216,13 @@ const MapRequests = () => {
         <div className="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">Requests around me</h1>
             { requests &&
-              <h5 className="counter align-self-md-start text-center text-md-start">
-                There are <strong>{requests.length}</strong> help requests around you.<br></br>Start volunteering now!
-              </h5>
+              <p className="counter h5 align-self-md-start text-center text-md-start">
+                There are currently <strong>{requests.length}</strong> help requests around you
+                {
+                  UserRequestsCount > 0 ? (<small> (including {UserRequestsCount} of your very own requests)</small>) : "."
+                } 
+                <br></br>Start volunteering now!
+              </p>
             }
           <div className="caption d-flex flex-column flex-md-row align-self-start mb-4">
             <div className="d-flex align-items-center my-2 pe-md-5">

@@ -101,10 +101,20 @@ const NewRequestModal = () => {
 
   const getPosition = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
-      });
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setLat(Math.round(position.coords.latitude * 100000) / 100000);
+          setLong(Math.round(position.coords.longitude * 100000) / 100000);
+        },
+        function (error) {
+            alert(error.code + ": " + error.message);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 10000,
+          timeout: 5000
+        }
+      );
     } else {
       alert("Your browser does not support this functionality");
     }
