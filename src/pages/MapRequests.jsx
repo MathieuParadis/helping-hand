@@ -31,7 +31,7 @@ const MapRequests = () => {
   const [center, setCenter] = useState(false); 
   const [zoom, setZoom] = useState(16);
   const [currentRequest, setCurrentRequest] = useState("");
-  const [UserRequestsCount, setUserRequestsCount] = useState(0);
+  const [userRequestsCount, setUserRequestsCount] = useState(0);
 
   let centerLat = 0;
   let centerLng = 0;
@@ -184,10 +184,10 @@ const MapRequests = () => {
     let count = 0;
 
     requests && requests.map((request) => {
-
-      if (request.user.id == user.id) {
+      if (request.user.id === user.id) {
         count += 1;
-      }    
+      }
+      return count    
     })
     setUserRequestsCount(count);
   }
@@ -197,7 +197,7 @@ const MapRequests = () => {
       setCenter([parseFloat(position.lat), parseFloat(position.lng)]);
       setLoaded(true);
     }
-  }, [position]);
+  }, [position, loaded]);
 
   useEffect(() => {
     getRequests();
@@ -219,7 +219,7 @@ const MapRequests = () => {
               <p className="counter h5 align-self-md-start text-center text-md-start">
                 There are currently <strong>{requests.length}</strong> help requests around you
                 {
-                  UserRequestsCount > 0 ? (<small> (including {UserRequestsCount} of your very own requests)</small>) : "."
+                  userRequestsCount > 0 ? (<small> (including {userRequestsCount} of your very own requests)</small>) : "."
                 } 
                 <br></br>Start volunteering now!
               </p>
