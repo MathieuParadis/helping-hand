@@ -95,6 +95,18 @@ const UserPositionModal = () => {
     }
   }
 
+  const closeUserPositionModal = () => {
+    const userPositionModal = document.querySelector(".user-position-modal");
+    userPositionModal.style.visibility = "hidden";
+    document.querySelector("body").classList.remove("clicked");
+  }
+
+  const updateAndClose = () => {
+    setLat(48.86472);
+    setLong(2.34901);
+    closeUserPositionModal();
+  }
+
   const scrollTopComponent = () => {
     const modalTitle = document.querySelector(".user-position-modal-title");
     modalTitle.scrollIntoView({ behavior: 'smooth' });
@@ -138,6 +150,7 @@ const UserPositionModal = () => {
               </div>
               <div className="d-flex flex-column flex-md-row justify-content-md-center mt-4">
                 <button type="submit" className="btn button-success button-modal me-0 me-md-2 mb-3 mb-md-0 p-1">Update position</button>
+                <button type="submit" className="btn button-warning button-modal ms-0 ms-md-2 p-1" onClick={() => updateAndClose()}>Update later</button>
               </div>
             </form>
           </div>
