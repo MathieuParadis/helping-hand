@@ -55,7 +55,7 @@ const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkReque
     <div className="dropdown-menu-options-request-card ms-2">
       <ul className = "list-unstyled m-0 p-0">
         {
-          request.status == 'fulfilled' ? 
+          request.status === 'fulfilled' ? 
           (
             <>
               <li className="m-0 p-2 disabled">Mark as fulfilled</li>
@@ -70,7 +70,7 @@ const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkReque
           )
         }
         {
-          request.status == 'expired' &&
+          request.status === 'expired' &&
           <li className="m-0 p-2 pointer" onClick={() => setRepublishRequest(request)}>Republish</li>
         }
         <hr className="m-0"></hr>

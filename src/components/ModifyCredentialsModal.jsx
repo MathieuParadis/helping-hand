@@ -112,7 +112,7 @@ const ModifyCredentialsModal = () => {
         if (response.message) {
           localStorage.clear();
           setAuthenticated(false);
-          setUser({});
+          setUser();
           setFlash({
             type: 'success',
             message: response.message,

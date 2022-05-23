@@ -250,19 +250,19 @@ const UserRequests = () => {
         tabAll.classList.add('active-tab');
         break;
       case 'in progress':
-        let requestsInProgress = currentUserRequests.filter((request) => request.status == 'in progress');
+        let requestsInProgress = currentUserRequests.filter((request) => request.status === 'in progress');
         setFilteredCurrentUserRequests(requestsInProgress);
         setKeyword('in progress');
         tabInProgress.classList.add('active-tab');
         break;
       case 'expired':
-        let requestsExpired = currentUserRequests.filter((request) => request.status == 'expired');
+        let requestsExpired = currentUserRequests.filter((request) => request.status === 'expired');
         setFilteredCurrentUserRequests(requestsExpired);
         setKeyword('expired');
         tabExpired.classList.add('active-tab');
         break;
       case 'fulfilled':
-        let requestsFulfilled = currentUserRequests.filter((request) => request.status == 'fulfilled');
+        let requestsFulfilled = currentUserRequests.filter((request) => request.status === 'fulfilled');
         setFilteredCurrentUserRequests(requestsFulfilled);
         setKeyword('fulfilled');
         tabFulfilled.classList.add('active-tab');

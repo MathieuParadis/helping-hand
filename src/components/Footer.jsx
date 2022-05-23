@@ -24,24 +24,24 @@ const Footer = () => {
         <div className="align-self-lg-start">
           <h4 className="mb-3 text-center text-lg-start"><strong>Follow us</strong></h4>
           <div className="mb-3 text-center text-lg-start">
-            <a href="https://twitter.com/" target="_blank">
+            <a href="https://twitter.com/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon="fa-brands fa-twitter-square" size="3x" className="navlink"/>
             </a>
-            <a href="https://facebook.com/" target="_blank">
+            <a href="https://facebook.com/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon="fa-brands fa-facebook-square" size="3x" className="navlink mx-4"/>
             </a>
-            <a href="https://instagram.com/" target="_blank">
+            <a href="https://instagram.com/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon="fa-brands fa-instagram" size="3x" className="navlink"/>
             </a>
           </div>
           <div className="mb-4 mb-lg-0 text-center text-lg-start">
-            <a href="https://www.linkedin.com/" target="_blank">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon="fa-brands fa-linkedin" size="3x" className="navlink"/>
             </a>
-            <a href="https://www.pinterest.com/" target="_blank">
+            <a href="https://www.pinterest.com/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon="fa-brands fa-pinterest-square" size="3x" className="navlink mx-4"/>
             </a>
-            <a href="https://www.youtube.com/" target="_blank">
+            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
               <FontAwesomeIcon icon="fa-brands fa-youtube-square" size="3x" className="navlink"/>
             </a>
           </div>
