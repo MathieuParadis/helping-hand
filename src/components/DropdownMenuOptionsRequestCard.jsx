@@ -4,8 +4,8 @@ import React, { useContext } from 'react';
 // CONTEXT IMPORTS
 import FlashContext from './Context/FlashContext';
 
-// DATA IMPORTS
-import baseURL from '../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
   const { setFlash } = useContext(FlashContext);
@@ -13,7 +13,7 @@ const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkReque
 
   const deleteRequest = () => {
     if (window.confirm("You are about to delete this request. \n\nAre you sure?")) {
-      const url = `${baseURL}/requests/${id}`;
+      const url = `${API_ROOT}/requests/${id}`;
       const token = localStorage.getItem('jwt_token');
 
       fetch(url, {

@@ -13,8 +13,8 @@ import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 
-// DATA IMPORTS
-import baseURL from '../../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../../constants/index';
 
 const Signin = () => {
   const { setAuthenticated} = useContext(AuthContext);
@@ -31,7 +31,7 @@ const Signin = () => {
       password: pw
     };
 
-    const url = `${baseURL}/signin`;
+    const url = `${API_ROOT}/signin`;
 
     fetch(url, {
       method: "POST",

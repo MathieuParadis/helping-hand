@@ -8,3 +8,6 @@ export const HEADERS = {
   'Content-Type': 'application/json',
   Accept: 'application/json',
 };
+
+// export default {API_ROOT, API_WS_ROOT, HEADERS};
+export default API_ROOT;

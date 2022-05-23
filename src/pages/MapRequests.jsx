@@ -16,8 +16,8 @@ import ReactLoading from 'react-loading';
 import EditRequestModal from '../components/EditRequestModal';
 import ShowRequestModal from '../components/ShowRequestModal';
 
-// DATA IMPORTS
-import baseURL from '../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 const maptilerProvider = maptiler('IwympTEN2FYbP2g5qdck', 'streets')
 
@@ -44,7 +44,7 @@ const MapRequests = () => {
   const colorService = "#262F53";
 
   const getRequests = () => {
-    const url = `${baseURL}/requests/${centerLat}/${centerLng}`;
+    const url = `${API_ROOT}/requests/${centerLat}/${centerLng}`;
     console.log(url);
 
     const token = localStorage.getItem('jwt_token');
@@ -133,7 +133,7 @@ const MapRequests = () => {
       status: "fulfilled"
     };
 
-    const url = `${baseURL}/requests/${id}`;
+    const url = `${API_ROOT}/requests/${id}`;
     const token = localStorage.getItem('jwt_token');
 
     fetch(url, {

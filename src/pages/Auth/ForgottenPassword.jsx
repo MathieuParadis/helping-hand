@@ -10,8 +10,8 @@ import forgotten_password_illustration from '../../assets/images/forgotten_passw
 import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 
-// DATA IMPORTS
-import baseURL from '../../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../../constants/index';
 
 const ForgottenPassword = () => {
   const { setFlash } = useContext(FlashContext);
@@ -24,7 +24,7 @@ const ForgottenPassword = () => {
       email: email_add,
     };
 
-    const url = `${baseURL}/forgotten-password`;
+    const url = `${API_ROOT}/forgotten-password`;
 
     fetch(url, {
       method: "POST",

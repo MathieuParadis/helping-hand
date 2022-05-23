@@ -10,8 +10,8 @@ import UserContext from './Context/UserContext';
 import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
-// DATA IMPORTS
-import baseURL from '../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 const ModifyCredentialsModal = () => {
   const { setAuthenticated } = useContext(AuthContext);
@@ -45,7 +45,7 @@ const ModifyCredentialsModal = () => {
         password_confirmation: passwordConfirmation,
       };
 
-      const url = `${baseURL}/users/${id}`;
+      const url = `${API_ROOT}/users/${id}`;
       const token = localStorage.getItem('jwt_token');
 
       fetch(url, {
@@ -95,7 +95,7 @@ const ModifyCredentialsModal = () => {
   
   const deleteAccount = () => {
     if (window.confirm("You are about to delete your account. \n \nAre you sure?")) {
-      const url = `${baseURL}/users/${id}`;
+      const url = `${API_ROOT}/users/${id}`;
       const token = localStorage.getItem('jwt_token');
 
       fetch(url, {

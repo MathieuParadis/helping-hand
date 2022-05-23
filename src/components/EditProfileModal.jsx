@@ -10,8 +10,8 @@ import position_icon from '../assets/logos/position_logo.svg';
 import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
-// DATA IMPORTS
-import baseURL from '../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 const EditProfileModal = () => {
   const { setFlash } = useContext(FlashContext);
@@ -60,7 +60,7 @@ const EditProfileModal = () => {
     if (idCardFileName) {
       if ( acceptedFileTypes.includes(idCardFileType)) {
 
-        const url = `${baseURL}/users/${id}`;
+        const url = `${API_ROOT}/users/${id}`;
         
         const token = localStorage.getItem('jwt_token');
     
