@@ -8,8 +8,8 @@ import UserContext from './Context/UserContext';
 // ASSETS IMPORTS
 import position_icon from '../assets/logos/position_logo.svg';
 
-// DATA IMPORTS
-import baseURL from '../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 const UserPositionModal = () => {
   const { setFlash } = useContext(FlashContext);
@@ -27,7 +27,7 @@ const UserPositionModal = () => {
     let geoPosition = JSON.stringify({lat: lat, lng: long});
     form_data.append('position_attributes', geoPosition);
 
-    const url = `${baseURL}/users/${id}`;
+    const url = `${API_ROOT}/users/${id}`;
     
     const token = localStorage.getItem('jwt_token');
 

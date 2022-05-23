@@ -4,8 +4,8 @@ import React, { useEffect, useState, useContext } from 'react';
 // CONTEXT IMPORTS
 import FlashContext from './Context/FlashContext';
 
-// DATA IMPORTS
-import baseURL from '../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 const NewRequestModal = () => {
   const { setFlash } = useContext(FlashContext);
@@ -37,7 +37,7 @@ const NewRequestModal = () => {
       description: description
     };
 
-    const url = `${baseURL}/requests`;
+    const url = `${API_ROOT}/requests`;
     const token = localStorage.getItem('jwt_token');
 
     fetch(url, {

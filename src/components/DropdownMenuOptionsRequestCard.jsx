@@ -4,8 +4,8 @@ import React, { useContext } from 'react';
 // CONTEXT IMPORTS
 import FlashContext from './Context/FlashContext';
 
-// DATA IMPORTS
-import baseURL from '../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
   const { setFlash } = useContext(FlashContext);
@@ -13,7 +13,7 @@ const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkReque
 
   const deleteRequest = () => {
     if (window.confirm("You are about to delete this request. \n\nAre you sure?")) {
-      const url = `${baseURL}/requests/${id}`;
+      const url = `${API_ROOT}/requests/${id}`;
       const token = localStorage.getItem('jwt_token');
 
       fetch(url, {
@@ -55,7 +55,7 @@ const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkReque
     <div className="dropdown-menu-options-request-card ms-2">
       <ul className = "list-unstyled m-0 p-0">
         {
-          request.status == 'fulfilled' ? 
+          request.status === 'fulfilled' ? 
           (
             <>
               <li className="m-0 p-2 disabled">Mark as fulfilled</li>
@@ -70,7 +70,7 @@ const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkReque
           )
         }
         {
-          request.status == 'expired' &&
+          request.status === 'expired' &&
           <li className="m-0 p-2 pointer" onClick={() => setRepublishRequest(request)}>Republish</li>
         }
         <hr className="m-0"></hr>

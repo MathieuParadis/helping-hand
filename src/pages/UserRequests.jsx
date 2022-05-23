@@ -12,8 +12,8 @@ import EditRequestModal from '../components/EditRequestModal';
 import RequestCard from '../components/RequestCard';
 import ShowRequestModal from '../components/ShowRequestModal';
 
-// DATA IMPORTS
-import baseURL from '../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 const UserRequests = () => {
   const { setFlash } = useContext(FlashContext);
@@ -83,7 +83,7 @@ const UserRequests = () => {
       status: "fulfilled"
     };
 
-    const url = `${baseURL}/requests/${id}`;
+    const url = `${API_ROOT}/requests/${id}`;
     const token = localStorage.getItem('jwt_token');
 
     fetch(url, {
@@ -138,7 +138,7 @@ const UserRequests = () => {
       expiry_date: parseInt(Date.now() / 1000, 10) + (86400*3)
     };
 
-    const url = `${baseURL}/requests/${id}`;
+    const url = `${API_ROOT}/requests/${id}`;
     const token = localStorage.getItem('jwt_token');
 
     fetch(url, {
@@ -204,7 +204,7 @@ const UserRequests = () => {
   };
 
   const getCurrentUserRequests = () => {
-    const url = `${baseURL}/user-requests`;
+    const url = `${API_ROOT}/user-requests`;
     const token = localStorage.getItem('jwt_token');
 
     fetch(url, {
@@ -250,19 +250,19 @@ const UserRequests = () => {
         tabAll.classList.add('active-tab');
         break;
       case 'in progress':
-        let requestsInProgress = currentUserRequests.filter((request) => request.status == 'in progress');
+        let requestsInProgress = currentUserRequests.filter((request) => request.status === 'in progress');
         setFilteredCurrentUserRequests(requestsInProgress);
         setKeyword('in progress');
         tabInProgress.classList.add('active-tab');
         break;
       case 'expired':
-        let requestsExpired = currentUserRequests.filter((request) => request.status == 'expired');
+        let requestsExpired = currentUserRequests.filter((request) => request.status === 'expired');
         setFilteredCurrentUserRequests(requestsExpired);
         setKeyword('expired');
         tabExpired.classList.add('active-tab');
         break;
       case 'fulfilled':
-        let requestsFulfilled = currentUserRequests.filter((request) => request.status == 'fulfilled');
+        let requestsFulfilled = currentUserRequests.filter((request) => request.status === 'fulfilled');
         setFilteredCurrentUserRequests(requestsFulfilled);
         setKeyword('fulfilled');
         tabFulfilled.classList.add('active-tab');

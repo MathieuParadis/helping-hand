@@ -15,8 +15,8 @@ import mail_icon from '../../assets/logos/mail_logo.svg';
 import lock_icon from '../../assets/logos/lock_logo.svg';
 import plus_icon from '../../assets/logos/plus_logo.svg';
 
-// DATA IMPORTS
-import baseURL from '../../data/BaseURL';
+// CONSTANTS IMPORTS
+import API_ROOT from '../../constants/index';
 
 const Signup = () => {
   const { setAuthenticated } = useContext(AuthContext);
@@ -49,7 +49,7 @@ const Signup = () => {
       if ( acceptedFileTypes.includes(idCardFileType)) {
         form_data.append('id_card', idCardFile, idCardFile.name);
 
-        const url = `${baseURL}/signup`;
+        const url = `${API_ROOT}/signup`;
 
         fetch(url, {
           method: "POST",
