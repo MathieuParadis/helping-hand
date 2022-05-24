@@ -23,7 +23,9 @@ import { API_ROOT } from '../constants/index';
 const Chat = () => {
   const { setFlash } = useContext(FlashContext);
 
+  const [keyword, setKeyword] = useState('');
   const [chats, setChats] = useState();
+  const [filteredChats, setFilteredChats] = useState();
   const [currentChat, setCurrentChat] = useState('');
 
   const getChats = () => {
@@ -55,6 +57,21 @@ const Chat = () => {
         display: true,
       })
     })
+  }
+
+  const filterChats = () => {
+    if (keyword === '') {
+      setFilteredChats(chats);
+    }
+    else {
+      let filtered = chats.filter((chat) => {
+        return chat.request.title.toLowerCase().includes(keyword.toLowerCase()) || 
+               chat.request.request_type.toLowerCase().includes(keyword.toLowerCase()) ||
+               chat.request.user.first_name.toLowerCase().includes(keyword.toLowerCase()) ||
+               chat.request.user.last_name.toLowerCase().includes(keyword.toLowerCase())
+      })
+      setFilteredChats(filtered);
+    }    
   }
 
   const openChat = (chat) => {
@@ -144,10 +161,11 @@ const Chat = () => {
 
   useEffect(() => {
     getChats();
+    filterChats();
 
-    if (currentChat === '' && chats) {
-      setCurrentChat(chats[0]);
-    }
+    // if (currentChat === '' && chats) {
+    //   setCurrentChat(chats[0]);
+    // }
   }, [chats]);
 
   useEffect(() => {
@@ -177,7 +195,7 @@ const Chat = () => {
                 <div className="search-chat-section col-12 col-lg-4 border-left-grey justify-content-center align-items-center ps-lg-0">
                   <div className="search-chat-section-content w-100">
                     <div className="input p-3">
-                      <input type="text" className="form-control" id="first-name" aria-describedby="first_name input field" placeholder="Search chat ..." required />
+                      <input type="text" className="form-control" id="search-keyword" aria-describedby="search input field" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search chat ..." required />
                       <img src={search_icon} alt="search_icon" className="search-icon" />
                     </div>
                   </div>
@@ -192,8 +210,8 @@ const Chat = () => {
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">
                   <div className="chat-index-section-content h-100">
                   {
-                    chats && (
-                      chats.map((chat) => {
+                    filteredChats && (
+                      filteredChats.map((chat) => {
                         return (
                           <ChatCard chat={chat} setChat={openChat} key={chat.id} />
                         )
