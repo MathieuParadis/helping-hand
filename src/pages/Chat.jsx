@@ -20,15 +20,11 @@ import ShowRequestModal from '../components/ShowRequestModal';
 // CONSTANTS IMPORTS
 import { API_ROOT } from '../constants/index';
 
-// DATA IMPORTS
-// import chats from '../data/Chats';
-
-
 const Chat = () => {
   const { setFlash } = useContext(FlashContext);
 
   const [chats, setChats] = useState();
-  const [currentChat, setCurrentChat] = useState("");
+  const [currentChat, setCurrentChat] = useState('');
 
   const getChats = () => {
     const url = `${API_ROOT}/chats`;
@@ -79,16 +75,6 @@ const Chat = () => {
     chat.messages = [...chat.messages, message];
     setChats(chats);
   };
-
-
-
-
-
-
-
-
-
-
 
   const openShowRequestModal = () => {
     const newRequestModal = document.querySelector(".new-request-modal");
@@ -158,6 +144,10 @@ const Chat = () => {
 
   useEffect(() => {
     getChats();
+
+    if (currentChat === '' && chats) {
+      setCurrentChat(chats[0]);
+    }
   }, [chats]);
 
   useEffect(() => {
