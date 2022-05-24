@@ -13,7 +13,7 @@ import RequestCard from '../components/RequestCard';
 import ShowRequestModal from '../components/ShowRequestModal';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../constants/index';
+import { API_ROOT } from '../constants/index';
 
 const UserRequests = () => {
   const { setFlash } = useContext(FlashContext);

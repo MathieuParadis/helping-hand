@@ -5,7 +5,7 @@ import React, { useContext } from 'react';
 import FlashContext from './Context/FlashContext';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../constants/index';
+import { API_ROOT } from '../constants/index';
 
 const DropdownMenuOptionsRequestCard = ({request, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
   const { setFlash } = useContext(FlashContext);

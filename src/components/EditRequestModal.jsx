@@ -5,7 +5,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import FlashContext from '../components/Context/FlashContext';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../constants/index';
+import { API_ROOT } from '../constants/index';
 
 const EditRequestModal = ({request}) => {
   const { setFlash } = useContext(FlashContext);

@@ -17,7 +17,7 @@ import EditRequestModal from '../components/EditRequestModal';
 import ShowRequestModal from '../components/ShowRequestModal';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../constants/index';
+import { API_ROOT } from '../constants/index';
 
 const maptilerProvider = maptiler('IwympTEN2FYbP2g5qdck', 'streets')
 

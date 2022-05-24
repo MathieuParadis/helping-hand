@@ -11,7 +11,7 @@ import mail_icon from '../assets/logos/mail_logo.svg';
 import lock_icon from '../assets/logos/lock_logo.svg';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../constants/index';
+import { API_ROOT } from '../constants/index';
 
 const ModifyCredentialsModal = () => {
   const { setAuthenticated } = useContext(AuthContext);
