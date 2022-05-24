@@ -20,6 +20,10 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
     setModalOpen(false);
   }
 
+  const openChat = () => {
+    alert("opening chat");
+  }
+
   const scrollTopComponent = () => {
     const modalTitle = document.querySelector(".show-request-modal-title");
     modalTitle.scrollIntoView({ behavior: 'smooth' });
@@ -79,7 +83,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
                       </div>
                     )
                   ) :
-                  <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1">Volunteer</NavLink>
+                  <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => openChat()}>Volunteer</NavLink>
               }
             </div>
           )}
