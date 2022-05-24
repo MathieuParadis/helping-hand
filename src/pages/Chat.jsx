@@ -18,16 +18,16 @@ import EditRequestModal from '../components/EditRequestModal';
 import ShowRequestModal from '../components/ShowRequestModal';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../constants/index';
+import { API_ROOT } from '../constants/index';
 
 // DATA IMPORTS
-import chats from '../data/Chats';
+// import chats from '../data/Chats';
 
 
 const Chat = () => {
   const { setFlash } = useContext(FlashContext);
 
-  const [chatts, setChats] = useState();
+  const [chats, setChats] = useState();
   const [currentChat, setCurrentChat] = useState("");
 
   const getChats = () => {
@@ -170,8 +170,8 @@ const Chat = () => {
 
   return (
     <>
-      <ShowRequestModal request={currentChat} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
-      <EditRequestModal request={currentChat} />
+      <ShowRequestModal request={currentChat.request} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+      <EditRequestModal request={currentChat.request} />
       <div className="chat d-flex justify-content-center">
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
@@ -205,7 +205,7 @@ const Chat = () => {
                     chats && (
                       chats.map((chat) => {
                         return (
-                          <ChatCard chat={chat} setChat={openChat} key={chat.request.title} />
+                          <ChatCard chat={chat} setChat={openChat} key={chat.id} />
                         )
                       })
                     )
