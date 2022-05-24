@@ -11,7 +11,7 @@ import profile_icon from '../assets/logos/profile_logo.svg';
 import plus_icon from '../assets/logos/plus_logo.svg';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../constants/index';
+import { API_ROOT } from '../constants/index';
 
 const EditProfileModal = () => {
   const { setFlash } = useContext(FlashContext);

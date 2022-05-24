@@ -11,7 +11,7 @@ import auth_logo from '../../assets/logos/auth_logo.svg';
 import mail_icon from '../../assets/logos/mail_logo.svg';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../../constants/index';
+import { API_ROOT } from '../../constants/index';
 
 const ForgottenPassword = () => {
   const { setFlash } = useContext(FlashContext);

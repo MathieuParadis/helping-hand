@@ -9,7 +9,7 @@ import UserContext from './Context/UserContext';
 import position_icon from '../assets/logos/position_logo.svg';
 
 // CONSTANTS IMPORTS
-import API_ROOT from '../constants/index';
+import { API_ROOT } from '../constants/index';
 
 const UserPositionModal = () => {
   const { setFlash } = useContext(FlashContext);
