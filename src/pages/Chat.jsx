@@ -1,25 +1,94 @@
 // CONFIG IMPORTS
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+
+// CONTEXT IMPORTS
+import FlashContext from '../components/Context/FlashContext';
+
+// ACTION CABLE IMPORT
+import { ActionCable } from 'react-actioncable-provider';
 
 // ASSETS IMPORTS
 import search_icon from '../assets/logos/search_logo.svg';
 
 // COMPONENTS IMPORTS
-import ChatBanner from '../components/ChatBanner';
-import ChatCard from '../components/ChatCard';
-import ChatConversation from '../components/ChatConversation';
+import ChatBanner from '../components/ActionCable/ChatBanner';
+import ChatCard from '../components/ActionCable/ChatCard';
+import ChatConversation from '../components/ActionCable/ChatConversation';
 import EditRequestModal from '../components/EditRequestModal';
 import ShowRequestModal from '../components/ShowRequestModal';
+
+// CONSTANTS IMPORTS
+import API_ROOT from '../constants/index';
 
 // DATA IMPORTS
 import chats from '../data/Chats';
 
+
 const Chat = () => {
+  const { setFlash } = useContext(FlashContext);
+
+  const [chatts, setChats] = useState();
   const [currentChat, setCurrentChat] = useState("");
+
+  const getChats = () => {
+    const url = `${API_ROOT}/chats`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    })
+    .then(response => {
+      console.log(response);
+      return response.json()
+    })
+    .then(response => {
+      console.log(response);
+      setChats(response);
+    })
+    .catch(errors => {
+      console.log(errors);
+      setFlash({
+        type: 'danger',
+        message: "An error occured, please try again",
+        display: true,
+      })
+    })
+  }
 
   const openChat = (chat) => {
     setCurrentChat(chat);
   }
+
+  const handleReceivedChat = (response) => {
+    const { chat } = response;
+    setChats([...chats, chat]);
+  };
+
+  const handleReceivedMessage = (response) => {
+    const { message } = response;
+    const chats = [...chats];
+    const chat = chats.find(
+      chat => chat.id === message.chat_id
+    );
+    chat.messages = [...chat.messages, message];
+    setChats(chats);
+  };
+
+
+
+
+
+
+
+
+
+
 
   const openShowRequestModal = () => {
     const newRequestModal = document.querySelector(".new-request-modal");
@@ -86,6 +155,10 @@ const Chat = () => {
       chatIndexSection.classList.add("d-none", "d-lg-block");
     }
   }
+
+  useEffect(() => {
+    getChats();
+  }, [chats]);
 
   useEffect(() => {
     responsiveChat();

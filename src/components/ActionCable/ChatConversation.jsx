@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 
 // COMPONENTS IMPORTS
-import ChatMessage from '../components/ChatMessage';
+import ChatMessage from '../ActionCable/ChatMessage';
 
 const ChatConversation = ({chat}) => {
   useEffect(() => {

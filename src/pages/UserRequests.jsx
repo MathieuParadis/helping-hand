@@ -221,16 +221,16 @@ const UserRequests = () => {
       return response.json()
     })
     .then(response => {
-      // console.log(response)
-      setCurrentUserRequests(response)
+      // console.log(response);
+      setCurrentUserRequests(response);
     })
     .catch(errors => {
-      // console.log(errors)
+      // console.log(errors);
       setFlash({
         type: 'danger',
         message: "An error occured, please try again",
         display: true,
-      })
+      });
     })
   }
 

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 
 // DATA IMPORTS
-import user from '../data/User';
+import user from '../../data/User';
 
 const ChatMessage = ({message}) => {
   const stylingMessage = () => {
