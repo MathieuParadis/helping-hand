@@ -1,5 +1,6 @@
 // CONFIG IMPORTS
 import React, { useEffect, useState, useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 
 // CONTEXT IMPORTS
 import UserContext from './Context/UserContext';
@@ -82,9 +83,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
                       </div>
                     )
                   ) :
-                  (
-                    <button className="btn button-primary button-modal mt-4 p-1" onClick={() => openChat()}>Volunteer</button>
-                  )
+                  <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => openChat()}>Volunteer</NavLink>
               }
             </div>
           )}
