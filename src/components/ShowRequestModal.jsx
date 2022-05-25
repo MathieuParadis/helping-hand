@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 // CONTEXT IMPORTS
+import ChatContext from '../components/Context/ChatContext';
 import FlashContext from '../components/Context/FlashContext';
 import UserContext from './Context/UserContext';
 
@@ -14,6 +15,7 @@ import fulfilled_banner from '../assets/images/fulfilled_banner.svg';
 import { API_ROOT } from '../constants/index';
 
 const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
+  const { chat, setChat } = useContext(ChatContext);
   const { setFlash } = useContext(FlashContext);
   const { user } = useContext(UserContext);
 
@@ -60,14 +62,24 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
   }
 
   const compareChatRequetsToCurrentRequest = () => {
-    if (chats.find((chat) => chat.request.id === request.id)) {
+    console.log(request.id)
+
+    let filteredChat = chats.filter((chat) => {
+      return chat.request.id === request.id &&
+            chat.volunteer.id === user.id && 
+            chat.requester.id === request.user.id
+    })
+
+    if (filteredChat.length === 1) {
       setVolunteered(true);
+      setChat(filteredChat[0]);
     } else {
       setVolunteered(false);
+      setChat(false);
     }
   }
 
-  const openChat = () => {
+  const createChat = () => {
     const data = {
       request_id: request.id,
       requester_id: request.user.id, 
@@ -121,7 +133,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
     if (chats && request) {
       compareChatRequetsToCurrentRequest();
     }
-  }, [modalOpen, volunteered, chats]);
+  }, [modalOpen, volunteered, chats, request]);
 
   return (
     <div className="show-request-modal">
@@ -171,9 +183,9 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
                     )
                   ) :
                   (
-                    volunteered ? 
-                    <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" disabled>Volunteer</button> : 
-                    <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => openChat()}>Volunteer</NavLink>
+                    volunteered && chat ? 
+                    <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => closeShowRequestModal()}>Open chat</NavLink> : 
+                    <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => createChat()}>Volunteer</NavLink>
                   )
               }
             </div>

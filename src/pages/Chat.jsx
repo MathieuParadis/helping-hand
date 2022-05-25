@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
+import ChatContext from '../components/Context/ChatContext';
 import FlashContext from '../components/Context/FlashContext';
 
 // ACTION CABLE IMPORT
@@ -21,12 +22,13 @@ import ShowRequestModal from '../components/ShowRequestModal';
 import { API_ROOT } from '../constants/index';
 
 const Chat = () => {
+  const { chat, setChat } = useContext(ChatContext);
   const { setFlash } = useContext(FlashContext);
 
   const [keyword, setKeyword] = useState('');
   const [chats, setChats] = useState();
   const [filteredChats, setFilteredChats] = useState();
-  const [currentChat, setCurrentChat] = useState('');
+  const [currentChat, setCurrentChat] = useState(chat);
 
   const getChats = () => {
     const url = `${API_ROOT}/chats`;
