@@ -12,6 +12,7 @@ import { ActionCable } from 'react-actioncable-provider';
 import search_icon from '../assets/logos/search_logo.svg';
 
 // COMPONENTS IMPORTS
+import Cable from '../components/ActionCable/Cable';
 import ChatBanner from '../components/ActionCable/ChatBanner';
 import ChatCard from '../components/ActionCable/ChatCard';
 import ChatConversation from '../components/ActionCable/ChatConversation';
@@ -84,20 +85,20 @@ const Chat = () => {
     setCurrentChat(chat);
   }
 
-  const handleReceivedChat = (response) => {
-    const { chat } = response;
-    setChats([...chats, chat]);
-  };
+  // const handleReceivedChat = (response) => {
+  //   const { chat } = response;
+  //   setChats([...chats, chat]);
+  // };
 
-  const handleReceivedMessage = (response) => {
-    const { message } = response;
-    const chats = [...chats];
-    const chat = chats.find(
-      chat => chat.id === message.chat_id
-    );
-    chat.messages = [...chat.messages, message];
-    setChats(chats);
-  };
+  // const handleReceivedMessage = (response) => {
+  //   const { message } = response;
+  //   const chats = [...chats];
+  //   const chat = chats.find(
+  //     chat => chat.id === message.chat_id
+  //   );
+  //   chat.messages = [...chat.messages, message];
+  //   setChats(chats);
+  // };
 
   const openShowRequestModal = () => {
     const newRequestModal = document.querySelector(".new-request-modal");
@@ -218,15 +219,34 @@ const Chat = () => {
                 </div>
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">
                   <div className="chat-index-section-content h-100">
-                  {
-                    filteredChats && (
-                      filteredChats.map((chat) => {
-                        return (
-                          <ChatCard chat={chat} setChat={openChat} key={chat.id} />
-                        )
-                      })
-                    )
-                  }
+
+
+
+                    {/* <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
+                    <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} /> */}
+
+                    {
+                      chats && 
+                        <>                       
+                          <ActionCable channel={{ channel: 'ChatsChannel' }} />
+                          <Cable chats={chats} />
+                        </>
+                    }
+
+
+
+
+
+
+                    {
+                      filteredChats && (
+                        filteredChats.map((chat) => {
+                          return (
+                            <ChatCard chat={chat} setChat={openChat} key={chat.id} />
+                          )
+                        })
+                      )
+                    }
                   </div>
                 </div>
               </div>
