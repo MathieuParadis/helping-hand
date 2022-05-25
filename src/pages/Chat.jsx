@@ -28,7 +28,7 @@ const Chat = () => {
   const [keyword, setKeyword] = useState('');
   const [chats, setChats] = useState();
   const [filteredChats, setFilteredChats] = useState();
-  const [currentChat, setCurrentChat] = useState(chat);
+  const [currentChat, setCurrentChat] = useState(chat || '');
 
   const getChats = () => {
     const url = `${API_ROOT}/chats`;
@@ -165,9 +165,9 @@ const Chat = () => {
     getChats();
     filterChats();
 
-    // if (currentChat === '' && chats) {
-    //   setCurrentChat(chats[0]);
-    // }
+    if (currentChat === '' && chats) {
+      setCurrentChat(chats[0]);
+    }
   }, [chats]);
 
   useEffect(() => {
