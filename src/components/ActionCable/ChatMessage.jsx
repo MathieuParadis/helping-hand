@@ -13,10 +13,10 @@ const ChatMessage = ({message}) => {
 
     if (message.user.id === user.id ) {
       chatMessage.classList.add("align-items-end");
-      chatMessageBody.classList.add("bg-primary", "text-white", "border-radius-50");
+      chatMessageBody.classList.add("bg-primary");
     } else {
       chatMessage.classList.add("align-items-start");
-      chatMessageBody.classList.add("bg-grey-dark", "text-white", "border-radius-50");
+      chatMessageBody.classList.add("bg-grey-dark");
     } 
   }
 
@@ -26,8 +26,8 @@ const ChatMessage = ({message}) => {
 
   return (
     <div className="chat-message d-flex flex-column mb-2" id={`message-${message.id}`}>
-      <p className="m-0 pb-2">{message.user.first_name}</p>
-      <p className="m-0 px-4 py-2 message-body">{message.content}</p>
+      <p className="m-0 pb-2">{message.user.first_name} says:</p>
+      <p className="m-0 px-4 py-2 message-body text-white border-radius-8">{message.content}</p>
     </div>
   );
 };

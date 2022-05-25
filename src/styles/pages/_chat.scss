@@ -8,6 +8,10 @@
     max-height: 95vh;
 
     .top-section {
+      .selected-chat-section-content {
+        min-height: 100px;
+      }
+
       .search-chat-section-content {
         .input {
           position: relative;
@@ -43,7 +47,12 @@
       overflow-y: hidden;
 
       .chat-message-section-content {
+        height: 80%;
         overflow-y: hidden;
+      }
+
+      .chat-message-section-input {
+        height: 20%;
       }
 
       .chat-index-section-content {

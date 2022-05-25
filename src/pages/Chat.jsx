@@ -16,6 +16,7 @@ import ChatBanner from '../components/ActionCable/ChatBanner';
 import ChatCard from '../components/ActionCable/ChatCard';
 import ChatConversation from '../components/ActionCable/ChatConversation';
 import EditRequestModal from '../components/EditRequestModal';
+import MessageInput from '../components/ActionCable/MessageInput';
 import ShowRequestModal from '../components/ShowRequestModal';
 
 // CONSTANTS IMPORTS
@@ -197,7 +198,7 @@ const Chat = () => {
             <div className="box box-border-grey d-flex flex-column border-radius-5 w-100 h-100">
               <div className="top-section row border-bottom-grey">
                 <div className="selected-chat-section col-12 col-lg-8 pe-lg-0 ">
-                  <div className="selected-chat-section-content">
+                  <div className="selected-chat-section-content d-flex align-items-center">
                     <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                   </div>
                 </div>
@@ -216,11 +217,7 @@ const Chat = () => {
                     <ChatConversation chat={currentChat} />
                   </div>
                   <div className="chat-message-section-input">
-                    yootooy
-
-
-
-                    
+                    <MessageInput />
                   </div>
                 </div>
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">
