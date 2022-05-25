@@ -17,12 +17,12 @@ const ChatBanner = ({chat, setOpenShowRequestModal}) => {
               <div className="d-flex flex-column flex-md-row">
                 <p className="m-1 text-center text-lg-start">
                   Requester: {chat.requester.first_name} {chat.requester.last_name} 
-                  <small>{chat.requester.id == user.id && " (yourself)"}</small>
+                  <small>{chat.requester.id === user.id && " (yourself)"}</small>
                 </p>
                 <p className="d-none d-md-block m-1">&nbsp; | &nbsp;</p>
                 <p className="m-1 text-center text-lg-start">
                   Volunteer: {chat.volunteer.first_name} {chat.volunteer.last_name}
-                  <small>{chat.volunteer.id == user.id && " (yourself)"}</small>
+                  <small>{chat.volunteer.id === user.id && " (yourself)"}</small>
                 </p>
               </div>
             </div>

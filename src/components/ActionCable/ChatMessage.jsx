@@ -1,15 +1,17 @@
 // CONFIG IMPORTS
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 
-// DATA IMPORTS
-import user from '../../data/User';
+// CONTEXT IMPORTS
+import UserContext from '../Context/UserContext';
 
 const ChatMessage = ({message}) => {
+  const { user } = useContext(UserContext);
+
   const stylingMessage = () => {
     const chatMessage = document.querySelector("#message-" + message.id);
     const chatMessageBody = document.querySelector("#message-" + message.id + "> p.message-body");
 
-    if (message.author == user[0].first_name + " " + user[0].last_name ) {
+    if (message.user.id === user.id ) {
       chatMessage.classList.add("align-items-end");
       chatMessageBody.classList.add("bg-primary", "text-white", "border-radius-50");
     } else {
@@ -24,8 +26,8 @@ const ChatMessage = ({message}) => {
 
   return (
     <div className="chat-message d-flex flex-column mb-2" id={`message-${message.id}`}>
-      <p className="m-0">{message.author}</p>
-      <p className="m-0 px-4 py-2 message-body">{message.body}</p>
+      <p className="m-0 pb-2">{message.user.first_name}</p>
+      <p className="m-0 px-4 py-2 message-body">{message.content}</p>
     </div>
   );
 };

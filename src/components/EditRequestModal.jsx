@@ -155,7 +155,7 @@ const EditRequestModal = ({request}) => {
                     <label htmlFor="type" className="mb-1">Type</label>
                     <select className="select-form-control" value={requestType} onChange={(e) => setRequestType(e.target.value)}>
                       {
-                        requestType == 'material' ? 
+                        requestType === 'material' ? 
                         (
                           <>
                             <option value='material'>Material</option>
