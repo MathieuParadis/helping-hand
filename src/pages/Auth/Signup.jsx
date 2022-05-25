@@ -60,11 +60,11 @@ const Signup = () => {
           body: form_data,
         })
         .then(response => {
-          console.log(response);
+          // console.log(response);
           return response.json()
         })
         .then(response => {
-          console.log(response);
+          // console.log(response);
           if (response.user) {
             localStorage.setItem('jwt_token', response.token);
             localStorage.setItem('user', JSON.stringify(response.user));
@@ -79,7 +79,7 @@ const Signup = () => {
             emptyFormFields();
           } else {
             const errors = response.error;
-            console.log(errors);
+            // console.log(errors);
             const arrayErrors = [];
             Object.keys(errors).map(function(key, index) {
               arrayErrors.push(`${key} ${errors[key][0]}`)
@@ -94,7 +94,7 @@ const Signup = () => {
           }
         })
         .catch(errors =>{
-          console.log(errors);
+          // console.log(errors);
           setFlash({
             type: 'danger',
             message: errors,

@@ -43,11 +43,11 @@ const Signin = () => {
       body: JSON.stringify(data),
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       return response.json()
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       if (response.user ) {
         localStorage.setItem('jwt_token', response.token);
         localStorage.setItem('user', JSON.stringify(response.user));

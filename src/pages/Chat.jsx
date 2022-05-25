@@ -28,7 +28,9 @@ const Chat = () => {
   const [keyword, setKeyword] = useState('');
   const [chats, setChats] = useState();
   const [filteredChats, setFilteredChats] = useState();
-  const [currentChat, setCurrentChat] = useState(chat || '');
+  const [currentChat, setCurrentChat] = useState(chat ? chat : '');
+
+  console.log(currentChat);
 
   const getChats = () => {
     const url = `${API_ROOT}/chats`;
@@ -44,15 +46,15 @@ const Chat = () => {
       },
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       return response.json()
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       setChats(response);
     })
     .catch(errors => {
-      console.log(errors);
+      // console.log(errors);
       setFlash({
         type: 'danger',
         message: "An error occured, please try again",
@@ -170,7 +172,14 @@ const Chat = () => {
 
   useEffect(() => {
     responsiveChat();
-  }, [currentChat]);
+  }, [currentChat, chat]);
+
+  useEffect(() => {
+    if (chat) {
+      console.log(chat)
+      setCurrentChat(chat);
+    };
+  }, [chat]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

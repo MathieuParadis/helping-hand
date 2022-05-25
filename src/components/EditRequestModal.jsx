@@ -63,11 +63,11 @@ const EditRequestModal = ({request}) => {
       body: JSON.stringify(data),
     })
     .then(response => {
-      console.log(response)
+      // console.log(response);
       return response.json();
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       closeEditRequestModal();
       if (response.message) {
         setFlash({
@@ -84,7 +84,7 @@ const EditRequestModal = ({request}) => {
       }
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
       closeEditRequestModal();
       setFlash({
         type: 'danger',

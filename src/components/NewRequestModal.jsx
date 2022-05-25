@@ -51,7 +51,7 @@ const NewRequestModal = () => {
       body: JSON.stringify(data),
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       return response.json()
     })
     .then(response => {
@@ -63,7 +63,7 @@ const NewRequestModal = () => {
         });
       } else {
         const errors = response.error;
-        console.log(errors);
+        // console.log(errors);
         const arrayErrors = [];
         Object.keys(errors).map(function(key, index) {
           arrayErrors.push(`${key} ${errors[key][0]}`)
@@ -76,12 +76,12 @@ const NewRequestModal = () => {
           display: true,
         });
       }
-      console.log(response);
+      // console.log(response);
       closeNewRequestModal();
     })
     .catch(errors => {
       closeNewRequestModal();
-      console.log(errors);
+      // console.log(errors);
       setFlash({
         type: 'danger',
         message: "An error occured, please try again",

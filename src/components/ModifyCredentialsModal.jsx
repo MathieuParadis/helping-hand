@@ -71,7 +71,7 @@ const ModifyCredentialsModal = () => {
             display: true,
           })
         } else {
-          console.log(response)
+          // console.log(response);
           setFlash({
             type: 'danger',
             message: response.error,

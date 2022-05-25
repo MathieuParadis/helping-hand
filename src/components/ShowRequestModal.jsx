@@ -44,15 +44,15 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
       },
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       return response.json()
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       setChats(response);
     })
     .catch(errors => {
-      console.log(errors);
+      // console.log(errors);
       setFlash({
         type: 'danger',
         message: "An error occured, please try again",
@@ -62,8 +62,6 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
   }
 
   const compareChatRequetsToCurrentRequest = () => {
-    console.log(request.id)
-
     let filteredChat = chats.filter((chat) => {
       return chat.request.id === request.id &&
             chat.volunteer.id === user.id && 
@@ -100,11 +98,15 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
       body: JSON.stringify(data),
     })
     .then(response => {
+      // console.log(response);
+      return response.json();
+    })
+    .then(response => {
       console.log(response);
-      response.json();
+      setChat(response);
     })
     .catch(errors => {
-      console.log(errors);
+      // console.log(errors);
       setFlash({
         type: 'danger',
         message: "An error occured, please try again",

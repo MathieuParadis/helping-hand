@@ -41,14 +41,14 @@ const UserPositionModal = () => {
       body: form_data,
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       return response.json()
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
       if (response.user) {
         localStorage.setItem('user', JSON.stringify(response.user));
-        console.log(response);
+        // console.log(response);
         setUser(response.user);
         setFlash({
           type: 'success',
@@ -65,7 +65,7 @@ const UserPositionModal = () => {
       }
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
       setFlash({
         type: 'danger',
         message: error,

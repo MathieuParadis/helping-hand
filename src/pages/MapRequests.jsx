@@ -45,7 +45,6 @@ const MapRequests = () => {
 
   const getRequests = () => {
     const url = `${API_ROOT}/requests/${centerLat}/${centerLng}`;
-    console.log(url);
 
     const token = localStorage.getItem('jwt_token');
 

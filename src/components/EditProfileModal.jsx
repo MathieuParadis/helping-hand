@@ -81,7 +81,7 @@ const EditProfileModal = () => {
           // console.log(response);
           if (response.user) {
             localStorage.setItem('user', JSON.stringify(response.user));
-            console.log(response)
+            // console.log(response);
             setUser(response.user);
             setFlash({
               type: 'success',
@@ -89,12 +89,12 @@ const EditProfileModal = () => {
               display: true,
             })
           } else {
-            console.log(response)
+            // console.log(response);
             setFlash({
               type: 'danger',
               message: response.error,
               display: true,
-            })
+            });
           }
           closeEditProfileModal();
         })
@@ -104,21 +104,21 @@ const EditProfileModal = () => {
             type: 'danger',
             message: error,
             display: true,
-          })
+          });
         })
       } else {
         setFlash({
           type: 'danger',
           message: "The file type you uploaded is incorrect",
           display: true,
-        })
+        });
       }
     } else {
       setFlash({
         type: 'danger',
         message: "File with your ID card is missing",
         display: true,
-      })
+      });
     }
   }
 
