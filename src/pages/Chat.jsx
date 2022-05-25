@@ -198,14 +198,14 @@ const Chat = () => {
             <div className="box box-border-grey d-flex flex-column border-radius-5 w-100 h-100">
               <div className="top-section row border-bottom-grey">
                 <div className="selected-chat-section col-12 col-lg-8 pe-lg-0 ">
-                  <div className="selected-chat-section-content d-flex align-items-center">
+                  <div className="selected-chat-section-content">
                     <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                   </div>
                 </div>
                 <div className="search-chat-section col-12 col-lg-4 border-left-grey justify-content-center align-items-center ps-lg-0">
                   <div className="search-chat-section-content w-100">
                     <div className="input p-3">
-                      <input type="text" className="form-control" id="search-keyword" aria-describedby="search input field" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search chat ..." required />
+                      <input type="text" className="form-control" id="search-keyword" aria-describedby="search input field" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search chat..." required />
                       <img src={search_icon} alt="search_icon" className="search-icon" />
                     </div>
                   </div>
