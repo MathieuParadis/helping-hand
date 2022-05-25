@@ -31,8 +31,6 @@ const Chat = () => {
   const [filteredChats, setFilteredChats] = useState();
   const [currentChat, setCurrentChat] = useState(chat ? chat : '');
 
-  console.log(currentChat);
-
   const getChats = () => {
     const url = `${API_ROOT}/chats`;
     const token = localStorage.getItem('jwt_token');
@@ -177,7 +175,6 @@ const Chat = () => {
 
   useEffect(() => {
     if (chat) {
-      console.log(chat)
       setCurrentChat(chat);
     };
   }, [chat]);
