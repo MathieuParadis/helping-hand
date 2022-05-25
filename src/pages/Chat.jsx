@@ -69,8 +69,10 @@ const Chat = () => {
       let filtered = chats.filter((chat) => {
         return chat.request.title.toLowerCase().includes(keyword.toLowerCase()) || 
                chat.request.request_type.toLowerCase().includes(keyword.toLowerCase()) ||
-               chat.request.user.first_name.toLowerCase().includes(keyword.toLowerCase()) ||
-               chat.request.user.last_name.toLowerCase().includes(keyword.toLowerCase())
+               chat.requester.first_name.toLowerCase().includes(keyword.toLowerCase()) ||
+               chat.requester.last_name.toLowerCase().includes(keyword.toLowerCase()) ||
+               chat.volunteer.first_name.toLowerCase().includes(keyword.toLowerCase()) ||
+               chat.volunteer.last_name.toLowerCase().includes(keyword.toLowerCase()) 
       })
       setFilteredChats(filtered);
     }    
@@ -164,10 +166,6 @@ const Chat = () => {
   useEffect(() => {
     getChats();
     filterChats();
-
-    if (currentChat === '' && chats) {
-      setCurrentChat(chats[0]);
-    }
   }, [chats]);
 
   useEffect(() => {

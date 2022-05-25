@@ -1,9 +1,11 @@
 // CONFIG IMPORTS
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
+
+// CONTEXT IMPORTS
+import UserContext from '../Context/UserContext';
 
 const ChatBanner = ({chat, setOpenShowRequestModal}) => {
-  useEffect(() => {
-  }, []);
+  const { user } = useContext(UserContext);
 
   return (
     <div className="chat-banner">
@@ -12,7 +14,17 @@ const ChatBanner = ({chat, setOpenShowRequestModal}) => {
           <div className="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center p-3">
             <div>
               <h5 className="text-center text-lg-start">{chat.request.title}</h5>
-              <p className="m-0 text-center text-lg-start">by {chat.requester.first_name} {chat.requester.last_name}</p>
+              <div className="d-flex flex-column flex-md-row">
+                <p className="m-1 text-center text-lg-start">
+                  Requester: {chat.requester.first_name} {chat.requester.last_name} 
+                  <small>{chat.requester.id == user.id && " (yourself)"}</small>
+                </p>
+                <p className="d-none d-md-block m-1">&nbsp; | &nbsp;</p>
+                <p className="m-1 text-center text-lg-start">
+                  Volunteer: {chat.volunteer.first_name} {chat.volunteer.last_name}
+                  <small>{chat.volunteer.id == user.id && " (yourself)"}</small>
+                </p>
+              </div>
             </div>
             <div className="pt-3 pt-lg-0 ps-lg-5">
               <button className="btn button-ternary button-w150 border-radius-50 p-2" onClick={() => setOpenShowRequestModal()}>See details</button>
