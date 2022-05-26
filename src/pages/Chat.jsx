@@ -17,6 +17,7 @@ import ChatBanner from '../components/ActionCable/ChatBanner';
 import ChatCard from '../components/ActionCable/ChatCard';
 import ChatConversation from '../components/ActionCable/ChatConversation';
 import EditRequestModal from '../components/EditRequestModal';
+import MessageInput from '../components/ActionCable/MessageInput';
 import ShowRequestModal from '../components/ShowRequestModal';
 
 // CONSTANTS IMPORTS
@@ -30,8 +31,6 @@ const Chat = () => {
   const [chats, setChats] = useState();
   const [filteredChats, setFilteredChats] = useState();
   const [currentChat, setCurrentChat] = useState(chat ? chat : '');
-
-  console.log(currentChat);
 
   const getChats = () => {
     const url = `${API_ROOT}/chats`;
@@ -83,6 +82,7 @@ const Chat = () => {
 
   const openChat = (chat) => {
     setCurrentChat(chat);
+    setChat(chat);
   }
 
   // const handleReceivedChat = (response) => {
@@ -177,7 +177,6 @@ const Chat = () => {
 
   useEffect(() => {
     if (chat) {
-      console.log(chat)
       setCurrentChat(chat);
     };
   }, [chat]);
@@ -199,22 +198,25 @@ const Chat = () => {
               <div className="top-section row border-bottom-grey">
                 <div className="selected-chat-section col-12 col-lg-8 pe-lg-0 ">
                   <div className="selected-chat-section-content">
-                    <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
+                    <ChatBanner currentChat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                   </div>
                 </div>
                 <div className="search-chat-section col-12 col-lg-4 border-left-grey justify-content-center align-items-center ps-lg-0">
                   <div className="search-chat-section-content w-100">
                     <div className="input p-3">
-                      <input type="text" className="form-control" id="search-keyword" aria-describedby="search input field" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search chat ..." required />
+                      <input type="text" className="form-control" id="search-keyword" aria-describedby="search input field" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="Search chat..." required />
                       <img src={search_icon} alt="search_icon" className="search-icon" />
                     </div>
                   </div>
                 </div>
               </div>
               <div className="bottom-section row flex-grow-1">
-                <div className="chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
-                  <div className="chat-message-section-content h-100">
-                    <ChatConversation chat={currentChat} />
+                <div className=" d-flex flex-column chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
+                  <div className="chat-message-section-content flex-grow-1">
+                    <ChatConversation currentChat={currentChat} />
+                  </div>
+                  <div className="chat-message-section-input">
+                    <MessageInput currentChat={currentChat} />
                   </div>
                 </div>
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">
