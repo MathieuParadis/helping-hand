@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
 import FlashContext from '../Context/FlashContext';
@@ -61,10 +61,19 @@ const MessageInput = ({currentChat}) => {
     })
   }
 
+  const disableMessageArea = () => {
+    const input = document.querySelector('#message-input-field');
+    currentChat === '' ? input.setAttribute('disabled', true) : input.removeAttribute('disabled');
+  }
+
+  useEffect(() => {
+    disableMessageArea();
+  }, [currentChat]);
+
   return (
     <div className="message-input p-3 h-100">
       <form onSubmit={createMessage} className="h-100">
-        <input type="text" className="border-0 form-control h-100" id="" aria-describedby="message input field" value={messageText} onChange={(e) => setMessageText(e.target.value)} placeholder="Write a message..." required />
+        <input type="text" className="border-0 form-control h-100" id="message-input-field" aria-describedby="message input field" value={messageText} onChange={(e) => setMessageText(e.target.value)} placeholder="Write a message..." required />
       </form>
     </div>
   );
