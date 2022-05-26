@@ -2,15 +2,13 @@
 import React, { useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
-import ChatContext from '../Context/ChatContext';
 import FlashContext from '../Context/FlashContext';
 import UserContext from '../Context/UserContext';
 
 // CONSTANTS IMPORTS
 import { API_ROOT } from '../../constants/index';
 
-const MessageInput = () => {
-  const { chat } = useContext(ChatContext);
+const MessageInput = ({currentChat}) => {
   const { setFlash } = useContext(FlashContext);
   const { user } = useContext(UserContext);
 
@@ -21,7 +19,7 @@ const MessageInput = () => {
 
     const data = {
       content: messageText,
-      chat_id: chat.id,
+      chat_id: currentChat.id,
       user_id: user.id
     };
 
@@ -40,10 +38,16 @@ const MessageInput = () => {
     })
     .then(response => {
       console.log(response);
-      response.json()
+      response.json();
 
       if(response.ok) {
         setMessageText('');
+      } else {
+        setFlash({
+          type: 'danger',
+          message: "An error occured, please try again",
+          display: true,
+        });
       }
 
     })

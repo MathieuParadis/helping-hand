@@ -4,12 +4,12 @@ import React from 'react';
 // COMPONENTS IMPORTS
 import ChatMessage from '../ActionCable/ChatMessage';
 
-const ChatConversation = ({chat}) => {
+const ChatConversation = ({currentChat}) => {
   return (
     <div className="chat-conversation h-100 p-3">
       {
-        chat.messages && (
-          chat.messages.map((message) => {
+        currentChat.messages && (
+          currentChat.messages.map((message) => {
             return (
               <ChatMessage message={message} key={message.id} />
             )

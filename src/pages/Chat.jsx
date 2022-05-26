@@ -81,6 +81,7 @@ const Chat = () => {
 
   const openChat = (chat) => {
     setCurrentChat(chat);
+    setChat(chat);
   }
 
   const handleReceivedChat = (response) => {
@@ -196,7 +197,7 @@ const Chat = () => {
               <div className="top-section row border-bottom-grey">
                 <div className="selected-chat-section col-12 col-lg-8 pe-lg-0 ">
                   <div className="selected-chat-section-content">
-                    <ChatBanner chat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
+                    <ChatBanner currentChat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
                   </div>
                 </div>
                 <div className="search-chat-section col-12 col-lg-4 border-left-grey justify-content-center align-items-center ps-lg-0">
@@ -211,10 +212,10 @@ const Chat = () => {
               <div className="bottom-section row flex-grow-1">
                 <div className=" d-flex flex-column chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
                   <div className="chat-message-section-content flex-grow-1">
-                    <ChatConversation chat={currentChat} />
+                    <ChatConversation currentChat={currentChat} />
                   </div>
                   <div className="chat-message-section-input">
-                    <MessageInput />
+                    <MessageInput currentChat={currentChat} />
                   </div>
                 </div>
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">
