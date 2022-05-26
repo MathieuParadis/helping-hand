@@ -1,4 +1,22 @@
 .chat-message {
+  .message-date {
+    display: flex;
+    flex-direction: row;
+  
+    &:before, &:after{
+      content: "";
+      flex: 1 1;
+      border-bottom: 1px solid;
+      margin: auto;
+    }
+
+    &:before {
+      margin-right: 10px
+    }
+    &:after {
+      margin-left: 10px
+    }
+  }
   .message-body {
     position: relative;
 
