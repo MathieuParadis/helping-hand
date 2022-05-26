@@ -1,5 +1,5 @@
 // CONFIG IMPORTS
-import React from 'react';
+import React, { useState } from 'react';
 
 // COMPONENTS IMPORTS
 import ChatMessage from '../ActionCable/ChatMessage';
@@ -9,9 +9,9 @@ const ChatConversation = ({currentChat}) => {
     <div className="chat-conversation h-100 p-3">
       {
         currentChat.messages && (
-          currentChat.messages.map((message) => {
+          currentChat.messages.map((message, index) => {
             return (
-              <ChatMessage message={message} key={message.id} />
+              <ChatMessage message={message} previousMessage={index - 1 < 0 ? '' : currentChat.messages[index-1]} key={message.id} />
             )
           })
         )

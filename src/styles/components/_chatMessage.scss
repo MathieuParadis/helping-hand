@@ -1,0 +1,19 @@
+.chat-message {
+  .message-body {
+    position: relative;
+
+    .message-time {
+      position: absolute;
+      bottom: 5px;
+      font-size: 11px;
+    }
+  }
+}
+
+.left {
+  left: 5px;
+}
+
+.right {
+  right: 5px;
+}
