@@ -85,20 +85,22 @@ const Chat = () => {
     setChat(chat);
   }
 
-  // const handleReceivedChat = (response) => {
-  //   const { chat } = response;
-  //   setChats([...chats, chat]);
-  // };
+  // ACTION CABLE
+  const handleReceivedChat = (response) => {
+    const { chat } = response;
+    setChats([...chats, chat]);
+  };
 
-  // const handleReceivedMessage = (response) => {
-  //   const { message } = response;
-  //   const chats = [...chats];
-  //   const chat = chats.find(
-  //     chat => chat.id === message.chat_id
-  //   );
-  //   chat.messages = [...chat.messages, message];
-  //   setChats(chats);
-  // };
+  const handleReceivedMessage = (response) => {
+    const { message } = response;
+    const chats = [...chats];
+    const chat = chats.find(
+      chat => chat.id === message.chat_id
+    );
+    chat.messages = [...chat.messages, message];
+    setChats(chats);
+  };
+  // ACTION CABLE
 
   const openShowRequestModal = () => {
     const newRequestModal = document.querySelector(".new-request-modal");
@@ -227,14 +229,21 @@ const Chat = () => {
                     {/* <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
                     <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} /> */}
 
-                    {
+                    {/* {
                       chats && 
                         <>                       
                           <ActionCable channel={{ channel: 'ChatsChannel' }} />
                           <Cable chats={chats} />
                         </>
-                    }
+                    } */}
 
+                    {
+                      chats && 
+                        <>                       
+                          <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
+                          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
+                        </>
+                    }
 
 
 

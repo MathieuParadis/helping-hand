@@ -44,7 +44,9 @@ const ChatMessage = ({message, previousMessage}) => {
       }
       {
         (previousMessage === '' || previousMessage.user.id !== message.user.id) &&
-        <p className="m-0 pb-2">{message.user.first_name} says:</p>
+        <p className="m-0 pb-2">
+          {message.user.id === user.id ? "You" : message.user.first_name} said:
+        </p>
       }
       <div className="m-0 px-4 py-2 message-body text-white border-radius-8">
         <p className="m-0">{message.content}</p>

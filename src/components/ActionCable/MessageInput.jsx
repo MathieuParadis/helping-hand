@@ -61,8 +61,6 @@ const MessageInput = ({currentChat}) => {
     })
   }
 
-
-
   return (
     <div className="message-input p-3 h-100">
       <form onSubmit={createMessage} className="h-100">
