@@ -1,14 +1,8 @@
 // CONFIG IMPORTS
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 
 // CONTEXT IMPORTS
 import UserContext from '../Context/UserContext';
-
-// ACTION CABLE IMPORT
-import { ActionCable } from 'react-actioncable-provider';
-
-// CONSTANTS IMPORTS
-import { API_ROOT } from '../../constants/index';
 
 // import NewConversationForm from './NewConversationForm';
 // import MessagesArea from './MessagesArea';

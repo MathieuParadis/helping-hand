@@ -32,54 +32,6 @@ const Chat = () => {
   const [filteredChats, setFilteredChats] = useState();
   const [currentChat, setCurrentChat] = useState(chat ? chat : '');
 
-  const getChats = () => {
-    const url = `${API_ROOT}/chats`;
-    const token = localStorage.getItem('jwt_token');
-
-    fetch(url, {
-      method: "GET",
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      },
-    })
-    .then(response => {
-      // console.log(response);
-      return response.json()
-    })
-    .then(response => {
-      // console.log(response);
-      setChats(response);
-    })
-    .catch(errors => {
-      // console.log(errors);
-      setFlash({
-        type: 'danger',
-        message: "An error occured, please try again",
-        display: true,
-      })
-    })
-  }
-
-  const filterChats = () => {
-    if (keyword === '') {
-      setFilteredChats(chats);
-    }
-    else {
-      let filtered = chats.filter((chat) => {
-        return chat.request.title.toLowerCase().includes(keyword.toLowerCase()) || 
-               chat.request.request_type.toLowerCase().includes(keyword.toLowerCase()) ||
-               chat.requester.first_name.toLowerCase().includes(keyword.toLowerCase()) ||
-               chat.requester.last_name.toLowerCase().includes(keyword.toLowerCase()) ||
-               chat.volunteer.first_name.toLowerCase().includes(keyword.toLowerCase()) ||
-               chat.volunteer.last_name.toLowerCase().includes(keyword.toLowerCase()) 
-      })
-      setFilteredChats(filtered);
-    }    
-  }
-
   const openChat = (chat) => {
     setCurrentChat(chat);
     setChat(chat);
@@ -87,18 +39,16 @@ const Chat = () => {
 
   // ACTION CABLE
   const handleReceivedChat = (response) => {
-    const { chat } = response;
+    const chat = response;
     setChats([...chats, chat]);
   };
 
   const handleReceivedMessage = (response) => {
-    const { message } = response;
-    const chats = [...chats];
-    const chat = chats.find(
-      chat => chat.id === message.chat_id
-    );
+    const message = response;
+    const userChats = [...chats];
+    const chat = currentChat;
     chat.messages = [...chat.messages, message];
-    setChats(chats);
+    setFilteredChats(userChats);
   };
   // ACTION CABLE
 
@@ -128,52 +78,103 @@ const Chat = () => {
     alert(currentChat.request.title + " marked as fulfilled");
   }
 
-  const responsiveChat = () => {
-    const back = document.querySelector(".back");
-    const selectedChatSection = document.querySelector(".selected-chat-section");
-    const searchChatSection = document.querySelector(".search-chat-section");
-    const chatMessageSection = document.querySelector(".chat-message-section");
-    const chatIndexSection = document.querySelector(".chat-index-section");
-
-    if (currentChat === "") {
-      back.classList.remove("d-block", "d-lg-none");
-      back.classList.add("d-none");
-
-      selectedChatSection.classList.remove("d-block");
-      selectedChatSection.classList.add("d-none", "d-lg-block");
-
-      searchChatSection.classList.remove("d-none", "d-lg-flex");
-      searchChatSection.classList.add("d-flex");
-      
-      chatMessageSection.classList.remove("d-block");
-      chatMessageSection.classList.add("d-none", "d-lg-block");
-
-      chatIndexSection.classList.remove("d-none", "d-lg-block");
-      chatIndexSection.classList.add("d-block");
-    } else {
-      back.classList.remove("d-none");
-      back.classList.add("d-block", "d-lg-none");
-
-      selectedChatSection.classList.remove("d-none", "d-lg-block");
-      selectedChatSection.classList.add("d-block");
-
-      searchChatSection.classList.remove("d-flex");
-      searchChatSection.classList.add("d-none", "d-lg-flex");
-
-      chatMessageSection.classList.remove("d-none", "d-lg-block");
-      chatMessageSection.classList.add("d-block");
-
-      chatIndexSection.classList.remove("d-block");
-      chatIndexSection.classList.add("d-none", "d-lg-block");
+  useEffect(() => {
+    const getChats = () => {
+      const url = `${API_ROOT}/chats`;
+      const token = localStorage.getItem('jwt_token');
+  
+      fetch(url, {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+      })
+      .then(response => {
+        // console.log(response);
+        return response.json()
+      })
+      .then(response => {
+        // console.log(response);
+        setChats(response);
+      })
+      .catch(errors => {
+        // console.log(errors);
+        setFlash({
+          type: 'danger',
+          message: "An error occured, please try again",
+          display: true,
+        })
+      })
     }
-  }
 
-  useEffect(() => {
     getChats();
-    filterChats();
-  }, [chats]);
+  }, []);
 
   useEffect(() => {
+    const filterChats = () => {
+      if (keyword === '') {
+        setFilteredChats(chats);
+      }
+      else {
+        let filtered = chats.filter((chat) => {
+          return chat.request.title.toLowerCase().includes(keyword.toLowerCase()) || 
+                chat.request.request_type.toLowerCase().includes(keyword.toLowerCase()) ||
+                chat.requester.first_name.toLowerCase().includes(keyword.toLowerCase()) ||
+                chat.requester.last_name.toLowerCase().includes(keyword.toLowerCase()) ||
+                chat.volunteer.first_name.toLowerCase().includes(keyword.toLowerCase()) ||
+                chat.volunteer.last_name.toLowerCase().includes(keyword.toLowerCase()) 
+        })
+        setFilteredChats(filtered);
+      }    
+    }
+
+    filterChats();
+  }, []);
+
+  useEffect(() => {
+    const responsiveChat = () => {
+      const back = document.querySelector(".back");
+      const selectedChatSection = document.querySelector(".selected-chat-section");
+      const searchChatSection = document.querySelector(".search-chat-section");
+      const chatMessageSection = document.querySelector(".chat-message-section");
+      const chatIndexSection = document.querySelector(".chat-index-section");
+  
+      if (currentChat === "") {
+        back.classList.remove("d-block", "d-lg-none");
+        back.classList.add("d-none");
+  
+        selectedChatSection.classList.remove("d-block");
+        selectedChatSection.classList.add("d-none", "d-lg-block");
+  
+        searchChatSection.classList.remove("d-none", "d-lg-flex");
+        searchChatSection.classList.add("d-flex");
+        
+        chatMessageSection.classList.remove("d-block");
+        chatMessageSection.classList.add("d-none", "d-lg-block");
+  
+        chatIndexSection.classList.remove("d-none", "d-lg-block");
+        chatIndexSection.classList.add("d-block");
+      } else {
+        back.classList.remove("d-none");
+        back.classList.add("d-block", "d-lg-none");
+  
+        selectedChatSection.classList.remove("d-none", "d-lg-block");
+        selectedChatSection.classList.add("d-block");
+  
+        searchChatSection.classList.remove("d-flex");
+        searchChatSection.classList.add("d-none", "d-lg-flex");
+  
+        chatMessageSection.classList.remove("d-none", "d-lg-block");
+        chatMessageSection.classList.add("d-block");
+  
+        chatIndexSection.classList.remove("d-block");
+        chatIndexSection.classList.add("d-none", "d-lg-block");
+      }
+    }
+
     responsiveChat();
   }, [currentChat, chat]);
 
@@ -215,10 +216,20 @@ const Chat = () => {
               <div className="bottom-section row flex-grow-1">
                 <div className=" d-flex flex-column chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
                   <div className="chat-message-section-content flex-grow-1">
-                    <ChatConversation currentChat={currentChat} />
+                    {/* <ChatConversation currentChat={currentChat} /> */}
+
+                    {/* {
+                      chats && 
+                        <>                       
+                          <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
+                          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} currentChat={currentChat}/>
+                        </>
+                    } */}
+
+
                   </div>
                   <div className="chat-message-section-input">
-                    <MessageInput currentChat={currentChat} />
+                    <MessageInput currentChat={currentChat} handleReceivedMessage={handleReceivedMessage} />
                   </div>
                 </div>
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">
@@ -226,24 +237,7 @@ const Chat = () => {
 
 
 
-                    {/* <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
-                    <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} /> */}
 
-                    {/* {
-                      chats && 
-                        <>                       
-                          <ActionCable channel={{ channel: 'ChatsChannel' }} />
-                          <Cable chats={chats} />
-                        </>
-                    } */}
-
-                    {
-                      chats && 
-                        <>                       
-                          <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
-                          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
-                        </>
-                    }
 
 
 

@@ -43,37 +43,37 @@ const MapRequests = () => {
   const colorMaterial = "#F4A896";
   const colorService = "#262F53";
 
-  const getRequests = () => {
-    const url = `${API_ROOT}/requests/${centerLat}/${centerLng}`;
+  // const getRequests = () => {
+  //   const url = `${API_ROOT}/requests/${centerLat}/${centerLng}`;
 
-    const token = localStorage.getItem('jwt_token');
+  //   const token = localStorage.getItem('jwt_token');
 
-    fetch(url, {
-      method: "GET",
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      },
-    })
-    .then(response => {
-      // console.log(response);
-      return response.json()
-    })
-    .then(response => {
-      // console.log(response);
-      setRequests(response);
-    })
-    .catch(errors => {
-      // console.log(errors);
-      setFlash({
-        type: 'danger',
-        message: "An error occured, please try again",
-        display: true,
-      })
-    })
-  }
+  //   fetch(url, {
+  //     method: "GET",
+  //     mode: 'cors',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //       'Authorization': 'Bearer ' + token,
+  //     },
+  //   })
+  //   .then(response => {
+  //     // console.log(response);
+  //     return response.json()
+  //   })
+  //   .then(response => {
+  //     // console.log(response);
+  //     setRequests(response);
+  //   })
+  //   .catch(errors => {
+  //     // console.log(errors);
+  //     setFlash({
+  //       type: 'danger',
+  //       message: "An error occured, please try again",
+  //       display: true,
+  //     })
+  //   })
+  // }
 
   const MarkerColorChoice = (request) => {
     return request.request_type === "material" ? colorMaterial : colorService;
@@ -199,7 +199,42 @@ const MapRequests = () => {
   }, [position, loaded]);
 
   useEffect(() => {
+    const getRequests = () => {
+      const url = `${API_ROOT}/requests/${centerLat}/${centerLng}`;
+  
+      const token = localStorage.getItem('jwt_token');
+  
+      fetch(url, {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+      })
+      .then(response => {
+        // console.log(response);
+        return response.json()
+      })
+      .then(response => {
+        // console.log(response);
+        setRequests(response);
+      })
+      .catch(errors => {
+        // console.log(errors);
+        setFlash({
+          type: 'danger',
+          message: "An error occured, please try again",
+          display: true,
+        })
+      })
+    }
+
     getRequests();
+  }, [centerLat, centerLng]);
+
+  useEffect(() => {
     countingUserRequest();
   }, [requests]);
 

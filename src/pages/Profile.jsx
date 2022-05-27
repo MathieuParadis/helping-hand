@@ -46,7 +46,7 @@ const Profile = () => {
       setIdCardFileName(getFileName(id_card_url));
       setIdCardFileType(getFileType(id_card_url).toLowerCase());
     }
-  }, [user]);
+  }, [user, id_card_url]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -79,7 +79,7 @@ const Profile = () => {
                           {
                             idCardFileType === "pdf" ? 
                             <img className="id-card" src={pdf_icon} alt="pdf icon"/> :
-                            <img className="id-card" src={id_card_url} alt="ID card picture"/>
+                            <img className="id-card" src={id_card_url} alt="ID card"/>
                           }
                         </div>
                       </div>

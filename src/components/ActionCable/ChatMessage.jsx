@@ -34,7 +34,7 @@ const ChatMessage = ({message, previousMessage}) => {
 
   useEffect(() => {
     stylingMessage();
-  }, []);
+  });
 
   return (
     <div className="chat-message d-flex flex-column mb-2" id={`message-${message.id}`}>

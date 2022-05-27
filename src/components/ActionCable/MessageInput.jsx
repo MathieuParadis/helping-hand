@@ -37,8 +37,7 @@ const MessageInput = ({currentChat}) => {
       body: JSON.stringify(data),
     })
     .then(response => {
-      console.log(response);
-      response.json();
+      // console.log(response);
 
       if(response.ok) {
         setMessageText('');
@@ -50,6 +49,10 @@ const MessageInput = ({currentChat}) => {
         });
       }
 
+      return response.json()
+    })
+    .then((response) => {
+      // console.log(response);
     })
     .catch(errors => {
       console.log(errors);
@@ -68,7 +71,7 @@ const MessageInput = ({currentChat}) => {
 
   useEffect(() => {
     disableMessageArea();
-  }, [currentChat]);
+  });
 
   return (
     <div className="message-input p-3 h-100">

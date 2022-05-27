@@ -30,37 +30,6 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
     setModalOpen(false);
   }
 
-  const getChats = () => {
-    const url = `${API_ROOT}/chats`;
-    const token = localStorage.getItem('jwt_token');
-
-    fetch(url, {
-      method: "GET",
-      mode: 'cors',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      },
-    })
-    .then(response => {
-      // console.log(response);
-      return response.json()
-    })
-    .then(response => {
-      // console.log(response);
-      setChats(response);
-    })
-    .catch(errors => {
-      // console.log(errors);
-      setFlash({
-        type: 'danger',
-        message: "An error occured, please try again",
-        display: true,
-      })
-    })
-  }
-
   const compareChatRequetsToCurrentRequest = () => {
     let filteredChat = chats.filter((chat) => {
       return chat.request.id === request.id &&
@@ -121,8 +90,39 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
   }
 
   useEffect(() => {
+    const getChats = () => {
+      const url = `${API_ROOT}/chats`;
+      const token = localStorage.getItem('jwt_token');
+  
+      fetch(url, {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+      })
+      .then(response => {
+        // console.log(response);
+        return response.json()
+      })
+      .then(response => {
+        // console.log(response);
+        setChats(response);
+      })
+      .catch(errors => {
+        // console.log(errors);
+        setFlash({
+          type: 'danger',
+          message: "An error occured, please try again",
+          display: true,
+        })
+      })
+    }
+
     getChats();
-  }, [chats]);
+  }, []);
 
   useEffect(() => {
     if (request) {
