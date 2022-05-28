@@ -3,26 +3,30 @@ import React, { useContext } from 'react';
 
 // CONTEXT IMPORTS
 import UserContext from '../Context/UserContext';
+import ChatContext from '../Context/ChatContext';
 
-const ChatBanner = ({currentChat, setOpenShowRequestModal}) => {
+const ChatBanner = ({setOpenShowRequestModal}) => {
+  const { chat } = useContext(ChatContext);
   const { user } = useContext(UserContext);
+
+  console.log(chat)
 
   return (
     <div className="chat-banner">
       {
-        currentChat.request && (
+        chat.request && (
           <div className="d-flex flex-column flex-lg-row justify-content-lg-between align-items-center p-3">
             <div>
-              <h5 className="text-center text-lg-start">{currentChat.request.title}</h5>
+              <h5 className="text-center text-lg-start">{chat.request.title}</h5>
               <div className="d-flex flex-column flex-md-row">
                 <p className="m-1 text-center text-lg-start">
-                  Requester: {currentChat.requester.first_name} {currentChat.requester.last_name} 
-                  <small>{currentChat.requester.id === user.id && " (yourself)"}</small>
+                  Requester: {chat.requester.first_name} {chat.requester.last_name} 
+                  <small>{chat.requester.id === user.id && " (yourself)"}</small>
                 </p>
                 <p className="d-none d-md-block m-1">&nbsp; | &nbsp;</p>
                 <p className="m-1 text-center text-lg-start">
-                  Volunteer: {currentChat.volunteer.first_name} {currentChat.volunteer.last_name}
-                  <small>{currentChat.volunteer.id === user.id && " (yourself)"}</small>
+                  Volunteer: {chat.volunteer.first_name} {chat.volunteer.last_name}
+                  <small>{chat.volunteer.id === user.id && " (yourself)"}</small>
                 </p>
               </div>
             </div>

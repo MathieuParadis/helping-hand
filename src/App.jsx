@@ -35,7 +35,7 @@ library.add(fab);
 
 const App = () => { 
   const [authenticated, setAuthenticated] = useState(false);
-  const [chat, setChat] = useState(false);
+  const [chat, setChat] = useState('');
   const [flash, setFlash] = useState({});
   const [user, setUser] = useState(false);
   const token = localStorage.getItem('jwt_token');

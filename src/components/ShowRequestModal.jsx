@@ -42,7 +42,6 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
       setChat(filteredChat[0]);
     } else {
       setVolunteered(false);
-      setChat(false);
     }
   }
 
@@ -186,7 +185,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
                     )
                   ) :
                   (
-                    volunteered && chat ? 
+                    volunteered && chat !== '' ? 
                     <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => closeShowRequestModal()}>Open chat</NavLink> : 
                     <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => createChat()}>Volunteer</NavLink>
                   )

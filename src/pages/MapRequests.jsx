@@ -22,7 +22,7 @@ import { API_ROOT } from '../constants/index';
 const maptilerProvider = maptiler('IwympTEN2FYbP2g5qdck', 'streets')
 
 const MapRequests = () => {
-  const { setFlash } = useContext(FlashContext);
+  const { flash, setFlash } = useContext(FlashContext);
   const { user } = useContext(UserContext);
   const { position } = user
 
@@ -232,7 +232,7 @@ const MapRequests = () => {
     }
 
     getRequests();
-  }, [centerLat, centerLng]);
+  }, [centerLat, centerLng, flash, zoom]);
 
   useEffect(() => {
     countingUserRequest();

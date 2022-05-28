@@ -30,10 +30,8 @@ const Chat = () => {
   const [keyword, setKeyword] = useState('');
   const [chats, setChats] = useState();
   const [filteredChats, setFilteredChats] = useState();
-  const [currentChat, setCurrentChat] = useState(chat ? chat : '');
 
   const openChat = (chat) => {
-    setCurrentChat(chat);
     setChat(chat);
   }
 
@@ -46,7 +44,6 @@ const Chat = () => {
   const handleReceivedMessage = (response) => {
     const message = response;
     const userChats = [...chats];
-    const chat = currentChat;
     chat.messages = [...chat.messages, message];
     setFilteredChats(userChats);
   };
@@ -75,7 +72,7 @@ const Chat = () => {
   }
 
   const markRequestAsFulfilled = () => {
-    alert(currentChat.request.title + " marked as fulfilled");
+    alert(chat.request.title + " marked as fulfilled");
   }
 
   useEffect(() => {
@@ -111,7 +108,7 @@ const Chat = () => {
     }
 
     getChats();
-  }, []);
+  }, [chat]);
 
   useEffect(() => {
     const filterChats = () => {
@@ -142,7 +139,7 @@ const Chat = () => {
       const chatMessageSection = document.querySelector(".chat-message-section");
       const chatIndexSection = document.querySelector(".chat-index-section");
   
-      if (currentChat === "") {
+      if (chat === '') {
         back.classList.remove("d-block", "d-lg-none");
         back.classList.add("d-none");
   
@@ -176,12 +173,6 @@ const Chat = () => {
     }
 
     responsiveChat();
-  }, [currentChat, chat]);
-
-  useEffect(() => {
-    if (chat) {
-      setCurrentChat(chat);
-    };
   }, [chat]);
 
   useEffect(() => {
@@ -190,18 +181,18 @@ const Chat = () => {
 
   return (
     <>
-      <ShowRequestModal request={currentChat.request} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
-      <EditRequestModal request={currentChat.request} />
+      <ShowRequestModal request={chat.request} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
+      <EditRequestModal request={chat.request} />
       <div className="chat d-flex justify-content-center">
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
             <h1 className="text-primary text-center fw-bold pb-3 pb-lg-4">My chats</h1>
-            <p className="back text-secondary align-self-start" onClick={() => setCurrentChat("")}>&#8592; Back</p>
+            <p className="back text-secondary align-self-start" onClick={() => setChat('')}>&#8592; Back</p>
             <div className="box box-border-grey d-flex flex-column border-radius-5 w-100 h-100">
               <div className="top-section row border-bottom-grey">
                 <div className="selected-chat-section col-12 col-lg-8 pe-lg-0 ">
                   <div className="selected-chat-section-content">
-                    <ChatBanner currentChat={currentChat} setOpenShowRequestModal={openShowRequestModal} />
+                    <ChatBanner currentChat={chat} setOpenShowRequestModal={openShowRequestModal} />
                   </div>
                 </div>
                 <div className="search-chat-section col-12 col-lg-4 border-left-grey justify-content-center align-items-center ps-lg-0">
@@ -222,14 +213,14 @@ const Chat = () => {
                       chats && 
                         <>                       
                           <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
-                          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} currentChat={currentChat}/>
+                          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} currentChat={chat}/>
                         </>
                     } */}
 
 
                   </div>
                   <div className="chat-message-section-input">
-                    <MessageInput currentChat={currentChat} handleReceivedMessage={handleReceivedMessage} />
+                    <MessageInput currentChat={chat} handleReceivedMessage={handleReceivedMessage} />
                   </div>
                 </div>
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">
