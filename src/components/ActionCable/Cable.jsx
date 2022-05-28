@@ -4,27 +4,18 @@ import React, { useContext } from 'react';
 // CONTEXT IMPORTS
 import ChatContext from '../Context/ChatContext';
 
-// ACTION CABLE IMPORT
-import { ActionCable } from 'react-actioncable-provider';
-
-import ChatConversation from '../ActionCable/ChatConversation';
+// ACTION CABLE IMPORTS
+import { ActionCableConsumer } from 'react-actioncable-provider';
 
 const Cable = ({chats, handleReceivedMessage}) => {
   const { chat } = useContext(ChatContext);
 
-  console.log("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
   return (
     <>
-      {chats.map(chatElement => {
-        console.log(chatElement)
+      {chats.map(chat => {
         return (
-          <>
-            <ActionCable channel={{ channel: 'MessagesChannel', chat: chatElement.id }} onReceived={handleReceivedMessage} key={chatElement.id} />
-            {
-              chat.id === chatElement.id &&          
-              <ChatConversation />
-            }
-          </>
+          <ActionCableConsumer channel={{ channel: 'MessagesChannel', chat: chat.id  }} onReceived={handleReceivedMessage} key={chat.id}>
+          </ActionCableConsumer>                          
         );
       })}
     </>

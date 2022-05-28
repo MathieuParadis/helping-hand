@@ -5,7 +5,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import ChatContext from '../components/Context/ChatContext';
 import FlashContext from '../components/Context/FlashContext';
 
-// ACTION CABLE IMPORT
+// ACTION CABLE IMPORTS
 import { ActionCableConsumer } from 'react-actioncable-provider';
 
 // ASSETS IMPORTS
@@ -31,22 +31,21 @@ const Chat = () => {
   const [chats, setChats] = useState(false);
   const [filteredChats, setFilteredChats] = useState();
 
-  const openChat = (chat) => {
-    setChat(chat);
-  }
 
   // ACTION CABLE
   const handleReceivedChat = (response) => {
     const newChat = response;
-    setChats([...chats, newChat]);
-  };
+    console.log(newChat);
+    setChats([newChat, ...chats]);
+  }
 
   const handleReceivedMessage = (response) => {
     const message = response;
+    const currentChat = chat
     const userChats = [...chats];
-    chat.messages = [...chat.messages, message];
-    setFilteredChats(userChats);
-  };
+    currentChat.messages = [...chat.messages, message];
+    setChats(userChats);
+  }
   // ACTION CABLE
 
   const openShowRequestModal = () => {
@@ -237,6 +236,15 @@ const Chat = () => {
     <>
       <ShowRequestModal request={chat.request} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditRequestModal request={chat.request} />
+
+      { chats &&   
+        <ActionCableConsumer channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat}>
+          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
+        </ActionCableConsumer>     
+      }    
+
+
+
       <div className="chat d-flex justify-content-center">
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
@@ -261,40 +269,19 @@ const Chat = () => {
               <div className="bottom-section row flex-grow-1">
                 <div className=" d-flex flex-column chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
                   <div className="chat-message-section-content flex-grow-1">
-                    {/* <ChatConversation currentChat={currentChat} /> */}
-
-                    {/* {
-                      chats && 
-                        <>                       
-                          <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
-                          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
-                        </>
-                    } */}
-                          <ActionCableConsumer channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat}>
-                          
-                          </ActionCableConsumer>
-
+                    <ChatConversation />
                   </div>
                   <div className="chat-message-section-input">
-                    <MessageInput handleReceivedMessage={handleReceivedMessage} />
+                    <MessageInput />
                   </div>
                 </div>
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">
                   <div className="chat-index-section-content h-100">
-
-
-
-
-
-
-
-
-
                     {
-                      chats && (
-                        chats.map((chat) => {
+                      filteredChats && (
+                        filteredChats.map((chat) => {
                           return (
-                            <ChatCard chat={chat} key={chat.id} />
+                              <ChatCard chat={chat} key={chat.id} />
                           )
                         })
                       )
@@ -306,6 +293,11 @@ const Chat = () => {
           </div>
         </div>
       </div>
+
+
+
+
+      
     </>
   );
 };

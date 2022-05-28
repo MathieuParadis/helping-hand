@@ -1,17 +1,22 @@
 // CONFIG IMPORTS
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+
+// CONTEXT IMPORTS
+import ChatContext from '../Context/ChatContext';
 
 // COMPONENTS IMPORTS
 import ChatMessage from '../ActionCable/ChatMessage';
 
-const ChatConversation = ({currentChat}) => {
+const ChatConversation = () => {
+  const { chat } = useContext(ChatContext);
+  
   return (
     <div className="chat-conversation h-100 p-3">
       {
-        currentChat.messages && (
-          currentChat.messages.map((message, index) => {
+        chat.messages && (
+          chat.messages.map((message, index) => {
             return (
-              <ChatMessage message={message} previousMessage={index - 1 < 0 ? '' : currentChat.messages[index-1]} key={message.id} />
+              <ChatMessage message={message} previousMessage={index - 1 < 0 ? '' : chat.messages[index-1]} key={message.id} />
             )
           })
         )
