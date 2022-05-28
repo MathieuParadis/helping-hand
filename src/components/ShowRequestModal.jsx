@@ -37,7 +37,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
             chat.requester.id === request.user.id
     })
 
-    if (filteredChat.length === 1) {
+    if (filteredChat.length !== 0) {
       setVolunteered(true);
       setChat(filteredChat[0]);
     } else {
@@ -121,7 +121,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
       })
     }
 
-    // getChats();
+    getChats();
   }, []);
 
   useEffect(() => {
@@ -132,11 +132,11 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
   }, [modalOpen]);
 
   useEffect(() => {
-    if (chats && request && request !== '') {
-      console.log()
-      // compareChatRequetsToCurrentRequest();
+    if (chats && request) {
+      compareChatRequetsToCurrentRequest();
     }
-  }, [modalOpen, volunteered, chats]);
+
+  }, [chats, request]);
 
   return (
     <div className="show-request-modal">

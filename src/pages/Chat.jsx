@@ -132,7 +132,7 @@ const Chat = () => {
     }
 
     filterChats();
-  }, []);
+  }, [chats]);
 
   useEffect(() => {
     const responsiveChat = () => {
