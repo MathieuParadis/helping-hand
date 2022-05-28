@@ -25,7 +25,7 @@ import { API_ROOT } from '../constants/index';
 
 const Chat = () => {
   const { chat, setChat } = useContext(ChatContext);
-  const { setFlash } = useContext(FlashContext);
+  const { flash, setFlash } = useContext(FlashContext);
 
   const [keyword, setKeyword] = useState('');
   const [chats, setChats] = useState(false);
@@ -71,8 +71,62 @@ const Chat = () => {
     document.querySelector("body").classList.add("clicked");
   }
 
-  const markRequestAsFulfilled = () => {
-    alert(chat.request.title + " marked as fulfilled");
+  const closeShowRequestModal = () => {
+    const showRequestModal = document.querySelector(".show-request-modal");
+    showRequestModal.style.visibility = "hidden";
+    document.querySelector("body").classList.remove("clicked");
+  }
+
+  const markRequestAsFulfilled = (request) => {
+    const { id } = request
+
+    const data = {
+      status: "fulfilled"
+    };
+
+    const url = `${API_ROOT}/requests/${id}`;
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "PUT",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      // console.log(response);
+      return response.json();
+    })
+    .then(response => {
+      // console.log(response);
+      closeShowRequestModal();
+      if (response.message) {
+        setFlash({
+          type: 'success',
+          message: 'Request marked as fulfilled',
+          display: true,
+        });
+      } else {
+        setFlash({
+          type: 'danger',
+          message: response.error,
+          display: true,
+        })
+      }
+    })
+    .catch(error => {
+      // console.log(error);
+      closeShowRequestModal();
+      setFlash({
+        type: 'danger',
+        message: error,
+        display: true,
+      })
+    })
   }
 
   useEffect(() => {
@@ -108,7 +162,7 @@ const Chat = () => {
     }
 
     getChats();
-  }, [chat]);
+  }, [chat, flash]);
 
   useEffect(() => {
     const filterChats = () => {
@@ -216,7 +270,7 @@ const Chat = () => {
                           <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
                         </>
                     } */}
-                          <ActionCableConsumer channel={{ channel: 'ChatsChannel' }}>
+                          <ActionCableConsumer channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat}>
                           
                           </ActionCableConsumer>
 
