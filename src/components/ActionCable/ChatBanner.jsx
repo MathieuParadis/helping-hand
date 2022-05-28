@@ -2,14 +2,12 @@
 import React, { useContext } from 'react';
 
 // CONTEXT IMPORTS
-import UserContext from '../Context/UserContext';
 import ChatContext from '../Context/ChatContext';
+import UserContext from '../Context/UserContext';
 
 const ChatBanner = ({setOpenShowRequestModal}) => {
   const { chat } = useContext(ChatContext);
   const { user } = useContext(UserContext);
-
-  console.log(chat)
 
   return (
     <div className="chat-banner">

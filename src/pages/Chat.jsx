@@ -192,7 +192,7 @@ const Chat = () => {
               <div className="top-section row border-bottom-grey">
                 <div className="selected-chat-section col-12 col-lg-8 pe-lg-0 ">
                   <div className="selected-chat-section-content">
-                    <ChatBanner currentChat={chat} setOpenShowRequestModal={openShowRequestModal} />
+                    <ChatBanner setOpenShowRequestModal={openShowRequestModal} />
                   </div>
                 </div>
                 <div className="search-chat-section col-12 col-lg-4 border-left-grey justify-content-center align-items-center ps-lg-0">
@@ -220,7 +220,7 @@ const Chat = () => {
 
                   </div>
                   <div className="chat-message-section-input">
-                    <MessageInput currentChat={chat} handleReceivedMessage={handleReceivedMessage} />
+                    <MessageInput handleReceivedMessage={handleReceivedMessage} />
                   </div>
                 </div>
                 <div className="chat-index-section col-12 col-lg-4 border-left-grey ps-lg-0 h-100">

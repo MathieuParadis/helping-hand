@@ -2,13 +2,15 @@
 import React, { useEffect, useState, useContext } from 'react';
 
 // CONTEXT IMPORTS
+import ChatContext from '../Context/ChatContext';
 import FlashContext from '../Context/FlashContext';
 import UserContext from '../Context/UserContext';
 
 // CONSTANTS IMPORTS
 import { API_ROOT } from '../../constants/index';
 
-const MessageInput = ({currentChat}) => {
+const MessageInput = () => {
+  const { chat } = useContext(ChatContext);
   const { setFlash } = useContext(FlashContext);
   const { user } = useContext(UserContext);
 
@@ -19,7 +21,7 @@ const MessageInput = ({currentChat}) => {
 
     const data = {
       content: messageText,
-      chat_id: currentChat.id,
+      chat_id: chat.id,
       user_id: user.id
     };
 
@@ -66,7 +68,7 @@ const MessageInput = ({currentChat}) => {
 
   const disableMessageArea = () => {
     const input = document.querySelector('#message-input-field');
-    currentChat === '' ? input.setAttribute('disabled', true) : input.removeAttribute('disabled');
+    chat === '' ? input.setAttribute('disabled', true) : input.removeAttribute('disabled');
   }
 
   useEffect(() => {
