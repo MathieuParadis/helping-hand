@@ -8,7 +8,7 @@ import DropdownMenuOptionsRequestCard from './DropdownMenuOptionsRequestCard';
 import expired_banner from '../assets/images/expired_banner.svg';
 import fulfilled_banner from '../assets/images/fulfilled_banner.svg';
 
-const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
+const RequestCard = ({request, setRequest, setOpenShowModal, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
   const toggleMenuRequestCard = () => {
     const menuRequestCard = document.querySelector("#R" + request.id + "> div.dropdown-menu-options-request-card");
     
@@ -44,6 +44,7 @@ const RequestCard = ({request, setOpenShowModal, setOpenEditModal, setMarkReques
           <div className="dropdown" id={`R${request.id}`}>
             <DropdownMenuOptionsRequestCard 
               request={request} 
+              setRequest={setRequest}
               setOpenEditModal={setOpenEditModal} 
               setMarkRequestAsFulfilled={setMarkRequestAsFulfilled}
               setRepublishRequest={setRepublishRequest}

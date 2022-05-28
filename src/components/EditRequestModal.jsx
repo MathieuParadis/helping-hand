@@ -7,7 +7,7 @@ import FlashContext from '../components/Context/FlashContext';
 // CONSTANTS IMPORTS
 import { API_ROOT } from '../constants/index';
 
-const EditRequestModal = ({request}) => {
+const EditRequestModal = ({request, setRequest}) => {
   const { setFlash } = useContext(FlashContext);
 
   let id = ""
@@ -75,6 +75,7 @@ const EditRequestModal = ({request}) => {
           message: response.message,
           display: true,
         });
+        setRequest('');
       } else {
         setFlash({
           type: 'danger',

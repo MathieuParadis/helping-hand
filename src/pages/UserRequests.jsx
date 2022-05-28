@@ -9,6 +9,7 @@ import ReactLoading from 'react-loading';
 
 // COMPONENTS IMPORTS
 import EditRequestModal from '../components/EditRequestModal';
+import NewRequestModal from '../components/NewRequestModal';
 import RequestCard from '../components/RequestCard';
 import ShowRequestModal from '../components/ShowRequestModal';
 
@@ -16,7 +17,7 @@ import ShowRequestModal from '../components/ShowRequestModal';
 import { API_ROOT } from '../constants/index';
 
 const UserRequests = () => {
-  const { setFlash } = useContext(FlashContext);
+  const { flash, setFlash } = useContext(FlashContext);
 
   const [currentUserRequests, setCurrentUserRequests] = useState('');
   const [filteredCurrentUserRequests, setFilteredCurrentUserRequests] = useState(null);
@@ -64,6 +65,7 @@ const UserRequests = () => {
     const showRequestModal = document.querySelector(".show-request-modal");
     showRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
+    setCurrentUserRequest('');
   }
 
   const toggleRequestStatusCaption = () => {
@@ -109,6 +111,7 @@ const UserRequests = () => {
           message: 'Request marked as fulfilled',
           display: true,
         });
+        setCurrentUserRequest('');
       } else {
         setFlash({
           type: 'danger',
@@ -277,14 +280,16 @@ const UserRequests = () => {
   
   useEffect(() => {
     getCurrentUserRequests();
-    filterRequests(keyword);
-  }, [currentUserRequests]);
+  }, [currentUserRequest, flash]);
 
   useEffect(() => {
     if (!filteredCurrentUserRequests) {
       filterRequests('all');
+    } else {
+      filterRequests(keyword);
     }
-  }, [currentUserRequests]);
+
+  }, [currentUserRequests, keyword]);
 
   useEffect(() => {
     closeMenus();
@@ -297,7 +302,9 @@ const UserRequests = () => {
   return (
     <>
       <ShowRequestModal request={currentUserRequest} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} setRepublishRequest={republishRequest} />
-      <EditRequestModal request={currentUserRequest} />
+      <EditRequestModal request={currentUserRequest} setRequest={setCurrentUserRequest} />
+      {/* <NewRequestModal setRequest={setCurrentUserRequest} /> */}
+
       <div className="user-requests">
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
@@ -342,6 +349,7 @@ const UserRequests = () => {
                         return (
                           <RequestCard 
                             request={request} 
+                            setRequest={setCurrentUserRequest}
                             setOpenShowModal={openShowRequestModal} 
                             setOpenEditModal={openEditRequestModal}
                             setMarkRequestAsFulfilled={markRequestAsFulfilled}

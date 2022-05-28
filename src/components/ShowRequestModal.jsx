@@ -121,21 +121,22 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
       })
     }
 
-    getChats();
+    // getChats();
   }, []);
 
   useEffect(() => {
-    if (request) {
+    if (request && request !== '') {
       scrollTopComponent();
       setModalOpen(true);
     }
   }, [modalOpen]);
 
   useEffect(() => {
-    if (chats && request) {
-      compareChatRequetsToCurrentRequest();
+    if (chats && request && request !== '') {
+      console.log()
+      // compareChatRequetsToCurrentRequest();
     }
-  }, [modalOpen, volunteered, chats, request]);
+  }, [modalOpen, volunteered, chats]);
 
   return (
     <div className="show-request-modal">
