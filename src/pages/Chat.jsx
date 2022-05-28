@@ -6,7 +6,7 @@ import ChatContext from '../components/Context/ChatContext';
 import FlashContext from '../components/Context/FlashContext';
 
 // ACTION CABLE IMPORT
-import { ActionCable } from 'react-actioncable-provider';
+import { ActionCableConsumer } from 'react-actioncable-provider';
 
 // ASSETS IMPORTS
 import search_icon from '../assets/logos/search_logo.svg';
@@ -28,7 +28,7 @@ const Chat = () => {
   const { setFlash } = useContext(FlashContext);
 
   const [keyword, setKeyword] = useState('');
-  const [chats, setChats] = useState();
+  const [chats, setChats] = useState(false);
   const [filteredChats, setFilteredChats] = useState();
 
   const openChat = (chat) => {
@@ -213,10 +213,12 @@ const Chat = () => {
                       chats && 
                         <>                       
                           <ActionCable channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat} />
-                          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} currentChat={chat}/>
+                          <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
                         </>
                     } */}
-
+                          <ActionCableConsumer channel={{ channel: 'ChatsChannel' }}>
+                          
+                          </ActionCableConsumer>
 
                   </div>
                   <div className="chat-message-section-input">

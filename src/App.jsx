@@ -57,7 +57,7 @@ const App = () => {
     if(localStorage.getItem('user') !== null ) {
       setUser(JSON.parse(localStorage.getItem('user')));
     }
-  }, [user]);
+  }, []);
 
   return (
     <div className="app">
