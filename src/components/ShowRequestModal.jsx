@@ -70,7 +70,8 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
       return response.json();
     })
     .then(response => {
-      console.log(response);
+      // console.log(response);
+      closeShowRequestModal();
       setChat(response);
     })
     .catch(errors => {
@@ -154,12 +155,8 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
                 <p className="mb-4"><strong>Type: </strong>{request.request_type}</p>
                 <p className="mb-4"><strong>Location: </strong>{request.location}</p>
                 <p className="mb-4"><strong>Description: </strong>{request.description}</p>
-                {
-                  user.id === request.user.id && 
-                    (
-                      <p className="mb-4"><strong>Status: </strong>{request.status}</p>
-                    )
-                }
+                <p className="mb-4"><strong>Status: </strong>{request.status}</p>
+
                 { request.status === 'expired' && (<img src={expired_banner} alt="expired banner" className="banner align-self-center" />) }
                 { request.status === 'fulfilled' && (<img src={fulfilled_banner} alt="fulfilled banner" className="banner align-self-center" />) }
               </div>

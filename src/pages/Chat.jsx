@@ -37,8 +37,8 @@ const Chat = () => {
 
   // ACTION CABLE
   const handleReceivedChat = (response) => {
-    const chat = response;
-    setChats([...chats, chat]);
+    const newChat = response;
+    setChats([...chats, newChat]);
   };
 
   const handleReceivedMessage = (response) => {
@@ -291,10 +291,10 @@ const Chat = () => {
 
 
                     {
-                      filteredChats && (
-                        filteredChats.map((chat) => {
+                      chats && (
+                        chats.map((chat) => {
                           return (
-                            <ChatCard chat={chat} setChat={openChat} key={chat.id} />
+                            <ChatCard chat={chat} key={chat.id} />
                           )
                         })
                       )

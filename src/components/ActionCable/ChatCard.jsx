@@ -2,13 +2,11 @@
 import React, { useContext } from 'react';
 
 // CONTEXT IMPORTS
+import ChatContext from '../Context/ChatContext';
 import UserContext from '../Context/UserContext';
 
-// import NewConversationForm from './NewConversationForm';
-// import MessagesArea from './MessagesArea';
-// import Cable from './Cable';
-
-const ChatCard = ({chat, setChat}) => {
+const ChatCard = ({chat}) => {
+  const { setChat } = useContext(ChatContext);
   const { user } = useContext(UserContext);
   
   return (
