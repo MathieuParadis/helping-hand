@@ -68,7 +68,10 @@ const MessageInput = () => {
 
   const disableMessageArea = () => {
     const input = document.querySelector('#message-input-field');
+    const sendBtn = document.querySelector('#send-button');
     chat === '' ? input.setAttribute('disabled', true) : input.removeAttribute('disabled');
+    chat === '' ? sendBtn.setAttribute('disabled', true) : sendBtn.removeAttribute('disabled');
+
   }
 
   useEffect(() => {
@@ -77,8 +80,9 @@ const MessageInput = () => {
 
   return (
     <div className="message-input p-3 h-100">
-      <form onSubmit={createMessage} className="h-100">
-        <input type="text" className="border-0 form-control h-100" id="message-input-field" aria-describedby="message input field" value={messageText} onChange={(e) => setMessageText(e.target.value)} placeholder="Write a message..." required />
+      <form onSubmit={createMessage} className="d-flex justify-content-center align-items-center h-100">
+        <input type="text" className="border-0 form-control h-100 me-2" id="message-input-field" aria-describedby="message input field" value={messageText} onChange={(e) => setMessageText(e.target.value)} placeholder="Write a message..." required />
+        <button type="submit" id="send-button" className="btn button-primary button-w100 m-0 p-1">Send</button>
       </form>
     </div>
   );
