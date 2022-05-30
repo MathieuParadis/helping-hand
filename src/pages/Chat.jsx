@@ -4,6 +4,7 @@ import React, { useEffect, useState, useContext } from 'react';
 // CONTEXT IMPORTS
 import ChatContext from '../components/Context/ChatContext';
 import FlashContext from '../components/Context/FlashContext';
+import UserContext from '../components/Context/UserContext';
 
 // ACTION CABLE IMPORTS
 import { ActionCableConsumer } from 'react-actioncable-provider';
@@ -24,6 +25,7 @@ import ShowRequestModal from '../components/ShowRequestModal';
 import { API_ROOT } from '../constants/index';
 
 const Chat = () => {
+  const { user } = useContext(UserContext);
   const { chat, setChat } = useContext(ChatContext);
   const { flash, setFlash } = useContext(FlashContext);
 
@@ -36,15 +38,25 @@ const Chat = () => {
   const handleReceivedChat = (response) => {
     const newChat = response;
     console.log(newChat);
-    setChats([newChat, ...chats]);
+    
+    // adding the received chat to the chats channel if the volunteer / requester is the user
+    if (newChat.requester.id === user.id || newChat.volunteer.id === user.id ) {
+      setChats([newChat, ...chats]);
+    }
   }
 
   const handleReceivedMessage = (response) => {
-    const message = response;
-    const currentChat = chat
-    const userChats = [...chats];
-    currentChat.messages = [...chat.messages, message];
+    const newMessage = response;
+    let userChats = [...chats];
+
+    // adding the received messages to the proper chat
+    const newMessageChat = userChats.find(chat => chat.id === newMessage.chat_id);
+    newMessageChat.messages = [...newMessageChat.messages, newMessage];
+
     setChats(userChats);
+    console.log(chats)
+    console.log(userChats)
+    console.log(newMessageChat.messages);
   }
   // ACTION CABLE
 
@@ -237,13 +249,11 @@ const Chat = () => {
       <ShowRequestModal request={chat.request} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditRequestModal request={chat.request} />
 
-      { chats &&   
+      {/* { chats &&   
         <ActionCableConsumer channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat}>
           <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
         </ActionCableConsumer>     
-      }    
-
-
+      }     */}
 
       <div className="chat d-flex justify-content-center">
         <div className="d-flex justify-content-center mx-0 w-100">
@@ -269,7 +279,25 @@ const Chat = () => {
               <div className="bottom-section row flex-grow-1">
                 <div className=" d-flex flex-column chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
                   <div className="chat-message-section-content flex-grow-1">
-                    <ChatConversation />
+                    
+                    
+
+
+                    { chats &&   
+                      <ActionCableConsumer channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat}>
+                        <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
+                      </ActionCableConsumer>     
+                    }    
+
+
+
+
+
+
+
+
+
+
                   </div>
                   <div className="chat-message-section-input">
                     <MessageInput />
@@ -293,11 +321,6 @@ const Chat = () => {
           </div>
         </div>
       </div>
-
-
-
-
-      
     </>
   );
 };
