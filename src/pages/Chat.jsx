@@ -248,13 +248,11 @@ const Chat = () => {
     <>
       <ShowRequestModal request={chat.request} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditRequestModal request={chat.request} />
-
-      {/* { chats &&   
+      { chats &&   
         <ActionCableConsumer channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat}>
           <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
         </ActionCableConsumer>     
-      }     */}
-
+      }    
       <div className="chat d-flex justify-content-center">
         <div className="d-flex justify-content-center mx-0 w-100">
           <div className="d-flex flex-column align-items-center my-3 py-3 w-100">
@@ -279,25 +277,7 @@ const Chat = () => {
               <div className="bottom-section row flex-grow-1">
                 <div className=" d-flex flex-column chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
                   <div className="chat-message-section-content flex-grow-1">
-                    
-                    
-
-
-                    { chats &&   
-                      <ActionCableConsumer channel={{ channel: 'ChatsChannel' }} onReceived={handleReceivedChat}>
-                        <Cable chats={chats} handleReceivedMessage={handleReceivedMessage} />
-                      </ActionCableConsumer>     
-                    }    
-
-
-
-
-
-
-
-
-
-
+                    <ChatConversation />
                   </div>
                   <div className="chat-message-section-input">
                     <MessageInput />
