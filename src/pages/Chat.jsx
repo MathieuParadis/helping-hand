@@ -51,12 +51,15 @@ const Chat = () => {
 
     // adding the received messages to the proper chat
     const newMessageChat = userChats.find(chat => chat.id === newMessage.chat_id);
-    newMessageChat.messages = [...newMessageChat.messages, newMessage];
 
-    setChats(userChats);
-    console.log(chats)
-    console.log(userChats)
-    console.log(newMessageChat.messages);
+    if (newMessageChat.messages[newMessageChat.messages.length-1].id !== newMessage.id) {
+      newMessageChat.messages = [...newMessageChat.messages, newMessage];
+    }
+    console.log(newMessageChat);
+
+    let chatsArray = userChats.filter((chat) => chat.id !== newMessage.chat_id);
+
+    setChats([newMessageChat, ...chatsArray]);
   }
   // ACTION CABLE
 
@@ -173,7 +176,7 @@ const Chat = () => {
     }
 
     getChats();
-  }, [chat, flash]);
+  }, [chat, flash, keyword]);
 
   useEffect(() => {
     const filterChats = () => {
