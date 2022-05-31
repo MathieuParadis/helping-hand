@@ -16,7 +16,7 @@ import { API_ROOT } from '../constants/index';
 
 const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled, setRepublishRequest}) => {
   const { chat, setChat } = useContext(ChatContext);
-  const { setFlash } = useContext(FlashContext);
+  const { flash, setFlash } = useContext(FlashContext);
   const { user } = useContext(UserContext);
 
   const [modalOpen, setModalOpen] = useState(true);
@@ -122,7 +122,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
     }
 
     getChats();
-  }, []);
+  }, [flash]);
 
   useEffect(() => {
     if (request && request !== '') {
@@ -136,7 +136,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
       compareChatRequetsToCurrentRequest();
     }
 
-  }, [chats, request]);
+  }, [chats, request, volunteered]);
 
   return (
     <div className="show-request-modal">
@@ -162,30 +162,38 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
               </div>
               {
                 user.id === request.user.id ? 
-                  ( 
-                    request.status !== 'fulfilled' ? 
-                    (
-                      <div className="d-flex flex-column flex-md-row mt-4">
-                        <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
-                        <button className="btn button-outline-primary button-modal mx-0 mx-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button>
-                        {
-                          request.status === 'expired' && 
-                          <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => setRepublishRequest(request)}>Republish request</button>
-                        }
-                      </div>
-                    ) : 
-                    (
-                      <div className="d-flex flex-column flex-md-row mt-4">
-                        <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" disabled>Edit request</button>
-                        <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" disabled>Mark as fulfilled</button>
-                      </div>
-                    )
-                  ) :
+                ( 
+                  request.status !== 'fulfilled' ? 
                   (
-                    volunteered && chat !== '' ? 
-                    <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => closeShowRequestModal()}>Open chat</NavLink> : 
-                    <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => createChat()}>Volunteer</NavLink>
+                    <div className="d-flex flex-column flex-md-row mt-4">
+                      <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => setOpenEditModal(request)}>Edit request</button>
+                      <button className="btn button-outline-primary button-modal mx-0 mx-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button>
+                      {
+                        request.status === 'expired' && 
+                        <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" onClick={() => setRepublishRequest(request)}>Republish request</button>
+                      }
+                    </div>
+                  ) : 
+                  (
+                    <div className="d-flex flex-column flex-md-row mt-4">
+                      <button className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" disabled>Edit request</button>
+                      <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" disabled>Mark as fulfilled</button>
+                    </div>
                   )
+                ) :
+                (
+                  volunteered && chat !== '' ? 
+                    <div className="d-flex flex-column flex-md-row mt-4">
+                      <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal me-0 me-md-2 mb-2 mb-md-0 p-1" onClick={() => closeShowRequestModal()}>Open chat</NavLink>
+                      {
+                        request.status !== 'fulfilled' ? 
+                        <button className="btn button-outline-primary button-modal mx-0 mx-md-2 p-1" onClick={() => setMarkRequestAsFulfilled(request)}>Mark as fulfilled</button> :
+                        <button className="btn button-outline-primary button-modal ms-0 ms-md-2 p-1" disabled>Mark as fulfilled</button>
+                      }
+                    </div>
+                    :
+                  <NavLink exact="true" to="/my-chats" className="btn button-primary button-modal mt-4 p-1" onClick={() => createChat()}>Volunteer</NavLink>
+                )
               }
             </div>
           )}
