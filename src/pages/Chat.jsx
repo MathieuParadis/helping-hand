@@ -41,7 +41,9 @@ const Chat = () => {
     
     // adding the received chat to the chats channel if the volunteer / requester is the user
     if (newChat.requester.id === user.id || newChat.volunteer.id === user.id ) {
-      setChats([newChat, ...chats]);
+      if (chats[chats.length-1].id !== newChat.id) {
+        setChats([newChat, ...chats]);
+      }
     }
   }
 
@@ -55,11 +57,11 @@ const Chat = () => {
     if (newMessageChat.messages[newMessageChat.messages.length-1].id !== newMessage.id) {
       newMessageChat.messages = [...newMessageChat.messages, newMessage];
     }
-    console.log(newMessageChat);
 
     let chatsArray = userChats.filter((chat) => chat.id !== newMessage.chat_id);
 
     setChats([newMessageChat, ...chatsArray]);
+    setChat(chat)
   }
   // ACTION CABLE
 
@@ -279,8 +281,18 @@ const Chat = () => {
               </div>
               <div className="bottom-section row flex-grow-1">
                 <div className=" d-flex flex-column chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
-                  <div className="chat-message-section-content flex-grow-1">
-                    <ChatConversation />
+                  <div className="chat-message-section-content flex-grow-1">                    
+                    {
+                      chats && (
+                        chats.map((chatElement) => {
+                          if (chatElement.id === chat.id) {
+                            return (
+                              <ChatConversation currentChat={chatElement} />
+                            )
+                          }
+                        })
+                      )
+                    }
                   </div>
                   <div className="chat-message-section-input">
                     <MessageInput />
@@ -291,8 +303,9 @@ const Chat = () => {
                     {
                       filteredChats && (
                         filteredChats.map((chat) => {
+                          console.log(chat.messages)
                           return (
-                              <ChatCard chat={chat} key={chat.id} />
+                            <ChatCard chat={chat} key={chat.id} />
                           )
                         })
                       )
