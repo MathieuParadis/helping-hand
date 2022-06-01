@@ -73,7 +73,7 @@ const ChatCard = ({chatEl}) => {
 
   return (
     <div className="chat-card w-100 border-bottom-grey p-3 d-flex flex-column justify-content-between pointer" onClick={() => {markAllMessagesAsRead(chatEl); setChat(chatEl)}}>
-      <h5 className={(chat && chat.id === chatEl.id) ? 'text-primary mb-4' : 'mb-4'}>{chatEl.request.title}</h5>
+      <h4 className={(chat && chat.id === chatEl.id) ? 'text-primary mb-4' : 'mb-4'}>{chatEl.request.title}</h4>
       <h5 className={unreadMessages.length > 0 ? 'text-ternary' : 'd-none'}>{unreadMessages.length} new {unreadMessages.length === 1 ? 'message' : 'messages'}</h5>
       <p className="mb-1">
         Requester: {chatEl.requester.first_name} {chatEl.requester.last_name}

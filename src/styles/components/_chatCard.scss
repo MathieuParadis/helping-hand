@@ -1,10 +1,14 @@
 .chat-card {
   min-height: 105px;
 
+  h4 {
+    font-size: 1.35em;
+  }
+
   &:hover {
     background-color: var(--basic-color-grey-light);
 
-    h5 {
+    h4 {
       color: var(--prim-color);
     }
   }
