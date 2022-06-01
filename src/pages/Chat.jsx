@@ -61,7 +61,7 @@ const Chat = () => {
     let chatsArray = userChats.filter((chat) => chat.id !== newMessage.chat_id);
 
     setChats([newMessageChat, ...chatsArray]);
-    setChat(chat)
+    // setChat(chat)
   }
   // ACTION CABLE
 
