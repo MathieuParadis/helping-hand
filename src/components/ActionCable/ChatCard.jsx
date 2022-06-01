@@ -62,11 +62,14 @@ const ChatCard = ({chatEl}) => {
 
   useEffect(() => {
     getUnreadMessages(chatEl);
-
-    if (chat.id === chatEl.id) {
-      markAllMessagesAsRead(chatEl);
-    }
   }, [chatEl, chatEl.messages]);
+
+  useEffect(() => {
+    if (chat.id === chatEl.id && unreadMessages.length > 0) {
+      markAllMessagesAsRead(chatEl);
+      setUnreadMessages([]);
+    }
+  }, [chatEl, chatEl.messages, unreadMessages]);
 
   return (
     <div className="chat-card w-100 border-bottom-grey p-3 d-flex flex-column justify-content-between pointer" onClick={() => {markAllMessagesAsRead(chatEl); setChat(chatEl)}}>
