@@ -71,7 +71,6 @@ const MessageInput = () => {
     const sendBtn = document.querySelector('#send-button');
     chat === '' ? input.setAttribute('disabled', true) : input.removeAttribute('disabled');
     chat === '' ? sendBtn.setAttribute('disabled', true) : sendBtn.removeAttribute('disabled');
-
   }
 
   useEffect(() => {

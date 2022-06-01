@@ -1,54 +1,53 @@
 .profile {
-  .container {
-    min-height: 85vh;
-    width: 100%;
+  min-height: 85vh;
+  width: 100%;
 
-    .box {
-      background-color: var(--basic-color-white);
-      overflow: hidden;
-      
-      @include mobile {
-        width: 100%;
-      }
+  .box {
+    background-color: var(--basic-color-white);
+    overflow: hidden;
+    
+    @include mobile {
+      width: 100%;
+    }
 
-      @include tablet_and_large-screen {
-        width: 90%;
-        min-height: 500px;
-      }
+    @include tablet_and_large-screen {
+      width: 90%;
+      min-height: 500px;
+    }
 
-      @include very_large-screen {
-        width: 90%;
-        min-height: 585px;
-      }
+    @include very_large-screen {
+      width: 90%;
+      min-height: 585px;
+    }
 
-      .box-right {
-        .id-card-box {
-          border: 1px solid var(--basic-color-grey-dark);
-          width: 230px;
-          height: 180px;
-          overflow: hidden;
+    .box-right {
+      .id-card-box {
+        border: 1px solid var(--basic-color-grey-dark);
+        width: 230px;
+        height: 180px;
+        overflow: hidden;
 
-          @include mobile_and_tablet {
-            width: 169px;
-            height: 133px;
-          }
-
-          .id-card {
-            width: 100%;
-            object-fit: contain;
-          }
+        @include mobile_and_tablet {
+          width: 169px;
+          height: 133px;
         }
 
-        .profile-button {
-          width: 250px;
-          padding: 10px;
+        .id-card {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
 
-          @include very_large_screen {
-            width: 220px;
-            padding: 10px;
-          }
+      .profile-button {
+        width: 250px;
+        padding: 10px;
+
+        @include very_large_screen {
+          width: 220px;
+          padding: 10px;
         }
       }
     }
   }
+  
 }

@@ -13,9 +13,11 @@ import { DropdownButton, Dropdown } from 'react-bootstrap';
 import HamburgerMenu from './HamburgerMenu';
 
 // ASSETS IMPORTS
+import chat_logo from '../assets/logos/chat_logo.svg';
+import chat_logo_hoovered from '../assets/logos/chat_logo_hoovered.svg';
 import logo from '../assets/logos/helping_hand_logo_with_text.svg';
-import profile_round_logo from '../assets/logos/profile_round_logo.svg';
 import logout_logo from '../assets/logos/logout_logo.svg';
+import profile_round_logo from '../assets/logos/profile_round_logo.svg';
 
 const Navigation = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
@@ -77,22 +79,27 @@ const Navigation = () => {
                   <NavLink exact="true" to="/how-it-works" className="navlink h4 me-4 me-xl-4 mb-0">How it works</NavLink>
                   <p className="navlink h4 mb-0" onClick={() => openNewRequestModal()}>New request</p>
                 </div>
-              </div>           
-              <DropdownButton 
-                className="d-none d-lg-flex"
-                title={<img src={profile_round_logo} alt="logout logo" className="profile-logo pointer me-2" />}
-              >
-                <Dropdown.Item href="/my-profile">My profile</Dropdown.Item>
-                <Dropdown.Item href="/my-requests">My requests</Dropdown.Item>
-                <Dropdown.Item href="/my-chats">My chats</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item>
-                  <div className="d-flex" onClick={() => signOut()}>
-                    <img src={logout_logo} alt="logout logo" className="logout-logo pointer me-2" />
-                    <p className="mb-0">Log out</p>
-                  </div>
-                </Dropdown.Item>
-              </DropdownButton>
+              </div>    
+              <div className="d-flex align-items-center">
+                <NavLink exact="true" to="/my-chats" className="me-5 pe-5 me-lg-4 pe-lg-4">
+                  <img src={chat_logo} alt="chat logo" className="chat-logo pointer" onMouseOver={e => (e.currentTarget.src = chat_logo_hoovered)} onMouseOut={e => (e.currentTarget.src = chat_logo)}/>
+                </NavLink>
+                <DropdownButton 
+                  className="d-none d-lg-flex"
+                  title={<img src={profile_round_logo} alt="logout logo" className="profile-logo pointer me-2" />}
+                >
+                  <Dropdown.Item href="/my-profile">My profile</Dropdown.Item>
+                  <Dropdown.Item href="/my-requests">My requests</Dropdown.Item>
+                  <Dropdown.Item href="/my-chats">My chats</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item>
+                    <div className="d-flex" onClick={() => signOut()}>
+                      <img src={logout_logo} alt="logout logo" className="logout-logo pointer me-2" />
+                      <p className="mb-0">Log out</p>
+                    </div>
+                  </Dropdown.Item>
+                </DropdownButton>
+              </div> 
             </div>
           )
         }

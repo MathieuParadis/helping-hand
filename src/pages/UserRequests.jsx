@@ -138,6 +138,7 @@ const UserRequests = () => {
 
     const data = {
       status: "in_progress",
+      count: 0,
       expiry_date: parseInt(Date.now() / 1000, 10) + (86400*3)
     };
 
