@@ -90,7 +90,7 @@ const Navigation = () => {
       })
     }
 
-    getChats();
+    authenticated && getChats();
   }, [flash]);
 
   useEffect(() => {
