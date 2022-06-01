@@ -8,14 +8,14 @@ import UserContext from '../Context/UserContext';
 // CONSTANTS IMPORTS
 import { API_ROOT } from '../../constants/index';
 
-const ChatCard = ({chat}) => {
-  const { setChat } = useContext(ChatContext);
+const ChatCard = ({chatEl}) => {
+  const { chat, setChat } = useContext(ChatContext);
   const { user } = useContext(UserContext);
 
   const [unreadMessages, setUnreadMessages] = useState([]);
 
-  const getUnreadMessages = (chat) => {     
-    let unreadMessagesArray = chat.messages.filter((message) => {
+  const getUnreadMessages = (chatEl) => {     
+    let unreadMessagesArray = chatEl.messages.filter((message) => {
       return (message.read_status === 'unread' && message.user.id !== user.id)
     })
     setUnreadMessages(unreadMessagesArray);
@@ -53,28 +53,32 @@ const ChatCard = ({chat}) => {
     })
   }
 
-  const markAllMessagesAsRead = (chat) => {
-    getUnreadMessages(chat);
+  const markAllMessagesAsRead = (chatElement) => {
+    getUnreadMessages(chatElement);
     unreadMessages.map((message) => {
       return (markMessageAsRead(message))
     })
   }
 
   useEffect(() => {
-    getUnreadMessages(chat);
-  }, []);
-  
+    getUnreadMessages(chatEl);
+
+    if (chat.id === chatEl.id) {
+      markAllMessagesAsRead(chatEl);
+    }
+  }, [chatEl, chatEl.messages]);
+
   return (
-    <div className="chat-card w-100 border-bottom-grey p-3 d-flex flex-column justify-content-between pointer" onClick={() => {markAllMessagesAsRead(chat); setChat(chat)}}>
-      <h5>{chat.request.title}</h5>
-      <h5>{unreadMessages.length}</h5>
+    <div className="chat-card w-100 border-bottom-grey p-3 d-flex flex-column justify-content-between pointer" onClick={() => {markAllMessagesAsRead(chatEl); setChat(chatEl)}}>
+      <h5 className={(chat && chat.id === chatEl.id) ? 'text-primary mb-4' : 'mb-4'}>{chatEl.request.title}</h5>
+      <h5 className={unreadMessages.length > 0 ? 'text-ternary' : 'd-none'}>{unreadMessages.length}</h5>
       <p className="mb-1">
-        Requester: {chat.requester.first_name} {chat.requester.last_name}
-        <small>{chat.requester.id === user.id && " (yourself)"}</small>
+        Requester: {chatEl.requester.first_name} {chatEl.requester.last_name}
+        <small>{chatEl.requester.id === user.id && " (yourself)"}</small>
       </p>
       <p className="m-0">
-        Volunteer: {chat.volunteer.first_name} {chat.volunteer.last_name}
-        <small>{chat.volunteer.id === user.id && " (yourself)"}</small>        
+        Volunteer: {chatEl.volunteer.first_name} {chatEl.volunteer.last_name}
+        <small>{chatEl.volunteer.id === user.id && " (yourself)"}</small>        
       </p>
     </div>
   );

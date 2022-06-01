@@ -61,7 +61,6 @@ const Chat = () => {
     let chatsArray = userChats.filter((chat) => chat.id !== newMessage.chat_id);
 
     setChats([newMessageChat, ...chatsArray]);
-    // setChat(chat)
   }
   // ACTION CABLE
 
@@ -303,9 +302,8 @@ const Chat = () => {
                     {
                       filteredChats && (
                         filteredChats.map((chat) => {
-                          console.log(chat.messages)
                           return (
-                            <ChatCard chat={chat} key={chat.id} />
+                            <ChatCard chatEl={chat} key={chat.id} />
                           )
                         })
                       )

@@ -58,6 +58,45 @@ const Navigation = () => {
     });
   }
 
+
+
+
+  
+    // ACTION CABLE
+    const handleReceivedChat = (response) => {
+      const newChat = response;
+      console.log(newChat);
+      
+      // adding the received chat to the chats channel if the volunteer / requester is the user
+      if (newChat.requester.id === user.id || newChat.volunteer.id === user.id ) {
+        if (chats[chats.length-1].id !== newChat.id) {
+          setChats([newChat, ...chats]);
+        }
+      }
+    }
+  
+    const handleReceivedMessage = (response) => {
+      const newMessage = response;
+      let userChats = [...chats];
+  
+      // adding the received messages to the proper chat
+      const newMessageChat = userChats.find(chat => chat.id === newMessage.chat_id);
+  
+      if (newMessageChat.messages[newMessageChat.messages.length-1].id !== newMessage.id) {
+        newMessageChat.messages = [...newMessageChat.messages, newMessage];
+      }
+  
+      let chatsArray = userChats.filter((chat) => chat.id !== newMessage.chat_id);
+  
+      setChats([newMessageChat, ...chatsArray]);
+      // setChat(chat)
+    }
+    // ACTION CABLE
+
+
+
+
+
   useEffect(() => {
     const getChats = () => {
       const url = `${API_ROOT}/chats`;
