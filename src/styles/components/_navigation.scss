@@ -54,8 +54,16 @@
     width: 50px;
   }
 
-  .chat-logo {
-    width: 35px;
+  .unread-chat {
+    padding-right: 4.5em;
+
+    .chat-logo {
+      width: 35px;
+  
+      @include mobile {
+        width: 30px;
+      }
+    }
   }
 
   .logout-logo {

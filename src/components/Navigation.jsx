@@ -1,10 +1,11 @@
 // CONFIG IMPORTS
-import React, { useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 // CONTEXT IMPORTS
 import AuthContext from './Context/AuthContext';
 import FlashContext from './Context/FlashContext';
+import UserContext from './Context/UserContext';
 
 // REACT BOOTSTRAP IMPORTS
 import { DropdownButton, Dropdown } from 'react-bootstrap';
@@ -19,9 +20,16 @@ import logo from '../assets/logos/helping_hand_logo_with_text.svg';
 import logout_logo from '../assets/logos/logout_logo.svg';
 import profile_round_logo from '../assets/logos/profile_round_logo.svg';
 
+// CONSTANTS IMPORTS
+import { API_ROOT } from '../constants/index';
+
 const Navigation = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
-  const { setFlash } = useContext(FlashContext);
+  const { flash, setFlash } = useContext(FlashContext);
+  const { user } = useContext(UserContext);
+
+  const [unreadChats, setUnreadChats] = useState(0);
+  const [chats, setChats] = useState();
 
   const location = useLocation();
   const navigate = useNavigate()
@@ -49,6 +57,54 @@ const Navigation = () => {
       display: true,
     });
   }
+
+  useEffect(() => {
+    const getChats = () => {
+      const url = `${API_ROOT}/chats`;
+      const token = localStorage.getItem('jwt_token');
+  
+      fetch(url, {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+      })
+      .then(response => {
+        // console.log(response);
+        return response.json()
+      })
+      .then(response => {
+        // console.log(response);
+        setChats(response);
+      })
+      .catch(errors => {
+        // console.log(errors);
+        setFlash({
+          type: 'danger',
+          message: "An error occured, please try again",
+          display: true,
+        })
+      })
+    }
+
+    getChats();
+  }, [flash]);
+
+  useEffect(() => {
+    const calculateUnreadChats = () => {     
+      let unreadChatsArray = chats.filter((chat) => {
+        return (chat.messages[chat.messages.length-1].read_status === 'unread' && chat.messages[chat.messages.length-1].user.id !== user.id)
+      })
+      setUnreadChats(unreadChatsArray.length)
+    }
+
+    if (chats) {
+      calculateUnreadChats();
+    }
+  }, [chats, flash]);
 
   return (
     <>
@@ -81,8 +137,9 @@ const Navigation = () => {
                 </div>
               </div>    
               <div className="d-flex align-items-center">
-                <NavLink exact="true" to="/my-chats" className="me-5 pe-5 me-lg-4 pe-lg-4">
-                  <img src={chat_logo} alt="chat logo" className="chat-logo pointer" onMouseOver={e => (e.currentTarget.src = chat_logo_hoovered)} onMouseOut={e => (e.currentTarget.src = chat_logo)}/>
+                <NavLink exact="true" to="/my-chats" className="unread-chat d-flex align-items-center me-lg-4 pe-lg-4">
+                  <img src={chat_logo} alt="chat logo" className="chat-logo pointer me-2" onMouseOver={e => (e.currentTarget.src = chat_logo_hoovered)} onMouseOut={e => (e.currentTarget.src = chat_logo)}/>
+                  <h4 className="m-0">{unreadChats}</h4>
                 </NavLink>
                 <DropdownButton 
                   className="d-none d-lg-flex"

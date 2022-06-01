@@ -25,9 +25,9 @@ import ShowRequestModal from '../components/ShowRequestModal';
 import { API_ROOT } from '../constants/index';
 
 const Chat = () => {
-  const { user } = useContext(UserContext);
   const { chat, setChat } = useContext(ChatContext);
   const { flash, setFlash } = useContext(FlashContext);
+  const { user } = useContext(UserContext);
 
   const [keyword, setKeyword] = useState('');
   const [chats, setChats] = useState(false);
@@ -287,7 +287,7 @@ const Chat = () => {
                         chats.map((chatElement) => {
                           if (chatElement.id === chat.id) {
                             return (
-                              <ChatConversation currentChat={chatElement} />
+                              <ChatConversation currentChat={chatElement} key={chatElement.id} />
                             )
                           }
                         })
