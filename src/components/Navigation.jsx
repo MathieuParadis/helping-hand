@@ -93,7 +93,7 @@ const Navigation = () => {
 
     const interval = setInterval(() => {
       authenticated && getChats();
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
