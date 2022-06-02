@@ -27,7 +27,7 @@ Helping Hand is a local charity whose mission is to help to build a strong commu
 End points of the app in production
 * [Users](https://helpping-hand-back.herokuapp.com/users)
 * [Requests](https://helpping-hand-back.herokuapp.com/requests)
-
+* [chats](https://helpping-hand-back.herokuapp.com/chats)
 
 
 ## How to use it:
