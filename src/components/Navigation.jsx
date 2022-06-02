@@ -93,9 +93,10 @@ const Navigation = () => {
 
     const interval = setInterval(() => {
       authenticated && getChats();
-    }, 5000);
+      console.log(chats)
+    }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [authenticated]);
 
 
   useEffect(() => {
@@ -106,10 +107,14 @@ const Navigation = () => {
       setUnreadChats(unreadChatsArray.length)
     }
 
+    console.log(chats);
+
+
     if (chats) {
       calculateUnreadChats();
+      console.log(chats);
     }
-  }, [chats, chats.length, flash]);
+  }, [chats, flash]);
 
   return (
     <>
