@@ -25,7 +25,7 @@ import ShowRequestModal from '../components/ShowRequestModal';
 import { API_ROOT } from '../constants/index';
 
 const Chat = () => {
-  const { chat, setChat } = useContext(ChatContext);
+  const { chat, setChat, unreadChats, setUnreadChats } = useContext(ChatContext);
   const { flash, setFlash } = useContext(FlashContext);
   const { user } = useContext(UserContext);
 
@@ -248,6 +248,21 @@ const Chat = () => {
     window.scrollTo(0, 0);
   }, []);
 
+
+
+  useEffect(() => {
+    const calculateUnreadChats = () => {     
+      let unreadChatsArray = chats.filter((chat) => {
+        return (chat.messages[chat.messages.length-1].read_status === 'unread' && chat.messages[chat.messages.length-1].user.id !== user.id)
+      })
+      setUnreadChats(unreadChatsArray.length)
+    }
+
+    if (chats) {
+      calculateUnreadChats();
+    }
+  }, [chats]);
+
   return (
     <>
       <ShowRequestModal request={chat.request} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
@@ -302,6 +317,7 @@ const Chat = () => {
                     {
                       filteredChats && (
                         filteredChats.map((chat) => {
+                          console.log(chat)
                           return (
                             <ChatCard chatEl={chat} key={chat.id} />
                           )

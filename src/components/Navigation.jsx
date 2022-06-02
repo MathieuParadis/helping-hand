@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 // CONTEXT IMPORTS
 import AuthContext from './Context/AuthContext';
+import ChatContext from './Context/ChatContext';
 import FlashContext from './Context/FlashContext';
 import UserContext from './Context/UserContext';
 
@@ -25,10 +26,10 @@ import { API_ROOT } from '../constants/index';
 
 const Navigation = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
+  const { unreadChats, setUnreadChats } = useContext(ChatContext);
   const { flash, setFlash } = useContext(FlashContext);
   const { user } = useContext(UserContext);
 
-  const [unreadChats, setUnreadChats] = useState(0);
   const [chats, setChats] = useState();
 
   const location = useLocation();
@@ -57,45 +58,6 @@ const Navigation = () => {
       display: true,
     });
   }
-
-
-
-
-  
-    // ACTION CABLE
-    const handleReceivedChat = (response) => {
-      const newChat = response;
-      console.log(newChat);
-      
-      // adding the received chat to the chats channel if the volunteer / requester is the user
-      if (newChat.requester.id === user.id || newChat.volunteer.id === user.id ) {
-        if (chats[chats.length-1].id !== newChat.id) {
-          setChats([newChat, ...chats]);
-        }
-      }
-    }
-  
-    const handleReceivedMessage = (response) => {
-      const newMessage = response;
-      let userChats = [...chats];
-  
-      // adding the received messages to the proper chat
-      const newMessageChat = userChats.find(chat => chat.id === newMessage.chat_id);
-  
-      if (newMessageChat.messages[newMessageChat.messages.length-1].id !== newMessage.id) {
-        newMessageChat.messages = [...newMessageChat.messages, newMessage];
-      }
-  
-      let chatsArray = userChats.filter((chat) => chat.id !== newMessage.chat_id);
-  
-      setChats([newMessageChat, ...chatsArray]);
-      // setChat(chat)
-    }
-    // ACTION CABLE
-
-
-
-
 
   useEffect(() => {
     const getChats = () => {
@@ -129,8 +91,12 @@ const Navigation = () => {
       })
     }
 
-    authenticated && getChats();
-  }, [flash]);
+    const interval = setInterval(() => {
+      authenticated && getChats();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
 
   useEffect(() => {
     const calculateUnreadChats = () => {     
@@ -143,7 +109,7 @@ const Navigation = () => {
     if (chats) {
       calculateUnreadChats();
     }
-  }, [chats, flash]);
+  }, [chats, chats.length, flash]);
 
   return (
     <>
@@ -177,8 +143,14 @@ const Navigation = () => {
               </div>    
               <div className="d-flex align-items-center">
                 <NavLink exact="true" to="/my-chats" className="unread-chat d-flex align-items-center me-lg-4 pe-lg-4">
-                  <img src={chat_logo} alt="chat logo" className="chat-logo pointer me-2" onMouseOver={e => (e.currentTarget.src = chat_logo_hoovered)} onMouseOut={e => (e.currentTarget.src = chat_logo)}/>
-                  <h4 className="m-0">{unreadChats}</h4>
+                  {
+                    unreadChats > 0 && 
+                    <>
+                      <img src={chat_logo} alt="chat logo" className="chat-logo pointer me-2" onMouseOver={e => (e.currentTarget.src = chat_logo_hoovered)} onMouseOut={e => (e.currentTarget.src = chat_logo)}/>
+                      <h4 className="m-0">{unreadChats}</h4>
+                    </>
+                  }
+
                 </NavLink>
                 <DropdownButton 
                   className="d-none d-lg-flex"

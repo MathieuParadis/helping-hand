@@ -36,6 +36,7 @@ library.add(fab);
 const App = () => { 
   const [authenticated, setAuthenticated] = useState(false);
   const [chat, setChat] = useState('');
+  const [unreadChats, setUnreadChats] = useState('');
   const [flash, setFlash] = useState({});
   const [user, setUser] = useState(false);
   const token = localStorage.getItem('jwt_token');
@@ -64,7 +65,7 @@ const App = () => {
       <AuthContext.Provider value={{authenticated, setAuthenticated}}>
         <FlashContext.Provider value={{flash, setFlash}}>
           <UserContext.Provider value={{user, setUser}}>
-            <ChatContext.Provider value={{chat, setChat}}>
+            <ChatContext.Provider value={{chat, setChat, unreadChats, setUnreadChats}}>
               <Router>
                 <Navigation />
                 <Flash />
