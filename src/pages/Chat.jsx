@@ -317,7 +317,7 @@ const Chat = () => {
                     {
                       filteredChats && (
                         filteredChats.map((chat) => {
-                          console.log(chat)
+                          // console.log(chat)
                           return (
                             <ChatCard chatEl={chat} key={chat.id} />
                           )

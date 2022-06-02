@@ -93,7 +93,7 @@ const Navigation = () => {
 
     const interval = setInterval(() => {
       authenticated && getChats();
-      console.log(chats)
+      // console.log(chats)
     }, 3000);
     return () => clearInterval(interval);
   }, [authenticated]);
@@ -107,12 +107,9 @@ const Navigation = () => {
       setUnreadChats(unreadChatsArray.length)
     }
 
-    console.log(chats);
-
-
     if (chats) {
       calculateUnreadChats();
-      console.log(chats);
+      // console.log(chats);
     }
   }, [chats, flash]);
 

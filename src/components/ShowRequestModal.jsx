@@ -19,7 +19,6 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
   const { flash, setFlash } = useContext(FlashContext);
   const { user } = useContext(UserContext);
 
-  const [modalOpen, setModalOpen] = useState(true);
   const [volunteered, setVolunteered] = useState(false);
   const [chats, setChats] = useState();
 
@@ -27,7 +26,6 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
     const showRequestModal = document.querySelector(".show-request-modal");
     showRequestModal.style.visibility = "hidden";
     document.querySelector("body").classList.remove("clicked");
-    setModalOpen(false);
   }
 
   const compareChatRequetsToCurrentRequest = () => {
@@ -128,15 +126,13 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
   useEffect(() => {
     if (request && request !== '') {
       scrollTopComponent();
-      setModalOpen(true);
     }
-  }, [modalOpen]);
+  }, [request]);
 
   useEffect(() => {
     if (chats && request) {
       compareChatRequetsToCurrentRequest();
     }
-
   }, [chats, request, volunteered]);
 
   return (

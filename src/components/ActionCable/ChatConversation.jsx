@@ -20,7 +20,7 @@ const ChatConversation = ({currentChat}) => {
       {
         currentChat && (
           currentChat.messages.map((message, index) => {
-            console.log(currentChat.messages)
+            // console.log(currentChat.messages)
             return (
               <ChatMessage message={message} previousMessage={index - 1 < 0 ? '' : currentChat.messages[index-1]} key={message.id} />
             )
