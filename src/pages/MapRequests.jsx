@@ -143,7 +143,7 @@ const MapRequests = () => {
         type: 'danger',
         message: error,
         display: true,
-      })
+      });
     })
   }
 

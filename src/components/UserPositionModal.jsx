@@ -54,14 +54,14 @@ const UserPositionModal = () => {
           type: 'success',
           message: "Position updated successfully",
           display: true,
-        })
+        });
       } else {
         // console.log(response);
         setFlash({
           type: 'danger',
           message: response.error,
           display: true,
-        })
+        });
       }
     })
     .catch(error => {

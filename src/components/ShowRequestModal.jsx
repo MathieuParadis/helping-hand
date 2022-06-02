@@ -116,7 +116,7 @@ const ShowRequestModal = ({request, setOpenEditModal, setMarkRequestAsFulfilled,
           type: 'danger',
           message: "An error occured, please try again",
           display: true,
-        })
+        });
       })
     }
 

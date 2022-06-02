@@ -86,7 +86,7 @@ const NewRequestModal = () => {
         type: 'danger',
         message: "An error occured, please try again",
         display: true,
-      })
+      });
     })
   }
 

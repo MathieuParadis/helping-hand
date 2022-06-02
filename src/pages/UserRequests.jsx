@@ -127,7 +127,7 @@ const UserRequests = () => {
         type: 'danger',
         message: error,
         display: true,
-      })
+      });
     })
   }
 
@@ -173,7 +173,7 @@ const UserRequests = () => {
           type: 'danger',
           message: response.error,
           display: true,
-        })
+        });
       }
     })
     .catch(error => {
@@ -183,7 +183,7 @@ const UserRequests = () => {
         type: 'danger',
         message: error,
         display: true,
-      })
+      });
     })
   }
 
