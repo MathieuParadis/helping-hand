@@ -145,7 +145,7 @@ const Signup = () => {
   }, []);
 
   return (
-    <div className="signup bg1 margin-mobile">
+    <div className="signup d-flex justify-content-center align-items-center bg1 margin-mobile">
       <div className="container d-flex justify-content-center align-items-center mx-0 w-100">
         <div className="box box-shadow border-radius-5 d-flex my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-3 pe-md-3">

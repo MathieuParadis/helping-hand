@@ -13,8 +13,8 @@ const Rules = () => {
   }, []);
 
   return (
-    <div className="rules bg2 margin-mobile">
-      <div className="container d-flex justify-content-center mx-0 w-100">
+    <div className="rules d-flex justify-content-center align-items-center bg2 margin-mobile">
+      <div className="container d-flex justify-content-center align-items-center mx-0 w-100">
         <div className="box border-radius-5 p-3 my-3">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">How it works</h1>
           { 

@@ -87,7 +87,7 @@ const Signin = () => {
   }, []);
 
   return (
-    <div className="signin bg1 margin-mobile">
+    <div className="signin d-flex justify-content-center align-items-center bg1 margin-mobile">
       <div className="container d-flex justify-content-center align-items-center mx-0 w-100">
         <div className="box box-shadow border-radius-5 d-flex flex-row-reverse my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 ps-md-3">

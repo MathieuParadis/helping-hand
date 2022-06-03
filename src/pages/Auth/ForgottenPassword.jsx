@@ -70,7 +70,7 @@ const ForgottenPassword = () => {
   }, []);
 
   return (
-    <div className="forgotten-password bg1 margin-mobile">
+    <div className="forgotten-password d-flex justify-content-center align-items-center bg1 margin-mobile">
       <div className="container d-flex justify-content-center align-items-center mx-0 w-100">
         <div className="box box-shadow border-radius-5 p-3 d-flex my-3">
           <div className="box-left d-none d-md-flex flex-column justify-content-center align-items-center col-md-6 pe-md-3">
@@ -85,7 +85,7 @@ const ForgottenPassword = () => {
                   <input type="email" className="form-control" id="email" aria-describedby="email input field" placeholder="Your email" required />
                   <img src={mail_icon} alt="mail_icon" className="mail-icon" />
                 </div>
-                <button type="submit" className="btn button-primary button-w290 border-radius-50 text-white align-self-center mt-4" id="reset-pw-btn">Send reset password instructions</button>
+                <button type="submit" className="btn button-primary button-w280 border-radius-50 text-white align-self-center mt-4" id="reset-pw-btn">Send reset password instructions</button>
               </form>
             </div>
             <div className=" d-flex flex-column justify-content-center align-items-center mt-4 text-small">
