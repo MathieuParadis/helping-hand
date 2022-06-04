@@ -11,10 +11,10 @@ import position_icon from '../assets/logos/position_logo.svg';
 // CONSTANTS IMPORTS
 import { API_ROOT } from '../constants/index';
 
-const UserPositionModal = () => {
+const UserPositionModal = ({firstConnection}) => {
   const { setFlash } = useContext(FlashContext);
   const { user, setUser } = useContext(UserContext);
-  const { id, first_name, last_name } = user;
+  const { id, first_name } = user;
 
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
@@ -82,7 +82,8 @@ const UserPositionModal = () => {
           setLong(Math.round(position.coords.longitude * 100000) / 100000);
         },
         function (error) {
-            alert(error.code + ": " + error.message);
+            // alert(error.code + ": " + error.message);
+            console.log(error.code + ": " + error.message);
         },
         {
           enableHighAccuracy: true,
@@ -125,11 +126,23 @@ const UserPositionModal = () => {
           <div className="form-container d-flex flex-grow-1 w-100">
             <form onSubmit={sharePosition} className="d-flex flex-column justify-content-between w-100">
               <p>Dear <strong>{first_name}</strong>,</p>
-              <p>
-                Thank you for joining the Helping Hand community.<br></br>
-                Before continuing to the app, we need you to share your position with us in order to be able to show you requests around you.<br></br>
-                If you choose to update your position later, we will assign you a default position.
-              </p>
+
+              {
+                firstConnection ? 
+                (
+                  <p>
+                  Thank you for joining the Helping Hand community.<br></br>
+                  Before continuing to the app, we need you to share your position with us in order to be able to show you requests around you.<br></br>
+                  If you choose to update your position later, we will assign you a default position.
+                </p>
+                ) :
+                (
+                  <p>test</p>
+                )
+              }
+
+
+
               <p>
                 For information, you can change your position anytime by going to <em className="fst-italic">my profile</em>, and then click on <em className="fst-italic">edit my profile</em>.
               </p>

@@ -60,6 +60,28 @@ const App = () => {
     }
   }, []);
 
+
+
+  const getPosition = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          let latitude = (Math.round(position.coords.latitude * 100000) / 100000);
+          let longitude = (Math.round(position.coords.longitude * 100000) / 100000);
+          return [latitude, longitude]
+        }
+      );
+    } else {
+      return false
+    }
+  }
+  
+  getPosition();
+
+  useEffect(() => {
+    alert("test")
+  }, []);
+
   return (
     <div className="app">
       <AuthContext.Provider value={{authenticated, setAuthenticated}}>
@@ -71,7 +93,10 @@ const App = () => {
                 <Flash />
                 <NewRequestModal />
                 {
-                  user && user.position === undefined && <UserPositionModal />
+                  user && user.position === undefined && <UserPositionModal firstConnection={true} /> 
+                }
+                {
+                  user && user.position !== undefined && [user.position.lat, user.position.lng] !== getPosition() && <UserPositionModal firstConnection={false} /> 
                 }
                 <Routes>
                   <Route path="/" exact="true" element={isUserAuthenticated() ? <MapRequests /> : <Home />} />
