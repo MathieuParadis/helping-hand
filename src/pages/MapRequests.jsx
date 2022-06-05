@@ -93,6 +93,38 @@ const MapRequests = () => {
     document.querySelector("body").classList.remove("clicked");
   }
 
+  const getRequests = () => {
+    const url = `${API_ROOT}/requests/${centerLat}/${centerLng}`;
+
+    const token = localStorage.getItem('jwt_token');
+
+    fetch(url, {
+      method: "GET",
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    })
+    .then(response => {
+      // console.log(response);
+      return response.json()
+    })
+    .then(response => {
+      // console.log(response);
+      setRequests(response);
+    })
+    .catch(errors => {
+      // console.log(errors);
+      setFlash({
+        type: 'danger',
+        message: "An error occured, please try again",
+        display: true,
+      })
+    })
+  }
+
   const markRequestAsFulfilled = (request) => {
     setCurrentRequest(request);
 
@@ -215,44 +247,20 @@ const MapRequests = () => {
   }, [position, loaded]);
 
   useEffect(() => {
-    const getRequests = () => {
-      const url = `${API_ROOT}/requests/${centerLat}/${centerLng}`;
-  
-      const token = localStorage.getItem('jwt_token');
-  
-      fetch(url, {
-        method: "GET",
-        mode: 'cors',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token,
-        },
-      })
-      .then(response => {
-        // console.log(response);
-        return response.json()
-      })
-      .then(response => {
-        // console.log(response);
-        setRequests(response);
-      })
-      .catch(errors => {
-        // console.log(errors);
-        setFlash({
-          type: 'danger',
-          message: "An error occured, please try again",
-          display: true,
-        })
-      })
-    }
-
     getRequests();
   }, [centerLat, centerLng, flash, zoom]);
 
   useEffect(() => {
     countingUserRequest();
   }, [requests]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getRequests();
+      countingUserRequest();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -264,7 +272,7 @@ const MapRequests = () => {
       <EditRequestModal request={currentRequest} />
       {
         (user && user.position === undefined && <UserPositionModal firstConnection={true} />) ||
-        (user && user.position !== undefined && coordinates && distance([user.position.lat, user.position.lng], [coordinates.latitude, coordinates.longitude]) > 10 && <UserPositionModal firstConnection={false} />)
+        (user && user.position !== undefined && coordinates && distance([user.position.lat, user.position.lng], [coordinates.latitude, coordinates.longitude]) > 15 && <UserPositionModal firstConnection={false} />)
       }
       <div className="map-requests">
         <div className="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
