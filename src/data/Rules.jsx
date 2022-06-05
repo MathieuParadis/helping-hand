@@ -74,7 +74,7 @@ const rules = {
       description: "Receiving help is an active job. Be proactive, participate and help the volunteer(s) in every way possible.",
     },
     {
-      description: "If, within 72 hours, the request still hasn't been marked as fulfilled, the requester can republish it. However, if either party marks the request as fulfilled, it cannot be republished.",
+      description: "If, within 24 hours, the request still hasn't been marked as fulfilled, the requester can republish it. However, if either party marks the request as fulfilled, it cannot be republished.",
     },
     {
       description: "Remember, be patient! We are all human beings. All volunteers genuinely want to help but not everyone contacting you might be able to do so.",
