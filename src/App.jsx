@@ -26,7 +26,6 @@ import Flash from './components/Flash';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import NewRequestModal from './components/NewRequestModal';
-import UserPositionModal from './components/UserPositionModal';
 
 // REACT FONTAWESOME IMPORTS
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -60,28 +59,6 @@ const App = () => {
     }
   }, []);
 
-
-
-  const getPosition = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function (position) {
-          let latitude = (Math.round(position.coords.latitude * 100000) / 100000);
-          let longitude = (Math.round(position.coords.longitude * 100000) / 100000);
-          return [latitude, longitude]
-        }
-      );
-    } else {
-      return false
-    }
-  }
-  
-  getPosition();
-
-  useEffect(() => {
-    alert("test")
-  }, []);
-
   return (
     <div className="app">
       <AuthContext.Provider value={{authenticated, setAuthenticated}}>
@@ -92,12 +69,6 @@ const App = () => {
                 <Navigation />
                 <Flash />
                 <NewRequestModal />
-                {
-                  user && user.position === undefined && <UserPositionModal firstConnection={true} /> 
-                }
-                {
-                  user && user.position !== undefined && [user.position.lat, user.position.lng] !== getPosition() && <UserPositionModal firstConnection={false} /> 
-                }
                 <Routes>
                   <Route path="/" exact="true" element={isUserAuthenticated() ? <MapRequests /> : <Home />} />
                   <Route path="/how-it-works" exact="true" element={<Rules />} />

@@ -102,7 +102,8 @@ const EditRequestModal = ({request}) => {
           setRequestLongitude(Math.round(position.coords.longitude * 100000) / 100000);
         },
         function (error) {
-            alert(error.code + ": " + error.message);
+          // alert(error.code + ": " + error.message);
+          console.log(error.code + ": " + error.message);
         },
         {
           enableHighAccuracy: true,

@@ -15,6 +15,7 @@ import ReactLoading from 'react-loading';
 // COMPONENTS IMPORTS
 import EditRequestModal from '../components/EditRequestModal';
 import ShowRequestModal from '../components/ShowRequestModal';
+import UserPositionModal from '../components/UserPositionModal';
 
 // CONSTANTS IMPORTS
 import { API_ROOT } from '../constants/index';
@@ -32,6 +33,7 @@ const MapRequests = () => {
   const [zoom, setZoom] = useState(16);
   const [currentRequest, setCurrentRequest] = useState("");
   const [userRequestsCount, setUserRequestsCount] = useState(0);
+  let [coordinates, setCoordinates] = useState(false);
 
   let centerLat = 0;
   let centerLng = 0;
@@ -158,6 +160,52 @@ const MapRequests = () => {
     })
     setUserRequestsCount(count);
   }
+
+  const distance = ([lat1, long1], [lat2, long2]) => {
+    // The math module contains a function named toRadians which converts from degrees to radians.
+    long1 =  long1 * Math.PI / 180;
+    long2 = long2 * Math.PI / 180;
+    lat1 = lat1 * Math.PI / 180;
+    lat2 = lat2 * Math.PI / 180;
+
+    // Haversine formula
+    let dlon = long2 - long1;
+    let dlat = lat2 - lat1;
+    let a = Math.pow(Math.sin(dlat / 2), 2)
+    + Math.cos(lat1) * Math.cos(lat2)
+    * Math.pow(Math.sin(dlon / 2),2);
+
+    let c = 2 * Math.asin(Math.sqrt(a));
+
+    // Radius of earth in kilometers. Use 3956 for miles
+    let r = 6371;
+
+    // calculate the result in km
+    return(c * r);
+  }
+
+  const getPosition = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          let latitude = (Math.round(position.coords.latitude * 100000) / 100000);
+          let longitude = (Math.round(position.coords.longitude * 100000) / 100000);
+          setCoordinates({latitude, longitude})
+          console.log({latitude, longitude})
+        }
+      );
+    } else {
+      return false
+    }
+  }
+
+  useEffect(() => {
+    getPosition();
+  }, []);
+
+  useEffect(() => {
+    console.log(coordinates)    
+  }, [coordinates]);
   
   useEffect(() => {
     if (position && !loaded) {
@@ -214,6 +262,10 @@ const MapRequests = () => {
     <>
       <ShowRequestModal request={currentRequest} setOpenEditModal={openEditRequestModal} setMarkRequestAsFulfilled={markRequestAsFulfilled} />
       <EditRequestModal request={currentRequest} />
+      {
+        (user && user.position === undefined && <UserPositionModal firstConnection={true} />) ||
+        (user && user.position !== undefined && coordinates && distance([user.position.lat, user.position.lng], [coordinates.latitude, coordinates.longitude]) > 10 && <UserPositionModal firstConnection={false} />)
+      }
       <div className="map-requests">
         <div className="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
           <h1 className="text-primary text-center fw-bold pb-3 pb-md-4">Requests around me</h1>
