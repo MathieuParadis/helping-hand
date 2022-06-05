@@ -293,7 +293,7 @@ const Chat = () => {
                   </div>
                 </div>
               </div>
-              <div className="bottom-section row flex-grow-1">
+              <div className="bottom-section row flex-grow-1 h-100">
                 <div className=" d-flex flex-column chat-message-section col-12 col-lg-8 pe-lg-0 h-100">
                   <div className="chat-message-section-content flex-grow-1">                    
                     {

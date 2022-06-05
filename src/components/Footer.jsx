@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center">
-        <img src={logo} alt="Boulder Bike Tour logo" className="logo mb-4 mb-lg-0" />
+        <img src={logo} alt="Helping Hand logo" className="logo mb-4 mb-lg-0" />
         <div className="d-none d-md-block align-self-lg-start col-7 col-xl-8 mb-4 mb-lg-0">
           <h4 className="mb-3 text-center text-lg-start"><strong>About us</strong></h4>
           <p className="mb-0 text-justify">
