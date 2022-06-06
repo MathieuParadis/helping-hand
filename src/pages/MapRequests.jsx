@@ -273,7 +273,7 @@ const MapRequests = () => {
       <EditRequestModal request={currentRequest} />
       {
         (user && user.position === undefined && <UserPositionModal firstConnection={true} />) ||
-        (user && user.position !== undefined && coordinates && distance([user.position.lat, user.position.lng], [coordinates.latitude, coordinates.longitude]) > 15 && <UserPositionModal firstConnection={false} />)
+        (user && user.position !== undefined && coordinates && distance([user.position.lat, user.position.lng], [coordinates.latitude, coordinates.longitude]) > 5 && <UserPositionModal firstConnection={false} />)
       }
       <div className="map-requests">
         <div className="d-flex flex-column justify-content-center align-items-center mx-0 my-3 py-3">
