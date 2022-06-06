@@ -9,7 +9,12 @@ import rules from '../data/Rules';
 
 const Rules = () => {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const scrollTopPage = () => {
+      const navbar = document.querySelector(".navigation");
+      navbar.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    scrollTopPage();
   }, []);
 
   return (
