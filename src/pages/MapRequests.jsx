@@ -38,10 +38,6 @@ const MapRequests = () => {
   let centerLat = 0;
   let centerLng = 0;
 
-  if (center) {
-    [centerLat, centerLng] = center;
-  }
-
   const colorMaterial = "#F4A896";
   const colorService = "#262F53";
 
@@ -223,7 +219,6 @@ const MapRequests = () => {
           let latitude = (Math.round(position.coords.latitude * 100000) / 100000);
           let longitude = (Math.round(position.coords.longitude * 100000) / 100000);
           setCoordinates({latitude, longitude})
-          console.log({latitude, longitude})
         }
       );
     } else {
@@ -234,21 +229,22 @@ const MapRequests = () => {
   useEffect(() => {
     getPosition();
   }, []);
-
-  useEffect(() => {
-    console.log(coordinates)    
-  }, [coordinates]);
   
   useEffect(() => {
     if (position && !loaded) {
       setCenter([parseFloat(position.lat), parseFloat(position.lng)]);
+      centerLat = parseFloat(position.lat);
+      centerLng = parseFloat(position.lng);
       setLoaded(true);
     }
   }, [position, loaded]);
 
   useEffect(() => {
-    getRequests();
-  }, [centerLat, centerLng, flash, zoom]);
+    if (center) {
+      [centerLat, centerLng] = center;
+      getRequests();
+    }
+  }, [center, flash, zoom]);
 
   useEffect(() => {
     countingUserRequest();
@@ -256,11 +252,16 @@ const MapRequests = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      getRequests();
+
+      if (center) {
+        [centerLat, centerLng] = center;
+        getRequests();
+      }
+      
       countingUserRequest();
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [center]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -281,7 +282,7 @@ const MapRequests = () => {
               <p className="counter h5 align-self-md-start text-center text-md-start">
                 There are currently <strong>{requests.length}</strong> help requests around you
                 {
-                  userRequestsCount > 0 ? (<small> (including {userRequestsCount} of your very own requests)</small>) : "."
+                  userRequestsCount > 0 ? (<small> (including {userRequestsCount} of your very own requests).</small>) : "."
                 } 
                 <br></br>Start volunteering now!
               </p>
