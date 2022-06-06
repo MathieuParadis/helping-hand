@@ -126,23 +126,21 @@ const UserPositionModal = ({firstConnection}) => {
           <div className="form-container d-flex flex-grow-1 w-100">
             <form onSubmit={sharePosition} className="d-flex flex-column justify-content-between w-100">
               <p>Dear <strong>{first_name}</strong>,</p>
-
               {
                 firstConnection ? 
                 (
                   <p>
-                  Thank you for joining the Helping Hand community.<br></br>
-                  Before continuing to the app, we need you to share your position with us in order to be able to show you requests around you.<br></br>
-                  If you choose to update your position later, we will assign you a default position.
-                </p>
+                    Thank you for joining the Helping Hand community.<br></br>
+                    Before continuing to the app, we need you to share your position with us in order to be able to show you requests around you.<br></br>
+                    If you choose to update your position later, we will assign you a default position. Though, this window will keep popping as long as your saved position and actual location do not match.<br></br>
+                  </p>
                 ) :
                 (
-                  <p>test</p>
+                  <p>
+                    Seems your saved position and your actual location do not match. Please update it so that we can show you requests around you.<br></br>
+                  </p>
                 )
               }
-
-
-
               <p>
                 For information, you can change your position anytime by going to <em className="fst-italic">my profile</em>, and then click on <em className="fst-italic">edit my profile</em>.
               </p>
