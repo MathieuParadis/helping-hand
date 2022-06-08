@@ -48,7 +48,7 @@ const MapRequests = () => {
   const displayBubbleRequestInfo = (request) => {
     setCurrentRequest(request);
     setCenter([request.lat, request.lng]);
-    setZoom(13);
+    setZoom(17);
 
     const bubbleRequest = document.querySelector(".bubble-request");
     bubbleRequest.style.visibility = 'visible';
@@ -58,7 +58,7 @@ const MapRequests = () => {
     const bubbleRequest = document.querySelector(".bubble-request");
 
     bubbleRequest.style.visibility = 'hidden';
-    setZoom(12);
+    setZoom(16);
   }
 
   const openShowRequestModal = () => {

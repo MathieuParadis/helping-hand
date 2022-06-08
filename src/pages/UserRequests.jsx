@@ -9,7 +9,6 @@ import ReactLoading from 'react-loading';
 
 // COMPONENTS IMPORTS
 import EditRequestModal from '../components/EditRequestModal';
-import NewRequestModal from '../components/NewRequestModal';
 import RequestCard from '../components/RequestCard';
 import ShowRequestModal from '../components/ShowRequestModal';
 
