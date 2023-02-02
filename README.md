@@ -27,10 +27,12 @@ Helping Hand is a local charity whose mission is to help to build a strong commu
 
 ## How to use it:
 ### In development:
-Clone the repository on your machine, and run:
+Run [backend](https://github.com/MathieuParadis/helping-hand-back) at following address: http://localhost:3000/
+
+Then, clone the repository on your machine, and run:
   ```
   npm install
   npm start
   ```
-  
+
 Then, access the app in your browser at http://localhost:3001/ 
