@@ -33,4 +33,4 @@ Clone the repository on your machine, and run:
   npm start
   ```
   
-Then, access the app in your browser at http://localhost:3000/ 
+Then, access the app in your browser at http://localhost:3001/ 
