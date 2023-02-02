@@ -1,7 +1,7 @@
 # Welcome on the Helping Hand app
 
 <p align="center" >
-  <a href="https://helpping-hand.herokuapp.com/"><img src="https://github.com/MathieuParadis/helping-hand/blob/main/src/assets/logos/helping_hand_logo_with_text.svg" alt="Helping Hand logo"/></a>
+  <img src="https://github.com/MathieuParadis/helping-hand/blob/main/src/assets/logos/helping_hand_logo_with_text.svg" alt="Helping Hand logo"/>
 </p>
 
 
@@ -24,11 +24,6 @@ Helping Hand is a local charity whose mission is to help to build a strong commu
 ## Helping Hand Backend:
 * [Git repository](https://github.com/MathieuParadis/helping-hand-back)
 
-End points of the app in production
-* [Users](https://helpping-hand-back.herokuapp.com/users)
-* [Requests](https://helpping-hand-back.herokuapp.com/requests)
-* [chats](https://helpping-hand-back.herokuapp.com/chats)
-
 
 ## How to use it:
 ### In development:
@@ -39,8 +34,3 @@ Clone the repository on your machine, and run:
   ```
   
 Then, access the app in your browser at http://localhost:3000/ 
-
-### In production:
-Go to the [Helping Hand](https://helpping-hand.herokuapp.com/) and enjoy the experience!
-
-
